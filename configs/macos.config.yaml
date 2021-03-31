@@ -1,0 +1,42 @@
+osx_script: "dotfiles/.macos --no-restart"
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+homebrew_cask_appdir: /Applications
+homebrew_installed_packages:
+    # Essential must-have packages
+    - zsh
+    - git
+    - openssh
+    - openssl
+    - starship
+    - pyenv
+homebrew_cask_apps:
+    # My favorite fonts for UI and text editor
+    - font-inter
+    - font-jetbrains-mono-nerd-font
+    # Sometimes it is nice to have useful tools lke stats, 1Password and Kap
+    - stats
+    - 1password
+    - kap
+    - grammarly
+    - logitech-g-hub
+    - logitech-firmwareupdatetool
+    # Tools I use for communication
+    - discord
+    - microsoft-outlook
+    - microsoft-teams
+    - slack
+    - telegram
+    # Music, videoplayers, etc.
+    - spotify
+    # Essential development tools
+    - hyper
+    - firefox-developer-edition
+    - chromium
+    - docker
+    - tunnelblick
+    - visual-studio-code
+    - notion
+    - miro
+    - figma

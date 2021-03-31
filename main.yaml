@@ -2,15 +2,17 @@
 - hosts: all
 
   vars_files:
-    - default.config.yaml
-
-  roles:
-    - role: geerlingguy.homebrew
-      tags: ["homebrew"]
+    - configs/default.config.yaml
+    - configs/macos.config.yaml
 
   tasks:
-    - include_tasks: tasks/ansible-setup.yaml
-      tags: ["always"]
+    - name: Ansible setup validataion.
+      include_tasks: tasks/ansible-setup.yaml
+      tags:
+        - always
 
-    - include_tasks: tasks/macos.yaml
-      tags: ["macos"]
+    - name: Configure Mac OS and install essential packages.
+      include_tasks: tasks/macos.yaml
+      when: ansible_os_family == "Darwin"
+      tags:
+        - macos
