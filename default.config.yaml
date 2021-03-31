@@ -1,0 +1,13 @@
+---
+downloads: ~/.ansible-downloads/
+
+configure_dotfiles: true
+configure_macos: true
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+
+homebrew_cask_appdir: /Applications
+
+osx_script: "~/.osx --no-restart"

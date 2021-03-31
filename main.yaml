@@ -1,0 +1,16 @@
+---
+- hosts: all
+
+  vars_files:
+    - default.config.yaml
+
+  roles:
+    - role: geerlingguy.homebrew
+      tags: ["homebrew"]
+
+  tasks:
+    - include_tasks: tasks/ansible-setup.yaml
+      tags: ["always"]
+
+    - include_tasks: tasks/macos.yaml
+      tags: ["macos"]

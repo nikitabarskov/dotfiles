@@ -1,15 +1,13 @@
-# Dotfiles
-## Brew packages
-```bash
-# IDE
-visual-studio-code
-intellij-idea
+# Working station configuration repository
 
-# Build Tools
-maven
+I was inspired by these awesome repositories
 
-# LaTeX
-mactex-no-gui
-```
-## Helpful links
-[FontAwesome](https://use.fontawesome.com/releases/v5.8.1/fontawesome-free-5.8.1-desktop.zip)
+* https://github.com/mathiasbynens/dotfiles
+* https://github.com/nikitavoloboev/dotfiles
+* https://github.com/geerlingguy/mac-dev-playbook
+
+## Mac OS
+
+### Mac OS Preferences
+
+[.macos](dotfiles/.macos)
