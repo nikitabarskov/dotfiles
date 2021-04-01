@@ -1,0 +1,19 @@
+- name: Install zsh plugins with antibody.
+  shell: 
+    cmd: antibody bundle < dotfiles/zsh_plugins.txt > dotfiles/.zsh_plugins
+  changed_when: false
+
+- name: Delete zsh related dotfiles links if exist.
+  file:
+    path: "$HOME/{{ item }}"
+    state: absent
+  with_items: "{{ zsh_dotfiles_files }}"
+
+- name: Link zsh related dotfiles into home folder.
+  file:
+    src: "{{ dotfiles_repo_local }}/dotfiles/{{ item }}"
+    dest: "$HOME/{{ item }}"
+    state: link
+    mode: 0644
+  with_items: "{{ zsh_dotfiles_files }}"
+  become: false

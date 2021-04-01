@@ -1,0 +1,54 @@
+osx_script: "dotfiles/.macos --no-restart"
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+homebrew_cask_appdir: /Applications
+homebrew_packages:
+  essential:
+    - bash
+    - zsh
+    - coreutils
+    - moreutils
+    - findutils
+    - antibody
+    - wget
+    - gnupg
+    - openssh
+    - openssl
+    - readline 
+    - sqlite3 
+    - xz 
+    - zlib
+  development:
+    - git
+    - starship
+homebrew_cask_packages:
+  fonts:
+    - font-inter
+    - font-jetbrains-mono-nerd-font
+  tools:
+    - stats
+    - 1password
+    - kap
+    - grammarly
+    - logitech-g-hub
+    - logitech-firmwareupdatetool
+  communication:
+    - discord
+    - microsoft-outlook
+    - microsoft-teams
+    - slack
+    - telegram
+  media:
+    - spotify
+  development:
+    - hyper
+    - firefox-developer-edition
+    - chromium
+    - docker
+    - tunnelblick
+    - visual-studio-code
+    - notion
+    - miro
+    - figma
+touch_id_sudo_line: "auth       sufficient     pam_tid.so"

@@ -1,0 +1,77 @@
+---
+# TODO: Use sudo once .osx can be run via root with no user interaction.
+- name: Run .osx dotfiles.
+  command: "{{ osx_script }}"
+  changed_when: false
+
+- name: Ensure TouchId is available.
+  shell: set -o pipefail && bioutil -rs |  grep functionality | awk '{print $4}'
+  changed_when: false
+  register: touch_id_status
+
+- name: Ensure that TouchId is installed as authentication method for sudo.
+  command: cat /etc/pam.d/sudo
+  register: touch_id_enabled_for_root
+  changed_when: false
+  when: touch_id_status.stdout == "1"
+  
+- name: Install TouchId as authentication method for sudo.
+  lineinfile:
+    path: /etc/pam.d/sudo
+    line: "{{ touch_id_sudo_line }}"
+    insertbefore: "auth       sufficient     pam_smartcard.so"
+  become: true
+  when: touch_id_sudo_line not in touch_id_enabled_for_root.stdout
+
+- name: Installing homebrew.
+  include_role:
+    name: geerlingguy.homebrew
+
+- name: Installing homebrew essential packages.
+  homebrew:
+    name: "{{ homebrew_packages.essential }}"
+    state: present
+  tags:
+    - essential
+
+- name: Installing homebrew development packages.
+  homebrew:
+    name: "{{ homebrew_packages.development }}"
+    state: present
+  tags:
+    - development
+
+- name: Installing homebrew cask fonts.
+  homebrew_cask:
+    name: "{{ homebrew_cask_packages.fonts }}"
+    state: present
+  tags:
+    - fonts
+
+- name: Installing homebrew cask tools.
+  homebrew_cask:
+    name: "{{ homebrew_cask_packages.tools }}"
+    state: present
+  tags:
+    - tools
+
+- name: Installing homebrew cask communication.
+  homebrew_cask:
+    name: "{{ homebrew_cask_packages.communication }}"
+    state: present
+  tags:
+    - communication
+
+- name: Installing homebrew cask media.
+  homebrew_cask:
+    name: "{{ homebrew_cask_packages.media }}"
+    state: present
+  tags:
+    - media
+
+- name: Installing homebrew cask development.
+  homebrew_cask:
+    name: "{{ homebrew_cask_packages.development }}"
+    state: present
+  tags:
+    - development
