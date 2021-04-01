@@ -1,2 +1,11 @@
 ---
 downloads: ~/.ansible-downloads/
+dotfiles_repo_local: $HOME/github/dotfiles
+
+zsh_dotfiles_files:
+  - .zshrc
+  - .environment
+  - .zsh_plugins
+  - .aliases
+
+python_version: 3.8.8

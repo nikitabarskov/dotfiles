@@ -1,8 +1,10 @@
 ---
 - name: Ensure that become password is correct.
-  command: echo "Become password is correct"
+  command: echo "Become password is correct!"
   become: true
   changed_when: false
+  register: become_password_correct
+  failed_when: become_password_correct.stdout != "Become password is correct!"
   tags:
     - always
 

@@ -3,34 +3,45 @@ homebrew_taps:
   - homebrew/core
   - homebrew/cask
 homebrew_cask_appdir: /Applications
-homebrew_installed_packages:
-    # Essential must-have packages
+homebrew_packages:
+  essential:
+    - bash
     - zsh
-    - git
+    - coreutils
+    - moreutils
+    - findutils
+    - antibody
+    - wget
+    - gnupg
     - openssh
     - openssl
+    - readline 
+    - sqlite3 
+    - xz 
+    - zlib
+  development:
+    - git
     - starship
-    - pyenv
-homebrew_cask_apps:
-    # My favorite fonts for UI and text editor
+homebrew_cask_packages:
+  fonts:
     - font-inter
     - font-jetbrains-mono-nerd-font
-    # Sometimes it is nice to have useful tools lke stats, 1Password and Kap
+  tools:
     - stats
-    - 1password
+    #- 1password
     - kap
     - grammarly
     - logitech-g-hub
     - logitech-firmwareupdatetool
-    # Tools I use for communication
+  communication:
     - discord
     - microsoft-outlook
     - microsoft-teams
     - slack
     - telegram
-    # Music, videoplayers, etc.
+  media:
     - spotify
-    # Essential development tools
+  development:
     - hyper
     - firefox-developer-edition
     - chromium
@@ -40,3 +51,4 @@ homebrew_cask_apps:
     - notion
     - miro
     - figma
+touch_id_sudo_line: "auth       sufficient     pam_tid.so"
