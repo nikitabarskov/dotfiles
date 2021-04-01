@@ -41,6 +41,7 @@ Ensure Apple's command line tools are installed (`xcode-select --install`).
 
 ## Potential improvements
 
-* use `ansible` to configure Mac OS preferences
-* add configuration for my Linux setup
-* add configuration for my Windows entertainment setup
+* Use `ansible` to configure Mac OS preferences.
+* Add configuration for my Linux setup.
+* Add configuration for my Windows entertainment setup.
+* CI via GitHub actions.
