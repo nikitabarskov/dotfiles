@@ -2,4 +2,5 @@
 
 Inspired by
 
-* [@mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
+* [dotfiles](https://github.com/mathiasbynens/dotfiles) by @mathiasbynens
+* [dotfiles](https://github.com/mathiasbynens/dotfiles) by [@mathiasbynens](https://github.com/mathiasbynens)
