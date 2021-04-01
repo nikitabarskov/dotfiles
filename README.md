@@ -7,7 +7,7 @@ I am tired of setting up my dev laptop every time something happens or changing 
 - Mac OS preferences.
 - Touch ID for sudo authentication.
 - [zsh](https://github.com/zsh-users/zsh), [hyper](https://github.com/vercel/hyper) and [spaceship](https://github.com/denysdovhan/spaceship-prompt).
-- Install essential tools and packages, communication, development and media apps.
+- Install essential tools and packages, communication, development, and media apps.
 - Python via [pyenv](https://github.com/pyenv/pyenv).
 - Configuration files as symlinks. 
 
