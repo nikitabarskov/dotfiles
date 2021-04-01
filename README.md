@@ -1,13 +1,5 @@
-# Working station configuration repository
+# Set-up development machine with Ansible
 
-I was inspired by these awesome repositories
+Inspired by
 
-* https://github.com/mathiasbynens/dotfiles
-* https://github.com/nikitavoloboev/dotfiles
-* https://github.com/geerlingguy/mac-dev-playbook
-
-## Mac OS
-
-### Mac OS Preferences
-
-[.macos](dotfiles/.macos)
+* [@mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
