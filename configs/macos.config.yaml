@@ -28,7 +28,7 @@ homebrew_cask_packages:
     - font-jetbrains-mono-nerd-font
   tools:
     - stats
-    #- 1password
+    - 1password
     - kap
     - grammarly
     - logitech-g-hub
