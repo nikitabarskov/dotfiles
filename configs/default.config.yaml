@@ -9,3 +9,12 @@ zsh_dotfiles_files:
   - .aliases
 
 python_version: 3.8.8
+vscode:
+  extensions:
+    - codezombiech.gitignore
+    - GitHub.github-vscode-theme
+    - ms-azuretools.vscode-docker
+    - ms-python.python
+    - ms-python.vscode-pylance
+    - ms-toolsai.jupyter
+    - VisualStudioExptTeam.vscodeintellicode

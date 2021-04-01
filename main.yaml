@@ -17,16 +17,16 @@
       tags:
         - macos
 
-    # - name: Configure zsh.
-    #   include_tasks: tasks/zsh.yaml
-    #   when: ansible_os_family == "Darwin"
+    - name: Configure zsh.
+      include_tasks: tasks/zsh.yaml
+      when: ansible_os_family == "Darwin"
 
-    # - name: Configure Hyper.
-    #   include_tasks: tasks/hyper.yaml
-    #   when: ansible_os_family == "Darwin"
+    - name: Configure Hyper.
+      include_tasks: tasks/hyper.yaml
+      when: ansible_os_family == "Darwin"
     
-    # - name: Configure Python.
-    #   include_tasks: tasks/python.yaml
+    - name: Configure Python.
+      include_tasks: tasks/python.yaml
     
-    # - name: Configure VS Code.
-    #   include_tasks: tasks/vscode.yaml
+    - name: Configure VS Code.
+      include_tasks: tasks/vscode.yaml
