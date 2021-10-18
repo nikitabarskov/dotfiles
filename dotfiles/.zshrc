@@ -56,3 +56,17 @@ eval "$(starship init zsh)"
 
 # Enable Pyenv
 eval "$(pyenv init -)"
+# Enable Pyenv virtual-env
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/nikitabarskov/.sdkman"
+[[ -s "/Users/nikitabarskov/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/nikitabarskov/.sdkman/bin/sdkman-init.sh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/nikitabarskov/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/nikitabarskov/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/nikitabarskov/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/nikitabarskov/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/usr/local/opt/terraform@0.13/bin:$PATH"
+export PATH="/usr/local/opt/terraform@0.12/bin:$PATH"

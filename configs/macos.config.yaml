@@ -2,6 +2,9 @@ osx_script: "dotfiles/.macos --no-restart"
 homebrew_taps:
   - homebrew/core
   - homebrew/cask
+  - homebrew/cask-fonts
+  - homebrew/cask-drivers
+  - homebrew/cask-versions
 homebrew_cask_appdir: /Applications
 homebrew_packages:
   essential:
