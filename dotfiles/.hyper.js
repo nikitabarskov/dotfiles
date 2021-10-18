@@ -6,10 +6,10 @@ module.exports = {
   config: {
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
-    updateChannel: "canary",
+    updateChannel: "stable",
 
     // default font size in pixels for all tabs
-    fontSize: 14,
+    fontSize: 20,
 
     // font family with optional fallbacks
     fontFamily: '"JetBrainsMono Nerd Font", monospace',
@@ -155,7 +155,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hyperline", "hyper-chesterish", "hyper-tabs-enhanced"],
+  plugins: ["hyperline", "hyper-hypest", "hyper-tabs-enhanced", "hyper"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
