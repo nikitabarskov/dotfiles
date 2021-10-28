@@ -3,3 +3,39 @@
     name: git
     state: present
   when: ansible_os_family == "Darwin"
+
+- name: Run "apt update"
+  become: true
+  apt:
+    update_cache: yes
+  when: ansible_os_family == "elementary OS"
+
+- name: Install Git (elementary OS)
+  become: true
+  apt:
+    name: git
+    state: latest
+    autoremove: yes
+    autoclean: yes
+  when: ansible_os_family == "elementary OS"
+
+- name: Configure global .gitconfig
+  file:
+    src: "{{ dotfiles_repo_local }}/dotfiles/git/{{ global_gitconfig_file }}"
+    dest: "$HOME/{{ global_gitconfig_file }}"
+    state: link
+    force: true
+    mode: 0644
+
+- name: Create .config/git directories
+  file:
+    path: "$HOME/.config/git"
+    state: directory
+
+- name: Configure local `.gitconfig`s
+  file:
+    src: "{{ dotfiles_repo_local }}/dotfiles/git/{{ item }}"
+    dest: "$HOME/.config/git/{{ item }}"
+    state: hard
+    mode: 0644
+  with_items: "{{ local_gitconfig_files }}"  

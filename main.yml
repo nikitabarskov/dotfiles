@@ -7,13 +7,15 @@
 
   roles:
       - role: elliotweiser.osx-command-line-tools
+        when: ansible_os_family == "Darwin"
         tags: [ 'macos' ]
       - role: geerlingguy.mac.homebrew
+        when: ansible_os_family == "Darwin"
         tags: [ 'macos' ]
 
   tasks:
     - name: Install or update Git
-      include_tasks: tasks/git/git.yml
+      import_tasks: tasks/git/git.yml
       tags:
         - git
 
