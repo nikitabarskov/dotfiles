@@ -9,7 +9,7 @@
     name:
       - gpg2
       - gnupg
-      - pinetry-mac
+      - pinentry-mac
     state: present
   when: ansible_os_family == "Darwin"
 
