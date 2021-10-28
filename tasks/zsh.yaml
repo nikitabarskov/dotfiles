@@ -1,5 +1,5 @@
 - name: Install zsh plugins with antibody.
-  shell: 
+  shell:
     cmd: antibody bundle < dotfiles/zsh_plugins.txt > dotfiles/.zsh_plugins
   changed_when: false
 

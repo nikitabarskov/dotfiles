@@ -1,11 +1,6 @@
 ---
 dotfiles_repo_local: $HOME/personal/github/dotfiles
 
-global_gitconfig_file: .gitconfig
-local_gitconfig_files:
-  - personal.gitconfig
-  - work.gitconfig
-
 zsh_dotfiles_files:
   - .zshrc
   - .environment

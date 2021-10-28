@@ -14,6 +14,10 @@
         tags: [ 'macos' ]
 
   tasks:
+    - name: Import git config variables
+      include_vars: configs/git.config.yaml
+      tags:
+        - git
     - name: Install or update Git
       import_tasks: tasks/git/git.yml
       tags:

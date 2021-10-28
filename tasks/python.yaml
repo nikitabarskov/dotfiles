@@ -6,7 +6,7 @@
   ignore_errors: true
 
 - name: Get pyenv installer.
-  get_url: 
+  get_url:
     url: https://pyenv.run
     dest: $HOME/pyenv-installer
     mode: u+rx
@@ -17,7 +17,7 @@
   when: pyenv_version_installed.rc != 0
 
 - name: Get pyenv installer.
-  file: 
+  file:
     path: $HOME/pyenv-installer
     state: absent
   when: pyenv_version_installed.rc != 0
