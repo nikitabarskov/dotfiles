@@ -18,6 +18,10 @@
       include_vars: configs/git.config.yaml
       tags:
         - git
+    - name: Install zsh and .zshrc
+      import_tasks: tasks/zsh/zsh.yml
+      tags:
+        - zsh
     - name: Install or update Git
       import_tasks: tasks/git/git.yml
       tags:

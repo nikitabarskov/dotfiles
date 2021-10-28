@@ -1,7 +1,7 @@
 - name: Install Git (macOS)
   homebrew:
     name: git
-    state: present
+    state: latest
   when: ansible_os_family == "Darwin"
 
 - name: Install gpg to sign commits (macOS)
@@ -10,7 +10,7 @@
       - gpg2
       - gnupg
       - pinentry-mac
-    state: present
+    state: latest
   when: ansible_os_family == "Darwin"
 
 - name: Create .gnupg directory (macOS)
@@ -34,7 +34,6 @@
     state: directory
     mode: u=rw,g=,o=
   when: ansible_os_family == "Darwin"
-
 
 - name: Run "apt update"
   become: true
