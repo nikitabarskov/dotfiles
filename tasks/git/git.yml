@@ -31,7 +31,7 @@
   file:
     path: "$HOME/.config/git"
     state: directory
-    mode: u=rw,g=rw,o=
+    mode: u=rwx,g=rx,o=rx
 
 - name: Configure local `.gitconfig`s
   template:
