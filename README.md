@@ -11,6 +11,10 @@ I am tired of setting up my dev laptop every time something happens or changing 
 - Python via [pyenv](https://github.com/pyenv/pyenv).
 - Configuration files as symlinks. 
 
+## Git GPG
+
+https://gist.github.com/troyfontaine/18c9146295168ee9ca2b30c00bd1b41e
+
 ## Usage
 
 You can use this repository as a bootstrap or template for your personal configuration.
