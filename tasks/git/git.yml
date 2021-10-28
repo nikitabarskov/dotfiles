@@ -17,7 +17,24 @@
   file:
     path: "$HOME/.gnupg"
     state: directory
-    mode: u=rw
+    mode: u=rwx,g=rwx,o=rwx
+  when: ansible_os_family == "Darwin"
+
+- name: Creating a file with content (macOS)
+  copy:
+    dest: "$HOME/.gnupg/gpg.conf"
+    content: |
+        use-agent
+  when: ansible_os_family == "Darwin"
+
+
+- name: Change permission on .gnupg directory (macOS)
+  file:
+    path: "$HOME/.gnupg"
+    state: directory
+    mode: u=rw,g=,o=
+  when: ansible_os_family == "Darwin"
+
 
 - name: Run "apt update"
   become: true
