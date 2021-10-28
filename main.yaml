@@ -5,13 +5,15 @@
     - configs/default.config.yaml
     - configs/macos.config.yaml
 
-  tasks:
-    - name: Ansible setup validataion.
-      include_tasks: tasks/ansible.yaml
-      tags:
-        - always
+  roles:
+      - role: elliotweiser.osx-command-line-tools
 
-#    - name: Configure Mac OS and install essential packages.
+  tasks:
+    - name: Install or update Git
+      include_tasks: tasks/git.yml
+      tags:
+        - git
+#    - name: Configure macOS and install essesntial packages.
 #      include_tasks: tasks/macos.yaml
 #      when: ansible_os_family == "Darwin"
 #      tags:
