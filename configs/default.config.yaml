@@ -1,6 +1,6 @@
 ---
-downloads: ~/.ansible-downloads/
-dotfiles_repo_local: $HOME/github/dotfiles
+downloads: $HOME/.ansible-downloads/
+dotfiles_repo_local: $HOME/personal/github/dotfiles
 
 zsh_dotfiles_files:
   - .zshrc

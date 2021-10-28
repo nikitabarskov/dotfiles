@@ -1,0 +1,8 @@
+[includeIf "gitdir:~/personal/"]
+  path = .gitconfig-personal
+[includeIf "gitdir:~/work/"]
+  path = .gitconfig-work
+[core]
+  autocrlf = input
+[commit]
+  gpgsign = true
