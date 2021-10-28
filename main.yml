@@ -7,6 +7,9 @@
 
   roles:
       - role: elliotweiser.osx-command-line-tools
+        tags: [ 'macos' ]
+      - role: geerlingguy.mac.homebrew
+        tags: [ 'macos' ]
 
   tasks:
     - name: Install or update Git
