@@ -20,10 +20,9 @@
   when: ansible_os_family == "elementary OS"
 
 - name: Configure global .gitconfig
-  file:
-    src: "{{ dotfiles_repo_local }}/dotfiles/git/.gitconfig"
+  template:
+    src: "global.gitconfig.j2"
     dest: "$HOME/.gitconfig"
-    state: link
     force: true
     mode: u=rw,g=,o=
 
