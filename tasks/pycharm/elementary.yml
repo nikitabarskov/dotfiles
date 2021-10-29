@@ -1,0 +1,18 @@
+- name: Download PyCharm tar archive from JetBrains
+  get_url:
+    url: "https://download.jetbrains.com/python/pycharm-professional-{{ pycharm_version }}.tar.gz"
+    dest: /tmp/pycharm.tar.gz
+    checksum: "sha256:https://download.jetbrains.com/python/pycharm-professional-{{ pycharm_version }}.tar.gz.sha256"
+
+- name: Create folder for PyCharm
+  become: true
+  file:
+    path: "/opt/pycharm"
+    state: directory
+    mode: u=rwx,g=rwx,o=rwx
+
+- name: Extract PyCharm tar archive to /opt
+  become: true
+  ansible.builtin.unarchive:
+    src: /tmp/pycharm.tar.gz
+    dest: /opt

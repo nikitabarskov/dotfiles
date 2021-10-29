@@ -3,7 +3,6 @@
 
   vars_files:
     - configs/default.config.yaml
-    - configs/macos.config.yaml
 
   roles:
       - role: elliotweiser.osx-command-line-tools
@@ -14,6 +13,13 @@
         tags: [ 'macos' ]
 
   tasks:
+    - name: Import macOS config
+      include_vars: configs/macos.config.yaml
+      when: ansible_os_family == "Darwin"
+
+    - name: Import elementary OS config
+      include_vars: configs/elementary.config.yml
+      when: ansible_os_family == "elementary OS"
 
     - name: Install zsh and .zshrc
       import_tasks: tasks/zsh/zsh.yml
@@ -55,3 +61,9 @@
       include_tasks: tasks/git/configure.yml
       tags:
         - git
+
+    - name: Install PyCharm
+      include_tasks: tasks/pycharm/elementary.yml
+      when: ansible_os_family == "elementary OS"
+      tags:
+        - pycharm
