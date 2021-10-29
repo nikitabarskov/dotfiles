@@ -26,7 +26,7 @@
       tags:
         - zsh
 
-    - name: Install GPG (macOS)
+    - name: Configure GPG (macOS)
       include_tasks: tasks/gpg/macos.yml
       when: ansible_os_family == "Darwin"
       tags:

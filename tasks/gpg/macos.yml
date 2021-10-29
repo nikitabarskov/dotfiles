@@ -1,11 +1,3 @@
-- name: Install gpg to sign commits
-  homebrew:
-    name:
-      - gpg2
-      - gnupg
-      - pinentry-mac
-    state: latest
-
 - name: Create .gnupg directory
   file:
     path: "$HOME/.gnupg"

@@ -8,52 +8,41 @@ homebrew_taps:
   - homebrew/cask-drivers
   - homebrew/cask-versions
 homebrew_cask_appdir: /Applications
-homebrew_packages:
-  essential:
-    - bash
-    - zsh
-    - coreutils
-    - moreutils
-    - findutils
-    - antibody
-    - wget
-    - gnupg
-    - openssh
-    - openssl
-    - readline 
-    - sqlite3 
-    - xz 
-    - zlib
-  development:
-    - git
-    - starship
-homebrew_cask_packages:
-  fonts:
-    - font-inter
-    - font-jetbrains-mono-nerd-font
-  tools:
-    - stats
-    - 1password
-    - kap
-    - grammarly
-    - logitech-g-hub
-    - logitech-firmwareupdatetool
-  communication:
-    - discord
-    - microsoft-outlook
-    - microsoft-teams
-    - slack
-    - telegram
-  media:
-    - spotify
-  development:
-    - hyper
-    - firefox-developer-edition
-    - chromium
-    - docker
-    - tunnelblick
-    - visual-studio-code
-    - notion
-    - miro
-    - figma
+homebrew_installed_packages:
+  - bash
+  - zsh
+  - coreutils
+  - moreutils
+  - findutils
+  - antibody
+  - wget
+  - gnupg
+  - openssh
+  - openssl
+  - readline
+  - sqlite3
+  - xz
+  - zlib
+  - git
+  - starship
+  - gpg2
+  - gnupg
+  - pinentry-mac
+homebrew_cask_apps:
+  - font-inter
+  - font-jetbrains-mono-nerd-font
+  - stats
+  - 1password
+  - kap
+  - grammarly
+  - discord
+  - microsoft-teams
+  - slack
+  - telegram
+  - spotify
+  - brave
+  - chromium
+  - tunnelblick
+  - visual-studio-code
+  - notion
 touch_id_sudo_line: "auth       sufficient     pam_tid.so"

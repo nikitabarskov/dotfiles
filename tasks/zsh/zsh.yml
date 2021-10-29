@@ -1,17 +1,3 @@
-- name: Install zsh (macOS)
-  homebrew:
-    name:
-      - zsh
-    state: present
-  when: ansible_os_family == "Darwin"
-
-- name: Install zsh (elementary OS)
-  become: true
-  apt:
-    name: zsh
-    state: latest
-  when: ansible_os_family == "elementary OS"
-
 - name: Install .zshrc
   file:
     src: "{{ dotfiles_repo_local }}/dotfiles/.zshrc"
