@@ -14,31 +14,25 @@
         tags: [ 'macos' ]
 
   tasks:
-    - name: Import git config variables
-      include_vars: configs/git.config.yaml
-      tags:
-        - git
+
     - name: Install zsh and .zshrc
       import_tasks: tasks/zsh/zsh.yml
       tags:
         - zsh
-    - name: Install or update Git
-      import_tasks: tasks/git/git.yml
+
+    - name: Install GPG (macOS)
+      import_tasks: tasks/gpg/gpg.yml
+      when: ansible_os_family == "Darwin"
+
+    - name: Install Git (macOS)
+      import_tasks: tasks/git/macos.yml
+      when: ansible_os_family == "Darwin"
+
+    - name: Install Git (macOS)
+      import_tasks: tasks/git/elementary.yml
+      when: ansible_os_family == "elementary OS"
+
+    - name: Import git config variables
+      include_vars: configs/git.config.yaml
       tags:
         - git
-
-#    - name: Configure macOS and install essesntial packages.
-#      include_tasks: tasks/macos.yaml
-#      when: ansible_os_family == "Darwin"
-#      tags:
-#        - macos
-#
-#    - name: Configure zsh.
-#      include_tasks: tasks/zsh.yaml
-#      when: ansible_os_family == "Darwin"
-#
-#    - name: Configure Python.
-#      include_tasks: tasks/python.yaml
-#
-#    - name: Configure VS Code.
-#      include_tasks: tasks/vscode.yaml

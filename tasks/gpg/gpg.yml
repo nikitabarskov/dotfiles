@@ -1,0 +1,25 @@
+- name: Install gpg to sign commits (macOS)
+  homebrew:
+    name:
+      - gpg2
+      - gnupg
+      - pinentry-mac
+    state: latest
+
+- name: Create .gnupg directory (macOS)
+  file:
+    path: "$HOME/.gnupg"
+    state: directory
+    mode: u=rwx,g=rwx,o=rwx
+
+- name: Creating a file with content (macOS)
+  copy:
+    dest: "$HOME/.gnupg/gpg.conf"
+    content: |
+        use-agent
+
+- name: Change permission on .gnupg directory (macOS)
+  file:
+    path: "$HOME/.gnupg"
+    state: directory
+    mode: u=rw,g=,o=

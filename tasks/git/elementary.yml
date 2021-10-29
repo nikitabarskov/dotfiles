@@ -1,0 +1,17 @@
+- name: Run "apt update"
+  become: true
+  apt:
+    update_cache: true
+
+- name: Install Git (elementary OS)
+  become: true
+  apt:
+    name: git
+    state: latest
+
+- name: Install gpg to sign commits (elementary OS)
+  become: true
+  apt:
+    name: gnupg
+    state: latest
+  when: ansible_os_family == "elementary OS"

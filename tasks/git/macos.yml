@@ -1,0 +1,5 @@
+- name: Install Git (macOS)
+  homebrew:
+    name: git
+    state: latest
+  when: ansible_os_family == "Darwin"

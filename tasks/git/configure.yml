@@ -1,0 +1,20 @@
+- name: Configure global .gitconfig
+  template:
+    src: "global.gitconfig.j2"
+    dest: "$HOME/.gitconfig"
+    force: true
+    mode: u=rw,g=,o=
+
+- name: Create .config/git directories
+  file:
+    path: "$HOME/.config/git"
+    state: directory
+    mode: u=rwx,g=rx,o=rx
+
+- name: Configure local `.gitconfig`s
+  template:
+    src: ".gitconfig.j2"
+    dest: "$HOME/.config/git/{{ item.config }}.gitconfig"
+    force: true
+    mode: u=rw,g=,o=
+  with_items: "{{ local_gitconfigs }}"
