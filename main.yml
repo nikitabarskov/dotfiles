@@ -21,18 +21,37 @@
         - zsh
 
     - name: Install GPG (macOS)
-      import_tasks: tasks/gpg/gpg.yml
+      include_tasks: tasks/gpg/macos.yml
       when: ansible_os_family == "Darwin"
+      tags:
+        - git
+        - gpg
 
-    - name: Install Git (macOS)
-      import_tasks: tasks/git/macos.yml
-      when: ansible_os_family == "Darwin"
-
-    - name: Install Git (macOS)
-      import_tasks: tasks/git/elementary.yml
+    - name: Install GPG (elementary OS)
+      include_tasks: tasks/gpg/elementary.yml
       when: ansible_os_family == "elementary OS"
+      tags:
+        - git
+        - gpg
+
+    - name: Install Git (macOS)
+      include_tasks: tasks/git/macos.yml
+      when: ansible_os_family == "Darwin"
+      tags:
+        - git
+
+    - name: Install Git (macOS)
+      include_tasks: tasks/git/elementary.yml
+      when: ansible_os_family == "elementary OS"
+      tags:
+        - git
 
     - name: Import git config variables
       include_vars: configs/git.config.yaml
+      tags:
+        - git
+
+    - name: Configure Git
+      include_tasks: tasks/git/configure.yml
       tags:
         - git
