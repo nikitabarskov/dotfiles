@@ -3,4 +3,4 @@
 
 !.gitignore
 
-configs/git.config.yaml
+configs/git.config.yml

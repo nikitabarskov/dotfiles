@@ -53,7 +53,7 @@
         - git
 
     - name: Import git config variables
-      include_vars: configs/git.config.yaml
+      include_vars: configs/git.config.yml
       tags:
         - git
 

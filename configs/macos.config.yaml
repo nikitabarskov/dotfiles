@@ -31,8 +31,6 @@ homebrew_installed_packages:
 homebrew_cask_apps:
   - font-inter
   - font-jetbrains-mono-nerd-font
-  - stats
-  - 1password
   - kap
   - grammarly
   - discord
@@ -40,7 +38,7 @@ homebrew_cask_apps:
   - slack
   - telegram
   - spotify
-  - brave
+  - brave-browser
   - chromium
   - tunnelblick
   - visual-studio-code

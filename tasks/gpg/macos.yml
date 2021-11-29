@@ -4,11 +4,19 @@
     state: directory
     mode: u=rwx,g=rwx,o=rwx
 
-- name: Creating a file with content
+- name: Creating gpg.conf
   copy:
     dest: "$HOME/.gnupg/gpg.conf"
     content: |
         use-agent
+
+- name: Creating gpg-agent.conf
+  copy:
+    dest: "$HOME/.gnupg/gpg-agent.conf"
+    content: |
+      use-standard-socket
+      pinentry-program /usr/local/bin/pinentry-mac
+      enable-ssh-support
 
 - name: Change permission on .gnupg directory
   file:
