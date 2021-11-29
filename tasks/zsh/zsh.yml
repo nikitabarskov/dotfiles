@@ -1,0 +1,7 @@
+- name: Install .zshrc
+  file:
+    src: "{{ dotfiles_repo_local }}/dotfiles/.zshrc"
+    dest: "$HOME/.zshrc"
+    state: link
+    force: true
+    mode: u=rw,g=r,o=r

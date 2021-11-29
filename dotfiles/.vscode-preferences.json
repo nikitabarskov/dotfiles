@@ -39,15 +39,19 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "window.autoDetectColorScheme": true,
     "window.autoDetectHighContrast": false,
-    "workbench.colorTheme": "GitHub Dark",
-    "workbench.editorAssociations": [
-        {
-            "filenamePattern": "*.ipynb",
-            "viewType": "jupyter.notebook.ipynb"
-        }
-    ],
+    "workbench.colorTheme": "GitHub Light",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "workbench.fontAliasing": "auto",
     "workbench.preferredDarkColorTheme": "GitHub Dark",
     "workbench.preferredLightColorTheme": "GitHub Light",
-    "terminal.external.osxExec": "Hyper.app"
+    "terminal.external.osxExec": "Hyper.app",
+    "jupyter.disableJupyterAutoStart": true,
+    "files.autoSave": "afterDelay",
+    "editor.largeFileOptimizations": false,
+    "yaml.customTags": [
+        "!encrypted/pkcs1-oaep scalar",
+        "!vault scalar"
+    ]
 }
