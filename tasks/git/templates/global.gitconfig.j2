@@ -1,0 +1,13 @@
+[includeIf "gitdir:~/personal/"]
+  path = .config/git/personal.gitconfig
+[includeIf "gitdir:~/work/"]
+  path = .config/git/work.gitconfig
+[core]
+  editor = code
+  autocrlf = input
+[commit]
+  gpgsign = true
+[tag]
+  gpgsign = true
+[gpg]
+  program = {{ gpg }}

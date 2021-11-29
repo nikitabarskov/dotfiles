@@ -1,0 +1,10 @@
+- name: Run "apt update"
+  become: true
+  apt:
+    update_cache: true
+
+- name: Install Git (elementary OS)
+  become: true
+  apt:
+    name: git
+    state: latest

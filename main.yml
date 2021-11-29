@@ -1,0 +1,69 @@
+---
+- hosts: all
+
+  vars_files:
+    - configs/default.config.yaml
+
+  roles:
+      - role: elliotweiser.osx-command-line-tools
+        when: ansible_os_family == "Darwin"
+        tags: [ 'macos' ]
+      - role: geerlingguy.mac.homebrew
+        when: ansible_os_family == "Darwin"
+        tags: [ 'macos' ]
+
+  tasks:
+    - name: Import macOS config
+      include_vars: configs/macos.config.yaml
+      when: ansible_os_family == "Darwin"
+
+    - name: Import elementary OS config
+      include_vars: configs/elementary.config.yml
+      when: ansible_os_family == "elementary OS"
+
+    - name: Install zsh and .zshrc
+      import_tasks: tasks/zsh/zsh.yml
+      tags:
+        - zsh
+
+    - name: Configure GPG (macOS)
+      include_tasks: tasks/gpg/macos.yml
+      when: ansible_os_family == "Darwin"
+      tags:
+        - git
+        - gpg
+
+    - name: Install GPG (elementary OS)
+      include_tasks: tasks/gpg/elementary.yml
+      when: ansible_os_family == "elementary OS"
+      tags:
+        - git
+        - gpg
+
+    - name: Install Git (macOS)
+      include_tasks: tasks/git/macos.yml
+      when: ansible_os_family == "Darwin"
+      tags:
+        - git
+
+    - name: Install Git (macOS)
+      include_tasks: tasks/git/elementary.yml
+      when: ansible_os_family == "elementary OS"
+      tags:
+        - git
+
+    - name: Import git config variables
+      include_vars: configs/git.config.yml
+      tags:
+        - git
+
+    - name: Configure Git
+      include_tasks: tasks/git/configure.yml
+      tags:
+        - git
+
+    - name: Install PyCharm
+      include_tasks: tasks/pycharm/elementary.yml
+      when: ansible_os_family == "elementary OS"
+      tags:
+        - pycharm

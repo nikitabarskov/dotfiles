@@ -1,14 +1,17 @@
 ---
-downloads: ~/.ansible-downloads/
-dotfiles_repo_local: $HOME/github/dotfiles
+dotfiles_repo_local: $HOME/personal/github/dotfiles
 
 zsh_dotfiles_files:
   - .zshrc
   - .environment
   - .zsh_plugins
   - .aliases
+  - .starship.toml
 
-python_version: 3.8.8
+python_version: 3.10.0
+pycharm_version: 2021.2.3
+pycharm_edition: professional
+
 vscode:
   extensions:
     - codezombiech.gitignore
