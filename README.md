@@ -6,7 +6,7 @@ I am tired of setting up my dev laptop every time something happens or changing 
 
 - Mac OS preferences.
 - Touch ID for sudo authentication.
-- [zsh](https://github.com/zsh-users/zsh), [hyper](https://github.com/vercel/hyper) and [spaceship](https://github.com/denysdovhan/spaceship-prompt).
+- [zsh](https://github.com/zsh-users/zsh), [alacritty](https://github.com/alacritty/alacritty) and [spaceship](https://github.com/denysdovhan/spaceship-prompt).
 - Install essential tools and packages, communication, development, and media apps.
 - Python via [pyenv](https://github.com/pyenv/pyenv).
 - Configuration files as symlinks. 
@@ -21,18 +21,18 @@ You can use this repository as a bootstrap or template for your personal configu
 
 * Clone this repository to your local drive.
 * In [configs/default.config.yaml](configs/default.config.yaml) set the folder where you cloned repository via variable `dotfiles_repo_local`.
-* Run `ansible-galaxy install -r requirements.yaml` inside this directory to install required Ansible roles.
-* Run `ansible-playbook main.yml -i inventory.yaml --ask-become-pass` inside this directory. Enter your account password when prompted.
+* Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
+* Run `ansible-playbook main.yml -i inventory.yml --ask-become-pass` inside this directory. Enter your account password when prompted.
 
 ### Dependencies
 
 #### Common
 
 * Python 3
-* [Ansible](https://docs.ansible.com/ansible/2.10/installation_guide/index.html) (I am using 2.10)
+* [Ansible](https://docs.ansible.com/ansible/latest/index.html) (I am using 2.10)
 
 #### MacOS Specific
-Ensure Apple's command line tools are installed (`xcode-select --install`).
+Ensure system is updated `softwareupdate --all --install --force` and  Apple's command line tools are installed `xcode-select --install`.
 
 ## Inspired by
 
