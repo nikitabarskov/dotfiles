@@ -17,7 +17,7 @@
     "ansible.validate.executablePath": "/usr/local/bin/ansible-lint",
     "editor.fontFamily": "'JetBrainsMono Nerd Font', monospace",
     "editor.fontLigatures": true,
-    "editor.fontSize": 16,
+    "editor.fontSize": 14,
     "editor.formatOnType": true,
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.suggestSelection": "first",
@@ -28,7 +28,6 @@
     "jupyter.alwaysTrustNotebooks": true,
     "jupyter.askForKernelRestart": false,
     "jupyter.textOutputLimit": 0,
-    "jupyter.themeMatplotlibPlots": true,
     "python.analysis.completeFunctionParens": true,
     "python.analysis.typeCheckingMode": "basic",
     "python.autoComplete.addBrackets": true,
@@ -39,15 +38,19 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "window.autoDetectColorScheme": true,
     "window.autoDetectHighContrast": false,
-    "workbench.colorTheme": "GitHub Dark",
-    "workbench.editorAssociations": [
-        {
-            "filenamePattern": "*.ipynb",
-            "viewType": "jupyter.notebook.ipynb"
-        }
-    ],
+    "workbench.colorTheme": "GitHub Light",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "workbench.fontAliasing": "auto",
     "workbench.preferredDarkColorTheme": "GitHub Dark",
     "workbench.preferredLightColorTheme": "GitHub Light",
-    "terminal.external.osxExec": "Hyper.app"
+    "terminal.external.osxExec": "Hyper.app",
+    "jupyter.disableJupyterAutoStart": true,
+    "files.autoSave": "afterDelay",
+    "editor.largeFileOptimizations": false,
+    "yaml.customTags": [
+        "!encrypted/pkcs1-oaep scalar",
+        "!vault scalar"
+    ]
 }

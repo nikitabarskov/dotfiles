@@ -2,6 +2,7 @@ osx_script: "dotfiles/.macos --no-restart"
 homebrew_taps:
   - homebrew/core
   - homebrew/cask
+  - hashicorp/tap
 homebrew_cask_appdir: /Applications
 homebrew_packages:
   essential:
@@ -19,9 +20,11 @@ homebrew_packages:
     - sqlite3 
     - xz 
     - zlib
+    - jq
   development:
     - git
     - starship
+    - hashicorp/tap/terraform
 homebrew_cask_packages:
   fonts:
     - font-inter

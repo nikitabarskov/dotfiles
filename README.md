@@ -17,7 +17,7 @@ You can use this repository as a bootstrap or template for your personal configu
 
 * Clone this repository to your local drive.
 * In [configs/default.config.yaml](configs/default.config.yaml) set the folder where you cloned repository via variable `dotfiles_repo_local`.
-* Run `ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
+* Run `ansible-galaxy install -r requirements.yaml` inside this directory to install required Ansible roles.
 * Run `ansible-playbook main.yml -i inventory.yaml --ask-become-pass` inside this directory. Enter your account password when prompted.
 
 ### Dependencies
