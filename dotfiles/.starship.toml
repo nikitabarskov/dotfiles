@@ -1,5 +1,9 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
-# Use pyenv
+[python]
+# Only use the `python3` binary to get the version.
+python_binary = "python3"
+
+# Use pyenv version
 pyenv_version_name = true

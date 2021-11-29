@@ -39,25 +39,19 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "window.autoDetectColorScheme": true,
     "window.autoDetectHighContrast": false,
-    "workbench.colorTheme": "GitHub Dark",
+    "workbench.colorTheme": "GitHub Light",
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
+        "*.ipynb": "jupyter.notebook.ipynb"
     },
     "workbench.fontAliasing": "auto",
     "workbench.preferredDarkColorTheme": "GitHub Dark",
     "workbench.preferredLightColorTheme": "GitHub Light",
     "terminal.external.osxExec": "Hyper.app",
-    "grammarly.audience": "general",
+    "jupyter.disableJupyterAutoStart": true,
     "files.autoSave": "afterDelay",
-    "files.hotExit": "onExitAndWindowClose",
-    "editor.smoothScrolling": true,
-    "workbench.list.smoothScrolling": true,
-    "editor.cursorSmoothCaretAnimation": true,
-    "[proto3]": {
-        "editor.defaultFormatter": "zxh404.vscode-proto3"
-    },
-    "notebook.cellToolbarLocation": {
-        "default": "right",
-        "jupyter-notebook": "left"
-    }
+    "editor.largeFileOptimizations": false,
+    "yaml.customTags": [
+        "!encrypted/pkcs1-oaep scalar",
+        "!vault scalar"
+    ]
 }

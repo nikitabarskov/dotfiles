@@ -52,6 +52,7 @@
   homebrew_cask:
     name: "{{ homebrew_cask_packages.tools }}"
     state: present
+  ignore_errors: true
   tags:
     - tools
 
