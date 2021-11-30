@@ -1,0 +1,27 @@
+---
+name: CI
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+
+      - name: Setup Node 14.
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install test dependencies.
+        run: make install-dependencies

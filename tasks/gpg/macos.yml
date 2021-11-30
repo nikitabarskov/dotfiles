@@ -8,7 +8,7 @@
   copy:
     dest: "$HOME/.gnupg/gpg.conf"
     content: |
-        use-agent
+      use-agent
 
 - name: Creating gpg-agent.conf
   copy:
@@ -20,6 +20,6 @@
 
 - name: Change permission on .gnupg directory
   file:
-    path: "$HOME/.gnupg"
+    path: "$HOME/.gnupg/gpg.conf"
     state: directory
-    mode: u=rw,g=,o=
+    mode: "700"

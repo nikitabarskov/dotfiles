@@ -5,12 +5,12 @@
     - configs/default.config.yaml
 
   roles:
-      - role: elliotweiser.osx-command-line-tools
-        when: ansible_os_family == "Darwin"
-        tags: [ 'macos' ]
-      - role: geerlingguy.mac.homebrew
-        when: ansible_os_family == "Darwin"
-        tags: [ 'macos' ]
+    - role: elliotweiser.osx-command-line-tools
+      when: ansible_os_family == "Darwin"
+      tags: ["macos"]
+    - role: geerlingguy.mac.homebrew
+      when: ansible_os_family == "Darwin"
+      tags: ["macos"]
 
   tasks:
     - name: Import macOS config
