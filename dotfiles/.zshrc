@@ -53,12 +53,8 @@ export HOMEBREW_AUTO_UPDATE_SECS=604800
 # Environment variables
 source $HOME/.environment
 
-# Enable starship
-eval "$(starship init zsh)"
-
 # Enable Pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+eval "$(pyenv init -)"
 
-export PATH="$HOME/.poetry/bin:$PATH"
+# Enable starship
+# eval "$(starship init zsh)"
