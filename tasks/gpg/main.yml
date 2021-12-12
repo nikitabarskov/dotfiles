@@ -1,0 +1,6 @@
+---
+- name: Configure GPG (macOS)
+  import_tasks: macos.yml
+  when: ansible_os_family == "Darwin"
+  tags:
+    - gpg

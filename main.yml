@@ -17,7 +17,6 @@
       tags: ["macos"]
 
   tasks:
-    -
     - name: Ensure sudo password is correct
       command: echo "password is correct"
       become: true
