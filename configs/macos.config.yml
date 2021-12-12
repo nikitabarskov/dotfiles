@@ -1,3 +1,4 @@
+---
 osx_script: "dotfiles/.macos --no-restart"
 homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
 homebrew_install_path: "{{ homebrew_prefix }}/Homebrew"
@@ -43,4 +44,10 @@ homebrew_cask_apps:
   - tunnelblick
   - visual-studio-code
   - notion
+python_build_dependencies_mac_os:
+  - openssl
+  - readline
+  - sqlite3
+  - xz
+  - zlib
 touch_id_sudo_line: "auth       sufficient     pam_tid.so"

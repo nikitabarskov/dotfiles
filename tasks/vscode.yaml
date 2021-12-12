@@ -1,3 +1,4 @@
+---
 - name: Install VS Code extensions.
   command: "code --install-extension {{ item }}"
   changed_when: false

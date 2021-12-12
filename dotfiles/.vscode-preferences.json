@@ -1,57 +1,54 @@
 {
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[yaml]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "ansible.validate.executablePath": "/usr/local/bin/ansible-lint",
-    "editor.fontFamily": "'JetBrainsMono Nerd Font', monospace",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 16,
-    "editor.formatOnType": true,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.suggestSelection": "first",
-    "explorer.confirmDelete": false,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "git.autofetch": true,
-    "jupyter.alwaysTrustNotebooks": true,
-    "jupyter.askForKernelRestart": false,
-    "jupyter.textOutputLimit": 0,
-    "jupyter.themeMatplotlibPlots": true,
-    "python.analysis.completeFunctionParens": true,
-    "python.analysis.typeCheckingMode": "basic",
-    "python.autoComplete.addBrackets": true,
-    "python.formatting.provider": "black",
-    "python.languageServer": "Pylance",
-    "python.showStartPage": false,
-    "terminal.integrated.fontSize": 16,
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "window.autoDetectColorScheme": true,
-    "window.autoDetectHighContrast": false,
-    "workbench.colorTheme": "GitHub Light",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
-    "workbench.fontAliasing": "auto",
-    "workbench.preferredDarkColorTheme": "GitHub Dark",
-    "workbench.preferredLightColorTheme": "GitHub Light",
-    "terminal.external.osxExec": "Hyper.app",
-    "jupyter.disableJupyterAutoStart": true,
-    "files.autoSave": "afterDelay",
-    "editor.largeFileOptimizations": false,
-    "yaml.customTags": [
-        "!encrypted/pkcs1-oaep scalar",
-        "!vault scalar"
-    ]
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "ansible.validate.executablePath": "/usr/local/bin/ansible-lint",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.formatOnType": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.suggestSelection": "first",
+  "explorer.confirmDelete": false,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "git.autofetch": true,
+  "jupyter.alwaysTrustNotebooks": true,
+  "jupyter.askForKernelRestart": false,
+  "jupyter.textOutputLimit": 0,
+  "jupyter.themeMatplotlibPlots": true,
+  "python.analysis.completeFunctionParens": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.autoComplete.addBrackets": true,
+  "python.formatting.provider": "black",
+  "python.languageServer": "Pylance",
+  "python.showStartPage": false,
+  "terminal.integrated.fontSize": 16,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.autoDetectColorScheme": true,
+  "window.autoDetectHighContrast": false,
+  "workbench.colorTheme": "GitHub Light",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "workbench.fontAliasing": "auto",
+  "workbench.preferredDarkColorTheme": "GitHub Dark",
+  "workbench.preferredLightColorTheme": "GitHub Light",
+  "terminal.external.osxExec": "Hyper.app",
+  "jupyter.disableJupyterAutoStart": true,
+  "files.autoSave": "afterDelay",
+  "editor.largeFileOptimizations": false,
+  "yaml.customTags": ["!encrypted/pkcs1-oaep scalar", "!vault scalar"]
 }

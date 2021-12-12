@@ -1,3 +1,4 @@
+---
 - name: Run "apt update"
   become: true
   apt:

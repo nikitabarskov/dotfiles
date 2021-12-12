@@ -1,14 +1,15 @@
+---
 - name: Create .gnupg directory
   file:
     path: "$HOME/.gnupg"
     state: directory
-    mode: u=rwx,g=rwx,o=rwx
+    mode: "700"
 
 - name: Creating gpg.conf
   copy:
     dest: "$HOME/.gnupg/gpg.conf"
     content: |
-        use-agent
+      use-agent
 
 - name: Creating gpg-agent.conf
   copy:
@@ -20,6 +21,12 @@
 
 - name: Change permission on .gnupg directory
   file:
-    path: "$HOME/.gnupg"
-    state: directory
-    mode: u=rw,g=,o=
+    path: "$HOME/.gnupg/gpg.conf"
+    state: file
+    mode: "600"
+
+- name: Change permission on .gnupg directory
+  file:
+    path: "$HOME/.gnupg/gpg-agent.conf"
+    state: file
+    mode: "600"

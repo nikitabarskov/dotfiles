@@ -1,3 +1,4 @@
+---
 - name: Install .zshrc
   file:
     src: "{{ dotfiles_repo_local }}/dotfiles/.zshrc"
