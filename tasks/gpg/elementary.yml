@@ -1,3 +1,4 @@
+---
 - name: Install gpg to sign commits (elementary OS)
   become: true
   apt:

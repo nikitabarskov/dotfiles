@@ -1,8 +1,9 @@
+---
 - name: Download PyCharm tar archive from JetBrains
   get_url:
     url: "https://download.jetbrains.com/python/pycharm-{{ pycharm_edition }}-{{ pycharm_version }}.tar.gz"
     dest: /tmp/pycharm.tar.gz
-    checksum: "sha256:https://download.jetbrains.com/python/pycharm-{{ pycharm_edition }}-{{ pycharm_version }}.tar.gz.sha256"
+    checksum: "sha256:https://download.jetbrains.com/python/pycharm-{{ pycharm_edition }}-{{ pycharm_version }}.tar.gz.sha256" # yamllint disable-line
 
 - name: Create folder for PyCharm
   become: true

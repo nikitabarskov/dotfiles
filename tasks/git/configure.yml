@@ -1,3 +1,4 @@
+---
 - name: Configure global .gitconfig
   template:
     src: "global.gitconfig.j2"

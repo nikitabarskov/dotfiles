@@ -1,0 +1,11 @@
+---
+- name: Link zsh related dotfiles into home folder.
+  file:
+    src: "{{ dotfiles_repo_local }}/dotfiles/{{ item }}"
+    dest: "$HOME/{{ item }}"
+    state: link
+    mode: 0644
+  with_items: "{{ zsh_dotfiles_files }}"
+
+- name: Activate environment
+  shell: ". $HOME/.zshrc"
