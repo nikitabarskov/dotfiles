@@ -4,3 +4,4 @@
 !.gitignore
 
 configs/git.config.yml
+configs/gpg.config.yml
