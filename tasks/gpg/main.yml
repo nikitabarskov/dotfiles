@@ -2,5 +2,44 @@
 - name: Configure GPG (macOS)
   import_tasks: macos.yml
   when: ansible_os_family == "Darwin"
-  tags:
-    - gpg
+
+- name: Configure GPG (elementary OS)
+  import_tasks: elementary.yml
+  when: ansible_os_family == "elementary OS"
+
+- name: Check which gpg keys are present
+  shell: |
+    set -eo pipefail 
+    gpg --list-keys --keyid-format=long {{ item.email }} |
+    awk  'NR==1 {print $2}' |
+    awk -F "/" '{ print $2 }'
+  ignore_errors: true
+  register: results
+  with_items: "{{ local_gpg_configs }}"
+
+- name: Debug
+  debug:
+    msg: "{{ item.item.email }}"
+  with_items: "{{ results.results }}"
+
+#- name: Debug 2
+#  set_fact:
+#    phonebook: "{{phonebook|default({}) | combine ( {item.stdout : item.}) }}"
+#  with_items: "{{ results )}}"
+
+- name: Debug
+  debug:
+    var: phonebook
+
+- name: Configure generation of gpg keys
+  template:
+    src: "gpg_key_generation_config.jinja2"
+    dest: "{{ ansible_env.TMPDIR }}/{{ item.config }}-gpg_key_generation_config"
+    force: true
+    mode: u=rw,g=,o=
+  when:
+  with_items: "{{ zip(local_gpg_configs, gpg_keys) }}"
+
+# - name: Generate GPG keys
+#   command: gpg --batch --generate-key "{{ ansible_env.TMPDIR }}/{{ item.config }}-gpg_key_generation_config"
+#   with_items: "{{ local_gpg_configs }}"

@@ -1,7 +1,7 @@
 ---
 - name: Configure global .gitconfig
   template:
-    src: "global.gitconfig.j2"
+    src: "global.gitconfig.jinja2"
     dest: "$HOME/.gitconfig"
     force: true
     mode: u=rw,g=,o=
@@ -14,8 +14,8 @@
 
 - name: Configure local `.gitconfig`s
   template:
-    src: ".gitconfig.j2"
+    src: ".gitconfig.jinja2"
     dest: "$HOME/.config/git/{{ item.config }}.gitconfig"
     force: true
     mode: u=rw,g=,o=
-  with_items: "{{ local_gitconfigs }}"
+  with_items: "{{ local_git_configs }}"

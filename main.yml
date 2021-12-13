@@ -30,15 +30,8 @@
         - dotfiles
         - always
 
-    - name: Configure GPG (macOS)
-      import_tasks: tasks/gpg/macos.yml
-      when: ansible_os_family == "Darwin"
-      tags:
-        - gpg
-
-    - name: Install GPG (elementary OS)
-      import_tasks: tasks/gpg/elementary.yml
-      when: ansible_os_family == "elementary OS"
+    - name: Install and configure GPG
+      import_tasks: tasks/gpg/main.yml
       tags:
         - gpg
 
