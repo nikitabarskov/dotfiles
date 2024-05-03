@@ -1,0 +1,8 @@
+%echo Generating a basic OpenPGP key
+Key-Type: RSA
+Key-Length: 4096
+Name-Real: {{ item.name }}
+Name-Email: {{ item.email }}
+Expire-Date: 0
+%commit
+%echo done
