@@ -16,7 +16,7 @@
 [pull]
 	rebase = true
 [includeIf "gitdit:~/.local/share/chezmoi/"]
-    path = .config/git/personal.gitconfig
+	path = .config/git/personal.gitconfig
 [includeIf "gitdir:~/personal/"]
 	path = .config/git/personal.gitconfig
 [includeIf "gitdir:~/work/"]
