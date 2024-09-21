@@ -1,0 +1,4 @@
+[user]
+  email = nikita.barskov@volur.no
+[url "ssh://git@github.com/volur-ai"]
+    insteadOf = https://github.com/volur-ai
