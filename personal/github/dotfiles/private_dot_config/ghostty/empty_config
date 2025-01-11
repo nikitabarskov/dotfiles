@@ -1,0 +1,7 @@
+font-family = "IosevkaTerm NFM"
+font-family-bold = "IosevkaTerm NFM Bold"
+font-family-italic = "IosevkaTerm NFM Italic"
+font-family-bold-italic = "IosevkaTerm NFM Bold Italic"
+font-size=28
+theme="light:catpuccin-latte,dark:catpuccin-macchiato"
+fullscreen=true
