@@ -1,0 +1,11 @@
+# Default settings for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Makefile-specific settings
+[{Makefile,makefile,*.mk,*.make}]
+indent_style = tab
+indent_size = 4
