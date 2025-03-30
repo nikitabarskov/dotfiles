@@ -1,6 +1,1 @@
-.roles
-.zsh_plugins
 
-!.gitignore
-
-configs/git.config.yml
