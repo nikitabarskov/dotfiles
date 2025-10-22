@@ -1,0 +1,32 @@
+root = true
+
+# Default settings for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Shell scripts
+[*.sh]
+indent_style = space
+indent_size = 2
+
+# Git config files
+[*.gitconfig]
+indent_style = tab
+indent_size = 4
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
+
+# YAML files
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# JSON files
+[*.json]
+indent_style = space
+indent_size = 2

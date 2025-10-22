@@ -1,0 +1,42 @@
+[includeIf "gitdir:~/personal/"]
+	path = ~/.config/git/nikitabarskov.gitconfig
+
+[includeIf "gitdir:~/hirn.studio/github/"]
+	path = ~/.config/git/hirn.studio.gitconfig
+
+[user]
+	name = "Nikita Barskov"
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAWKGfG1hnaUAyfKkCa2ELVwO+2Z9FMCj3ysC0I6uTzi
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+	gpgsign = true
+	signoff = true
+
+[tag]
+	gpgsign = true
+
+[push]
+	autoSetupRemote = true
+
+[pull]
+	rebase = true
+
+[core]
+	editor = zed --wait
+	autocrlf = input
+
+[alias]
+	bt = "!bt() { git checkout -b nikita.barskov-$(date +"%Y%m%dT%H%M%S")-$1;}; bt"
+	gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
+
+[url "ssh://git@github.com"]
+	insteadOf = https://github.com
+
+[init]
+	defaultBranch = main
