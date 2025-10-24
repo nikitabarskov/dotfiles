@@ -1,42 +1,59 @@
-[includeIf "gitdir:~/personal/"]
+# Folder specific configurations
+[includeIf "hasconfig:remote.*.url:git@github.com:nikitabarskov/*.git"]
 	path = ~/.config/git/nikitabarskov.gitconfig
-
-[includeIf "gitdir:~/hirn.studio/github/"]
+[includeIf "hasconfig:remote.*.url:git@github.com:hirn-studio/*.git"]
 	path = ~/.config/git/hirn.studio.gitconfig
+[includeIf "hasconfig:remote.*.url:git@github.com:deepinsight-io/*.git"]
+	path = ~/.config/git/deepinsight.gitconfig
 
 [user]
-	name = "Nikita Barskov"
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAWKGfG1hnaUAyfKkCa2ELVwO+2Z9FMCj3ysC0I6uTzi
+	name = Nikita Barskov
 
-[gpg]
-	format = ssh
-
-[gpg "ssh"]
-	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-
-[commit]
-	gpgsign = true
-	signoff = true
-
-[tag]
-	gpgsign = true
-
-[push]
-	autoSetupRemote = true
-
-[pull]
-	rebase = true
+[url "ssh://git@github.com"]
+	insteadOf = https://github.com
 
 [core]
 	editor = zed --wait
 	autocrlf = input
 
-[alias]
-	bt = "!bt() { git checkout -b nikita.barskov-$(date +"%Y%m%dT%H%M%S")-$1;}; bt"
-	gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
-
-[url "ssh://git@github.com"]
-	insteadOf = https://github.com
-
 [init]
 	defaultBranch = main
+
+[commit]
+	gpgsign = true
+	signoff = true
+[format]
+    signOff = true
+[tag]
+	gpgsign = true
+	signoff = true
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
+
+
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[alias]
+	bt = "!bt() { git checkout -b nikita.barskov-$(date +\"%Y%m%dT%H%M%S\")-$1; }; bt"
+	gone = "!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
+	amend = commit -s - --amend
+	rb = "!f() { \
+		set -e; \
+		curr=\"$(git branch --show-current)\"; \
+		if [ -z \"$curr\" ]; then \
+			echo \"Not on a branch (detached HEAD?).\" >&2; \
+			exit 1; \
+		fi; \
+		base=\"$(gh pr list --head \"$curr\" --json baseRefName --jq '.[0].baseRefName' 2>/dev/null || true)\"; \
+		if [ -z \"$base\" ]; then \
+			echo \"No open PR found for branch '$curr'.\" >&2; \
+			exit 1; \
+		fi; \
+		echo \"Rebasing '$curr' onto 'origin/$base'...\"; \
+		git fetch origin \"$base\"; \
+		git rebase \"origin/$base\"; \
+	}; f"
