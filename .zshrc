@@ -1,6 +1,6 @@
 # bun
 export BUN_INSTALL="$HOME/.bun"
-export PATH="${HOME}/.local/bin:$(brew --prefox)/opt/uutils-coreutils/libexec/uubin:$(brew --prefix)/opt/curl/bin:${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/make/libexec/gnubin:$HOME/.docker/bin:${BUN_INSTALL}/bin:${PATH}"
+export PATH="${HOME}/.local/bin:$(brew --prefix)/opt/uutils-coreutils/libexec/uubin:$(brew --prefix)/opt/curl/bin:${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${HOMEBREW_PREFIX}/opt/make/libexec/gnubin:$HOME/.docker/bin:${BUN_INSTALL}/bin:${PATH}"
 export GH_TOKEN=$(gh auth token)
 export COMPOSER_BAKE=true
 
