@@ -1,0 +1,21 @@
+brew-u() {
+    setopt localoptions rmstarsilent
+    brew update \
+    && \
+    brew upgrade \
+    && \
+    brew cleanup --prune=all --scrub \
+    && \
+    du -sh $(brew --cache)/* \
+    &&
+    rm -vrf $(brew --cache)/*
+}
+
+macos-u() {
+    sudo softwareupdate \
+        --install \
+        --all \
+        --agree-to-license \
+        --force \
+        --restart
+}
