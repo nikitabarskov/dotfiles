@@ -72,6 +72,11 @@ if command -v fzf >/dev/null 2>&1; then
     eval "$(fzf --zsh)"
 fi
 
+if [ -f ${HOME}/.aliases ]
+then
+    source ${HOME}/.aliases
+fi
+
 # Initialize starship if available
 if command -v starship >/dev/null 2>&1; then
     eval "$(starship init zsh)"
