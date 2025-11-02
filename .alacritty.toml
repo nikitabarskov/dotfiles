@@ -1,14 +1,16 @@
+[font]
+size = 10.0
 
 [font.bold]
-family = "Zed Mono"
+family = "Iosevka Nerd Font Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "Zed Mono"
+family = "Iosevka Nerd Font Mono"
 style = "Bold Italic"
 
 [font.normal]
-family = "Zed Mono"
+family = "Iosevka Nerd Font Mono"
 style = "Regular"
 
 [window.dimensions]
