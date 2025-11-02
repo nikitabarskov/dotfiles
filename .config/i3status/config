@@ -1,0 +1,71 @@
+general {
+    output_format = "i3bar"
+    colors = true
+    interval = 5
+    color_good = "#00FF00"
+    color_bad = "#FF0000"
+    color_degraded = "#FFFF00"
+}
+
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "memory"
+order += "disk /"
+order += "disk /home"
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "battery all"
+order += "volume master"
+order += "tztime local"
+
+cpu_usage {
+    format = "CPU: %usage"
+    max_threshold = 75
+    degraded_threshold = 50
+}
+
+cpu_temperature 0 {
+    format = "🌡 %degrees°C"
+    path = "/sys/class/thermal/thermal_zone0/temp"
+    max_threshold = 80
+}
+
+memory {
+    format = "RAM: %used / %total"
+    threshold_degraded = "10%"
+    format_degraded = "RAM: %free"
+}
+
+disk "/" {
+    format = "%total / %avail"
+    prefix_type = "custom"
+    low_threshold = 10
+    threshold_type = "percentage_avail"
+}
+
+disk "/home" {
+    format = "/home %avail"
+    prefix_type = "custom"
+}
+
+wireless _first_ {
+    format_up = "📶 %essid %quality (%speed)"
+    format_down = "📶 down"
+}
+
+ethernet _first_ {
+    format_up = "🔌 %ip (%speed)"
+    format_down = "🔌 down"
+}
+
+volume master {
+    format = "🔊 %volume"
+    format_muted = "🔇 muted"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
+
+tztime local {
+    format = "📅 %Y-%m-%d %H:%M:%S"
+}
