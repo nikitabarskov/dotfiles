@@ -2,15 +2,15 @@
 size = 10.0
 
 [font.bold]
-family = "Iosevka Nerd Font Mono"
+family = "IosevkaTerm Nerd Font Propo"
 style = "Bold"
 
 [font.bold_italic]
-family = "Iosevka Nerd Font Mono"
+family = "IosevkaTerm Nerd Font Propo"
 style = "Bold Italic"
 
 [font.normal]
-family = "Iosevka Nerd Font Mono"
+family = "IosevkaTerm Nerd Font Propo"
 style = "Regular"
 
 [window.dimensions]

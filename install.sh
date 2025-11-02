@@ -13,6 +13,8 @@ ln -fsv $(pwd)/.aliases ${HOME}/.aliases
 ln -fsv $(pwd)/.zshrc ${HOME}/.zshrc
 ln -fsv $(pwd)/.config/zed/settings.json ${XDG_CONFIG_HOME}/zed/settings.json
 ln -fsv $(pwd)/.alacritty.toml ${XDG_CONFIG_HOME}/alacritty/.alacritty.toml
+ln -fsv "$(pwd)/.config/ghostty" "${XDG_CONFIG_HOME}/ghostty"
+ln -fsv "$(pwd)/.config/gh" "${XDG_CONFIG_HOME}/gh"
 
 if [[ $OSTYPE == "linux-gnu"* ]]; then
     echo "Detected Linux - configuring i3"
@@ -26,7 +28,7 @@ fi
 if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "Detected macOS - configuring 1Password SSH signing path"
     [ -d "/opt/1Password" ] && sudo mkdir -p /opt/1Password && sudo chown $(id -u):$(id -g) /opt/1Password
-    ln -fsv "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" "/opt/1Password/op-ssh-sign"
+    [ ! -e "/opt/1Password/op-ssh-sign" ] && ln -fsv "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" "/opt/1Password/op-ssh-sign"
     echo "Syncing Brewfile"
     ln -fsv "${dir}/macos/Brewfile" "${XDG_CONFIG_HOME}/homebrew/.Brewfile"
 fi
