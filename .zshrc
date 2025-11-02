@@ -6,6 +6,11 @@ zstyle ':omz:update' frequency 7
 ENABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
+    1password
+    brew
+    docker
+    fzf
+    gh
     git
     dotenv
 )
