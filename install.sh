@@ -13,8 +13,7 @@ ln -fsv $(pwd)/.aliases ${HOME}/.aliases
 ln -fsv $(pwd)/.zshrc ${HOME}/.zshrc
 [ -L "${XDG_CONFIG_HOME}/zed" ] && rm -f "${XDG_CONFIG_HOME}/zed"
 ln -fsv $(pwd)/.config/zed/settings.json ${XDG_CONFIG_HOME}/zed/settings.json
-[ -L "${XDG_CONFIG_HOME}/alacritty" ] && rm -f "${XDG_CONFIG_HOME}/alacritty"
-ln -fsv $(pwd)/.alacritty.toml ${XDG_CONFIG_HOME}/alacritty/.alacritty.toml
+ln -fsv $(pwd)/.config/alacritty/alacritty.toml ${XDG_CONFIG_HOME}/alacritty/alacritty.toml
 [ -L "${XDG_CONFIG_HOME}/ghostty" ] && rm -f "${XDG_CONFIG_HOME}/ghostty"
 ln -fsv "$(pwd)/.config/ghostty" "${XDG_CONFIG_HOME}/ghostty"
 [ -L "${XDG_CONFIG_HOME}/gh" ] && rm -f "${XDG_CONFIG_HOME}/gh"
