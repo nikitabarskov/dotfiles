@@ -15,6 +15,7 @@ ln -fsv $(pwd)/.config/zed/settings.json ${XDG_CONFIG_HOME}/zed/settings.json
 ln -fsv $(pwd)/.alacritty.toml ${XDG_CONFIG_HOME}/alacritty/.alacritty.toml
 ln -fsv "$(pwd)/.config/ghostty" "${XDG_CONFIG_HOME}/ghostty"
 ln -fsv "$(pwd)/.config/gh" "${XDG_CONFIG_HOME}/gh"
+ln -v -s --force $(pwd)/.profile ${HOME}/.profile
 
 if [[ $OSTYPE == "linux-gnu"* ]]; then
     echo "Detected Linux - configuring i3"

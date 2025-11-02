@@ -3,7 +3,6 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
 zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' frequency 7
-ENABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
     1password
