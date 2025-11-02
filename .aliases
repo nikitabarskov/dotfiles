@@ -11,7 +11,7 @@ brew-clean() {
 
 brew-i() {
     brew install $@
-    brew bundle add $@
+    brew bundle --file=${XDG_CONFIG_HOME}/homebrew/Brewfile add $@
 }
 
 brew-sync() {
