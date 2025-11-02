@@ -1,4 +1,4 @@
-# Folder specific configurations
+# GitHub organisation specific configurations
 [includeIf "hasconfig:remote.*.url:git@github.com:nikitabarskov/*.git"]
 	path = ~/.config/git/nikitabarskov.gitconfig
 [includeIf "hasconfig:remote.*.url:git@github.com:hirn-studio/*.git"]
@@ -36,7 +36,7 @@
 [gpg]
 	format = ssh
 [gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	program = "/opt/1Password/op-ssh-sign"
 [alias]
 	bt = "!bt() { git checkout -b nikita.barskov-$(date +\"%Y%m%dT%H%M%S\")-$1; }; bt"
 	gone = "!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
