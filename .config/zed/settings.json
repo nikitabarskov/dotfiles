@@ -1,0 +1,87 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "relative_line_numbers": true,
+  "drag_and_drop_selection": {
+    "delay": 200
+  },
+  "hover_popover_delay": 200,
+  "auto_signature_help": true,
+  "title_bar": {
+    "show_menus": false,
+    "show_onboarding_banner": true,
+    "show_branch_icon": true
+  },
+  "search": {
+    "button": true
+  },
+  "status_bar": {
+    "cursor_position_button": true
+  },
+  "git": {
+    "inline_blame": {
+      "show_commit_summary": true
+    }
+  },
+  "audio": {
+    "experimental.denoise": true,
+    "experimental.rodio_audio": true
+  },
+  "calls": {
+    "mute_on_join": true
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "project_panel": {
+    "open_file_on_paste": false,
+    "hide_root": false,
+    "show_diagnostics": "errors",
+    "auto_fold_dirs": false,
+    "indent_size": 10.0,
+    "file_icons": true,
+    "entry_spacing": "standard",
+    "dock": "right"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "terminal": {
+    "minimum_contrast": 80.0,
+    "option_as_meta": true,
+    "copy_on_select": true,
+    "font_size": 12.0,
+    "dock": "right"
+  },
+  "agent": {
+    "enable_feedback": false,
+    "dock": "left",
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
+    }
+  },
+  "wrap_guides": [80],
+  "soft_wrap": "preferred_line_length",
+  "autosave": "on_focus_change",
+  "format_on_save": "off",
+  "ui_font_size": 12,
+  "ui_font_family": "Zed Mono",
+  "buffer_font_size": 13.0,
+  "buffer_font_family": "Iosevka Nerd Font Mono",
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  }
+}
