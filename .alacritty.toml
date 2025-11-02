@@ -1,0 +1,23 @@
+
+[font.bold]
+family = "Zed Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Zed Mono"
+style = "Bold Italic"
+
+[font.normal]
+family = "Zed Mono"
+style = "Regular"
+
+[window.dimensions]
+columns = 90
+lines = 30
+
+[window.padding]
+x = 5
+y = 5
+
+[general]
+import = ["~/.config/alacritty/themes/themes/alabaster.toml"]

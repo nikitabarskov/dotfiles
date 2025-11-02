@@ -15,18 +15,12 @@ indent_size = 2
 # Git config files
 [*.gitconfig]
 indent_style = tab
-indent_size = 4
 
 # Markdown files
 [*.md]
 trim_trailing_whitespace = false
 
-# YAML files
-[*.{yml,yaml}]
-indent_style = space
-indent_size = 2
-
-# JSON files
-[*.json]
+# YAML and JSON files
+[*.{yml,yaml,json}]
 indent_style = space
 indent_size = 2
