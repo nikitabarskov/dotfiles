@@ -1,9 +1,7 @@
-brew-u() {
+brew-clean() {
     setopt localoptions rmstarsilent
-    brew update \
-    && \
-    brew upgrade \
-    && \
+    brew bundle cleanup --force \
+    &&\
     brew cleanup --prune=all --scrub \
     && \
     du -sh $(brew --cache)/* \
@@ -11,11 +9,23 @@ brew-u() {
     rm -vrf $(brew --cache)/*
 }
 
+brew-i() {
+    brew install $@
+    brew bundle add $@
+}
+
+brew-sync() {
+    brew bundle
+    brew bundle dump --force --all --file=${XDG_CONFIG_HOME}/homebrew/Brewfile
+}
+
 macos-u() {
+    touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
     sudo softwareupdate \
         --install \
         --all \
         --agree-to-license \
         --force \
         --restart
+    rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
 }

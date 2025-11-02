@@ -26,9 +26,9 @@ fi
 # macOS homebrew is in /opt/homebrew or /usr/local, Linux is in /home/linuxbrew/.linuxbrew
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    export PATH="/home/linuxbrew/.linuxbrew/opt/uutils-coreutils/libexec/uubin:${HOME}/.pyenv/bin:${HOME}/bin:${HOME}/.local/bin:${PATH}"
+    export PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
 else
-    export PATH="${HOME}/.pyenv/bin:${HOME}/bin:${HOME}/.local/bin:${PATH}"
+    export PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
 fi
 
 # Don't require escaping globbing characters in zsh.
@@ -62,11 +62,14 @@ if command -v brew >/dev/null 2>&1; then
         source "$BREW_PREFIX/share/forgit/forgit.plugin.zsh"
 fi
 
+UUTILS_PATH_PREFIX="$(brew --prefix)/opt/uutils-diffutils/libexec/uubin:$(brew --prefix)/opt/uutils-findutils/libexec/uubin:$(brew --prefix)/opt/uutils-coreutils/libexec/uubin"
+
 export BUN_INSTALL="${HOME}/.bun"
 [ -s "${HOME}/.bun/_bun" ] && source "${HOME}/.bun/_bun"
 
 typeset -U PATH
-export PATH="${BUN_INSTALL}/bin:$PATH"
+export PATH="$UUTILS_PATH_PREFIX:${BUN_INSTALL}/bin::$PATH"
+export XDG_CONFIG_HOME="${HOME}/.config"
 
 # Initialize fzf if available
 if command -v fzf >/dev/null 2>&1; then
