@@ -67,8 +67,8 @@
     "enable_feedback": false,
     "dock": "left",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.5"
     }
   },
   "wrap_guides": [80],
