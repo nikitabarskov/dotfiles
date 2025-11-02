@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 dir=$(pwd)
 
 echo "Installing dotfiles from ${dir} to ${HOME}"
