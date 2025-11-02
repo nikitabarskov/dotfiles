@@ -25,6 +25,7 @@ fi
 
 # macOS homebrew is in /opt/homebrew or /usr/local, Linux is in /home/linuxbrew/.linuxbrew
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     export PATH="/home/linuxbrew/.linuxbrew/opt/uutils-coreutils/libexec/uubin:${HOME}/.pyenv/bin:${HOME}/bin:${HOME}/.local/bin:${PATH}"
 else
     export PATH="${HOME}/.pyenv/bin:${HOME}/bin:${HOME}/.local/bin:${PATH}"
@@ -81,5 +82,3 @@ fi
 if command -v starship >/dev/null 2>&1; then
     eval "$(starship init zsh)"
 fi
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
