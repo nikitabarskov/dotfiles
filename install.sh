@@ -11,7 +11,7 @@ ln -fsv $(pwd)/nikitabarskov.gitconfig ${XDG_CONFIG_HOME}/git/nikitabarskov.gitc
 ln -fsv $(pwd)/ignore ${XDG_CONFIG_HOME}/git/ignore
 ln -fsv $(pwd)/.aliases ${HOME}/.aliases
 ln -fsv $(pwd)/.zshrc ${HOME}/.zshrc
-[ -e "${XDG_CONFIG_HOME}/zed" ] && rm -rf "${XDG_CONFIG_HOME}/zed"
+[ ! -e "${XDG_CONFIG_HOME}/zed/settings.json" ] && rm -rf "${XDG_CONFIG_HOME}/zed/settings.json"
 ln -fsv $(pwd)/.config/zed/settings.json ${XDG_CONFIG_HOME}/zed/settings.json
 [ ! -e "${XDG_CONFIG_HOME}/alacritty" ] && mkdir -p "${XDG_CONFIG_HOME}/alacritty"
 ln -fsv $(pwd)/.config/alacritty/alacritty.toml ${XDG_CONFIG_HOME}/alacritty/alacritty.toml
