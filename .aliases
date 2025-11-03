@@ -14,8 +14,18 @@ brew-i() {
     brew bundle --file=${XDG_CONFIG_HOME}/homebrew/Brewfile add $@
 }
 
+brew-upgrade() {
+    brew update-if-needed && \
+    brew bundle install --upgrade --file=${XDG_CONFIG_HOME}/homebrew/Brewfile &&
+    brew-clean
+}
+
+brew-install() {
+    brew bundle install --file=${XDG_CONFIG_HOME}/homebrew/Brewfile
+}
+
 brew-sync() {
-    brew bundle --file=${XDG_CONFIG_HOME}/homebrew/Brewfile
+    brew-install
     brew bundle dump --force --all --file=${XDG_CONFIG_HOME}/homebrew/Brewfile
 }
 

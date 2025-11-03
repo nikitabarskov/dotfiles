@@ -64,6 +64,7 @@
     "dock": "right"
   },
   "agent": {
+    "default_profile": "ask",
     "enable_feedback": false,
     "dock": "left",
     "default_model": {
