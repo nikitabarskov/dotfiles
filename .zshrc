@@ -53,9 +53,11 @@ fi
 
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
-bindkey ";5C" forward-word
-bindkey ";5D" backward-word
-export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+bindkey "^[[1;3D" backward-word
+bindkey "^[[1;3C" forward-word
+export
+
+SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 
 # Source zsh plugins if available
 if command -v brew >/dev/null 2>&1; then
