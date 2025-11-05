@@ -82,7 +82,7 @@
   "buffer_font_family": "IosevkaTerm Nerd Font Propo",
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
+    "light": "Catppuccin Latte (lavender) - No Italics",
+    "dark": "Catppuccin Mocha (lavender) - No Italics"
   }
 }
