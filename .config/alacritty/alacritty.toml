@@ -22,4 +22,5 @@ x = 5
 y = 5
 
 [general]
-import = ["~/.config/alacritty/themes/themes/alabaster.toml"]
+live_config_reload = true
+import = ["~/.config/alacritty/themes/catpuccin_latte.toml"]

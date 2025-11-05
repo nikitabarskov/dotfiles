@@ -5,28 +5,29 @@ XDG_CONFIG_HOME="${HOME}/.config"
 
 echo "Installing dotfiles from ${dir} to ${HOME}"
 
-ln -fsv $(pwd)/.gitconfig ${HOME}/.gitconfig
-ln -fsv $(pwd)/hirn.studio.gitconfig ${XDG_CONFIG_HOME}/git/hirn.studio.gitconfig
-ln -fsv $(pwd)/nikitabarskov.gitconfig ${XDG_CONFIG_HOME}/git/nikitabarskov.gitconfig
-ln -fsv $(pwd)/ignore ${XDG_CONFIG_HOME}/git/ignore
-ln -fsv $(pwd)/.aliases ${HOME}/.aliases
-ln -fsv $(pwd)/.zshrc ${HOME}/.zshrc
+ln -fsv "${dir}/.gitconfig" "${HOME}/.gitconfig"
+ln -fsv "${dir}/hirn.studio.gitconfig" "${XDG_CONFIG_HOME}/git/hirn.studio.gitconfig"
+ln -fsv "${dir}/nikitabarskov.gitconfig" "${XDG_CONFIG_HOME}/git/nikitabarskov.gitconfig"
+ln -fsv "${dir}/ignore" "${XDG_CONFIG_HOME}/git/ignore"
+ln -fsv "${dir}/.aliases" "${HOME}/.aliases"
+ln -fsv "${dir}/.zshrc" "${HOME}/.zshrc"
 [ ! -e "${XDG_CONFIG_HOME}/zed/settings.json" ] && rm -rf "${XDG_CONFIG_HOME}/zed/settings.json"
-ln -fsv $(pwd)/.config/zed/settings.json ${XDG_CONFIG_HOME}/zed/settings.json
-[ ! -e "${XDG_CONFIG_HOME}/alacritty" ] && mkdir -p "${XDG_CONFIG_HOME}/alacritty"
-ln -fsv $(pwd)/.config/alacritty/alacritty.toml ${XDG_CONFIG_HOME}/alacritty/alacritty.toml
+ln -fsv "${dir}/.config/zed/settings.json" "${XDG_CONFIG_HOME}/zed/settings.json"
+[ -e "${XDG_CONFIG_HOME}/alacritty" ] && rm -rf "${XDG_CONFIG_HOME}/alacritty"
+ln -fsv "${dir}/.config/alacritty" "${XDG_CONFIG_HOME}/alacritty"
 [ -e "${XDG_CONFIG_HOME}/ghostty" ] && rm -rf "${XDG_CONFIG_HOME}/ghostty"
-ln -fsv "$(pwd)/.config/ghostty" "${XDG_CONFIG_HOME}/ghostty"
+ln -fsv "${dir}/.config/ghostty" "${XDG_CONFIG_HOME}/ghostty"
 [ -e "${XDG_CONFIG_HOME}/gh" ] && rm -rf "${XDG_CONFIG_HOME}/gh"
-ln -fsv "$(pwd)/.config/gh" "${XDG_CONFIG_HOME}/gh"
-ln -v -s --force $(pwd)/.profile ${HOME}/.profile
+ln -fsv "${dir}/.config/gh" "${XDG_CONFIG_HOME}/gh"
+ln -fsv "${dir}/.profile" "${HOME}/.profile"
+ln -fsv "${dir}/.config/helix/config.toml" "${XDG_CONFIG_HOME}/helix/config.toml"
 
 if [[ $OSTYPE == "linux-gnu"* ]]; then
     echo "Detected Linux - configuring i3"
     [ -L "${XDG_CONFIG_HOME}/i3" ] && rm -rf "${XDG_CONFIG_HOME}/i3"
-    ln -fsv "$(pwd)/.config/i3" "${XDG_CONFIG_HOME}/i3"
+    ln -fsv "${dir}/.config/i3" "${XDG_CONFIG_HOME}/i3"
     [ -L "${XDG_CONFIG_HOME}/i3status-rust" ] && rm -rf "${XDG_CONFIG_HOME}/i3status-rust"
-    ln -fsv "$(pwd)/.config/i3status-rust" "${XDG_CONFIG_HOME}/i3status-rust"
+    ln -fsv "${dir}/.config/i3status-rust" "${XDG_CONFIG_HOME}/i3status-rust"
     [ ! -e "${XDG_CONFIG_HOME}/homebrew" ] && mkdir -p "${XDG_CONFIG_HOME}/homebrew"
     ln -fsv "${dir}/linux/Brewfile" "${XDG_CONFIG_HOME}/homebrew/Brewfile"
 fi
@@ -37,7 +38,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     [ ! -e "${XDG_CONFIG_HOME}/aerospace" ] && mkdir -p "${XDG_CONFIG_HOME}/aerospace"
     ln -fsv "${dir}/.config/aerospace/aerospace.toml" "${XDG_CONFIG_HOME}/aerospace/aerospace.toml"
     echo "Detected macOS - configuring 1Password SSH signing path"
-    [ -d "/opt/1Password" ] && sudo mkdir -p /opt/1Password && sudo chown $(id -u):$(id -g) /opt/1Password
+    [ -d "/opt/1Password" ] && sudo mkdir -p /opt/1Password && sudo chown "$(id -u):$(id -g)" /opt/1Password
     [ ! -e "/opt/1Password/op-ssh-sign" ] && ln -fsv "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" "/opt/1Password/op-ssh-sign"
     echo "Syncing Brewfile"
     [ ! -e "${XDG_CONFIG_HOME}/homebrew" ] && mkdir -p "${XDG_CONFIG_HOME}/homebrew"
