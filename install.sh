@@ -29,7 +29,7 @@ if [[ $OSTYPE == "linux-gnu"* ]]; then
     [ -L "${XDG_CONFIG_HOME}/i3status-rust" ] && rm -rf "${XDG_CONFIG_HOME}/i3status-rust"
     ln -fsv "${dir}/.config/i3status-rust" "${XDG_CONFIG_HOME}/i3status-rust"
     [ ! -e "${XDG_CONFIG_HOME}/homebrew" ] && mkdir -p "${XDG_CONFIG_HOME}/homebrew"
-    ln -fsv "${dir}/linux/Brewfile" "${XDG_CONFIG_HOME}/homebrew/Brewfile"
+    ln -fsv "${dir}/.config/homebrew/linux.Brewfile" "${XDG_CONFIG_HOME}/homebrew/Brewfile"
 fi
 
 # Configure 1Password SSH signing path based on OS
@@ -42,5 +42,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     [ ! -e "/opt/1Password/op-ssh-sign" ] && ln -fsv "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" "/opt/1Password/op-ssh-sign"
     echo "Syncing Brewfile"
     [ ! -e "${XDG_CONFIG_HOME}/homebrew" ] && mkdir -p "${XDG_CONFIG_HOME}/homebrew"
-    ln -fsv "${dir}/macos/Brewfile" "${XDG_CONFIG_HOME}/homebrew/Brewfile"
+    ln -fsv "${dir}/.config/homebrew/darwin.Brewfile" "${XDG_CONFIG_HOME}/homebrew/Brewfile"
 fi

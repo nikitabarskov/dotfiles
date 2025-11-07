@@ -1,6 +1,6 @@
 brew-clean() {
     setopt localoptions rmstarsilent
-    brew bundle cleanup --force --file=${XDG_CONFIG_HOME}/homebrew/Brewfile \
+    brew bundle cleanup --verbose --force --global \
     &&\
     brew cleanup --prune=all --scrub \
     && \
@@ -11,22 +11,22 @@ brew-clean() {
 
 brew-i() {
     brew install $@
-    brew bundle --file=${XDG_CONFIG_HOME}/homebrew/Brewfile add $@
+    brew bundle --verbose --global  add $@
 }
 
 brew-upgrade() {
     brew update-if-needed && \
-    brew bundle install --upgrade --file=${XDG_CONFIG_HOME}/homebrew/Brewfile &&
+    brew bundle install --upgrade --verbose --global &&
     brew-clean
 }
 
 brew-install() {
-    brew bundle install --file=${XDG_CONFIG_HOME}/homebrew/Brewfile
+    brew bundle install --verbose --global
 }
 
 brew-sync() {
     brew-install
-    brew bundle dump --force --all --file=${XDG_CONFIG_HOME}/homebrew/Brewfile
+    brew bundle dump --force --all --verbose --global
 }
 
 macos-u() {
