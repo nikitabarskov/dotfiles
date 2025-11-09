@@ -129,3 +129,4 @@ NOTES
 misc-ignore
 .zed
 *.diff
+.claude
