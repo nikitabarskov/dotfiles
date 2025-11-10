@@ -20,7 +20,8 @@ ln -fsv "${dir}/.config/ghostty" "${XDG_CONFIG_HOME}/ghostty"
 [ -e "${XDG_CONFIG_HOME}/gh" ] && rm -rf "${XDG_CONFIG_HOME}/gh"
 ln -fsv "${dir}/.config/gh" "${XDG_CONFIG_HOME}/gh"
 ln -fsv "${dir}/.profile" "${HOME}/.profile"
-ln -fsv "${dir}/.config/helix/config.toml" "${XDG_CONFIG_HOME}/helix/config.toml"
+[ -e "${XDG_CONFIG_HOME}/helix" ] && rm -rf "${XDG_CONFIG_HOME}/helix"
+ln -fsv "${dir}/.config/helix" "${XDG_CONFIG_HOME}/helix"
 
 if [[ $OSTYPE == "linux-gnu"* ]]; then
     echo "Detected Linux - configuring i3"
