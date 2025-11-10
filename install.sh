@@ -28,6 +28,9 @@ ln -fsv "${dir}/.profile" "${HOME}/.profile"
 ln -fsv "${dir}/.config/helix" "${XDG_CONFIG_HOME}/helix"
 
 if [[ $OSTYPE == "linux-gnu"* ]]; then
+    echo "Configure HiDPI on Linux"
+    ln -fsv "$(pwd)/.xprofile" "${HOME}/.xprofile"
+    ln -fsv "$(pwd)/.Xresources" "${HOME}/.Xresources"
     echo "Detected Linux - configuring i3"
     [ -L "${XDG_CONFIG_HOME}/i3" ] && rm -rf "${XDG_CONFIG_HOME}/i3"
     ln -fsv "${dir}/.config/i3" "${XDG_CONFIG_HOME}/i3"

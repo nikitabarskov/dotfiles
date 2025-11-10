@@ -22,7 +22,13 @@ unsetopt prompt_sp
 # linux specific
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # 4K 27" display scaling (96 DPI * 2 = 192 DPI for 200% scaling)
+    export GDK_SCALE=2
     export GDK_DPI_SCALE=0.5
+    export QT_AUTO_SCREEN_SCALE_FACTOR=1
+    export QT_SCALE_FACTOR=2
+    export QT_FONT_DPI=96
+    export XCURSOR_SIZE=32
     alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
 fi
