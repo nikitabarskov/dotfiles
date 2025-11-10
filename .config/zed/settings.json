@@ -57,11 +57,7 @@
     "dock": "right"
   },
   "terminal": {
-    "minimum_contrast": 80.0,
-    "option_as_meta": true,
-    "copy_on_select": true,
-    "font_size": 12.0,
-    "dock": "right"
+    "dock": "bottom"
   },
   "agent": {
     "default_profile": "ask",
