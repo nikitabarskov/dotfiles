@@ -1,0 +1,18 @@
+! 4K 27 display configuration
+! Physical DPI calculation: 3840px / 23.53in ≈ 163 DPI
+! Using 192 DPI (2x scaling) for better readability
+
+Xft.dpi: 163
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+! Cursor size for HiDPI
+Xcursor.size: 32
+Xcursor.theme: Adwaita
+
+! General X settings
+*background: #ffffff
+*foreground: #000000

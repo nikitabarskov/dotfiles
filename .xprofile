@@ -1,0 +1,30 @@
+#!/bin/sh
+# X11 session initialization for 4K 27" display
+
+# Load X resources (DPI, cursor, fonts)
+[ -f "$HOME/.Xresources" ] && xrdb -merge "$HOME/.Xresources"
+
+# Set DPI explicitly for X11
+xrandr --dpi 192
+
+# Set cursor size
+export XCURSOR_SIZE=32
+
+# GTK 3.x scaling
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
+
+# Qt scaling
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_SCALE_FACTOR=2
+export QT_FONT_DPI=96
+
+# Electron apps scaling (VSCode, etc)
+export ELECTRON_FORCE_IS_PACKAGED=1
+
+# Java applications scaling
+export _JAVA_OPTIONS="-Dsun.java2d.uiScale=2"
+
+# Firefox scaling (if needed)
+export MOZ_USE_XINPUT2=1
+export MOZ_ENABLE_WAYLAND=0

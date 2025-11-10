@@ -18,8 +18,8 @@ columns = 90
 lines = 30
 
 [window.padding]
-x = 5
-y = 5
+x = 4
+y = 4
 
 [general]
 live_config_reload = true
