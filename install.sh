@@ -5,14 +5,18 @@ XDG_CONFIG_HOME="${HOME}/.config"
 
 echo "Installing dotfiles from ${dir} to ${HOME}"
 
-ln -fsv "${dir}/.gitconfig" "${HOME}/.gitconfig"
-ln -fsv "${dir}/hirn.studio.gitconfig" "${XDG_CONFIG_HOME}/git/hirn.studio.gitconfig"
-ln -fsv "${dir}/nikitabarskov.gitconfig" "${XDG_CONFIG_HOME}/git/nikitabarskov.gitconfig"
-ln -fsv "${dir}/ignore" "${XDG_CONFIG_HOME}/git/ignore"
 ln -fsv "${dir}/.aliases" "${HOME}/.aliases"
 ln -fsv "${dir}/.zshrc" "${HOME}/.zshrc"
-ln -fsv "${dir}/.config/zed/settings.json" "${XDG_CONFIG_HOME}/zed/settings.json"
-ln -fsv "${dir}/.config/zed/themes" "${XDG_CONFIG_HOME}/zed/"
+
+ln -fsv "${dir}/.gitconfig" "${HOME}/.gitconfig"
+mkdir -p "${XDG_CONFIG_HOME}/git" && \
+  ln -fsv "${dir}/hirn.studio.gitconfig" "${XDG_CONFIG_HOME}/git/hirn.studio.gitconfig" && \
+  ln -fsv "${dir}/nikitabarskov.gitconfig" "${XDG_CONFIG_HOME}/git/nikitabarskov.gitconfig" && \
+  ln -fsv "${dir}/ignore" "${XDG_CONFIG_HOME}/git/ignore"
+
+mkdir -p "${XDG_CONFIG_HOME}/zed" && \
+  ln -fsv "${dir}/.config/zed/settings.json" "${XDG_CONFIG_HOME}/zed/settings.json" && \
+  ln -fsv "${dir}/.config/zed/themes" "${XDG_CONFIG_HOME}/zed/"
 [ -e "${XDG_CONFIG_HOME}/alacritty" ] && rm -rf "${XDG_CONFIG_HOME}/alacritty"
 ln -fsv "${dir}/.config/alacritty" "${XDG_CONFIG_HOME}/alacritty"
 [ -e "${XDG_CONFIG_HOME}/ghostty" ] && rm -rf "${XDG_CONFIG_HOME}/ghostty"
