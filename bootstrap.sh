@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-Function to install system dependencies
+# Function to install system dependencies
 # install_system_dependencies() {
     # if [[ "$OSTYPE" == "darwin"* ]]; then
         # echo "[INFO] Detected macOS"
