@@ -84,7 +84,7 @@ trap 'rm -rf "${TMP_DIR}"' EXIT
         # BREW_PREFIX="$(install_homebrew)"
     # fi
 # else
-    Homebrew is not installed
+    # Homebrew is not installed
     # echo "[INFO] Homebrew is not installed"
     # read -p "Do you want to install Homebrew? (Y/n): " -n 1 -r
     # echo
