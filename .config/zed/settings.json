@@ -7,7 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "drag_and_drop_selection": {
     "delay": 200
   },
