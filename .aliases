@@ -16,7 +16,8 @@ brew-i() {
 
 brew-upgrade() {
     brew update-if-needed && \
-    brew bundle install --upgrade --verbose --global &&
+    brew upgrade && \
+    brew bundle install --global --upgrade --verbose &&
     brew-clean
 }
 
