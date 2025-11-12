@@ -9,9 +9,9 @@
 {
   "relative_line_numbers": "enabled",
   "drag_and_drop_selection": {
-    "delay": 200
+    "delay": 300
   },
-  "hover_popover_delay": 200,
+  "hover_popover_delay": 300,
   "auto_signature_help": true,
   "title_bar": {
     "show_menus": false,
@@ -37,7 +37,7 @@
     "mute_on_join": true
   },
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "copilot"
   },
   "telemetry": {
     "metrics": false,
@@ -45,7 +45,7 @@
   },
   "project_panel": {
     "open_file_on_paste": false,
-    "hide_root": false,
+    "hide_root": true,
     "show_diagnostics": "errors",
     "auto_fold_dirs": false,
     "indent_size": 10.0,
@@ -68,7 +68,7 @@
       "model": "claude-sonnet-4.5"
     }
   },
-  "wrap_guides": [80],
+  "wrap_guides": [80, 120],
   "soft_wrap": "preferred_line_length",
   "autosave": "on_focus_change",
   "format_on_save": "off",
