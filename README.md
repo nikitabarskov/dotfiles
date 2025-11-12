@@ -1,5 +1,11 @@
 # dotfiles
 
+## Quick Start
+
+```bash
+/bin/bash <(wget -qO- https://raw.githubusercontent.com/nikitabarskov/dotfiles/main/bootstrap.sh)
+```
+
 ## Notes
 
 - https://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html
@@ -13,3 +19,4 @@
 ```shell
 brew bundle install --cask --file=cask.Brewfile
 brew bundle cleanup --cask --force --file=cask.Brewfile
+```
