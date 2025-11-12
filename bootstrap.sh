@@ -2,80 +2,8 @@
 
 set -euo pipefail
 
-TMP_DIR=$(mktemp -d)
-echo "Use ${TMP_DIR} as a temporary directory"
-
-trap 'rm -rf "${TMP_DIR}"' EXIT
-
-if command -v brew &> /dev/null; then
-    echo "[INFO] Homebrew is already installed at: $(command -v brew)"
-    read -p "Do you want to reinstall? (y/N): " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        echo "[INFO] Skipping Homebrew installation"
-        BREW_PREFIX="$(brew --prefix)"
-    else
-        if [[ "$OSTYPE" == "darwin"* ]]; then
-            echo "[INFO] Detected macOS"
-            if ! xcode-select -p &> /dev/null; then
-                echo "[INFO] Installing Command Line Tools..."
-                xcode-select --install
-                echo "[INFO] Please complete the Command Line Tools installation and run this script again"
-                exit 0
-            fi
-        elif [[ "$OSTYPE" == "linux"* ]] || [[ "$(uname -s)" == "Linux" ]]; then
-            echo "[INFO] Detected Linux system"
-
-            if command -v dnf &> /dev/null; then
-                echo "[INFO] Using dnf package manager (Fedora/RHEL)"
-                echo "[INFO] Installing dependencies via dnf..."
-                sudo dnf groupinstall -y "Development Tools"
-                sudo dnf install -y procps-ng curl file git
-            elif command -v apt-get &> /dev/null; then
-                echo "[INFO] Using apt package manager (Ubuntu/Debian)"
-                echo "[INFO] Installing dependencies via apt..."
-                sudo apt-get update
-                sudo apt-get install -y build-essential procps curl file git
-            else
-                echo "[ERROR] Unsupported Linux distribution. This script requires dnf (Fedora/RHEL) or apt (Ubuntu/Debian)"
-                exit 1
-            fi
-        else
-            echo "[ERROR] Unsupported operating system: $OSTYPE"
-            exit 1
-        fi
-
-        echo "[INFO] Installing Homebrew..."
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-        if [[ "$OSTYPE" == "darwin"* ]]; then
-            if [[ "$(uname -m)" == "arm64" ]]; then
-                BREW_PREFIX="/opt/homebrew"
-            else
-                BREW_PREFIX="/usr/local"
-            fi
-        else
-            BREW_PREFIX="/home/linuxbrew/.linuxbrew"
-        fi
-
-        if [[ ! -f "${BREW_PREFIX}/bin/brew" ]]; then
-            echo "[ERROR] Homebrew installation failed"
-            exit 1
-        fi
-
-        echo "[INFO] Homebrew installed successfully at: ${BREW_PREFIX}"
-    fi
-else
-    # Homebrew is not installed
-    echo "[INFO] Homebrew is not installed"
-    read -p "Do you want to install Homebrew? (Y/n): " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Nn]$ ]]; then
-        echo "[INFO] Homebrew installation declined. Exiting."
-        exit 0
-    fi
-    
-    # Proceed with installation
+# Function to install system dependencies
+install_system_dependencies() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         echo "[INFO] Detected macOS"
         if ! xcode-select -p &> /dev/null; then
@@ -90,7 +18,7 @@ else
         if command -v dnf &> /dev/null; then
             echo "[INFO] Using dnf package manager (Fedora/RHEL)"
             echo "[INFO] Installing dependencies via dnf..."
-            sudo dnf groupinstall -y "Development Tools"
+            sudo dnf group install development-tools
             sudo dnf install -y procps-ng curl file git
         elif command -v apt-get &> /dev/null; then
             echo "[INFO] Using apt package manager (Ubuntu/Debian)"
@@ -105,26 +33,67 @@ else
         echo "[ERROR] Unsupported operating system: $OSTYPE"
         exit 1
     fi
+}
+
+# Function to determine Homebrew prefix
+get_brew_prefix() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        if [[ "$(uname -m)" == "arm64" ]]; then
+            echo "/opt/homebrew"
+        else
+            echo "/usr/local"
+        fi
+    else
+        echo "/home/linuxbrew/.linuxbrew"
+    fi
+}
+
+# Function to install Homebrew
+install_homebrew() {
+    install_system_dependencies
 
     echo "[INFO] Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        if [[ "$(uname -m)" == "arm64" ]]; then
-            BREW_PREFIX="/opt/homebrew"
-        else
-            BREW_PREFIX="/usr/local"
-        fi
-    else
-        BREW_PREFIX="/home/linuxbrew/.linuxbrew"
-    fi
+    local brew_prefix
+    brew_prefix="$(get_brew_prefix)"
 
-    if [[ ! -f "${BREW_PREFIX}/bin/brew" ]]; then
+    if [[ ! -f "${brew_prefix}/bin/brew" ]]; then
         echo "[ERROR] Homebrew installation failed"
         exit 1
     fi
 
-    echo "[INFO] Homebrew installed successfully at: ${BREW_PREFIX}"
+    echo "[INFO] Homebrew installed successfully at: ${brew_prefix}"
+    echo "${brew_prefix}"
+}
+
+TMP_DIR=$(mktemp -d)
+echo "Use ${TMP_DIR} as a temporary directory"
+
+trap 'rm -rf "${TMP_DIR}"' EXIT
+
+# Setup Homebrew
+if command -v brew &> /dev/null; then
+    echo "[INFO] Homebrew is already installed at: $(command -v brew)"
+    read -p "Do you want to reinstall? (y/N): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "[INFO] Skipping Homebrew installation"
+        BREW_PREFIX="$(brew --prefix)"
+    else
+        BREW_PREFIX="$(install_homebrew)"
+    fi
+else
+    # Homebrew is not installed
+    echo "[INFO] Homebrew is not installed"
+    read -p "Do you want to install Homebrew? (Y/n): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Nn]$ ]]; then
+        echo "[INFO] Homebrew installation declined. Exiting."
+        exit 0
+    fi
+
+    BREW_PREFIX="$(install_homebrew)"
 fi
 
 echo "[INFO] Installing git and zsh..."
