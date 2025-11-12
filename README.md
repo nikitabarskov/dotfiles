@@ -20,3 +20,9 @@
 brew bundle install --cask --file=cask.Brewfile
 brew bundle cleanup --cask --force --file=cask.Brewfile
 ```
+
+### HiDPI
+
+```shell
+xrdb -merge ~/.Xresources
+```

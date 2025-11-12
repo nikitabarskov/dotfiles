@@ -32,11 +32,11 @@ if [[ $OSTYPE == "linux-gnu"* ]]; then
     ln -fsv "$(pwd)/.xprofile" "${HOME}/.xprofile"
     ln -fsv "$(pwd)/.Xresources" "${HOME}/.Xresources"
     echo "Detected Linux - configuring i3"
-    [ -L "${XDG_CONFIG_HOME}/i3" ] && rm -rf "${XDG_CONFIG_HOME}/i3"
-    ln -fsv "${dir}/.config/i3" "${XDG_CONFIG_HOME}/i3"
-    [ -L "${XDG_CONFIG_HOME}/i3status-rust" ] && rm -rf "${XDG_CONFIG_HOME}/i3status-rust"
-    ln -fsv "${dir}/.config/i3status-rust" "${XDG_CONFIG_HOME}/i3status-rust"
+    mkdir -p "${XDG_CONFIG_HOME}/i3" && \
+      ln -fsv "${dir}/.config/i3/config" "${XDG_CONFIG_HOME}/i3/config"
     [ ! -e "${XDG_CONFIG_HOME}/homebrew" ] && mkdir -p "${XDG_CONFIG_HOME}/homebrew"
+    mkdir -p "${XDG_CONFIG_HOME}/gtk-3.0"
+    ln -fsv "${dir}/.config/gtk-3.0/settings.ini" "${XDG_CONFIG_HOME}/gtk-3.0/settings.ini"
     ln -fsv "${dir}/.config/homebrew/linux.Brewfile" "${XDG_CONFIG_HOME}/homebrew/Brewfile"
 fi
 

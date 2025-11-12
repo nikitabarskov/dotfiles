@@ -26,5 +26,8 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+[ -f "$HOME/.Xresources" ] && xrdb -merge "$HOME/.Xresources"
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_SCALE_FACTOR=2
 
 . "$HOME/.cargo/env"
