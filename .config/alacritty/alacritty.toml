@@ -21,6 +21,9 @@ lines = 30
 x = 4
 y = 4
 
+[terminal]
+shell = "/home/linuxbrew/.linuxbrew/bin/zsh"
+
 [general]
 live_config_reload = true
 import = ["~/.config/alacritty/themes/catpuccin_mocha.toml"]
