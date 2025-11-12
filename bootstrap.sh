@@ -23,17 +23,23 @@ if command -v brew &> /dev/null; then
                 echo "[INFO] Please complete the Command Line Tools installation and run this script again"
                 exit 0
             fi
-        elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-            if ! command -v dnf &> /dev/null; then
-                echo "[ERROR] This script only supports Fedora Linux"
+        elif [[ "$OSTYPE" == "linux"* ]] || [[ "$(uname -s)" == "Linux" ]]; then
+            echo "[INFO] Detected Linux system"
+
+            if command -v dnf &> /dev/null; then
+                echo "[INFO] Using dnf package manager (Fedora/RHEL)"
+                echo "[INFO] Installing dependencies via dnf..."
+                sudo dnf groupinstall -y "Development Tools"
+                sudo dnf install -y procps-ng curl file git
+            elif command -v apt-get &> /dev/null; then
+                echo "[INFO] Using apt package manager (Ubuntu/Debian)"
+                echo "[INFO] Installing dependencies via apt..."
+                sudo apt-get update
+                sudo apt-get install -y build-essential procps curl file git
+            else
+                echo "[ERROR] Unsupported Linux distribution. This script requires dnf (Fedora/RHEL) or apt (Ubuntu/Debian)"
                 exit 1
             fi
-
-            echo "[INFO] Detected Fedora system"
-
-            echo "[INFO] Installing dependencies via dnf..."
-            sudo dnf group install development-tools
-            sudo dnf install procps-ng curl file
         else
             echo "[ERROR] Unsupported operating system: $OSTYPE"
             exit 1
@@ -60,7 +66,16 @@ if command -v brew &> /dev/null; then
         echo "[INFO] Homebrew installed successfully at: ${BREW_PREFIX}"
     fi
 else
-    # Homebrew is not installed, proceed with installation
+    # Homebrew is not installed
+    echo "[INFO] Homebrew is not installed"
+    read -p "Do you want to install Homebrew? (Y/n): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Nn]$ ]]; then
+        echo "[INFO] Homebrew installation declined. Exiting."
+        exit 0
+    fi
+    
+    # Proceed with installation
     if [[ "$OSTYPE" == "darwin"* ]]; then
         echo "[INFO] Detected macOS"
         if ! xcode-select -p &> /dev/null; then
@@ -69,17 +84,23 @@ else
             echo "[INFO] Please complete the Command Line Tools installation and run this script again"
             exit 0
         fi
-    elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        if ! command -v dnf &> /dev/null; then
-            echo "[ERROR] This script only supports Fedora Linux"
+    elif [[ "$OSTYPE" == "linux"* ]] || [[ "$(uname -s)" == "Linux" ]]; then
+        echo "[INFO] Detected Linux system"
+
+        if command -v dnf &> /dev/null; then
+            echo "[INFO] Using dnf package manager (Fedora/RHEL)"
+            echo "[INFO] Installing dependencies via dnf..."
+            sudo dnf groupinstall -y "Development Tools"
+            sudo dnf install -y procps-ng curl file git
+        elif command -v apt-get &> /dev/null; then
+            echo "[INFO] Using apt package manager (Ubuntu/Debian)"
+            echo "[INFO] Installing dependencies via apt..."
+            sudo apt-get update
+            sudo apt-get install -y build-essential procps curl file git
+        else
+            echo "[ERROR] Unsupported Linux distribution. This script requires dnf (Fedora/RHEL) or apt (Ubuntu/Debian)"
             exit 1
         fi
-
-        echo "[INFO] Detected Fedora system"
-
-        echo "[INFO] Installing dependencies via dnf..."
-        sudo dnf group install development-tools
-        sudo dnf install procps-ng curl file
     else
         echo "[ERROR] Unsupported operating system: $OSTYPE"
         exit 1
@@ -113,10 +134,23 @@ echo "[INFO] Installing git and zsh..."
 echo "[INFO] Installing 1Password..."
 if [[ "$OSTYPE" == "darwin"* ]]; then
     "${BREW_PREFIX}"/bin/brew install --cask 1password 1password-cli
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
-    sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
-    sudo dnf install -y 1password 1password-cli
+elif [[ "$OSTYPE" == "linux"* ]] || [[ "$(uname -s)" == "Linux" ]]; then
+    if command -v dnf &> /dev/null; then
+        # Fedora/RHEL
+        sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
+        sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
+        sudo dnf install -y 1password 1password-cli
+    elif command -v apt-get &> /dev/null; then
+        # Ubuntu/Debian
+        curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" | sudo tee /etc/apt/sources.list.d/1password.list
+        sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+        curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+        sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+        curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+        sudo apt-get update
+        sudo apt-get install -y 1password 1password-cli
+    fi
 fi
 
 # Launch 1Password and wait for user to set it up
@@ -124,7 +158,7 @@ echo "[INFO] Launching 1Password..."
 echo "[INFO] Please complete 1Password setup and sign in before continuing."
 if [[ "$OSTYPE" == "darwin"* ]]; then
     open -a "1Password"
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+elif [[ "$OSTYPE" == "linux"* ]] || [[ "$(uname -s)" == "Linux" ]]; then
     1password &
 fi
 
