@@ -184,3 +184,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id clipmenud
 exec --no-startup-id xrandr --dpi 192
 exec --no-startup-id xrandr --output DP-2 --mode 3840x2160 --rate 160 --scale 1x1
+exec --no-startup-id ibus-daemon -drx
+exec --no-startup-id setxkbmap -layout "us,ru,no" -option "grp:alt_shift_toggle"
+
