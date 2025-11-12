@@ -52,18 +52,18 @@ get_brew_prefix() {
 install_homebrew() {
     install_system_dependencies
 
-    echo "[INFO] Installing Homebrew..."
+    echo "[INFO] Installing Homebrew..." >&2
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     local brew_prefix
     brew_prefix="$(get_brew_prefix)"
 
     if [[ ! -f "${brew_prefix}/bin/brew" ]]; then
-        echo "[ERROR] Homebrew installation failed"
+        echo "[ERROR] Homebrew installation failed" >&2
         exit 1
     fi
 
-    echo "[INFO] Homebrew installed successfully at: ${brew_prefix}"
+    echo "[INFO] Homebrew installed successfully at: ${brew_prefix}" >&2
     echo "${brew_prefix}"
 }
 
