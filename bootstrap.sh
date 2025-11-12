@@ -53,7 +53,7 @@ install_homebrew() {
     install_system_dependencies
 
     echo "[INFO] Installing Homebrew..." >&2
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >&2
 
     local brew_prefix
     brew_prefix="$(get_brew_prefix)"
