@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "show_edit_predictions": false,
+  "buffer_line_height": "comfortable",
+  "ui_font_weight": 400.0,
   "relative_line_numbers": "enabled",
   "drag_and_drop_selection": {
     "delay": 300
@@ -72,9 +75,9 @@
   "soft_wrap": "preferred_line_length",
   "autosave": "on_focus_change",
   "format_on_save": "off",
-  "ui_font_size": 12.0,
+  "ui_font_size": 14.0,
   "ui_font_family": "IosevkaTerm Nerd Font Propo",
-  "buffer_font_size": 12.0,
+  "buffer_font_size": 14.0,
   "buffer_font_family": "IosevkaTerm Nerd Font Propo",
   "theme": {
     "mode": "system",
