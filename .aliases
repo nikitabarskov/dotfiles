@@ -50,3 +50,8 @@ macos-clt() {
     fi
     rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
 }
+
+nb() {
+    local date=$(date +%Y%m%dT%H%M%S)
+    echo "nikita.barskov-$date-$1"
+}
