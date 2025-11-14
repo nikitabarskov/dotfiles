@@ -3,7 +3,7 @@
 ## Quick Start
 
 ```bash
-/bin/bash <(wget -qO- https://raw.githubusercontent.com/nikitabarskov/dotfiles/main/bootstrap.sh)
+/bin/bash <(wget --no-cache -qO- https://raw.githubusercontent.com/nikitabarskov/dotfiles/main/bootstrap.sh)
 ```
 
 ## Notes
