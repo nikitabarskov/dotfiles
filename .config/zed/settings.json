@@ -20,13 +20,15 @@
 			"provider": "copilot_chat"
 		}
 	},
+	"agent_buffer_font_size": 10.0,
 	"agent_ui_font_size": 10,
 	"audio": {
 		"experimental.denoise": true,
 		"experimental.rodio_audio": true
 	},
 	"auto_install_extensions": {
-		"biome": true
+		"biome": true,
+		"tofu": true
 	},
 	"auto_signature_help": true,
 	"autosave": "on_focus_change",
@@ -42,6 +44,10 @@
 	},
 	"edit_predictions": {},
 	"file_scan_inclusions": [".env*", "NOTES", "*.diff"],
+	"file_types": {
+		"OpenTofu": ["tf"],
+		"OpenTofu Vars": ["tfvars"]
+	},
 	"format_on_save": "off",
 	"git": {
 		"inline_blame": {
