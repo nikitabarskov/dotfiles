@@ -45,7 +45,7 @@
 	"edit_predictions": {},
 	"file_scan_inclusions": [".env*", "NOTES", "*.diff"],
 	"file_types": {
-		"OpenTofu": ["tf"],
+		"OpenTofu": ["tofu"],
 		"OpenTofu Vars": ["tfvars"]
 	},
 	"format_on_save": "off",
