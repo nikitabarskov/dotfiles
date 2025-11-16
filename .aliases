@@ -1,33 +1,32 @@
 brew-clean() {
     setopt localoptions rmstarsilent
+    brew autoremove && \
     brew bundle cleanup --verbose --force --global \
     &&\
-    brew cleanup --prune=all --scrub \
+    brew cleanup --verbose --prune=all --scrub \
     && \
     du -sh $(brew --cache)/* \
     &&
     rm -vrf $(brew --cache)/*
 }
 
-brew-i() {
+brew-add() {
     brew install $@
     brew bundle --verbose --global  add $@
 }
 
+brew-install() {
+    brew bundle install --global --verbose
+}
+
+brew-lock() {
+    brew bundle dump --force --all --verbose --global
+}
+
 brew-upgrade() {
-    brew update-if-needed && \
-    brew upgrade && \
+    brew update && \
     brew bundle install --global --upgrade --verbose &&
     brew-clean
-}
-
-brew-install() {
-    brew bundle install --verbose --global
-}
-
-brew-sync() {
-    brew-install
-    brew bundle dump --force --all --verbose --global
 }
 
 macos-u() {
