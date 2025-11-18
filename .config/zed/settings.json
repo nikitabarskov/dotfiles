@@ -20,8 +20,8 @@
 			"provider": "copilot_chat"
 		}
 	},
-	"agent_buffer_font_size": 10.0,
-	"agent_ui_font_size": 10,
+	"agent_buffer_font_size": 12.0,
+	"agent_ui_font_size": 12.0,
 	"audio": {
 		"experimental.denoise": true,
 		"experimental.rodio_audio": true
@@ -34,7 +34,7 @@
 	"autosave": "on_focus_change",
 	"bottom_dock_layout": "full",
 	"buffer_font_family": "IosevkaTerm Nerd Font Propo",
-	"buffer_font_size": 10,
+	"buffer_font_size": 12,
 	"buffer_line_height": "comfortable",
 	"calls": {
 		"mute_on_join": true
@@ -98,7 +98,7 @@
 		"show_onboarding_banner": true
 	},
 	"ui_font_family": "IosevkaTerm Nerd Font Propo",
-	"ui_font_size": 10,
+	"ui_font_size": 12,
 	"ui_font_weight": 400.0,
 	"wrap_guides": [80, 120]
 }
