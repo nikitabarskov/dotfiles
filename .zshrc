@@ -99,3 +99,4 @@ if command -v starship >/dev/null 2>&1; then
 fi
 eval "$(mise activate zsh)"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+eval "$(mise activate zsh)"
