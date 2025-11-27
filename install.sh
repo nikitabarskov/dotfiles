@@ -6,6 +6,7 @@ XDG_CONFIG_HOME="${HOME}/.config"
 echo "Installing dotfiles from ${dir} to ${HOME}"
 
 ln -fsv "${dir}/.aliases" "${HOME}/.aliases"
+ln -fsv "${dir}/.environment" "${HOME}/.environment"
 ln -fsv "${dir}/.zshrc" "${HOME}/.zshrc"
 
 ln -fsv "${dir}/.gitconfig" "${HOME}/.gitconfig"
@@ -19,6 +20,8 @@ mkdir -p "${XDG_CONFIG_HOME}/zed" && \
 ln -fsv "${dir}/.config/alacritty" "${XDG_CONFIG_HOME}/alacritty"
 [ -e "${XDG_CONFIG_HOME}/ghostty" ] && rm -rf "${XDG_CONFIG_HOME}/ghostty"
 ln -fsv "${dir}/.config/ghostty" "${XDG_CONFIG_HOME}/ghostty"
+[ -e "${XDG_CONFIG_HOME}/lazygit" ] && rm -rf "${XDG_CONFIG_HOME}/lazygit"
+ln -fsv "${dir}/.config/lazygit" "${XDG_CONFIG_HOME}/lazygit"
 [ -e "${XDG_CONFIG_HOME}/gh" ] && rm -rf "${XDG_CONFIG_HOME}/gh"
 ln -fsv "${dir}/.config/gh" "${XDG_CONFIG_HOME}/gh"
 ln -fsv "${dir}/.profile" "${HOME}/.profile"

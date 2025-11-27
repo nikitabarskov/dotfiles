@@ -87,6 +87,11 @@ if command -v fzf >/dev/null 2>&1; then
     eval "$(fzf --zsh)"
 fi
 
+if [ -f ${HOME}/.environment ]
+then
+    source ${HOME}/.environment
+fi
+
 if [ -f ${HOME}/.aliases ]
 then
     source ${HOME}/.aliases
