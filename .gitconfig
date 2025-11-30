@@ -57,3 +57,20 @@
 		git fetch origin \"$base\"; \
 		git rebase \"origin/$base\"; \
 	}; f"
+    dl = -c diff.external=difft log -p --ext-diff
+   	ds = -c diff.external=difft show --ext-diff
+    dft = -c diff.external=difft diff
+
+[difftool "difftastic"]
+    cmd = difft "$MERGED" "$LOCAL" "abcdef1" "100644" "$REMOTE" "abcdef2" "100644"
+
+[difftool]
+    prompt = false
+
+[pager]
+   difftool = true
+
+[diff]
+   tool = difftastic
+   external = difft
+
