@@ -20,8 +20,8 @@
 			"provider": "copilot_chat"
 		}
 	},
-	"agent_buffer_font_size": 12.0,
-	"agent_ui_font_size": 12.0,
+	"agent_buffer_font_size": 12,
+	"agent_ui_font_size": 12,
 	"audio": {
 		"experimental.denoise": true,
 		"experimental.rodio_audio": true
