@@ -26,18 +26,29 @@
 		"experimental.denoise": true,
 		"experimental.rodio_audio": true
 	},
+	"auto_indent": false,
+	"auto_indent_on_paste": false,
 	"auto_install_extensions": {
 		"biome": true,
 		"tofu": true
 	},
-	"auto_signature_help": true,
+	"auto_signature_help": false,
 	"autosave": "on_focus_change",
-	"bottom_dock_layout": "full",
+	"autoscroll_on_clicks": false,
+	"bottom_dock_layout": "left_aligned",
 	"buffer_font_family": "IosevkaTerm Nerd Font Propo",
 	"buffer_font_size": 12,
 	"buffer_line_height": "comfortable",
 	"calls": {
 		"mute_on_join": true
+	},
+	"diagnostics": {
+		"inline": {
+			"update_debounce_ms": 750
+		},
+		"lsp_pull_diagnostics": {
+			"debounce_ms": 50
+		}
 	},
 	"drag_and_drop_selection": {
 		"delay": 300
@@ -54,7 +65,12 @@
 			"show_commit_summary": true
 		}
 	},
-	"hover_popover_delay": 300,
+	"hover_popover_delay": 500,
+	"hover_popover_enabled": true,
+	"inlay_hints": {
+		"edit_debounce_ms": 700,
+		"scroll_debounce_ms": 50
+	},
 	"minimap": {},
 	"multi_cursor_modifier": "cmd_or_ctrl",
 	"outline_panel": {
@@ -76,9 +92,15 @@
 		"button": true
 	},
 	"show_edit_predictions": false,
+	"show_signature_help_after_edits": true,
+	"snippet_sort_order": "inline",
 	"soft_wrap": "preferred_line_length",
 	"status_bar": {
 		"cursor_position_button": true
+	},
+	"tab_size": 4,
+	"tasks": {
+		"enabled": true
 	},
 	"telemetry": {
 		"diagnostics": false,
@@ -98,7 +120,8 @@
 		"show_onboarding_banner": true
 	},
 	"ui_font_family": "IosevkaTerm Nerd Font Propo",
-	"ui_font_size": 12,
+	"ui_font_size": 12.0,
 	"ui_font_weight": 400.0,
+	"use_on_type_format": false,
 	"wrap_guides": [80, 120]
 }
