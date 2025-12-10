@@ -26,4 +26,4 @@ shell = "zsh"
 
 [general]
 live_config_reload = true
-import = ["~/.config/alacritty/themes/catpuccin_latte.toml"]
+import = ["~/.config/alacritty/themes/alabaster.toml"]
