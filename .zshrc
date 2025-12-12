@@ -11,7 +11,6 @@ plugins=(
     fzf
     gh
     git
-    dotenv
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -80,7 +79,7 @@ export BUN_INSTALL="${HOME}/.bun"
 [ -s "${HOME}/.bun/_bun" ] && source "${HOME}/.bun/_bun"
 
 typeset -U PATH
-export PATH="$(gem environment gemdir)/bin:/opt/homebrew/opt/ruby/bin:${UUTILS_PATH_PREFIX}:${BUN_INSTALL}/bin::$PATH"
+export PATH="${UUTILS_PATH_PREFIX}:${BUN_INSTALL}/bin::$PATH"
 export XDG_CONFIG_HOME="${HOME}/.config"
 
 # Initialize fzf if available
@@ -97,6 +96,9 @@ fi
 if command -v starship >/dev/null 2>&1; then
     eval "$(starship init zsh)"
 fi
-eval "$(mise activate zsh)"
+
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+fi
+
 fpath+=${ZDOTDIR:-~}/.zsh_functions
-eval "$(mise activate zsh)"
