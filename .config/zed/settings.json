@@ -65,6 +65,9 @@
       "show_commit_summary": true,
     },
   },
+  "git_panel": {
+    "tree_view": true
+  },
   "hover_popover_delay": 500,
   "hover_popover_enabled": true,
   "inlay_hints": {
@@ -79,6 +82,7 @@
   "project_panel": {
     "auto_fold_dirs": false,
     "auto_open": { "on_paste": false },
+    "default_width": 120.0,
     "dock": "right",
     "entry_spacing": "standard",
     "file_icons": true,
