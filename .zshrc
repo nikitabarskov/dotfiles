@@ -36,7 +36,8 @@ fi
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     export PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
-else
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
     export PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
 fi
 
@@ -79,7 +80,7 @@ export BUN_INSTALL="${HOME}/.bun"
 [ -s "${HOME}/.bun/_bun" ] && source "${HOME}/.bun/_bun"
 
 typeset -U PATH
-export PATH="${UUTILS_PATH_PREFIX}:${BUN_INSTALL}/bin::$PATH"
+export PATH="${UUTILS_PATH_PREFIX}:${BUN_INSTALL}/bin:${HOME}/.docker/bin:$PATH"
 export XDG_CONFIG_HOME="${HOME}/.config"
 
 # Initialize fzf if available
@@ -107,3 +108,12 @@ if command -v mise >/dev/null 2>&1; then
 fi
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# Docker CLI completions
+if [[ "$OSTYPE" == "darwin"* ]] && [ -d "$HOME/.docker/completions" ]; then
+    fpath=($HOME/.docker/completions $fpath)
+fi
+
+# Initialize completion system
+autoload -Uz compinit
+compinit
