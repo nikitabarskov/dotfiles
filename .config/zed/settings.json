@@ -76,7 +76,7 @@
 	},
 	"languages": {
 		"Python": {
-			"language_servers": ["ty", "!basedpyright", "..."]
+			"language_servers": ["basepyright", "ty",]
 		}
 	},
 	"minimap": {},
