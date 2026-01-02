@@ -68,6 +68,9 @@
 	"git_panel": {
 		"tree_view": true
 	},
+	"gutter": {
+		"line_numbers": true
+	},
 	"hover_popover_delay": 500,
 	"hover_popover_enabled": true,
 	"inlay_hints": {
@@ -76,7 +79,7 @@
 	},
 	"languages": {
 		"Python": {
-			"language_servers": ["basepyright", "ty",]
+			"language_servers": ["basepyright", "ty"]
 		}
 	},
 	"minimap": {},
@@ -95,7 +98,7 @@
 		"indent_size": 10.0,
 		"show_diagnostics": "errors"
 	},
-	"relative_line_numbers": "enabled",
+	"relative_line_numbers": "disabled",
 	"restore_on_startup": "none",
 	"search": {
 		"button": true
