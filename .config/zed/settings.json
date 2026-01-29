@@ -1,5 +1,5 @@
 {
-	"agent": {
+ "agent": {
 		"commit_message_model": {
 			"model": "claude-haiku-4.5",
 			"provider": "copilot_chat"
@@ -38,7 +38,7 @@
 	"bottom_dock_layout": "left_aligned",
 	"buffer_font_family": "IosevkaTerm Nerd Font Propo",
 	"buffer_font_size": 12,
-	"buffer_line_height": "comfortable",
+	"buffer_line_height": "standard",
 	"calls": {
 		"mute_on_join": true
 	},
@@ -54,6 +54,9 @@
 		"delay": 300
 	},
 	"edit_predictions": {},
+	"features": {
+    "edit_prediction_provider": null,
+ },
 	"file_scan_inclusions": [".env*", "NOTES", "*.diff"],
 	"file_types": {
 		"OpenTofu": ["tofu"],
@@ -79,7 +82,7 @@
 	},
 	"languages": {
 		"Python": {
-			"language_servers": ["basepyright", "ty"]
+			"language_servers": ["basepyright", "ty",]
 		}
 	},
 	"minimap": {},
@@ -99,7 +102,7 @@
 		"show_diagnostics": "errors"
 	},
 	"relative_line_numbers": "disabled",
-	"restore_on_startup": "none",
+	"restore_on_startup": "empty_tab",
 	"search": {
 		"button": true
 	},
@@ -129,7 +132,8 @@
 	"title_bar": {
 		"show_branch_icon": true,
 		"show_menus": false,
-		"show_onboarding_banner": true
+		"show_onboarding_banner": false,
+		"show_project_items": true,
 	},
 	"ui_font_family": "IosevkaTerm Nerd Font Propo",
 	"ui_font_size": 12.0,
