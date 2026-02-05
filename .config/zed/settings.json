@@ -1,143 +1,143 @@
 {
-  "agent": {
-    "commit_message_model": {
-      "model": "claude-haiku-4.5",
-      "provider": "copilot_chat",
-    },
-    "default_model": {
-      "model": "claude-sonnet-4.5",
-      "provider": "copilot_chat",
-    },
-    "default_profile": "ask",
-    "dock": "left",
-    "enable_feedback": false,
-    "inline_assistant_model": {
-      "model": "claude-sonnet-4.5",
-      "provider": "copilot_chat",
-    },
-    "thread_summary_model": {
-      "model": "claude-haiku-4.5",
-      "provider": "copilot_chat",
-    },
-  },
-  "agent_buffer_font_size": 12,
-  "agent_ui_font_size": 12,
-  "audio": {
-    "experimental.denoise": true,
-    "experimental.rodio_audio": true,
-  },
-  "auto_indent": false,
-  "auto_indent_on_paste": false,
-  "auto_install_extensions": {
-    "biome": true,
-    "tofu": true,
-  },
-  "auto_signature_help": false,
-  "autosave": "on_focus_change",
-  "autoscroll_on_clicks": false,
-  "bottom_dock_layout": "left_aligned",
-  "buffer_font_family": "IosevkaTerm Nerd Font Propo",
-  "buffer_font_size": 12,
-  "buffer_line_height": "standard",
-  "calls": {
-    "mute_on_join": true,
-  },
-  "diagnostics": {
-    "inline": {
-      "update_debounce_ms": 750,
-    },
-    "lsp_pull_diagnostics": {
-      "debounce_ms": 50,
-    },
-  },
-  "drag_and_drop_selection": {
-    "delay": 300,
-  },
-  "edit_predictions": {},
-  "features": {
-    "edit_prediction_provider": null,
-  },
-  "file_scan_inclusions": [".env*", "NOTES", "*.diff"],
-  "file_types": {
-    "OpenTofu": ["tofu"],
-    "OpenTofu Vars": ["tfvars"],
-  },
-  "format_on_save": "off",
-  "git": {
-    "inline_blame": {
-      "show_commit_summary": true,
-    },
-  },
-  "git_panel": {
-    "tree_view": true,
-  },
-  "gutter": {
-    "line_numbers": true,
-  },
-  "hover_popover_delay": 500,
-  "hover_popover_enabled": true,
-  "inlay_hints": {
-    "edit_debounce_ms": 700,
-    "scroll_debounce_ms": 50,
-  },
-  "languages": {
-    "Python": {
-      "language_servers": ["basepyright", "ty"],
-    },
-  },
-  "minimap": {},
-  "multi_cursor_modifier": "cmd_or_ctrl",
-  "outline_panel": {
-    "dock": "right",
-  },
-  "project_panel": {
-    "auto_fold_dirs": false,
-    "auto_open": { "on_paste": false },
-    "default_width": 120.0,
-    "dock": "right",
-    "entry_spacing": "standard",
-    "file_icons": true,
-    "hide_root": true,
-    "indent_size": 10.0,
-    "show_diagnostics": "errors",
-  },
-  "relative_line_numbers": "disabled",
-  "restore_on_startup": "empty_tab",
-  "search": {
-    "button": true,
-  },
-  "show_edit_predictions": false,
-  "show_signature_help_after_edits": true,
-  "snippet_sort_order": "inline",
-  "soft_wrap": "preferred_line_length",
-  "status_bar": {
-    "cursor_position_button": true,
-  },
-  "tab_size": 4,
-  "tasks": {
-    "enabled": true,
-  },
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false,
-  },
-  "terminal": {
-    "dock": "left",
-  },
-  "theme": {
-    "dark": "Alabaster Dark",
-    "light": "Alabaster",
-    "mode": "system",
-  },
-  "title_bar": {
-    "show_branch_icon": true,
-    "show_menus": false,
-    "show_onboarding_banner": false,
-    "show_project_items": true,
-  },
-  "ui_font_family": "IosevkaTerm Nerd Font Propo",
-  "ui_font_size": 12.0,
-  "ui_font_weight": 400.0,
-  "use_on_type_format": false,
-  "wrap_guides": [80, 120],
+	"agent": {
+		"commit_message_model": {
+			"model": "claude-haiku-4.5",
+			"provider": "copilot_chat"
+		},
+		"default_model": {
+			"model": "claude-opus-4.5",
+			"provider": "copilot_chat"
+		},
+		"default_profile": "minimal",
+		"dock": "left",
+		"enable_feedback": false,
+		"inline_assistant_model": {
+			"model": "claude-sonnet-4.5",
+			"provider": "copilot_chat"
+		},
+		"thread_summary_model": {
+			"model": "claude-haiku-4.5",
+			"provider": "copilot_chat"
+		}
+	},
+	"audio": {
+		"experimental.denoise": true,
+		"experimental.rodio_audio": true
+	},
+	"auto_indent": false,
+	"auto_indent_on_paste": false,
+	"auto_install_extensions": {
+		"biome": true,
+		"tofu": true
+	},
+	"auto_signature_help": false,
+	"autosave": "on_focus_change",
+	"autoscroll_on_clicks": false,
+	"bottom_dock_layout": "left_aligned",
+	"buffer_font_family": "IosevkaTerm Nerd Font Propo",
+	"buffer_font_size": 12,
+	"buffer_line_height": "standard",
+	"calls": {
+		"mute_on_join": true
+	},
+	"diagnostics": {
+		"inline": {
+			"update_debounce_ms": 750
+		},
+		"lsp_pull_diagnostics": {
+			"debounce_ms": 50
+		}
+	},
+	"disable_ai": false,
+	"drag_and_drop_selection": {
+		"delay": 300
+	},
+	"edit_predictions": {
+		"provider": "copilot",
+		"mode": "eager"
+	},
+	"file_scan_inclusions": [".env*", "NOTES", "*.diff"],
+	"file_types": {
+		"OpenTofu": ["tofu"],
+		"OpenTofu Vars": ["tfvars"]
+	},
+	"format_on_save": "off",
+	"git": {
+		"inline_blame": {
+			"show_commit_summary": true
+		}
+	},
+	"git_panel": {
+		"tree_view": true
+	},
+	"gutter": {
+		"line_numbers": true
+	},
+	"hover_popover_delay": 500,
+	"hover_popover_enabled": true,
+	"inlay_hints": {
+		"edit_debounce_ms": 700,
+		"scroll_debounce_ms": 50
+	},
+	"languages": {
+		"Python": {
+			"language_servers": ["basepyright", "ty"]
+		}
+	},
+	"minimap": {},
+	"multi_cursor_modifier": "cmd_or_ctrl",
+	"outline_panel": {
+		"dock": "right"
+	},
+	"project_panel": {
+		"auto_fold_dirs": false,
+		"auto_open": { "on_paste": false },
+		"default_width": 120.0,
+		"dock": "right",
+		"entry_spacing": "standard",
+		"file_icons": true,
+		"hide_root": true,
+		"indent_size": 10.0,
+		"show_diagnostics": "errors"
+	},
+	"relative_line_numbers": "disabled",
+	"restore_on_startup": "empty_tab",
+	"search": {
+		"button": true
+	},
+	"show_completions_on_input": true,
+	"show_edit_predictions": false,
+	"show_signature_help_after_edits": true,
+	"snippet_sort_order": "inline",
+	"soft_wrap": "preferred_line_length",
+	"status_bar": {
+		"cursor_position_button": true
+	},
+	"tab_size": 4,
+	"tasks": {
+		"enabled": true
+	},
+	"telemetry": {
+		"diagnostics": false,
+		"metrics": false
+	},
+	"terminal": {
+		"dock": "left"
+	},
+	"theme": {
+		"dark": "Alabaster Dark",
+		"light": "Alabaster",
+		"mode": "system"
+	},
+	"title_bar": {
+		"show_branch_icon": true,
+		"show_menus": false,
+		"show_onboarding_banner": false,
+		"show_project_items": true
+	},
+	"ui_font_family": "IosevkaTerm Nerd Font Propo",
+	"ui_font_size": 12.0,
+	"ui_font_weight": 400.0,
+	"use_on_type_format": false,
+	"wrap_guides": [80, 120]
 }
