@@ -5,10 +5,10 @@
 			"provider": "copilot_chat"
 		},
 		"default_model": {
-			"model": "claude-opus-4.5",
+			"model": "gpt-5.2-codex",
 			"provider": "copilot_chat"
 		},
-		"default_profile": "minimal",
+		"default_profile": "write",
 		"dock": "left",
 		"enable_feedback": false,
 		"inline_assistant_model": {
@@ -18,6 +18,28 @@
 		"thread_summary_model": {
 			"model": "claude-haiku-4.5",
 			"provider": "copilot_chat"
+		},
+		"tool_permissions": {
+			"tools": {
+				"terminal": {
+					"always_allow": [
+						{
+							"pattern": "^ty\\b"
+						},
+						{
+							"pattern": "^git\\s+diff(\\s|$)"
+						}
+					]
+				}
+			}
+		}
+	},
+	"agent_servers": {
+		"github-copilot": {
+			"type": "registry"
+		},
+		"opencode": {
+			"type": "registry"
 		}
 	},
 	"audio": {
@@ -53,8 +75,8 @@
 		"delay": 300
 	},
 	"edit_predictions": {
-		"provider": "copilot",
-		"mode": "eager"
+		"mode": "eager",
+		"provider": "copilot"
 	},
 	"file_scan_inclusions": [".env*", "NOTES", "*.diff"],
 	"file_types": {
@@ -81,7 +103,18 @@
 	},
 	"languages": {
 		"Python": {
-			"language_servers": ["basepyright", "ty"]
+			"language_servers": ["ty", "!basedpyright"]
+		}
+	},
+	"lsp": {
+		"ty": {
+			"binary": {
+				"arguments": ["server"],
+				"path": ".venv/bin/ty"
+			},
+			"settings": {
+				"diagnosticMode": "workspace"
+			}
 		}
 	},
 	"minimap": {},
