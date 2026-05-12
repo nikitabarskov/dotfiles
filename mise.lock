@@ -38,3 +38,65 @@ provenance = "github-attestations"
 checksum = "sha256:a77a61537dfc6f923b5b1fc912bc2e0ed46a83c3303ca973695d7f4f8351c71e"
 url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.15/biome-win32-x64.exe"
 provenance = "github-attestations"
+
+[[tools.claude]]
+version = "2.1.139"
+backend = "aqua:anthropics/claude-code"
+
+[tools.claude."platforms.linux-arm64"]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.139/linux-arm64/claude"
+
+[tools.claude."platforms.linux-arm64-musl"]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.139/linux-arm64-musl/claude"
+
+[tools.claude."platforms.linux-x64"]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.139/linux-x64/claude"
+
+[tools.claude."platforms.linux-x64-musl"]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.139/linux-x64-musl/claude"
+
+[tools.claude."platforms.macos-arm64"]
+checksum = "blake3:e4798f0e2cffb6d9f380735799d30e695ae9574d7607f0b9502d5eb7011ca045"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.139/darwin-arm64/claude"
+
+[tools.claude."platforms.macos-x64"]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.139/darwin-x64/claude"
+
+[[tools.rtk]]
+version = "0.39.0"
+backend = "github:rtk-ai/rtk"
+
+[tools.rtk."platforms.linux-arm64"]
+checksum = "sha256:68fd34cbff46856826a092c261d67b1b80b579ef6c8a0400c0089e14325e709d"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.39.0/rtk-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/413642463"
+
+[tools.rtk."platforms.linux-arm64-musl"]
+checksum = "sha256:68fd34cbff46856826a092c261d67b1b80b579ef6c8a0400c0089e14325e709d"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.39.0/rtk-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/413642463"
+
+[tools.rtk."platforms.linux-x64"]
+checksum = "sha256:06e582ba1996ef03e76a441b9896aba79dd1b746ce539d228296c681b1c5401c"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.39.0/rtk-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/413642455"
+
+[tools.rtk."platforms.linux-x64-musl"]
+checksum = "sha256:06e582ba1996ef03e76a441b9896aba79dd1b746ce539d228296c681b1c5401c"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.39.0/rtk-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/413642455"
+
+[tools.rtk."platforms.macos-arm64"]
+checksum = "sha256:0d140babfba54c37298b32e7b2ad1f21c72179b22bbcdf01c9cd66bb9ae28855"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.39.0/rtk-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/413642480"
+
+[tools.rtk."platforms.macos-x64"]
+checksum = "sha256:c3bb225d69c72a1a190f5d341b3958bf923c7242874627ef2d9f802d3743ff5c"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.39.0/rtk-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/413642450"
+
+[tools.rtk."platforms.windows-x64"]
+checksum = "sha256:aad430c14d82b4470f14bdb9695e8cd97aeac97444bd087bd70be161ced09cb7"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.39.0/rtk-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/413642458"

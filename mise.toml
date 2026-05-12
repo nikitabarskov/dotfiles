@@ -1,5 +1,7 @@
 [tools]
 biome = "latest"
+claude = "latest"
+rtk = "latest"
 
 [settings]
 lockfile = true
