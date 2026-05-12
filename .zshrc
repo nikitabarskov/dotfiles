@@ -51,17 +51,10 @@ HISTFILE=~/.zsh_history # Where to save history to disk
 HISTDUP=erase # Erase duplicates in the history file
 setopt hist_ignore_dups # Ignore duplicates
 
-# Initialize pyenv if available
-if command -v pyenv >/dev/null 2>&1; then
-    eval "$(pyenv init --path)"
-    eval "$(pyenv init -)"
-fi
-
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 bindkey "^[[1;3D" backward-word
 bindkey "^[[1;3C" forward-word
-export
 
 SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 
@@ -112,6 +105,12 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 # Docker CLI completions
 if [[ "$OSTYPE" == "darwin"* ]] && [ -d "$HOME/.docker/completions" ]; then
     fpath=($HOME/.docker/completions $fpath)
+    export PATH="${HOME}/.orbstack/bin:$PATH"
+fi
+
+# AV autocompletion
+if command -v av >/dev/null 2>&1; then
+    source <(av completion zsh)
 fi
 
 # Initialize completion system
