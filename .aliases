@@ -54,3 +54,19 @@ nb() {
     local date=$(date +%Y%m%dT%H%M%S)
     echo "nikita.barskov-$date-$1"
 }
+
+avb() {
+    av branch "nikita.barskov-$(date +%Y%m%dT%H%M%S)-$1"
+}
+
+avsc() {
+    av sync --rebase-to-trunk --current
+}
+
+avs() {
+    av sync --rebase-to-trunk
+}
+
+avpr() {
+    av pr --draft
+}
