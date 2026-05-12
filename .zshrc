@@ -116,3 +116,6 @@ fi
 # Initialize completion system
 autoload -Uz compinit
 compinit
+
+# bun completions
+[ -s "/Users/nikitabarskov/.bun/_bun" ] && source "/Users/nikitabarskov/.bun/_bun"
