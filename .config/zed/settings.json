@@ -1,38 +1,8 @@
 {
 	"agent": {
-		"commit_message_model": {
-			"model": "claude-haiku-4.5",
-			"provider": "copilot_chat"
-		},
-		"default_model": {
-			"model": "gpt-5.2-codex",
-			"provider": "copilot_chat"
-		},
-		"default_profile": "write",
 		"dock": "left",
-		"enable_feedback": false,
-		"inline_assistant_model": {
-			"model": "claude-sonnet-4.5",
-			"provider": "copilot_chat"
-		},
-		"thread_summary_model": {
-			"model": "claude-haiku-4.5",
-			"provider": "copilot_chat"
-		},
-		"tool_permissions": {
-			"tools": {
-				"terminal": {
-					"always_allow": [
-						{
-							"pattern": "^ty\\b"
-						},
-						{
-							"pattern": "^git\\s+diff(\\s|$)"
-						}
-					]
-				}
-			}
-		}
+		"favorite_models": [],
+		"model_parameters": []
 	},
 	"agent_servers": {
 		"github-copilot": {
@@ -42,11 +12,7 @@
 			"type": "registry"
 		}
 	},
-	"audio": {
-		"experimental.denoise": true,
-		"experimental.rodio_audio": true
-	},
-	"auto_indent": false,
+	"auto_indent": "none",
 	"auto_indent_on_paste": false,
 	"auto_install_extensions": {
 		"biome": true,
@@ -61,6 +27,10 @@
 	"buffer_line_height": "standard",
 	"calls": {
 		"mute_on_join": true
+	},
+	"cli_default_open_behavior": "new_window",
+	"collaboration_panel": {
+		"dock": "left"
 	},
 	"diagnostics": {
 		"inline": {
@@ -90,6 +60,7 @@
 		}
 	},
 	"git_panel": {
+		"dock": "left",
 		"tree_view": true
 	},
 	"gutter": {
@@ -104,6 +75,9 @@
 	"languages": {
 		"Python": {
 			"language_servers": ["ty", "!basedpyright"]
+		},
+		"YAML": {
+			"tab_size": 2
 		}
 	},
 	"lsp": {
@@ -142,7 +116,7 @@
 	"show_edit_predictions": false,
 	"show_signature_help_after_edits": true,
 	"snippet_sort_order": "inline",
-	"soft_wrap": "preferred_line_length",
+	"soft_wrap": "prefer_line",
 	"status_bar": {
 		"cursor_position_button": true
 	},
@@ -163,7 +137,6 @@
 		"mode": "system"
 	},
 	"title_bar": {
-		"show_branch_icon": true,
 		"show_menus": false,
 		"show_onboarding_banner": false,
 		"show_project_items": true
