@@ -131,7 +131,7 @@
 	"terminal": {
 		"dock": "left",
 		"shell": {
-		  "program": "zsh"
+			"program": "zsh"
 		}
 	},
 	"theme": {
