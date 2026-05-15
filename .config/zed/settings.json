@@ -30,7 +30,7 @@
 	},
 	"cli_default_open_behavior": "new_window",
 	"collaboration_panel": {
-		"dock": "left"
+		"dock": "right"
 	},
 	"diagnostics": {
 		"inline": {
@@ -60,7 +60,7 @@
 		}
 	},
 	"git_panel": {
-		"dock": "left",
+		"dock": "right",
 		"tree_view": true
 	},
 	"gutter": {
@@ -129,7 +129,10 @@
 		"metrics": false
 	},
 	"terminal": {
-		"dock": "left"
+		"dock": "left",
+		"shell": {
+		  "program": "zsh"
+		}
 	},
 	"theme": {
 		"dark": "Alabaster Dark",
