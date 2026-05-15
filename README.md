@@ -19,6 +19,7 @@
 - https://github.com/buo/homebrew-cask-upgrade
 - https://gist.github.com/skyzyx/3438280b18e4f7c490db8a2a2ca0b9da
 - https://about.gitlab.com/blog/dotfiles-document-and-automate-your-macbook-setup/
+- https://taras-sereda.github.io/blog/2022/i3-for-multilinguals/
 
 ```shell
 brew bundle install --cask --file=cask.Brewfile
