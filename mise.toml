@@ -1,6 +1,7 @@
 [tools]
 biome = "latest"
 claude = "latest"
+just = "latest"
 rtk = "latest"
 
 [settings]
