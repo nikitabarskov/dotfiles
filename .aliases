@@ -2,7 +2,7 @@ brew-clean() {
     setopt localoptions rmstarsilent
     brew autoremove && \
     brew bundle cleanup --force --global && \
-    brew cleanup --verbose --prune=all --scrub && \
+    brew cleanup --prune=all --scrub && \
     du -sh "$(brew --cache)"/* && \
     rm -vrf "$(brew --cache)"/*
 }
