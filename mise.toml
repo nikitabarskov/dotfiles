@@ -1,6 +1,7 @@
 [tools]
 biome = "latest"
 claude = "latest"
+codex = "latest"
 just = "latest"
 rtk = "latest"
 
