@@ -1,0 +1,30 @@
+[theme]
+theme = "plain"
+
+[[block]]
+block = "net"
+
+[[block]]
+block = "temperature"
+scale = "celsius"
+
+[[block]]
+block = "cpu"
+
+[[block]]
+block = "load"
+
+[[block]]
+block = "nvidia_gpu"
+interval = 1
+
+[[block]]
+block = "disk_space"
+path = "/"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "keyboard_layout"
+driver = "setxkbmap"
