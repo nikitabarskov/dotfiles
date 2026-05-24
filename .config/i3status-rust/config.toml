@@ -28,3 +28,9 @@ block = "sound"
 [[block]]
 block = "keyboard_layout"
 driver = "setxkbmap"
+
+[[block]]
+block = "time"
+format = " $icon $timestamp.datetime(f:'%a %d %b %H:%M') "
+interval = 60
+timezone = "Europe/Oslo"
