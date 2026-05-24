@@ -1,20 +1,20 @@
 brew-clean() {
     setopt localoptions rmstarsilent
     brew autoremove && \
-    brew bundle cleanup --verbose --force --global &&\
+    brew bundle cleanup --force --global && \
     brew cleanup --verbose --prune=all --scrub && \
-    du -sh "$(brew --cache)/*" && \
-    rm -vrf "$(brew --cache)/*"
+    du -sh "$(brew --cache)"/* && \
+    rm -vrf "$(brew --cache)"/*
 }
 
 brew-add() {
-    brew install $@ && \
-    brew bundle --verbose --global add $@
+    brew install "$@" && \
+    brew bundle --verbose --global add "$@"
 }
 
 brew-remove() {
-    brew uninstall $@ && \
-    brew bundle --verbose --global remove $@
+    brew uninstall "$@" && \
+    brew bundle --verbose --global remove "$@"
 }
 
 brew-install() {
