@@ -192,4 +192,4 @@ exec --no-startup-id xrandr --dpi 192
 exec --no-startup-id xrandr --output DP-2 --mode 3840x2160 --rate 160 --scale 1x1
 exec_always --no-startup-id setxkbmap -layout "us,ru,no" -option "" -option "grp:alt_space_toggle"
 
-for_window [class="(?i)helium" window_role="(?i)GtkFileChooserDialog"] floating enable, move absolute position 10 10, resize set 640 480
+for_window [class="(?i)helium" window_role="(?i)GtkFileChooserDialog"] floating enable, resize set 640 480, move position center
