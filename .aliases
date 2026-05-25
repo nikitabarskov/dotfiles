@@ -27,6 +27,7 @@ brew-lock() {
 
 brew-upgrade() {
     brew update && \
+    brew upgrade && \
     brew bundle install --global --upgrade --verbose && \
     brew-clean
 }
