@@ -4,24 +4,9 @@
 version = "2.4.15"
 backend = "aqua:biomejs/biome"
 
-[tools.biome."platforms.linux-arm64"]
-checksum = "sha256:7eb8d592da36b990a43f00545469c29b149e665ff0eb1fcd45e37f0d6153e2ae"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.15/biome-linux-arm64"
-provenance = "github-attestations"
-
-[tools.biome."platforms.linux-arm64-musl"]
-checksum = "sha256:9dfd5ab51e493864777fc77447d8416cc19d70d644d900048e703aad95afe9d2"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.15/biome-linux-arm64-musl"
-provenance = "github-attestations"
-
 [tools.biome."platforms.linux-x64"]
 checksum = "sha256:8dafe2739eafd03230ea1bd3be1a8aa036cf3dc1ab385987f4c2c72c7c2f3500"
 url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.15/biome-linux-x64"
-provenance = "github-attestations"
-
-[tools.biome."platforms.linux-x64-musl"]
-checksum = "sha256:60b19c9c7e611e1b18268b3d9baf9ec903f6ca184c3a8e81845f68fd3b621f49"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.15/biome-linux-x64-musl"
 provenance = "github-attestations"
 
 [tools.biome."platforms.macos-arm64"]
@@ -29,55 +14,21 @@ checksum = "sha256:b2c65601b3b0fcd0606c4152f20e3774aadf0b73ba791b8dbcff7e6f1a4fa
 url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.15/biome-darwin-arm64"
 provenance = "github-attestations"
 
-[tools.biome."platforms.macos-x64"]
-checksum = "sha256:fab8a39dc54a38f820b2952f7f80e7e8993483b7501a4f19d1cbf4361128a07d"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.15/biome-darwin-x64"
-provenance = "github-attestations"
-
-[tools.biome."platforms.windows-x64"]
-checksum = "sha256:a77a61537dfc6f923b5b1fc912bc2e0ed46a83c3303ca973695d7f4f8351c71e"
-url = "https://github.com/biomejs/biome/releases/download/%40biomejs/biome%402.4.15/biome-win32-x64.exe"
-provenance = "github-attestations"
-
 [[tools.claude]]
 version = "2.1.150"
 backend = "aqua:anthropics/claude-code"
 
-[tools.claude."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.150/linux-arm64/claude"
-
-[tools.claude."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.150/linux-arm64-musl/claude"
-
 [tools.claude."platforms.linux-x64"]
 url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.150/linux-x64/claude"
 
-[tools.claude."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.150/linux-x64-musl/claude"
-
 [tools.claude."platforms.macos-arm64"]
 url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.150/darwin-arm64/claude"
-
-[tools.claude."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.150/darwin-x64/claude"
 
 [[tools.codex]]
 version = "0.133.0"
 backend = "aqua:openai/codex"
 
-[tools.codex."platforms.linux-arm64"]
-checksum = "sha256:f38c53b04de9bc7c03e9865b058c57190a6fb1f577c937faa3beff6efb6d8805"
-url = "https://github.com/openai/codex/releases/download/rust-v0.133.0/codex-aarch64-unknown-linux-musl.zst"
-
-[tools.codex."platforms.linux-arm64-musl"]
-checksum = "sha256:f38c53b04de9bc7c03e9865b058c57190a6fb1f577c937faa3beff6efb6d8805"
-url = "https://github.com/openai/codex/releases/download/rust-v0.133.0/codex-aarch64-unknown-linux-musl.zst"
-
 [tools.codex."platforms.linux-x64"]
-checksum = "sha256:dd196b05078ac6d4af667d831f99ab867289f7483611ed2154dd5554d4535701"
-url = "https://github.com/openai/codex/releases/download/rust-v0.133.0/codex-x86_64-unknown-linux-musl.zst"
-
-[tools.codex."platforms.linux-x64-musl"]
 checksum = "sha256:dd196b05078ac6d4af667d831f99ab867289f7483611ed2154dd5554d4535701"
 url = "https://github.com/openai/codex/releases/download/rust-v0.133.0/codex-x86_64-unknown-linux-musl.zst"
 
@@ -85,31 +36,11 @@ url = "https://github.com/openai/codex/releases/download/rust-v0.133.0/codex-x86
 checksum = "sha256:19c8752f15a1ed72fb8f8ca4ce2fb6738ac2384f8ab09b7d68e6ee2fbc2250bd"
 url = "https://github.com/openai/codex/releases/download/rust-v0.133.0/codex-aarch64-apple-darwin.zst"
 
-[tools.codex."platforms.macos-x64"]
-checksum = "sha256:c88503e0171b384778eb8c1385c42c951e5de6059104625e945e38613c8ce484"
-url = "https://github.com/openai/codex/releases/download/rust-v0.133.0/codex-x86_64-apple-darwin.zst"
-
-[tools.codex."platforms.windows-x64"]
-checksum = "sha256:d65c2768526788dc2504e0d8a613f11ad66c2e22cb26b92335579404b7b2f6d2"
-url = "https://github.com/openai/codex/releases/download/rust-v0.133.0/codex-x86_64-pc-windows-msvc.exe.zst"
-
 [[tools.just]]
 version = "1.51.0"
 backend = "aqua:casey/just"
 
-[tools.just."platforms.linux-arm64"]
-checksum = "sha256:ed7ec466b77709198fd4afed253dba0270203ba5eb1c006bee2b0139090284f5"
-url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-aarch64-unknown-linux-musl.tar.gz"
-
-[tools.just."platforms.linux-arm64-musl"]
-checksum = "sha256:ed7ec466b77709198fd4afed253dba0270203ba5eb1c006bee2b0139090284f5"
-url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-aarch64-unknown-linux-musl.tar.gz"
-
 [tools.just."platforms.linux-x64"]
-checksum = "sha256:c8f085ca3e885723c341d06243fc291b5abfdc8bbe3b2c076b117de490387b59"
-url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-x86_64-unknown-linux-musl.tar.gz"
-
-[tools.just."platforms.linux-x64-musl"]
 checksum = "sha256:c8f085ca3e885723c341d06243fc291b5abfdc8bbe3b2c076b117de490387b59"
 url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-x86_64-unknown-linux-musl.tar.gz"
 
@@ -117,49 +48,16 @@ url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-x86_64
 checksum = "sha256:61e3f1b8a545ff064b091eab4b6e14f8cc743ff15549be293b1e92f5b1467002"
 url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-aarch64-apple-darwin.tar.gz"
 
-[tools.just."platforms.macos-x64"]
-checksum = "sha256:d583e45f1f9fcdd26069ad2fe3bb9dea414756d8d0752eb9093974cb5c0246f0"
-url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-x86_64-apple-darwin.tar.gz"
-
-[tools.just."platforms.windows-x64"]
-checksum = "sha256:09d1138b6845e73f04bff5e26be3f57663bddca25e36fe6241d28a5aa310b64e"
-url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-x86_64-pc-windows-msvc.zip"
-
 [[tools.rtk]]
-version = "0.41.0"
-backend = "github:rtk-ai/rtk"
-
-[tools.rtk."platforms.linux-arm64"]
-checksum = "sha256:68d6fedfd76f16437eb79cb659169ef8bc3994124486cc71d9479a1b241b7812"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.41.0/rtk-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/427742484"
-
-[tools.rtk."platforms.linux-arm64-musl"]
-checksum = "sha256:68d6fedfd76f16437eb79cb659169ef8bc3994124486cc71d9479a1b241b7812"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.41.0/rtk-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/427742484"
+version = "0.42.0"
+backend = "aqua:rtk-ai/rtk"
 
 [tools.rtk."platforms.linux-x64"]
-checksum = "sha256:90ae10f5c76de9bacaec5eeeefb6012f74dd47f4e280ec614295555b64da6b57"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.41.0/rtk-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/427742482"
-
-[tools.rtk."platforms.linux-x64-musl"]
-checksum = "sha256:90ae10f5c76de9bacaec5eeeefb6012f74dd47f4e280ec614295555b64da6b57"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.41.0/rtk-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/427742482"
+checksum = "sha256:cdd4f87ac97ce958f71b53a991880d6adcc41cc5bca1044175a64630980152be"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.0/rtk-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/428637341"
 
 [tools.rtk."platforms.macos-arm64"]
-checksum = "sha256:8b9751f927da4fb433be23f24f205bf1c22f9dd6949790c0980d2cc91b14658c"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.41.0/rtk-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/427742486"
-
-[tools.rtk."platforms.macos-x64"]
-checksum = "sha256:b2729d9983b38af77824a5c7a3c23de415533be9fb022a5e473904ecc9620db9"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.41.0/rtk-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/427742485"
-
-[tools.rtk."platforms.windows-x64"]
-checksum = "sha256:8b9b4c9c0e7e4eb33c7dd06eb2a34adefd910c489174dedbb06920240edd6f3a"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.41.0/rtk-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/427742487"
+checksum = "sha256:cddc9cd11cdf80b3342eebaba0e6ab26d9c8dec45295ea44cf98062987185724"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.0/rtk-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/428637345"
