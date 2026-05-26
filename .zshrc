@@ -117,5 +117,4 @@ fi
 autoload -Uz compinit
 compinit
 
-# bun completions
-[ -s "/Users/nikitabarskov/.bun/_bun" ] && source "/Users/nikitabarskov/.bun/_bun"
+

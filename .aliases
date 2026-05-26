@@ -22,7 +22,7 @@ brew-install() {
 }
 
 brew-lock() {
-    brew bundle dump --force --all --verbose --global
+    brew bundle dump --force --verbose --global
 }
 
 brew-upgrade() {
