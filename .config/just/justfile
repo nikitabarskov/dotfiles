@@ -11,3 +11,6 @@ mise-upgrade:
 
 mise-lock:
     mise lock --global
+
+mise-use tool:
+    mise use --global {{ tool }}

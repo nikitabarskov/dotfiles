@@ -5,6 +5,7 @@ crane = "latest"
 just = "latest"
 opencode = "latest"
 rtk = "latest"
+yq = "latest"
 
 [settings]
 lockfile = true
