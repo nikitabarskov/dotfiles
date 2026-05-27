@@ -1,0 +1,13 @@
+mise-clean:
+    mise prune --yes && \
+    mise cache clean && \
+    mise cache prune
+
+mise-install:
+    mise install
+
+mise-upgrade:
+    mise upgrade --bump
+
+mise-lock:
+    mise lock --global
