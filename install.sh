@@ -27,6 +27,8 @@ ln -fsv "${dir}/.config/gh" "${XDG_CONFIG_HOME}/gh"
 ln -fsv "${dir}/.profile" "${HOME}/.profile"
 [ -e "${XDG_CONFIG_HOME}/helix" ] && rm -rf "${XDG_CONFIG_HOME}/helix"
 ln -fsv "${dir}/.config/helix" "${XDG_CONFIG_HOME}/helix"
+[ -e "${XDG_CONFIG_HOME}/mise" ] && rm -rf "${XDG_CONFIG_HOME}/mise"
+ln -fsv "${dir}/.config/mise" "${XDG_CONFIG_HOME}/mise"
 
 if [[ $OSTYPE == "linux-gnu"* ]]; then
     echo "Configure HiDPI on Linux"
