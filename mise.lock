@@ -48,6 +48,10 @@ url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-x86_64
 checksum = "sha256:61e3f1b8a545ff064b091eab4b6e14f8cc743ff15549be293b1e92f5b1467002"
 url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-aarch64-apple-darwin.tar.gz"
 
+[[tools.oxfmt]]
+version = "0.51.0"
+backend = "npm:oxfmt"
+
 [[tools.rtk]]
 version = "0.42.0"
 backend = "aqua:rtk-ai/rtk"

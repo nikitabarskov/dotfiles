@@ -33,6 +33,15 @@
 					"allowTrailingCommas": true
 				}
 			}
+		},
+		{
+			"includes": ["**/*.jsonc"],
+			"json": {
+				"parser": {
+					"allowComments": true,
+					"allowTrailingCommas": true
+				}
+			}
 		}
 	],
 	"vcs": {

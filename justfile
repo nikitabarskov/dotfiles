@@ -1,5 +1,5 @@
 fix:
-    mise fmt
+    oxfmt --write .
     biome check --unsafe --write
 
 upgrade target="":

@@ -1,5 +1,6 @@
 [tools]
 biome = "latest"
+oxfmt = "latest"
 claude = "latest"
 codex = "latest"
 just = "latest"

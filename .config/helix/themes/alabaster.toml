@@ -1,27 +1,27 @@
 # https://raw.githubusercontent.com/beebeeep/helix-alabaster/refs/heads/main/alabaster.toml
 # Author: Danila Migalin <me@miga.me.uk>
 
-"ui.background" = {bg="bg"}
+"ui.background" = { bg = "bg" }
 "ui.text" = "fg"
-"ui.text.focus" = {bg="selected"}
-"ui.linenr" = {fg="fg_light"}
-"ui.linenr.selected" = {bg="bg", fg="fg"}
-"ui.selection" = {bg="selected"}
-"ui.cursorline" = {bg="bg_ui"}
-"ui.statusline" = {fg="status_bar_fg", bg="status_bar_bg"}
-"ui.statusline.inactive" = {fg="inact_status_bar_fg", bg="inact_status_bar_bg"}
+"ui.text.focus" = { bg = "selected" }
+"ui.linenr" = { fg = "fg_light" }
+"ui.linenr.selected" = { bg = "bg", fg = "fg" }
+"ui.selection" = { bg = "selected" }
+"ui.cursorline" = { bg = "bg_ui" }
+"ui.statusline" = { fg = "status_bar_fg", bg = "status_bar_bg" }
+"ui.statusline.inactive" = { fg = "inact_status_bar_fg", bg = "inact_status_bar_bg" }
 "ui.virtual" = "indent"
 "ui.virtual.ruler" = { bg = "bg_ui" }
-"ui.virtual.jump-label" = {fg = "fg", bg = "orange", modifiers = ["bold"]}
-"ui.cursor.match" = {bg="bg_darker"}
-"ui.cursor" = {bg="cursor", fg="white"}
-"ui.debug" = {fg="orange"}
-"ui.highlight.frameline" = {bg="#da8581"}
-"ui.help" = {fg="fg", bg="bg"}
-"ui.popup" = {fg="fg", bg="bg_ui"}
-"ui.menu" = {fg="fg", bg="bg_menu"}
-"ui.menu.selected" = {bg="selected"}
-"ui.window" = {bg="bg_ui"}
+"ui.virtual.jump-label" = { fg = "fg", bg = "orange", modifiers = ["bold"] }
+"ui.cursor.match" = { bg = "bg_darker" }
+"ui.cursor" = { bg = "cursor", fg = "white" }
+"ui.debug" = { fg = "orange" }
+"ui.highlight.frameline" = { bg = "#da8581" }
+"ui.help" = { fg = "fg", bg = "bg" }
+"ui.popup" = { fg = "fg", bg = "bg_ui" }
+"ui.menu" = { fg = "fg", bg = "bg_menu" }
+"ui.menu.selected" = { bg = "selected" }
+"ui.window" = { bg = "bg_ui" }
 "ui.bufferline" = { fg = "fg", bg = "bg" }
 "ui.bufferline.active" = { fg = "fg", bg = "bg" }
 
@@ -32,18 +32,19 @@
 "punctuation" = "punctuation"
 
 
-"error" = {fg="red", bg = "bg_error"}
-"warning" = {fg="orange"}
-"hint" = {fg="gray", bg = "bg_hint" }
-"diagnostic.error" = {fg = "red", bg = "bg_error", underline = {style = "curl"}, modifiers=[]}
-"diagnostic.warning" = {bg = "orange", fg="fg", modifiers=["bold"]}
-"diagnostic.hint" = {fg = "gray", modifiers=["bold"]}
+"error" = { fg = "red", bg = "bg_error" }
+"warning" = { fg = "orange" }
+"hint" = { fg = "gray", bg = "bg_hint" }
+"diagnostic.error" = { fg = "red", bg = "bg_error", underline = { style = "curl" }, modifiers = [
+] }
+"diagnostic.warning" = { bg = "orange", fg = "fg", modifiers = ["bold"] }
+"diagnostic.hint" = { fg = "gray", modifiers = ["bold"] }
 "diagnostic.unnecessary" = { modifiers = ["dim"] }
 "diagnostic.deprecated" = { modifiers = ["crossed_out"] }
 
-"diff.plus" = {fg = "green"}
-"diff.delta" = {fg = "bg_ui"}
-"diff.minus" = {fg = "red"}
+"diff.plus" = { fg = "green" }
+"diff.delta" = { fg = "bg_ui" }
+"diff.minus" = { fg = "red" }
 
 [palette]
 white = "#ffffff"

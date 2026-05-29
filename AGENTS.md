@@ -20,6 +20,7 @@ Biome handles JSON files. Indent style is **tabs**. Run `just fix` before commit
 ## Platform branching
 
 `install.sh` branches on `$OSTYPE`:
+
 - **macOS**: links `darwin.Brewfile`, `aerospace.toml`; creates 1Password SSH sign symlink at `/opt/1Password/op-ssh-sign`
 - **Linux**: links `linux.Brewfile`, `i3/config`, GTK/HiDPI settings, `xprofile`/`Xresources`
 
@@ -28,6 +29,7 @@ When adding a new symlink, check whether it should be platform-conditional.
 ## Global agent instructions
 
 `.config/agents/AGENTS.md` is the single source of truth for global coding preferences, principles, and shared tool instructions (CodeGraph, RTK). `install.sh` symlinks it to:
+
 - `~/.claude/CLAUDE.md`
 - `~/.config/opencode/AGENTS.md`
 - `~/.codex/AGENTS.md`
