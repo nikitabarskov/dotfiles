@@ -34,6 +34,8 @@ ln -fsv "${dir}/.config/just" "${XDG_CONFIG_HOME}/just"
 
 # AI agent global instructions (shared across Claude Code, OpenCode, Codex)
 mkdir -p "${HOME}/.claude" "${XDG_CONFIG_HOME}/opencode" "${HOME}/.codex"
+[ -e "${HOME}/.agents" ] && rm -rf "${HOME}/.agents"
+ln -fsv "${dir}/.agents" "${HOME}/.agents"
 ln -fsv "${dir}/.config/agents/AGENTS.md" "${HOME}/.claude/CLAUDE.md"
 ln -fsv "${dir}/.config/agents/AGENTS.md" "${XDG_CONFIG_HOME}/opencode/AGENTS.md"
 ln -fsv "${dir}/.config/agents/AGENTS.md" "${HOME}/.codex/AGENTS.md"
