@@ -1,5 +1,6 @@
 [tools]
 oxfmt = "latest"
+shellcheck = "latest"
 claude = "latest"
 codex = "latest"
 just = "latest"

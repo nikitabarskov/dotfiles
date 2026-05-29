@@ -4,7 +4,7 @@ brew-clean() {
     brew bundle cleanup --force --global && \
     brew cleanup --prune=all --scrub && \
     du -sh "$(brew --cache)"/* && \
-    rm -vrf "$(brew --cache)"/*
+    rm -vrf "$(brew --cache)/."
 }
 
 brew-add() {
@@ -44,7 +44,8 @@ macos-u() {
 
 macos-clt() {
     touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-    local clt_label=$(softwareupdate --list 2>/dev/null | grep "Command Line Tools" | grep "Label:" | awk -F'Label: ' '{print $2}' | head -n 1)
+    local clt_label
+    clt_label=$(softwareupdate --list 2>/dev/null | grep "Command Line Tools" | grep "Label:" | awk -F'Label: ' '{print $2}' | head -n 1)
     if [[ -n "$clt_label" ]]; then
         echo "Installing $clt_label..."
         sudo softwareupdate --install --agree-to-license --verbose --force "$clt_label"
@@ -53,7 +54,8 @@ macos-clt() {
 }
 
 nb() {
-    local date=$(date +%Y%m%dT%H%M%S)
+    local date
+    date=$(date +%Y%m%dT%H%M%S)
     echo "nikita.barskov-$date-$1"
 }
 
