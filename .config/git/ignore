@@ -132,4 +132,5 @@ misc-ignore
 .claude
 
 # AI Assitance ignores
-.codegraph # Ignore a folder for https://github.com/colbymchenry/codegraph
+# Ignore a folder for https://github.com/colbymchenry/codegraph
+.codegraph
