@@ -1,6 +1,8 @@
 fix:
     oxfmt --write .
-    biome check --unsafe --write
+
+validate:
+    oxfmt --check .
 
 upgrade target="":
     mise upgrade --bump {{ target }}
