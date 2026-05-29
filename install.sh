@@ -32,6 +32,16 @@ ln -fsv "${dir}/.config/mise" "${XDG_CONFIG_HOME}/mise"
 [ -e "${XDG_CONFIG_HOME}/just" ] && rm -rf "${XDG_CONFIG_HOME}/just"
 ln -fsv "${dir}/.config/just" "${XDG_CONFIG_HOME}/just"
 
+# AI agent global instructions (shared across Claude Code, OpenCode, Codex)
+mkdir -p "${HOME}/.claude" "${XDG_CONFIG_HOME}/opencode" "${HOME}/.codex"
+ln -fsv "${dir}/.config/agents/AGENTS.md" "${HOME}/.claude/CLAUDE.md"
+ln -fsv "${dir}/.config/agents/AGENTS.md" "${XDG_CONFIG_HOME}/opencode/AGENTS.md"
+ln -fsv "${dir}/.config/agents/AGENTS.md" "${HOME}/.codex/AGENTS.md"
+# AI agent tool configs
+ln -fsv "${dir}/.config/.claude/settings.json" "${HOME}/.claude/settings.json"
+ln -fsv "${dir}/.config/.opencode/opencode.jsonc" "${XDG_CONFIG_HOME}/opencode/opencode.jsonc"
+ln -fsv "${dir}/.config/.codex/config.toml" "${HOME}/.codex/config.toml"
+
 if [[ $OSTYPE == "linux-gnu"* ]]; then
     echo "Configure HiDPI on Linux"
     ln -fsv "$(pwd)/.xprofile" "${HOME}/.xprofile"

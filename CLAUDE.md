@@ -180,3 +180,7 @@ rtk init --global       # Add RTK to ~/.claude/CLAUDE.md
 
 Overall average: **60-90% token reduction** on common development operations.
 <!-- /rtk-instructions -->
+
+## Global Agent Preferences
+
+Global coding preferences, principles, and shared tool instructions (CodeGraph) are maintained in `.config/agents/AGENTS.md` and symlinked to `~/.claude/CLAUDE.md`, `~/.config/opencode/AGENTS.md`, and `~/.codex/AGENTS.md` by `install.sh`.

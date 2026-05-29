@@ -130,3 +130,6 @@ misc-ignore
 .zed
 *.diff
 .claude
+
+# AI Assitance ignores
+.codegraph # Ignore a folder for https://github.com/colbymchenry/codegraph

@@ -1,6 +1,7 @@
 [tools]
 claude = "latest"
 codex = "latest"
+crane = "latest"
 just = "latest"
 opencode = "latest"
 rtk = "latest"
