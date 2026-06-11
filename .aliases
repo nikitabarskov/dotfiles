@@ -75,3 +75,5 @@ avs() {
 avpr() {
     av pr --draft
 }
+
+alias jg='just --global-justfile'
