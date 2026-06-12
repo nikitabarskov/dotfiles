@@ -14,3 +14,6 @@ upgrade target="":
 
 lock:
     mise lock --platform linux-x64 --platform macos-arm64
+
+use target:
+    mise use {{ target }}
