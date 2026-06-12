@@ -8,7 +8,7 @@ brew "curl"
 brew "docker-credential-helper"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
-# Command-line fuzzy finder
+# Command-line fuzzy finder written in Go
 brew "fzf"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
@@ -16,8 +16,6 @@ brew "webp"
 brew "tesseract"
 # Distributed revision control system
 brew "git"
-# Data validation using Python type hints
-brew "pydantic"
 # GNU grep, egrep and fgrep
 brew "grep"
 # Generic library support script
@@ -32,12 +30,12 @@ brew "mise"
 brew "parallel"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Data validation using Python type hints
+brew "pydantic"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
-# Cross-shell prompt
+# Cross-shell prompt for astronauts
 brew "starship"
-# Aviator CLI
-brew "aviator-co/tap/av"
 # Free software distribution for the TeX typesetting system
 brew "texlive"
 # Cross-platform Rust rewrite of the GNU coreutils
@@ -48,6 +46,7 @@ brew "uutils-diffutils"
 brew "uutils-findutils"
 # UNIX shell (command interpreter)
 brew "zsh"
+brew "aviator-co/tap/av", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
@@ -83,3 +82,4 @@ cask "signal"
 cask "slack"
 # Messaging app with a focus on speed and security
 cask "telegram"
+npm "@colbymchenry/codegraph"
