@@ -23,6 +23,18 @@ url = "https://github.com/openai/codex/releases/download/rust-v0.137.0/codex-x86
 checksum = "sha256:def3a25d9ba3f2c8e7562b009eea421d1a2711ea66803203d3a3426001710158"
 url = "https://github.com/openai/codex/releases/download/rust-v0.137.0/codex-aarch64-apple-darwin.zst"
 
+[[tools.difftastic]]
+version = "0.69.0"
+backend = "aqua:Wilfred/difftastic"
+
+[tools.difftastic."platforms.linux-x64"]
+checksum = "sha256:c120a4315b33e89678d52b47ea0097cdb1fb57b4f3910b4d77cbeee5eecc8ced"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.69.0/difft-x86_64-unknown-linux-musl.tar.gz"
+
+[tools.difftastic."platforms.macos-arm64"]
+checksum = "sha256:c958b87885a5825a356c5899ac7ecdd752a7942084199f2be4bc0bf8c9de8e33"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.69.0/difft-aarch64-apple-darwin.tar.gz"
+
 [[tools.just]]
 version = "1.51.0"
 backend = "aqua:casey/just"
@@ -34,6 +46,18 @@ url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-x86_64
 [tools.just."platforms.macos-arm64"]
 checksum = "sha256:61e3f1b8a545ff064b091eab4b6e14f8cc743ff15549be293b1e92f5b1467002"
 url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-aarch64-apple-darwin.tar.gz"
+
+[[tools.node]]
+version = "26.3.0"
+backend = "core:node"
+
+[tools.node."platforms.linux-x64"]
+checksum = "sha256:a6e65cc653e40c1653b77742f9185dbce3ff1f99fa2746d211bddb53530ef206"
+url = "https://nodejs.org/dist/v26.3.0/node-v26.3.0-linux-x64.tar.gz"
+
+[tools.node."platforms.macos-arm64"]
+checksum = "sha256:77ef7f7a15aa757c2ca19d63cf41c8d9eb3b18590ebc6883871310787d8c6b6c"
+url = "https://nodejs.org/dist/v26.3.0/node-v26.3.0-darwin-arm64.tar.gz"
 
 [[tools.oxfmt]]
 version = "0.53.0"

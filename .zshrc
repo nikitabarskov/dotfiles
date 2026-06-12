@@ -1,3 +1,16 @@
+# Initialize package and tool paths before loading shell plugins.
+export PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+fi
+
 # oh-my-zsh config
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
@@ -8,8 +21,6 @@ plugins=(
     1password
     brew
     docker
-    fzf
-    gh
     git
 )
 source $ZSH/oh-my-zsh.sh
@@ -30,15 +41,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     export XCURSOR_SIZE=32
     alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
-fi
-
-# macOS homebrew is in /opt/homebrew or /usr/local, Linux is in /home/linuxbrew/.linuxbrew
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    export PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    export PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
 fi
 
 # Don't require escaping globbing characters in zsh.
@@ -96,10 +98,6 @@ if command -v starship >/dev/null 2>&1; then
     eval "$(starship init zsh)"
 fi
 
-if command -v mise >/dev/null 2>&1; then
-    eval "$(mise activate zsh)"
-fi
-
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # Docker CLI completions
@@ -108,13 +106,6 @@ if [[ "$OSTYPE" == "darwin"* ]] && [ -d "$HOME/.docker/completions" ]; then
     export PATH="${HOME}/.orbstack/bin:$PATH"
 fi
 
-# AV autocompletion
-if command -v av >/dev/null 2>&1; then
-    source <(av completion zsh)
-fi
-
 # Initialize completion system
 autoload -Uz compinit
 compinit
-
-

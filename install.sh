@@ -12,6 +12,8 @@ ln -fsv "${dir}/.zshrc" "${HOME}/.zshrc"
 ln -fsv "${dir}/.gitconfig" "${HOME}/.gitconfig"
 [ -e "${XDG_CONFIG_HOME}/git" ] && rm -rf "${XDG_CONFIG_HOME}/git"
 ln -fsv "${dir}/.config/git" "${XDG_CONFIG_HOME}/git"
+mkdir -p "${HOME}/.local/bin"
+ln -fsv "${dir}/scripts/sem-diff-wrapper" "${HOME}/.local/bin/sem-diff-wrapper"
 
 mkdir -p "${XDG_CONFIG_HOME}/zed" && \
   ln -fsv "${dir}/.config/zed/settings.json" "${XDG_CONFIG_HOME}/zed/settings.json" && \

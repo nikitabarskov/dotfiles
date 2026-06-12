@@ -2,8 +2,27 @@
 	"$schema": "https://opencode.ai/config.json",
 	"mcp": {
 		"codegraph": {
-			"command": ["codegraph", "serve", "--mcp"],
+			"command": [
+				"mise",
+				"exec",
+				"npm:@colbymchenry/codegraph",
+				"--",
+				"codegraph",
+				"serve",
+				"--mcp",
+			],
 			"enabled": true,
+			"type": "local",
+		},
+		"sem": {
+			"command": [
+				"mise",
+				"exec",
+				"cargo:https://github.com/Ataraxy-Labs/sem",
+				"--",
+				"sem",
+				"mcp",
+			],
 			"type": "local",
 		},
 	},

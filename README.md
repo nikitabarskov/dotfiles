@@ -31,7 +31,9 @@ just lock         # regenerate mise.lock for linux-x64 and macos-arm64
 | `install.sh`               | Symlinks everything into `$HOME` and `~/.config/`                   |
 | `bootstrap.sh`             | One-time new-machine setup                                          |
 | `justfile`                 | Task runner                                                         |
+| `.miserc.toml`             | Project-level early mise settings                                   |
 | `mise.toml`                | Tool versions (biome, claude, codex, rtk, just)                     |
+| `.config/mise/`            | Global mise tools, lockfile, and early settings                     |
 | `.config/agents/AGENTS.md` | Global AI agent instructions (symlinked to Claude, OpenCode, Codex) |
 | `.config/git/`             | Per-context git configs (nikitabarskov, hirn.studio, deepinsight)   |
 | `.config/homebrew/`        | `darwin.Brewfile` and `linux.Brewfile`                              |

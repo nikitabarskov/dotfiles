@@ -3,7 +3,9 @@ oxfmt = "latest"
 shellcheck = "latest"
 claude = "latest"
 codex = "latest"
+difftastic = "latest"
 just = "latest"
+node = "latest"
 rtk = "latest"
 
 [settings]

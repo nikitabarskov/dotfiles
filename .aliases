@@ -1,10 +1,18 @@
 brew-clean() {
     setopt localoptions rmstarsilent
+    local cache
+    local -a cache_entries
+
+    cache=$(brew --cache)
     brew autoremove && \
     brew bundle cleanup --force --global && \
-    brew cleanup --prune=all --scrub && \
-    du -sh "$(brew --cache)"/* && \
-    rm -vrf "$(brew --cache)/."
+    brew cleanup --prune=all --scrub || return
+
+    cache_entries=("$cache"/*(DN))
+    if (( ${#cache_entries} )); then
+        du -sh -- "${cache_entries[@]}" && \
+        rm -vrf -- "${cache_entries[@]}"
+    fi
 }
 
 brew-add() {
@@ -77,3 +85,4 @@ avpr() {
 }
 
 alias jg='just --global-justfile'
+alias sem="$(cd "$HOME" && mise which sem)"
