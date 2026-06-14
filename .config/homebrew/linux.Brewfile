@@ -11,3 +11,5 @@ brew "zsh-history-substring-search"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
 cask "font-sf-mono-nerd-font-ligaturized"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"

@@ -1,6 +1,5 @@
 [tools]
 "github:aviator-co/av" = "latest"
-btop = "latest"
 claude = "latest"
 codex = "latest"
 crane = "latest"
