@@ -1,10 +1,21 @@
 [mcp_servers.codegraph]
 command = "mise"
-args = ["exec", "npm:@colbymchenry/codegraph", "--", "codegraph", "serve", "--mcp"]
+args = [
+	"exec",
+	"npm:@colbymchenry/codegraph",
+	"--",
+	"codegraph",
+	"serve",
+	"--mcp",
+]
 
 [mcp_servers.sem]
 command = "mise"
 args = ["exec", "cargo:https://github.com/Ataraxy-Labs/sem", "--", "sem", "mcp"]
+
+[mcp_servers.inspect]
+command = "mise"
+args = ["exec", "inspect-mcp", "--", "inspect-mcp"]
 
 [projects."/Users/nikitabarskov/hirn.studio/sowai"]
 trust_level = "trusted"

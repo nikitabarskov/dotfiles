@@ -6,6 +6,8 @@ crane = "latest"
 difftastic = "latest"
 gh = "latest"
 helix = "latest"
+inspect = { version = "latest", crate = "inspect-cli" }
+inspect-mcp = { version = "latest", crate = "inspect-mcp" }
 just = "latest"
 lazydocker = "latest"
 lazygit = "latest"
@@ -29,3 +31,7 @@ yq = "latest"
 [settings]
 lockfile = true
 minimum_release_age = "7d"
+
+[tool_alias]
+inspect = "cargo:https://github.com/Ataraxy-Labs/inspect"
+inspect-mcp = "cargo:https://github.com/Ataraxy-Labs/inspect"

@@ -25,5 +25,9 @@
 			],
 			"type": "local",
 		},
+		"inspect": {
+			"command": ["mise", "exec", "inspect-mcp", "--", "inspect-mcp"],
+			"type": "local",
+		},
 	},
 }

@@ -255,6 +255,20 @@ url = "https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.
 checksum = "sha256:5c8325ced8bacd8418d62706f669e96d9c3578a9237526e34d546900cbc049b6"
 url = "https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.07.1-x86_64-windows.zip"
 
+[[tools.inspect]]
+version = "HEAD"
+backend = "cargo:https://github.com/Ataraxy-Labs/inspect"
+
+[tools.inspect.options]
+crate = "inspect-cli"
+
+[[tools.inspect-mcp]]
+version = "HEAD"
+backend = "cargo:https://github.com/Ataraxy-Labs/inspect"
+
+[tools.inspect-mcp.options]
+crate = "inspect-mcp"
+
 [[tools.just]]
 version = "1.51.0"
 backend = "aqua:casey/just"
@@ -586,14 +600,6 @@ url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz"
 [tools.ruby."platforms.macos-x64"]
 checksum = "sha256:7d6149079a63f8ae1d326c9fa65c6019ba2dc3155eae7b39159817911c88958e"
 url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz"
-
-[[tools.ruby]]
-version = "4.0.5"
-backend = "core:ruby"
-
-[tools.ruby."platforms.windows-x64"]
-checksum = "sha256:74e31613fc71e6e23431dfc4d8b6ec2818a4dc1fd16e0983b074144c16719c8b"
-url = "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-4.0.5-1/rubyinstaller-4.0.5-1-x64.7z"
 
 [[tools.rust]]
 version = "1.96.0"
