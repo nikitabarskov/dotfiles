@@ -145,6 +145,38 @@ url = "https://github.com/Wilfred/difftastic/releases/download/0.69.0/difft-x86_
 checksum = "sha256:a5adbf57eb1b923b62d1c3596c4f827df143f5b52cfba48bb9e83f41dea90c02"
 url = "https://github.com/Wilfred/difftastic/releases/download/0.69.0/difft-x86_64-pc-windows-msvc.zip"
 
+[[tools.fzf]]
+version = "0.73.1"
+backend = "aqua:junegunn/fzf"
+
+[tools.fzf."platforms.linux-arm64"]
+checksum = "sha256:a408b0b6c08d486307b8f1554f967b8b50ee1b3ea8b4035e3161bab31fdfc28d"
+url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-linux_arm64.tar.gz"
+
+[tools.fzf."platforms.linux-arm64-musl"]
+checksum = "sha256:a408b0b6c08d486307b8f1554f967b8b50ee1b3ea8b4035e3161bab31fdfc28d"
+url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-linux_arm64.tar.gz"
+
+[tools.fzf."platforms.linux-x64"]
+checksum = "sha256:f3252c2c366bc1700d3c85781ec8c9695998927ac127870eb049ceea2d540f8a"
+url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-linux_amd64.tar.gz"
+
+[tools.fzf."platforms.linux-x64-musl"]
+checksum = "sha256:f3252c2c366bc1700d3c85781ec8c9695998927ac127870eb049ceea2d540f8a"
+url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-linux_amd64.tar.gz"
+
+[tools.fzf."platforms.macos-arm64"]
+checksum = "sha256:d27fd68c04fb9b42f7c73a3f7d38069a74d308e40174f64a072c747213e97286"
+url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-darwin_arm64.tar.gz"
+
+[tools.fzf."platforms.macos-x64"]
+checksum = "sha256:75bbf15248d1cf0a13eafc75b8a55f5075c437e2ba6d76899afc53f4f3e1b38c"
+url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-darwin_amd64.tar.gz"
+
+[tools.fzf."platforms.windows-x64"]
+checksum = "sha256:521a974dc32e93404265e55bffaf71a59e05e80abdf8ca4afb21a6030dc76f5f"
+url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-windows_amd64.zip"
+
 [[tools.gh]]
 version = "2.93.0"
 backend = "aqua:cli/cli"
@@ -183,6 +215,45 @@ provenance = "github-attestations"
 checksum = "sha256:77aa01ed7317295ad550de0ad04f3f276b1ef0e9272e3d002ac28dd99853d211"
 url = "https://github.com/cli/cli/releases/download/v2.93.0/gh_2.93.0_windows_amd64.zip"
 provenance = "github-attestations"
+
+[[tools."github:aviator-co/av"]]
+version = "0.1.40"
+backend = "github:aviator-co/av"
+
+[tools."github:aviator-co/av"."platforms.linux-arm64"]
+checksum = "sha256:463b4136d2dd8cb362a49737a083792a63884c65fab3350666e09faa879d8d02"
+url = "https://github.com/aviator-co/av/releases/download/v0.1.40/av_0.1.40_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/aviator-co/av/releases/assets/442209072"
+
+[tools."github:aviator-co/av"."platforms.linux-arm64-musl"]
+checksum = "sha256:463b4136d2dd8cb362a49737a083792a63884c65fab3350666e09faa879d8d02"
+url = "https://github.com/aviator-co/av/releases/download/v0.1.40/av_0.1.40_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/aviator-co/av/releases/assets/442209072"
+
+[tools."github:aviator-co/av"."platforms.linux-x64"]
+checksum = "sha256:8ed169872c5d41d4ccceaab08c2ab9d4bc87e38d7ee426524710e8ea880f46c3"
+url = "https://github.com/aviator-co/av/releases/download/v0.1.40/av_0.1.40_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/aviator-co/av/releases/assets/442209071"
+
+[tools."github:aviator-co/av"."platforms.linux-x64-musl"]
+checksum = "sha256:8ed169872c5d41d4ccceaab08c2ab9d4bc87e38d7ee426524710e8ea880f46c3"
+url = "https://github.com/aviator-co/av/releases/download/v0.1.40/av_0.1.40_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/aviator-co/av/releases/assets/442209071"
+
+[tools."github:aviator-co/av"."platforms.macos-arm64"]
+checksum = "sha256:3751fd6a5e8df3f2e35c3cf8e29281ae1ca4b6b01a8d4c31aec5b49038af6302"
+url = "https://github.com/aviator-co/av/releases/download/v0.1.40/av_0.1.40_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/aviator-co/av/releases/assets/442209088"
+
+[tools."github:aviator-co/av"."platforms.macos-x64"]
+checksum = "sha256:6171128633389576958ebb5a0ee0e658256b57066d30eab950ba5ce2b9dd1403"
+url = "https://github.com/aviator-co/av/releases/download/v0.1.40/av_0.1.40_darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/aviator-co/av/releases/assets/442209091"
+
+[tools."github:aviator-co/av"."platforms.windows-x64"]
+checksum = "sha256:adfcd06388b608a9fcbda4a6c8318a9035c0b8dc8fc23ca310c2a5cf33271890"
+url = "https://github.com/aviator-co/av/releases/download/v0.1.40/av_0.1.40_windows_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/aviator-co/av/releases/assets/442209076"
 
 [[tools."github:jorgerojas26/lazysql"]]
 version = "0.5.3"
@@ -508,10 +579,6 @@ url = "https://github.com/jgm/pandoc/releases/download/3.10/pandoc-3.10-windows-
 url_api = "https://api.github.com/repos/jgm/pandoc/releases/assets/438414170"
 provenance = "github-attestations"
 
-[[tools."pipx:glances"]]
-version = "4.5.4"
-backend = "pipx:glances"
-
 [[tools.ripgrep]]
 version = "15.1.0"
 backend = "aqua:BurntSushi/ripgrep"
@@ -604,6 +671,38 @@ url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz"
 [[tools.rust]]
 version = "1.96.0"
 backend = "core:rust"
+
+[[tools.starship]]
+version = "1.25.1"
+backend = "aqua:starship/starship"
+
+[tools.starship."platforms.linux-arm64"]
+checksum = "sha256:01517aab398959ea9ea73bdb4f032ea4dbb51dff5c8e5eb05b4a1b9b7ab872b8"
+url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-aarch64-unknown-linux-musl.tar.gz"
+
+[tools.starship."platforms.linux-arm64-musl"]
+checksum = "sha256:01517aab398959ea9ea73bdb4f032ea4dbb51dff5c8e5eb05b4a1b9b7ab872b8"
+url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-aarch64-unknown-linux-musl.tar.gz"
+
+[tools.starship."platforms.linux-x64"]
+checksum = "sha256:c6ddd3ecb9c0071a2ad38d98cee748160066b7c4f197421268058f4a5d6f8504"
+url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-unknown-linux-musl.tar.gz"
+
+[tools.starship."platforms.linux-x64-musl"]
+checksum = "sha256:c6ddd3ecb9c0071a2ad38d98cee748160066b7c4f197421268058f4a5d6f8504"
+url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-unknown-linux-musl.tar.gz"
+
+[tools.starship."platforms.macos-arm64"]
+checksum = "sha256:1062a2363489b9335529b83204472f02633c08fc3609f1b325be5eba36feb631"
+url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-aarch64-apple-darwin.tar.gz"
+
+[tools.starship."platforms.macos-x64"]
+checksum = "sha256:f86fbe7a3b9f262bcf34ca61e9e996243da511c5500dcd81a1e4daa542869276"
+url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-apple-darwin.tar.gz"
+
+[tools.starship."platforms.windows-x64"]
+checksum = "sha256:a07cf3e428afab09324e510fb786041ebcc491a68b1ca6fba044c5a461f9b017"
+url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-pc-windows-msvc.zip"
 
 [[tools.tlrc]]
 version = "1.13.1"
