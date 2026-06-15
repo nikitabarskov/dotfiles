@@ -82,6 +82,6 @@ cask "signal"
 cask "slack"
 # Messaging app with a focus on speed and security
 cask "telegram"
-npm "@colbymchenry/codegraph"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+cask "notion"
