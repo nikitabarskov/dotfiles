@@ -16,3 +16,6 @@ mise-lock:
 
 mise-use tool:
     mise use {{ mise_args }} --global {{ tool }}
+
+fix:
+    mise fmt --cd ${HOME}/.config/mise

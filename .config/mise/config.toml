@@ -7,8 +7,6 @@ difftastic = "latest"
 fzf = "latest"
 gh = "latest"
 helix = "latest"
-inspect = { version = "latest", crate = "inspect-cli" }
-inspect-mcp = { version = "latest", crate = "inspect-mcp" }
 just = "latest"
 lazydocker = "latest"
 lazygit = "latest"
