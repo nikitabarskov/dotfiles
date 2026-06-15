@@ -33,6 +33,8 @@ ln -fsv "${dir}/.config/helix" "${XDG_CONFIG_HOME}/helix"
 ln -fsv "${dir}/.config/mise" "${XDG_CONFIG_HOME}/mise"
 [ -e "${XDG_CONFIG_HOME}/just" ] && rm -rf "${XDG_CONFIG_HOME}/just"
 ln -fsv "${dir}/.config/just" "${XDG_CONFIG_HOME}/just"
+mkdir -p "${HOME}/.cargo"
+ln -fsv "${dir}/.config/cargo/config.toml" "${HOME}/.cargo/config.toml"
 
 # AI agent global instructions (shared across Claude Code, OpenCode, Codex)
 mkdir -p "${HOME}/.claude" "${XDG_CONFIG_HOME}/opencode" "${HOME}/.codex"

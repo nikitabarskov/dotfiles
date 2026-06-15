@@ -1,16 +1,18 @@
+mise_args := ""
+
 mise-clean:
-    mise prune --yes && \
-    mise cache clean && \
-    mise cache prune
+    mise prune {{ mise_args }} --yes && \
+    mise cache {{ mise_args }} clean && \
+    mise cache {{ mise_args }} prune
 
 mise-install:
-    mise install
+    mise install {{ mise_args }}
 
 mise-upgrade:
-    mise upgrade --bump
+    mise upgrade {{ mise_args }} --bump
 
 mise-lock:
-    mise lock --global
+    mise lock {{ mise_args }} --global
 
 mise-use tool:
-    mise use --global {{ tool }}
+    mise use {{ mise_args }} --global {{ tool }}

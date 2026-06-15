@@ -15,6 +15,7 @@ lazygit = "latest"
 "github:jorgerojas26/lazysql" = "latest"
 mkcert = "latest"
 node = "latest"
+"cargo:https://github.com/Ataraxy-Labs/inspect" = { version = "latest", crate = "inspect-cli" }
 "cargo:https://github.com/Ataraxy-Labs/sem" = { version = "latest", crate = "sem-cli" }
 "npm:@colbymchenry/codegraph" = "latest"
 "npm:@github/copilot" = "latest"
@@ -32,7 +33,3 @@ yq = "latest"
 [settings]
 lockfile = true
 minimum_release_age = "7d"
-
-[tool_alias]
-inspect = "cargo:https://github.com/Ataraxy-Labs/inspect"
-inspect-mcp = "cargo:https://github.com/Ataraxy-Labs/inspect"

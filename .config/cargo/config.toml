@@ -1,0 +1,5 @@
+[net]
+# Use the system git binary instead of libgit2.
+# This ensures Cargo respects ~/.gitconfig URL rewrites (e.g. https -> ssh)
+# and the SSH agent/keys configured for the system.
+git-fetch-with-cli = true
