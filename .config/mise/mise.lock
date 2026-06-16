@@ -19,58 +19,58 @@ version = "0.38.0"
 backend = "cargo:sqruff"
 
 [[tools.claude]]
-version = "2.1.165"
+version = "2.1.170"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.170/linux-arm64/claude"
 
 [tools.claude."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/linux-arm64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.170/linux-arm64-musl/claude"
 
 [tools.claude."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.170/linux-x64/claude"
 
 [tools.claude."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.170/linux-x64-musl/claude"
 
 [tools.claude."platforms.macos-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/darwin-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.170/darwin-arm64/claude"
 
 [tools.claude."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.170/darwin-x64/claude"
 
 [[tools.codex]]
-version = "0.137.0"
+version = "0.138.0"
 backend = "aqua:openai/codex"
 
 [tools.codex."platforms.linux-arm64"]
-checksum = "sha256:2f35abf00a21ba207a3e39a229469114013def73f684ba03b5af8f49dc59a5a3"
-url = "https://github.com/openai/codex/releases/download/rust-v0.137.0/codex-aarch64-unknown-linux-musl.zst"
+checksum = "sha256:d67edac72f64e6a230def66863d63289b291549ddc2e3a6c31a85fbe797be91b"
+url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-aarch64-unknown-linux-musl.zst"
 
 [tools.codex."platforms.linux-arm64-musl"]
-checksum = "sha256:2f35abf00a21ba207a3e39a229469114013def73f684ba03b5af8f49dc59a5a3"
-url = "https://github.com/openai/codex/releases/download/rust-v0.137.0/codex-aarch64-unknown-linux-musl.zst"
+checksum = "sha256:d67edac72f64e6a230def66863d63289b291549ddc2e3a6c31a85fbe797be91b"
+url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-aarch64-unknown-linux-musl.zst"
 
 [tools.codex."platforms.linux-x64"]
-checksum = "sha256:7d27c176a986e6be37fe238cb364d59d1b0e991e2c246d828d14a123c6037cc3"
-url = "https://github.com/openai/codex/releases/download/rust-v0.137.0/codex-x86_64-unknown-linux-musl.zst"
+checksum = "sha256:9ce1e5754e28daa7084fcbf3ffb805824c5d675826e7a399bfb9f808e3f107a2"
+url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-x86_64-unknown-linux-musl.zst"
 
 [tools.codex."platforms.linux-x64-musl"]
-checksum = "sha256:7d27c176a986e6be37fe238cb364d59d1b0e991e2c246d828d14a123c6037cc3"
-url = "https://github.com/openai/codex/releases/download/rust-v0.137.0/codex-x86_64-unknown-linux-musl.zst"
+checksum = "sha256:9ce1e5754e28daa7084fcbf3ffb805824c5d675826e7a399bfb9f808e3f107a2"
+url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-x86_64-unknown-linux-musl.zst"
 
 [tools.codex."platforms.macos-arm64"]
-checksum = "sha256:def3a25d9ba3f2c8e7562b009eea421d1a2711ea66803203d3a3426001710158"
-url = "https://github.com/openai/codex/releases/download/rust-v0.137.0/codex-aarch64-apple-darwin.zst"
+checksum = "sha256:72fb66cc5d17cec494e0330fb93c381f4bec4950cf44e14c1ec24bfcd785f4d9"
+url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-aarch64-apple-darwin.zst"
 
 [tools.codex."platforms.macos-x64"]
-checksum = "sha256:91372895097a7c6c6e36671291bcac82706df90f25b6f1567e9b8cc64c2bebac"
-url = "https://github.com/openai/codex/releases/download/rust-v0.137.0/codex-x86_64-apple-darwin.zst"
+checksum = "sha256:07df47f823f2089ce349bb53955d61e96429f45f19f959f111666c39b35afc79"
+url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-x86_64-apple-darwin.zst"
 
 [tools.codex."platforms.windows-x64"]
-checksum = "sha256:327e93f43d039734353d2ba7feb8ecffd8a0f90c068c5370ac2ae4f80436aa7a"
-url = "https://github.com/openai/codex/releases/download/rust-v0.137.0/codex-x86_64-pc-windows-msvc.exe.zst"
+checksum = "sha256:5c50fcee6144cca17ca2a4ad0456e6d8f77751c159fbca8a63cf8cbcf24fe94b"
+url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-x86_64-pc-windows-msvc.exe.zst"
 
 [[tools.crane]]
 version = "0.21.6"
@@ -243,43 +243,43 @@ url = "https://github.com/aviator-co/av/releases/download/v0.1.40/av_0.1.40_wind
 url_api = "https://api.github.com/repos/aviator-co/av/releases/assets/442209076"
 
 [[tools."github:jorgerojas26/lazysql"]]
-version = "0.5.3"
+version = "0.5.4"
 backend = "github:jorgerojas26/lazysql"
 
 [tools."github:jorgerojas26/lazysql"."platforms.linux-arm64"]
-checksum = "sha256:4e6a2289355009205e16edeeb63a8b3716a178c9f8ad11dd82cbd89952ab39b2"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.3/lazysql_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/435525851"
+checksum = "sha256:cbb094d85cc44e6ee609a8c3e16c1bf32df0609a927ac2750b348aa181d57d78"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.4/lazysql_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/441868853"
 
 [tools."github:jorgerojas26/lazysql"."platforms.linux-arm64-musl"]
-checksum = "sha256:4e6a2289355009205e16edeeb63a8b3716a178c9f8ad11dd82cbd89952ab39b2"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.3/lazysql_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/435525851"
+checksum = "sha256:cbb094d85cc44e6ee609a8c3e16c1bf32df0609a927ac2750b348aa181d57d78"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.4/lazysql_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/441868853"
 
 [tools."github:jorgerojas26/lazysql"."platforms.linux-x64"]
-checksum = "sha256:4865ae00a7ef5ff0b37cbdbb1f3ec65795498939ac8f260d0823f3566718580d"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.3/lazysql_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/435525874"
+checksum = "sha256:0471e340e4038bae2c04bf36744d5d5c9864afa488f3bd28e975397cc64851a4"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.4/lazysql_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/441868854"
 
 [tools."github:jorgerojas26/lazysql"."platforms.linux-x64-musl"]
-checksum = "sha256:4865ae00a7ef5ff0b37cbdbb1f3ec65795498939ac8f260d0823f3566718580d"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.3/lazysql_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/435525874"
+checksum = "sha256:0471e340e4038bae2c04bf36744d5d5c9864afa488f3bd28e975397cc64851a4"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.4/lazysql_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/441868854"
 
 [tools."github:jorgerojas26/lazysql"."platforms.macos-arm64"]
-checksum = "sha256:790e5b02ca4b9a55828882a5a3ad464bda54561434a5562a86cf27db5238f025"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.3/lazysql_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/435525871"
+checksum = "sha256:11534f010f9699af04e99a915a7730f949a3fc4c0e6ffc3a085d6433f8e648c3"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.4/lazysql_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/441868820"
 
 [tools."github:jorgerojas26/lazysql"."platforms.macos-x64"]
-checksum = "sha256:5582643cf40feb16b0e3627c043b20db63badc14639f05e234d1dc0032c0cb1a"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.3/lazysql_Darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/435525850"
+checksum = "sha256:6a372c36804c0b861178cb5569197f5a873e74ae370188643cfb5b31f55d5de1"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.4/lazysql_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/441868825"
 
 [tools."github:jorgerojas26/lazysql"."platforms.windows-x64"]
-checksum = "sha256:cb4efd8a3b4bab03a1ffad729de182da92ae689436b75b113723b6f2efb8355c"
-url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.3/lazysql_Windows_x86_64.zip"
-url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/435525868"
+checksum = "sha256:963ef298ef08a34dbc606abb7fa6137145c19155df2ba33189958d437978c8e1"
+url = "https://github.com/jorgerojas26/lazysql/releases/download/v0.5.4/lazysql_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/jorgerojas26/lazysql/releases/assets/441868852"
 
 [[tools.helix]]
 version = "25.07.1"
@@ -313,51 +313,37 @@ url = "https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.
 checksum = "sha256:5c8325ced8bacd8418d62706f669e96d9c3578a9237526e34d546900cbc049b6"
 url = "https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.07.1-x86_64-windows.zip"
 
-[[tools.inspect]]
-version = "HEAD"
-backend = "cargo:https://github.com/Ataraxy-Labs/inspect"
-
-[tools.inspect.options]
-crate = "inspect-cli"
-
-[[tools.inspect-mcp]]
-version = "HEAD"
-backend = "cargo:https://github.com/Ataraxy-Labs/inspect"
-
-[tools.inspect-mcp.options]
-crate = "inspect-mcp"
-
 [[tools.just]]
-version = "1.51.0"
+version = "1.52.0"
 backend = "aqua:casey/just"
 
 [tools.just."platforms.linux-arm64"]
-checksum = "sha256:ed7ec466b77709198fd4afed253dba0270203ba5eb1c006bee2b0139090284f5"
-url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:41af45372c49c404ca7b9a318ae9de5564636e39c6520cc4d42bf678f3bfb1bc"
+url = "https://github.com/casey/just/releases/download/1.52.0/just-1.52.0-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.just."platforms.linux-arm64-musl"]
-checksum = "sha256:ed7ec466b77709198fd4afed253dba0270203ba5eb1c006bee2b0139090284f5"
-url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:41af45372c49c404ca7b9a318ae9de5564636e39c6520cc4d42bf678f3bfb1bc"
+url = "https://github.com/casey/just/releases/download/1.52.0/just-1.52.0-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.just."platforms.linux-x64"]
-checksum = "sha256:c8f085ca3e885723c341d06243fc291b5abfdc8bbe3b2c076b117de490387b59"
-url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:e0a712614574d45625332529c864754e26782422b7c7db931466180a618f092d"
+url = "https://github.com/casey/just/releases/download/1.52.0/just-1.52.0-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.just."platforms.linux-x64-musl"]
-checksum = "sha256:c8f085ca3e885723c341d06243fc291b5abfdc8bbe3b2c076b117de490387b59"
-url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:e0a712614574d45625332529c864754e26782422b7c7db931466180a618f092d"
+url = "https://github.com/casey/just/releases/download/1.52.0/just-1.52.0-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.just."platforms.macos-arm64"]
-checksum = "sha256:61e3f1b8a545ff064b091eab4b6e14f8cc743ff15549be293b1e92f5b1467002"
-url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:1538caf566c9d8dd99286a21c0e1224b89f6676b70c16a4bcbeb52dd21fc78f5"
+url = "https://github.com/casey/just/releases/download/1.52.0/just-1.52.0-aarch64-apple-darwin.tar.gz"
 
 [tools.just."platforms.macos-x64"]
-checksum = "sha256:d583e45f1f9fcdd26069ad2fe3bb9dea414756d8d0752eb9093974cb5c0246f0"
-url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:52e4b7dc45d5934e9bc3b8f1ad3fe78bb92d0df1bca477de0c5449c59ac7a562"
+url = "https://github.com/casey/just/releases/download/1.52.0/just-1.52.0-x86_64-apple-darwin.tar.gz"
 
 [tools.just."platforms.windows-x64"]
-checksum = "sha256:09d1138b6845e73f04bff5e26be3f57663bddca25e36fe6241d28a5aa310b64e"
-url = "https://github.com/casey/just/releases/download/1.51.0/just-1.51.0-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:ac53a7da91a33e344042dbec11e4bf1e1ec1d65ca4b695fe71398206d2a1630d"
+url = "https://github.com/casey/just/releases/download/1.52.0/just-1.52.0-x86_64-pc-windows-msvc.zip"
 
 [[tools.lazydocker]]
 version = "0.25.2"
@@ -485,40 +471,40 @@ version = "0.9.9"
 backend = "npm:@colbymchenry/codegraph"
 
 [[tools."npm:@github/copilot"]]
-version = "1.0.59"
+version = "1.0.60"
 backend = "npm:@github/copilot"
 
 [[tools.opencode]]
-version = "1.16.0"
+version = "1.16.2"
 backend = "aqua:anomalyco/opencode"
 
 [tools.opencode."platforms.linux-arm64"]
-checksum = "sha256:06ef602b9bc8a624fdc8e927673e7daa4cb70f1e57c5584023ca93631c4a476e"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.16.0/opencode-linux-arm64.tar.gz"
+checksum = "sha256:eb1d5876c70675cfda93c4a1c4385d727412fae73154f1f005d155626df5b559"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.16.2/opencode-linux-arm64.tar.gz"
 
 [tools.opencode."platforms.linux-arm64-musl"]
-checksum = "sha256:f65b57831ac1cf774df35edd2f313b0cd6c7c19256992118ecd0c86677d08353"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.16.0/opencode-linux-arm64-musl.tar.gz"
+checksum = "sha256:549d9e7ba9de70f6bdadb0bc199e4c7d57564b0612311a985fc7dffae3b65fe5"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.16.2/opencode-linux-arm64-musl.tar.gz"
 
 [tools.opencode."platforms.linux-x64"]
-checksum = "sha256:a741c43e737b2033f5e7ee151b162341e441034d6a64b172272a3f3a3729e87d"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.16.0/opencode-linux-x64.tar.gz"
+checksum = "sha256:06a79c5bb7f8d01716b2440712cf67facd36db59188809aeb232374b206bd429"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.16.2/opencode-linux-x64.tar.gz"
 
 [tools.opencode."platforms.linux-x64-musl"]
-checksum = "sha256:30bc5b2bfbc7c7844e1ea47aa36c532eac5f4dab1efb988d18e406cd72a3c11e"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.16.0/opencode-linux-x64-musl.tar.gz"
+checksum = "sha256:100a09e77c71d319dfaff781ac06dae159812c03b084efc2ae7b7e4eed49dfe7"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.16.2/opencode-linux-x64-musl.tar.gz"
 
 [tools.opencode."platforms.macos-arm64"]
-checksum = "sha256:37bc6bc9b54de7dfcaef40f19df822276ddf142af38a3a73225eecb5767e9f26"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.16.0/opencode-darwin-arm64.zip"
+checksum = "sha256:01585ff4d15820bd3a878e4bc7cacfb1ea75e236d1fed8c2f5f3595edc8b7ab5"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.16.2/opencode-darwin-arm64.zip"
 
 [tools.opencode."platforms.macos-x64"]
-checksum = "sha256:ff53599645bad14104e083e44b6dd48345c445ac06be2e79a8fc0acd814feea9"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.16.0/opencode-darwin-x64.zip"
+checksum = "sha256:1844bb6cbba789d7bb4e6b417feff73407f864ce68d6fb6d73cb2860870244fc"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.16.2/opencode-darwin-x64.zip"
 
 [tools.opencode."platforms.windows-x64"]
-checksum = "sha256:400b1f2f450cd6c60bed0903e9a7a128e23b305282d618d14ff4a10d969a707b"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.16.0/opencode-windows-x64.zip"
+checksum = "sha256:68f276940190e64a0bbee254789e66e0b397a2685700327412096eca1f66308e"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.16.2/opencode-windows-x64.zip"
 
 [[tools.pandoc]]
 version = "3.10"
@@ -595,36 +581,41 @@ checksum = "sha256:124510b94b6baa3380d051fdf4650eaa80a302c876d611e9dba0b2e18d874
 url = "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-pc-windows-msvc.zip"
 
 [[tools.rtk]]
-version = "0.42.1"
+version = "0.42.3"
 backend = "aqua:rtk-ai/rtk"
 
 [tools.rtk."platforms.linux-arm64"]
-checksum = "sha256:32f4d78766e2f5b43756efce3c699dc4da8beef5296deb02fa7756f3257eb25c"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.1/rtk-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:2b7fa09d06f8dbf334c55482fad2e7ce4a1f8564bc9ed1f65d9f5992db8e5527"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.3/rtk-aarch64-unknown-linux-gnu.tar.gz"
 
 [tools.rtk."platforms.linux-x64"]
-checksum = "sha256:a37ca300a42510a964453f2bc2e217769ef0872780af802db8a7d698f1da2465"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.1/rtk-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:5df764a633709cb85d248258d085d24ec95faa8bca0e6835a93cd57cadc4eb9e"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.3/rtk-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.rtk."platforms.linux-x64-musl"]
-checksum = "sha256:a37ca300a42510a964453f2bc2e217769ef0872780af802db8a7d698f1da2465"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.1/rtk-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:5df764a633709cb85d248258d085d24ec95faa8bca0e6835a93cd57cadc4eb9e"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.3/rtk-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.rtk."platforms.macos-arm64"]
-checksum = "sha256:401d72a80c0efc597ae9469f053ce51c70334ea427527464ab76f8e298da2447"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.1/rtk-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:d47823afb25919e4e60838c5622e88ffa6536bc0b36a34a3f928bdccac40f614"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.3/rtk-aarch64-apple-darwin.tar.gz"
 
 [tools.rtk."platforms.macos-x64"]
-checksum = "sha256:6165d80f40db0f46f8af2ea15d0132e957e2717aa74507906c7ce5b3c20c655e"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.1/rtk-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:7c72d05cfc71b7e2f20755b3754b728acecc7c0b1fbbb08757828f9e7bedd81a"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.3/rtk-x86_64-apple-darwin.tar.gz"
 
 [tools.rtk."platforms.windows-x64"]
-checksum = "sha256:5f292b031595405671b41e29aa5016931e8598949c25d9751f0eebd2eccefe0b"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.1/rtk-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:334d05a6662576a84a78b771aee0749202eacabd87acbb9fd266e6a5466f700a"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.3/rtk-x86_64-pc-windows-msvc.zip"
 
 [[tools.ruby]]
 version = "4.0.5"
 backend = "core:ruby"
+
+[tools.ruby.options]
+compile = "true"
+ruby_build_repo = "https://github.com/rbenv/ruby-build.git"
+ruby_install = "false"
 
 [tools.ruby."platforms.linux-arm64"]
 checksum = "sha256:7d6149079a63f8ae1d326c9fa65c6019ba2dc3155eae7b39159817911c88958e"
@@ -649,6 +640,10 @@ url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz"
 [tools.ruby."platforms.macos-x64"]
 checksum = "sha256:7d6149079a63f8ae1d326c9fa65c6019ba2dc3155eae7b39159817911c88958e"
 url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz"
+
+[[tools.ruby]]
+version = "4.0.5"
+backend = "core:ruby"
 
 [tools.ruby."platforms.windows-x64"]
 checksum = "sha256:74e31613fc71e6e23431dfc4d8b6ec2818a4dc1fd16e0983b074144c16719c8b"
@@ -720,33 +715,33 @@ url = "https://github.com/tldr-pages/tlrc/releases/download/v1.13.1/tlrc-v1.13.1
 provenance = "github-attestations"
 
 [[tools.yq]]
-version = "4.53.2"
+version = "4.53.3"
 backend = "aqua:mikefarah/yq"
 
 [tools.yq."platforms.linux-arm64"]
-checksum = "sha256:03061b2a50c7a498de2bbb92d7cb078ce433011f085a4994117c2726be4106ea"
-url = "https://github.com/mikefarah/yq/releases/download/v4.53.2/yq_linux_arm64"
+checksum = "sha256:578648e463a11c1b6db6010cbf41eafed6bee79466fcffa1bb446672cf7945ea"
+url = "https://github.com/mikefarah/yq/releases/download/v4.53.3/yq_linux_arm64"
 
 [tools.yq."platforms.linux-arm64-musl"]
-checksum = "sha256:03061b2a50c7a498de2bbb92d7cb078ce433011f085a4994117c2726be4106ea"
-url = "https://github.com/mikefarah/yq/releases/download/v4.53.2/yq_linux_arm64"
+checksum = "sha256:578648e463a11c1b6db6010cbf41eafed6bee79466fcffa1bb446672cf7945ea"
+url = "https://github.com/mikefarah/yq/releases/download/v4.53.3/yq_linux_arm64"
 
 [tools.yq."platforms.linux-x64"]
-checksum = "sha256:d56bf5c6819e8e696340c312bd70f849dc1678a7cda9c2ad63eebd906371d56b"
-url = "https://github.com/mikefarah/yq/releases/download/v4.53.2/yq_linux_amd64"
+checksum = "sha256:fa52a4e758c63d38299163fbdd1edfb4c4963247918bf9c1c5d31d84789eded4"
+url = "https://github.com/mikefarah/yq/releases/download/v4.53.3/yq_linux_amd64"
 
 [tools.yq."platforms.linux-x64-musl"]
-checksum = "sha256:d56bf5c6819e8e696340c312bd70f849dc1678a7cda9c2ad63eebd906371d56b"
-url = "https://github.com/mikefarah/yq/releases/download/v4.53.2/yq_linux_amd64"
+checksum = "sha256:fa52a4e758c63d38299163fbdd1edfb4c4963247918bf9c1c5d31d84789eded4"
+url = "https://github.com/mikefarah/yq/releases/download/v4.53.3/yq_linux_amd64"
 
 [tools.yq."platforms.macos-arm64"]
-checksum = "sha256:541ba2287560df70f561955e2d7f7e1cd00cf2a15a884f6b5c87a4bfa887bc07"
-url = "https://github.com/mikefarah/yq/releases/download/v4.53.2/yq_darwin_arm64"
+checksum = "sha256:877de31753a4dd2401aa048937aa9a7fc4d5f6ce858cf31508c5802954297213"
+url = "https://github.com/mikefarah/yq/releases/download/v4.53.3/yq_darwin_arm64"
 
 [tools.yq."platforms.macos-x64"]
-checksum = "sha256:616b0a0f6a5b79d746f05a169c2b9bb40dee00c605ef165b9a1c1681bba738ac"
-url = "https://github.com/mikefarah/yq/releases/download/v4.53.2/yq_darwin_amd64"
+checksum = "sha256:b4ba1ecce3c47f00803f4f964de38394326c7a32eb6540616e04fb2935a0f08d"
+url = "https://github.com/mikefarah/yq/releases/download/v4.53.3/yq_darwin_amd64"
 
 [tools.yq."platforms.windows-x64"]
-checksum = "sha256:2aee32f1de46a20672f48c25df3018839798bd509143f2ce05fdab1550ff5592"
-url = "https://github.com/mikefarah/yq/releases/download/v4.53.2/yq_windows_amd64.exe"
+checksum = "sha256:e279bc506a452eeafcdf364f91a025455e402a8001169083caf01f4b64a544e2"
+url = "https://github.com/mikefarah/yq/releases/download/v4.53.3/yq_windows_amd64.exe"
