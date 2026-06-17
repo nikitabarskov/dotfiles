@@ -231,3 +231,43 @@ Use codegraph for **structural** questions — what calls what, what would break
 The MCP server returns "not initialized." Ask the user: _"I notice this project doesn't have CodeGraph initialized. Want me to run `codegraph init -i` to build the index?"_
 
 <!-- CODEGRAPH_END -->
+
+## Semantic Tools (sem\_\*)
+
+Use `sem_*` tools for entity-level code understanding. Prefer them over grep/read loops when the question is about structure, ownership, or history.
+
+| Question                                                      | Tool           |
+| ------------------------------------------------------------- | -------------- |
+| Who last changed this function and why?                       | `sem_blame`    |
+| What does this entity depend on / what depends on it?         | `sem_impact`   |
+| How has this function changed over time?                      | `sem_log`      |
+| Packed context for a function + its deps in one call          | `sem_context`  |
+| What changed between two refs (entity-level, not line-level)? | `sem_diff`     |
+| List all functions/classes in a file or directory             | `sem_entities` |
+
+Rules:
+
+- Use `sem_diff` instead of `git diff` when understanding _what_ changed semantically, not just lines.
+- Use `sem_blame` before touching a function — know who owns it and why it exists.
+- Use `sem_impact` before refactoring — see the blast radius first.
+- Use `sem_context` to pack a function + its direct deps into one call instead of chaining reads.
+
+## Inspect Tools (inspect\_\*)
+
+Use `inspect_*` tools for PR review and change risk analysis.
+
+| Question                                             | Tool                  |
+| ---------------------------------------------------- | --------------------- |
+| What changed and where should I focus review effort? | `inspect_triage`      |
+| Which unchanged code might break from these changes? | `inspect_predict`     |
+| File-level risk heatmap for a commit/range           | `inspect_risk_map`    |
+| Deep dive on a single changed entity                 | `inspect_entity`      |
+| Review a remote GitHub PR without a local clone      | `inspect_pr`          |
+| Post review comments on a GitHub PR                  | `inspect_post_review` |
+| Search for a pattern across PR files                 | `inspect_search`      |
+
+Rules:
+
+- Start code review with `inspect_triage` — it surfaces risk scores and logical groups in one call.
+- Use `inspect_predict` before merging risky changes to see what else might silently break.
+- Use `inspect_pr` for remote PRs; use `inspect_triage` with `target` for local commits/ranges.

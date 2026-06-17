@@ -14,10 +14,7 @@
 	},
 	"auto_indent": "none",
 	"auto_indent_on_paste": false,
-	"auto_install_extensions": {
-		"biome": true,
-		"tofu": true
-	},
+	"auto_install_extensions": {},
 	"auto_signature_help": false,
 	"autosave": "on_focus_change",
 	"autoscroll_on_clicks": false,
