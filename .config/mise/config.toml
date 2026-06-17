@@ -13,10 +13,11 @@ lazygit = "latest"
 "github:jorgerojas26/lazysql" = "latest"
 mkcert = "latest"
 node = "latest"
-"cargo:https://github.com/Ataraxy-Labs/inspect" = { version = "latest", crate = "inspect-cli" }
-"cargo:https://github.com/Ataraxy-Labs/sem" = { version = "latest", crate = "sem-cli" }
+"cargo:https://github.com/Ataraxy-Labs/inspect" = "latest"
+"cargo:https://github.com/Ataraxy-Labs/sem" = "latest"
 "npm:@colbymchenry/codegraph" = "latest"
 "npm:@github/copilot" = "latest"
+"npm:ccusage" = "latest"
 opencode = "latest"
 pandoc = "latest"
 ripgrep = "latest"

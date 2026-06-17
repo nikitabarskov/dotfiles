@@ -41,3 +41,5 @@ cask "signal"
 cask "slack"
 cask "telegram"
 brew "libyaml"
+# AI usage tracker for Cursor, Claude Code, Codex, Copilot and more
+cask "openusage"

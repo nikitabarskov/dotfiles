@@ -4,15 +4,9 @@
 version = "HEAD"
 backend = "cargo:https://github.com/Ataraxy-Labs/inspect"
 
-[tools."cargo:https://github.com/Ataraxy-Labs/inspect".options]
-crate = "inspect-cli"
-
 [[tools."cargo:https://github.com/Ataraxy-Labs/sem"]]
 version = "HEAD"
 backend = "cargo:https://github.com/Ataraxy-Labs/sem"
-
-[tools."cargo:https://github.com/Ataraxy-Labs/sem".options]
-crate = "sem-cli"
 
 [[tools."cargo:sqruff"]]
 version = "0.38.0"
@@ -475,36 +469,36 @@ version = "1.0.61"
 backend = "npm:@github/copilot"
 
 [[tools.opencode]]
-version = "1.17.0"
+version = "1.17.1"
 backend = "aqua:anomalyco/opencode"
 
 [tools.opencode."platforms.linux-arm64"]
-checksum = "sha256:6a1ae2b44d15b531b7e0aa1c6239f16f8a15ec9f921457bfa8a2b12e22358ed3"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.0/opencode-linux-arm64.tar.gz"
+checksum = "sha256:76ffbfeaa70b21c5442139a1e0333d5870547012f8d7b78235a9b9d4dfdd4740"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-linux-arm64.tar.gz"
 
 [tools.opencode."platforms.linux-arm64-musl"]
-checksum = "sha256:4ba291d5bbd946770cdf800f594826c898005480a16fcef8a02c73dd06b95e78"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.0/opencode-linux-arm64-musl.tar.gz"
+checksum = "sha256:71ccbc342b7ccc91925883712d74048815896bfeae1eb461ef3cbe4867338f2c"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-linux-arm64-musl.tar.gz"
 
 [tools.opencode."platforms.linux-x64"]
-checksum = "sha256:5c82f608207ae8254c43e331d90d96915aea19e78474e311b2c88b6bbb7c93f0"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.0/opencode-linux-x64.tar.gz"
+checksum = "sha256:999037b6bde5c1196618d32f9f7009cb7e14927273f64da0e56a2cf8d7b3a454"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-linux-x64.tar.gz"
 
 [tools.opencode."platforms.linux-x64-musl"]
-checksum = "sha256:3a24e78c66682651495d0b1902e3a8f7ecbc8e7ba65bbe3b26090f8d5904f814"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.0/opencode-linux-x64-musl.tar.gz"
+checksum = "sha256:6d651598ed07798239e185bdb17b787990a91d9d75d32c82cc5e986133d1d54d"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-linux-x64-musl.tar.gz"
 
 [tools.opencode."platforms.macos-arm64"]
-checksum = "sha256:7327c85569b10e9ec5249a9643f0fd477e117db56c46776d95737cbc0486f950"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.0/opencode-darwin-arm64.zip"
+checksum = "sha256:0b7e778d662cfb92003397d4d19b86b6817124256788ee7462dcafa9326631ad"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-darwin-arm64.zip"
 
 [tools.opencode."platforms.macos-x64"]
-checksum = "sha256:8a19d333f1c37f5321ba9076dfd044deab08bf5fe094fc7d2c60f95819b3ac13"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.0/opencode-darwin-x64.zip"
+checksum = "sha256:968f2db8a64b6a1fb54fe2c810c8d4d3a344edee1c8ced6b5a1a34bf71bbd83b"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-darwin-x64.zip"
 
 [tools.opencode."platforms.windows-x64"]
-checksum = "sha256:1caca97d0c3a61a9819ee518541e5478a65937be41237608c4a3e23ac53f92bd"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.0/opencode-windows-x64.zip"
+checksum = "sha256:30f4571381db039582e2127c24ee63afdf736e8757cb2a2ea192a933c159c666"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-windows-x64.zip"
 
 [[tools.pandoc]]
 version = "3.10"

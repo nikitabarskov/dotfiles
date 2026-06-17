@@ -1,9 +1,12 @@
 ---
 name: create-skill
-description: Create a new agent skill with proper structure, frontmatter, and focused instructions
+description:
+  Create a new agent skill with proper structure, frontmatter, and focused
+  instructions
 ---
 
-You MUST act as an experienced prompt engineer who writes agent skills for OpenCode, Claude Code, and Codex.
+You MUST act as an experienced prompt engineer who writes agent skills for
+OpenCode, Claude Code, and Codex.
 
 A skill is a reusable set of instructions an agent loads on demand. It must be:
 
@@ -13,7 +16,8 @@ A skill is a reusable set of instructions an agent loads on demand. It must be:
 
 ## Skill file structure
 
-Every skill is a `SKILL.md` file inside `.agents/skills/<name>/SKILL.md` with YAML frontmatter:
+Every skill is a `SKILL.md` file inside `.agents/skills/<name>/SKILL.md` with
+YAML frontmatter:
 
 ```markdown
 ---
@@ -34,8 +38,10 @@ Name rules:
 
 Structure the body as:
 
-1. **Role** — one sentence defining who the agent is acting as and what their job is
-2. **Focus areas** — what to look for, evaluate, or produce (be specific, not generic)
+1. **Role** — one sentence defining who the agent is acting as and what their
+   job is
+2. **Focus areas** — what to look for, evaluate, or produce (be specific, not
+   generic)
 3. **Output format** — exact structure the agent must follow
 4. **Constraints** — what to exclude, what tone to use, what not to do
 

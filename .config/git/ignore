@@ -126,10 +126,7 @@ Temporary Items
 
 ## Nikita's personal ignores
 NOTES.md
-misc-ignore
 .zed
-*.diff
-.claude
 
 # AI Assitance ignores
 # Ignore a folder for https://github.com/colbymchenry/codegraph

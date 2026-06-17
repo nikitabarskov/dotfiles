@@ -1,14 +1,19 @@
 ---
 name: git-commit
-description: Generate atomic git commit messages following trunk-based development practices
+description:
+  Generate atomic git commit messages following trunk-based development
+  practices
 ---
 
-You MUST act as an experienced software developer following trunk-based development practices. Generate a git commit message based on the provided diff and assess if it's atomic.
+You MUST act as an experienced software developer following trunk-based
+development practices. Generate a git commit message based on the provided diff
+and assess if it's atomic.
 
 Atomicity check — do this first:
 
 - If atomic: proceed with the commit message
-- If not atomic: stop and list the separate logical changes that should be individual commits
+- If not atomic: stop and list the separate logical changes that should be
+  individual commits
 
 Requirements:
 
@@ -20,7 +25,8 @@ Message format:
 
 - First line: summarize the change in 50-72 characters
 - Blank line, then body explaining WHY (business impact and technical reasoning)
-- Body can be 2-3 sentences or a short bullet list — use whichever fits the change better
+- Body can be 2-3 sentences or a short bullet list — use whichever fits the
+  change better
 - Each body line must not exceed 72 characters
 - Present tense, imperative mood: "Add feature", "Change interface", "Fix bug"
 - No conventional commits prefixes

@@ -4,7 +4,8 @@ Personal dotfiles for macOS and Linux. Symlink-based — no dotbot or stow.
 
 ## Quick Start
 
-New machine bootstrap (installs Homebrew, 1Password, clones repo, runs `install.sh`):
+New machine bootstrap (installs Homebrew, 1Password, clones repo, runs
+`install.sh`):
 
 ```bash
 /bin/bash <(wget --no-cache -qO- https://raw.githubusercontent.com/nikitabarskov/dotfiles/main/bootstrap.sh)
@@ -40,34 +41,49 @@ just lock         # regenerate mise.lock for linux-x64 and macos-arm64
 
 ## Platform Notes
 
-- **macOS**: links `aerospace.toml`, `darwin.Brewfile`; creates 1Password SSH sign at `/opt/1Password/op-ssh-sign`
-- **Linux**: links `i3/config`, `linux.Brewfile`, GTK/HiDPI settings, `xprofile`, `Xresources`
+- **macOS**: links `aerospace.toml`, `darwin.Brewfile`; creates 1Password SSH
+  sign at `/opt/1Password/op-ssh-sign`
+- **Linux**: links `i3/config`, `linux.Brewfile`, GTK/HiDPI settings,
+  `xprofile`, `Xresources`
 
 ## Formatting
 
-Biome handles JSON files. Indent style is **tabs**. Run `just fix` before committing — it both formats and lints. `biome.json` exempts `.config/zed/settings.json` to allow comments and trailing commas.
+Biome handles JSON files. Indent style is **tabs**. Run `just fix` before
+committing — it both formats and lints. `biome.json` exempts
+`.config/zed/settings.json` to allow comments and trailing commas.
 
 ## Global agent instructions
 
-`.config/agents/AGENTS.md` is the single source of truth for global coding preferences, principles, and shared tool instructions (CodeGraph, RTK). `install.sh` symlinks it to:
+`.config/agents/AGENTS.md` is the single source of truth for global coding
+preferences, principles, and shared tool instructions (CodeGraph, RTK).
+`install.sh` symlinks it to:
 
 - `~/.claude/CLAUDE.md`
 - `~/.config/opencode/AGENTS.md`
 - `~/.codex/AGENTS.md`
 
-Edit `.config/agents/AGENTS.md` to update global preferences; re-run `install.sh` to propagate (symlinks mean it's live immediately).
+Edit `.config/agents/AGENTS.md` to update global preferences; re-run
+`install.sh` to propagate (symlinks mean it's live immediately).
 
-**Do not run `rtk init --global`** — it replaces `~/.claude/CLAUDE.md` with a real file, breaking the symlink. RTK instructions are managed manually in `.config/agents/AGENTS.md`. If the symlink breaks, restore it with `bash ./install.sh`.
+**Do not run `rtk init --global`** — it replaces `~/.claude/CLAUDE.md` with a
+real file, breaking the symlink. RTK instructions are managed manually in
+`.config/agents/AGENTS.md`. If the symlink breaks, restore it with
+`bash ./install.sh`.
 
 ## Agent skills
 
-`.agents/skills/` is the single source of truth for shared agent skills (OpenCode, Claude Code, Codex). `install.sh` symlinks the whole `.agents/` directory to `~/.agents/`.
+`.agents/skills/` is the single source of truth for shared agent skills
+(OpenCode, Claude Code, Codex). `install.sh` symlinks the whole `.agents/`
+directory to `~/.agents/`.
 
-To add a new skill, create `.agents/skills/<name>/SKILL.md` with the required frontmatter (`name`, `description`).
+To add a new skill, create `.agents/skills/<name>/SKILL.md` with the required
+frontmatter (`name`, `description`).
 
 ## Git signing
 
-SSH signing via 1Password. Socket at `~/.1password/agent.sock`. Per-context git configs in `.config/git/` with includes for `nikitabarskov`, `hirn.studio`, and `deepinsight` identities.
+SSH signing via 1Password. Socket at `~/.1password/agent.sock`. Per-context git
+configs in `.config/git/` with includes for `nikitabarskov`, `hirn.studio`, and
+`deepinsight` identities.
 
 ## Links
 

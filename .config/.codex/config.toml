@@ -1,3 +1,6 @@
+service_tier = "default"
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
 [mcp_servers.codegraph]
 command = "mise"
 args = [
@@ -8,23 +11,26 @@ args = [
 	"serve",
 	"--mcp",
 ]
+default_tools_approval_mode = "approve"
 
 [mcp_servers.sem]
 command = "mise"
 args = ["exec", "cargo:https://github.com/Ataraxy-Labs/sem", "--", "sem", "mcp"]
+default_tools_approval_mode = "approve"
 
 [mcp_servers.inspect]
-command = "mise"
-args = ["exec", "inspect-mcp", "--", "inspect-mcp"]
+command = "inspect-mcp"
+args = []
+default_tools_approval_mode = "approve"
 
-[projects."/Users/nikitabarskov/hirn.studio/sowai"]
+[projects."~/personal"]
 trust_level = "trusted"
 
-[projects."/Users/nikitabarskov/hirn.studio/github/sowai"]
+[projects."~/gh"]
 trust_level = "trusted"
 
-[projects."/Users/nikitabarskov/personal/dotfiles"]
+[projects."/Users/nikitabarskov/gh/surgery-planning"]
 trust_level = "trusted"
 
-[projects."/home/nikitabarskov/personal/dotfiles"]
-trust_level = "trusted"
+[tui.model_availability_nux]
+"gpt-5.5" = 4

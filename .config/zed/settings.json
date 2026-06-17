@@ -5,6 +5,12 @@
 		"model_parameters": []
 	},
 	"agent_servers": {
+		"claude-acp": {
+			"type": "registry"
+		},
+		"codex-acp": {
+			"type": "registry"
+		},
 		"github-copilot": {
 			"type": "registry"
 		},
