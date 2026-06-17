@@ -1,34 +1,5 @@
 {
-	"mcpServers": {
-		"codegraph": {
-			"command": "mise",
-			"args": [
-				"exec",
-				"npm:@colbymchenry/codegraph",
-				"--",
-				"codegraph",
-				"serve",
-				"--mcp"
-			],
-			"type": "stdio"
-		},
-		"sem": {
-			"command": "mise",
-			"args": [
-				"exec",
-				"cargo:https://github.com/Ataraxy-Labs/sem",
-				"--",
-				"sem",
-				"mcp"
-			],
-			"type": "stdio"
-		},
-		"inspect": {
-			"command": "inspect-mcp",
-			"args": [],
-			"type": "stdio"
-		}
-	},
+	"$schema": "https://json.schemastore.org/claude-code-settings.json",
 	"permissions": {
 		"allow": [
 			"mcp__codegraph__codegraph_search",

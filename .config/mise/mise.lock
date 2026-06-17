@@ -468,6 +468,10 @@ backend = "npm:@colbymchenry/codegraph"
 version = "1.0.61"
 backend = "npm:@github/copilot"
 
+[[tools."npm:ccusage"]]
+version = "20.0.9"
+backend = "npm:ccusage"
+
 [[tools.opencode]]
 version = "1.17.1"
 backend = "aqua:anomalyco/opencode"
