@@ -131,3 +131,5 @@ NOTES.md
 # AI Assitance ignores
 # Ignore a folder for https://github.com/colbymchenry/codegraph
 .codegraph
+
+**/.claude/settings.local.json

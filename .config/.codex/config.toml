@@ -23,16 +23,24 @@ command = "inspect-mcp"
 args = []
 default_tools_approval_mode = "approve"
 
+[mcp_servers.github]
+url = "https://api.githubcopilot.com/mcp/"
+bearer_token_env_var = "GITHUB_TOKEN"
+default_tools_approval_mode = "approve"
+
 [projects."~/personal"]
 trust_level = "trusted"
 
 [projects."~/gh"]
 trust_level = "trusted"
 
-[projects."/Users/nikitabarskov/gh/surgery-planning"]
+[projects."~/work"]
 trust_level = "trusted"
 
 [projects."/Users/nikitabarskov/personal/dotfiles"]
+trust_level = "trusted"
+
+[projects."/Users/nikitabarskov/gh/infra"]
 trust_level = "trusted"
 
 [tui.model_availability_nux]

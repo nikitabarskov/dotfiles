@@ -45,6 +45,8 @@ ln -fsv "${dir}/.config/agents/AGENTS.md" "${XDG_CONFIG_HOME}/opencode/AGENTS.md
 ln -fsv "${dir}/.config/agents/AGENTS.md" "${HOME}/.codex/AGENTS.md"
 # AI agent tool configs
 ln -fsv "${dir}/.config/.claude/settings.json" "${HOME}/.claude/settings.json"
+[ -e "${HOME}/.claude/skills" ] && rm -rf "${HOME}/.claude/skills"
+ln -fsv "${dir}/.agents/skills" "${HOME}/.claude/skills"
 # MCP servers for Claude Code (user scope, stored in ~/.claude.json)
 # claude mcp add is idempotent — re-running install.sh is safe
 claude mcp add --scope user --transport stdio codegraph -- mise exec npm:@colbymchenry/codegraph -- codegraph serve --mcp
