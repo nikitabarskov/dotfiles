@@ -32,6 +32,7 @@ Message format:
 - No conventional commits prefixes
 - No file names unless crucial
 - Plain American English, no jargon
+- No co-author trailers — do not add `Co-Authored-By` lines
 
 Template:
 
