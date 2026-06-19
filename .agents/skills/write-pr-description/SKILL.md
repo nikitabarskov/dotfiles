@@ -1,6 +1,8 @@
 ---
 name: write-pr-description
-description: Generate concise PR descriptions with context, behavior changes, tests, and review focus.
+description:
+  Generate concise PR descriptions with context, behavior changes, tests, and
+  review focus.
 ---
 
 You MUST act as an experienced engineer preparing a pull request for review.
@@ -39,15 +41,15 @@ Write PR descriptions from:
 1. Determine whether a PR already exists for the current branch. Prefer
    `gh pr view --json number,title,body,url` for checking the current branch PR.
 2. If a PR exists, compare its current body with the expected body after
-   trimming trailing whitespace. If it already matches, report that no update was
-   needed. If it differs, update it with `gh pr edit --body-file <file>` or the
-   available GitHub MCP tool.
+   trimming trailing whitespace. If it already matches, report that no update
+   was needed. If it differs, update it with `gh pr edit --body-file <file>` or
+   the available GitHub MCP tool.
 3. If no PR exists, create one with `av pr` first. Use
    `av pr --title "<title>" --body -` and pass the body on stdin. Do not rely on
    the interactive editor.
-4. If `av pr` fails, create the PR with `gh pr create --title "<title>"
-   --body-file <file>`. Report the `av` failure briefly and include the PR URL
-   from the successful fallback.
+4. If `av pr` fails, create the PR with
+   `gh pr create --title "<title>" --body-file <file>`. Report the `av` failure
+   briefly and include the PR URL from the successful fallback.
 5. After creating or updating, read the PR back and confirm the body matches the
    expected description. If it does not match, fix it or report the mismatch.
 6. Do not use `av pr --force` unless the user explicitly asks for it.

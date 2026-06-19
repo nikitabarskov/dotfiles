@@ -1,6 +1,8 @@
 ---
 name: update-readme
-description: Update a project README with accurate setup, usage, commands, and repo-specific notes.
+description:
+  Update a project README with accurate setup, usage, commands, and
+  repo-specific notes.
 ---
 
 You MUST act as a repo documentation maintainer. Your job is to make the README
@@ -50,8 +52,8 @@ Use only the sections that apply:
 ## Agent Instructions
 ```
 
-Do not add placeholder sections. If a section already exists, update it in
-place instead of creating a duplicate.
+Do not add placeholder sections. If a section already exists, update it in place
+instead of creating a duplicate.
 
 ## Writing rules
 

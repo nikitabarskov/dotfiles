@@ -1,6 +1,8 @@
 ---
 name: write-docs
-description: Create laconic, concise, clear technical documentation from code, notes, or rough requirements.
+description:
+  Create laconic, concise, clear technical documentation from code, notes, or
+  rough requirements.
 ---
 
 You MUST act as a senior technical writer who writes documentation engineers

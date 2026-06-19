@@ -1,49 +1,49 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "permissions": {
-    "allow": [
-      "mcp__codegraph__codegraph_search",
-      "mcp__codegraph__codegraph_context",
-      "mcp__codegraph__codegraph_callers",
-      "mcp__codegraph__codegraph_callees",
-      "mcp__codegraph__codegraph_impact",
-      "mcp__codegraph__codegraph_node",
-      "mcp__codegraph__codegraph_status",
-      "mcp__codegraph__codegraph_explore",
-      "mcp__codegraph__codegraph_files",
-      "mcp__codegraph__codegraph_trace",
-      "mcp__sem__sem_blame",
-      "mcp__sem__sem_context",
-      "mcp__sem__sem_diff",
-      "mcp__sem__sem_entities",
-      "mcp__sem__sem_impact",
-      "mcp__sem__sem_log",
-      "mcp__inspect__inspect_triage",
-      "mcp__inspect__inspect_entity",
-      "mcp__inspect__inspect_file",
-      "mcp__inspect__inspect_group",
-      "mcp__inspect__inspect_predict",
-      "mcp__inspect__inspect_pr",
-      "mcp__inspect__inspect_post_review",
-      "mcp__inspect__inspect_risk_map",
-      "mcp__inspect__inspect_search",
-      "mcp__inspect__inspect_stats"
-    ]
-  },
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "rtk hook claude"
-          }
-        ]
-      }
-    ]
-  },
-  "effortLevel": "medium",
-  "theme": "auto",
-  "model": "sonnet"
+	"$schema": "https://json.schemastore.org/claude-code-settings.json",
+	"permissions": {
+		"allow": [
+			"mcp__codegraph__codegraph_search",
+			"mcp__codegraph__codegraph_context",
+			"mcp__codegraph__codegraph_callers",
+			"mcp__codegraph__codegraph_callees",
+			"mcp__codegraph__codegraph_impact",
+			"mcp__codegraph__codegraph_node",
+			"mcp__codegraph__codegraph_status",
+			"mcp__codegraph__codegraph_explore",
+			"mcp__codegraph__codegraph_files",
+			"mcp__codegraph__codegraph_trace",
+			"mcp__sem__sem_blame",
+			"mcp__sem__sem_context",
+			"mcp__sem__sem_diff",
+			"mcp__sem__sem_entities",
+			"mcp__sem__sem_impact",
+			"mcp__sem__sem_log",
+			"mcp__inspect__inspect_triage",
+			"mcp__inspect__inspect_entity",
+			"mcp__inspect__inspect_file",
+			"mcp__inspect__inspect_group",
+			"mcp__inspect__inspect_predict",
+			"mcp__inspect__inspect_pr",
+			"mcp__inspect__inspect_post_review",
+			"mcp__inspect__inspect_risk_map",
+			"mcp__inspect__inspect_search",
+			"mcp__inspect__inspect_stats"
+		]
+	},
+	"hooks": {
+		"PreToolUse": [
+			{
+				"matcher": "Bash",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "rtk hook claude"
+					}
+				]
+			}
+		]
+	},
+	"effortLevel": "medium",
+	"theme": "auto",
+	"model": "sonnet"
 }
