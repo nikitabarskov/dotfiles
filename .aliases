@@ -85,4 +85,3 @@ avpr() {
 }
 
 alias jg='just --global-justfile'
-alias sem="$(cd "$HOME" && mise which sem)"
