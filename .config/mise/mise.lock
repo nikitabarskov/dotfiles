@@ -13,58 +13,59 @@ version = "0.38.0"
 backend = "cargo:sqruff"
 
 [[tools.claude]]
-version = "2.1.170"
+version = "2.1.175"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.170/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-arm64/claude"
 
 [tools.claude."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.170/linux-arm64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-arm64-musl/claude"
 
 [tools.claude."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.170/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-x64/claude"
 
 [tools.claude."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.170/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-x64-musl/claude"
 
 [tools.claude."platforms.macos-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.170/darwin-arm64/claude"
+checksum = "blake3:925690278efaeda7d86df4485db86586837b36f1358cfbc7ca823407a4e87ad6"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/darwin-arm64/claude"
 
 [tools.claude."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.170/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/darwin-x64/claude"
 
 [[tools.codex]]
-version = "0.138.0"
+version = "0.139.0"
 backend = "aqua:openai/codex"
 
 [tools.codex."platforms.linux-arm64"]
-checksum = "sha256:d67edac72f64e6a230def66863d63289b291549ddc2e3a6c31a85fbe797be91b"
-url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-aarch64-unknown-linux-musl.zst"
+checksum = "sha256:2faa1c8d89f5fe39b704c738b2f82364f00d47a8db462821d8d7372f0702d6f4"
+url = "https://github.com/openai/codex/releases/download/rust-v0.139.0/codex-aarch64-unknown-linux-musl.zst"
 
 [tools.codex."platforms.linux-arm64-musl"]
-checksum = "sha256:d67edac72f64e6a230def66863d63289b291549ddc2e3a6c31a85fbe797be91b"
-url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-aarch64-unknown-linux-musl.zst"
+checksum = "sha256:2faa1c8d89f5fe39b704c738b2f82364f00d47a8db462821d8d7372f0702d6f4"
+url = "https://github.com/openai/codex/releases/download/rust-v0.139.0/codex-aarch64-unknown-linux-musl.zst"
 
 [tools.codex."platforms.linux-x64"]
-checksum = "sha256:9ce1e5754e28daa7084fcbf3ffb805824c5d675826e7a399bfb9f808e3f107a2"
-url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-x86_64-unknown-linux-musl.zst"
+checksum = "sha256:f79ebac185b6dcc826401ef660516190a8db54c5c963f1717e40261a62be1c7c"
+url = "https://github.com/openai/codex/releases/download/rust-v0.139.0/codex-x86_64-unknown-linux-musl.zst"
 
 [tools.codex."platforms.linux-x64-musl"]
-checksum = "sha256:9ce1e5754e28daa7084fcbf3ffb805824c5d675826e7a399bfb9f808e3f107a2"
-url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-x86_64-unknown-linux-musl.zst"
+checksum = "sha256:f79ebac185b6dcc826401ef660516190a8db54c5c963f1717e40261a62be1c7c"
+url = "https://github.com/openai/codex/releases/download/rust-v0.139.0/codex-x86_64-unknown-linux-musl.zst"
 
 [tools.codex."platforms.macos-arm64"]
-checksum = "sha256:72fb66cc5d17cec494e0330fb93c381f4bec4950cf44e14c1ec24bfcd785f4d9"
-url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-aarch64-apple-darwin.zst"
+checksum = "sha256:bb0110c0d51f45d35acbddb38d2eb0194f7cd03eaf2e4b3496d63933d0d269d0"
+url = "https://github.com/openai/codex/releases/download/rust-v0.139.0/codex-aarch64-apple-darwin.zst"
 
 [tools.codex."platforms.macos-x64"]
-checksum = "sha256:07df47f823f2089ce349bb53955d61e96429f45f19f959f111666c39b35afc79"
-url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-x86_64-apple-darwin.zst"
+checksum = "sha256:18ef0a1fc22d19c0e9cea67d9ac3b3905a0e8cc8140cd14b8ff4a18637c58f11"
+url = "https://github.com/openai/codex/releases/download/rust-v0.139.0/codex-x86_64-apple-darwin.zst"
 
 [tools.codex."platforms.windows-x64"]
-checksum = "sha256:5c50fcee6144cca17ca2a4ad0456e6d8f77751c159fbca8a63cf8cbcf24fe94b"
-url = "https://github.com/openai/codex/releases/download/rust-v0.138.0/codex-x86_64-pc-windows-msvc.exe.zst"
+checksum = "sha256:295337cb916a61ec899e5bd7e2d05656c6feced34e2a41b9aeb52325a02ba8ef"
+url = "https://github.com/openai/codex/releases/download/rust-v0.139.0/codex-x86_64-pc-windows-msvc.exe.zst"
 
 [[tools.crane]]
 version = "0.21.6"
@@ -159,42 +160,42 @@ checksum = "sha256:521a974dc32e93404265e55bffaf71a59e05e80abdf8ca4afb21a6030dc76
 url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-windows_amd64.zip"
 
 [[tools.gh]]
-version = "2.93.0"
+version = "2.94.0"
 backend = "aqua:cli/cli"
 
 [tools.gh."platforms.linux-arm64"]
-checksum = "sha256:c55feb33684abba57e9909737340d5b39282257c0363e1edde6785ac4a413be7"
-url = "https://github.com/cli/cli/releases/download/v2.93.0/gh_2.93.0_linux_arm64.tar.gz"
+checksum = "sha256:705a23b70b0f1b7ba4c302fdcef392ce3edaacfa7ce8e85e4d93d72ea800a538"
+url = "https://github.com/cli/cli/releases/download/v2.94.0/gh_2.94.0_linux_arm64.tar.gz"
 provenance = "github-attestations"
 
 [tools.gh."platforms.linux-arm64-musl"]
-checksum = "sha256:c55feb33684abba57e9909737340d5b39282257c0363e1edde6785ac4a413be7"
-url = "https://github.com/cli/cli/releases/download/v2.93.0/gh_2.93.0_linux_arm64.tar.gz"
+checksum = "sha256:705a23b70b0f1b7ba4c302fdcef392ce3edaacfa7ce8e85e4d93d72ea800a538"
+url = "https://github.com/cli/cli/releases/download/v2.94.0/gh_2.94.0_linux_arm64.tar.gz"
 provenance = "github-attestations"
 
 [tools.gh."platforms.linux-x64"]
-checksum = "sha256:02d1290eba130e0b896f3709ffff22e1c75a51475ddb70476a85abc6b5807af0"
-url = "https://github.com/cli/cli/releases/download/v2.93.0/gh_2.93.0_linux_amd64.tar.gz"
+checksum = "sha256:a757f1ba6db18f4de8cbadb244843a5f89bc75b5e7c6fc127d2bd77fbd12ed62"
+url = "https://github.com/cli/cli/releases/download/v2.94.0/gh_2.94.0_linux_amd64.tar.gz"
 provenance = "github-attestations"
 
 [tools.gh."platforms.linux-x64-musl"]
-checksum = "sha256:02d1290eba130e0b896f3709ffff22e1c75a51475ddb70476a85abc6b5807af0"
-url = "https://github.com/cli/cli/releases/download/v2.93.0/gh_2.93.0_linux_amd64.tar.gz"
+checksum = "sha256:a757f1ba6db18f4de8cbadb244843a5f89bc75b5e7c6fc127d2bd77fbd12ed62"
+url = "https://github.com/cli/cli/releases/download/v2.94.0/gh_2.94.0_linux_amd64.tar.gz"
 provenance = "github-attestations"
 
 [tools.gh."platforms.macos-arm64"]
-checksum = "sha256:a86be4e0a86c26456cf71177d6572d6f1165cf1679e532b72f7f15918ee51fd2"
-url = "https://github.com/cli/cli/releases/download/v2.93.0/gh_2.93.0_macOS_arm64.zip"
+checksum = "sha256:4f9bc1a5e77500737290a307b40b4c396a4d23729f55340f2a83f414410165a1"
+url = "https://github.com/cli/cli/releases/download/v2.94.0/gh_2.94.0_macOS_arm64.zip"
 provenance = "github-attestations"
 
 [tools.gh."platforms.macos-x64"]
-checksum = "sha256:009425b9d175c482037fe25181817fd6b1ea3ae1f51cfae0e18f29f33d3152ac"
-url = "https://github.com/cli/cli/releases/download/v2.93.0/gh_2.93.0_macOS_amd64.zip"
+checksum = "sha256:733ee8fa49247d27cd94a6c7384455bdecaa82172a3bcfad63ac1ecc2867251d"
+url = "https://github.com/cli/cli/releases/download/v2.94.0/gh_2.94.0_macOS_amd64.zip"
 provenance = "github-attestations"
 
 [tools.gh."platforms.windows-x64"]
-checksum = "sha256:77aa01ed7317295ad550de0ad04f3f276b1ef0e9272e3d002ac28dd99853d211"
-url = "https://github.com/cli/cli/releases/download/v2.93.0/gh_2.93.0_windows_amd64.zip"
+checksum = "sha256:c0766af54195dfa0bcd9a0cb63a45c313fbaffdebb9f736f666e9ba4be8c91e8"
+url = "https://github.com/cli/cli/releases/download/v2.94.0/gh_2.94.0_windows_amd64.zip"
 provenance = "github-attestations"
 
 [[tools."github:aviator-co/av"]]
@@ -469,40 +470,40 @@ version = "1.0.61"
 backend = "npm:@github/copilot"
 
 [[tools."npm:ccusage"]]
-version = "20.0.9"
+version = "20.0.11"
 backend = "npm:ccusage"
 
 [[tools.opencode]]
-version = "1.17.1"
+version = "1.17.4"
 backend = "aqua:anomalyco/opencode"
 
 [tools.opencode."platforms.linux-arm64"]
-checksum = "sha256:76ffbfeaa70b21c5442139a1e0333d5870547012f8d7b78235a9b9d4dfdd4740"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-linux-arm64.tar.gz"
+checksum = "sha256:5cb32d53238a205a4ad71f70be8d669aaf460f55121ebc16ff9d12909609dd0b"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.4/opencode-linux-arm64.tar.gz"
 
 [tools.opencode."platforms.linux-arm64-musl"]
-checksum = "sha256:71ccbc342b7ccc91925883712d74048815896bfeae1eb461ef3cbe4867338f2c"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-linux-arm64-musl.tar.gz"
+checksum = "sha256:30dc23074b93476b395245e24c45f812a2e4252e170bef71884aa9ce5d757251"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.4/opencode-linux-arm64-musl.tar.gz"
 
 [tools.opencode."platforms.linux-x64"]
-checksum = "sha256:999037b6bde5c1196618d32f9f7009cb7e14927273f64da0e56a2cf8d7b3a454"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-linux-x64.tar.gz"
+checksum = "sha256:a2ece9181aab3817a6b59fa390b6d459b187e3ec917be802ecbca88b632c5ef9"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.4/opencode-linux-x64.tar.gz"
 
 [tools.opencode."platforms.linux-x64-musl"]
-checksum = "sha256:6d651598ed07798239e185bdb17b787990a91d9d75d32c82cc5e986133d1d54d"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-linux-x64-musl.tar.gz"
+checksum = "sha256:c6c590746e1706265b6c035c27376c81127d62680657da2e74972ea6ade0b866"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.4/opencode-linux-x64-musl.tar.gz"
 
 [tools.opencode."platforms.macos-arm64"]
-checksum = "sha256:0b7e778d662cfb92003397d4d19b86b6817124256788ee7462dcafa9326631ad"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-darwin-arm64.zip"
+checksum = "sha256:7a26d5427ff33e4f5bc942ad923a3b5ce3c88c6705fdecca9c2e27b59365594a"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.4/opencode-darwin-arm64.zip"
 
 [tools.opencode."platforms.macos-x64"]
-checksum = "sha256:968f2db8a64b6a1fb54fe2c810c8d4d3a344edee1c8ced6b5a1a34bf71bbd83b"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-darwin-x64.zip"
+checksum = "sha256:8d2023687e415c5ef2c70c7a790e5e2d6957bf1d195925d154e70b5fc15e999b"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.4/opencode-darwin-x64.zip"
 
 [tools.opencode."platforms.windows-x64"]
-checksum = "sha256:30f4571381db039582e2127c24ee63afdf736e8757cb2a2ea192a933c159c666"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.17.1/opencode-windows-x64.zip"
+checksum = "sha256:7e2f486e4551ac3e053c6c82d3283cdbef206e928f5b8680850f4cb86fada648"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.17.4/opencode-windows-x64.zip"
 
 [[tools.pandoc]]
 version = "3.10"
