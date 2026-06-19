@@ -8,10 +8,6 @@
 	"mcp": {
 		"codegraph": {
 			"command": [
-				"mise",
-				"exec",
-				"npm:@colbymchenry/codegraph",
-				"--",
 				"codegraph",
 				"serve",
 				"--mcp",
@@ -21,10 +17,6 @@
 		},
 		"sem": {
 			"command": [
-				"mise",
-				"exec",
-				"cargo:https://github.com/Ataraxy-Labs/sem",
-				"--",
 				"sem",
 				"mcp",
 			],
@@ -33,10 +25,6 @@
 		},
 		"inspect": {
 			"command": [
-				"mise",
-				"exec",
-				"cargo:https://github.com/Ataraxy-Labs/inspect",
-				"--",
 				"inspect-mcp",
 			],
 			"enabled": true,
