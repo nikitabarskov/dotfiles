@@ -2,4 +2,4 @@
 
 # Git passes: path old-file old-hex old-mode new-file new-hex new-mode.
 exec mise exec cargo:https://github.com/Ataraxy-Labs/sem -- \
-    sem diff --label "$1" "$2" "$5"
+	sem diff --label "$1" "$2" "$5"

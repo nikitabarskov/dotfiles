@@ -1,9 +1,10 @@
 [tools]
-oxfmt = "latest"
-shellcheck = "latest"
 just = "latest"
 node = "latest"
+oxfmt = "latest"
 rtk = "latest"
+shellcheck = "latest"
+shfmt = "latest"
 
 [settings]
 lockfile = true

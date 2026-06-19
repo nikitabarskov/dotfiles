@@ -15,8 +15,8 @@ ln -fsv "${dir}/.config/git" "${XDG_CONFIG_HOME}/git"
 mkdir -p "${HOME}/.local/bin"
 ln -fsv "${dir}/scripts/sem-diff-wrapper" "${HOME}/.local/bin/sem-diff-wrapper"
 
-mkdir -p "${XDG_CONFIG_HOME}/zed" && \
-  ln -fsv "${dir}/.config/zed/settings.json" "${XDG_CONFIG_HOME}/zed/settings.json" && \
+mkdir -p "${XDG_CONFIG_HOME}/zed" &&
+  ln -fsv "${dir}/.config/zed/settings.json" "${XDG_CONFIG_HOME}/zed/settings.json" &&
   ln -fsv "${dir}/.config/zed/themes" "${XDG_CONFIG_HOME}/zed/"
 [ -e "${XDG_CONFIG_HOME}/alacritty" ] && rm -rf "${XDG_CONFIG_HOME}/alacritty"
 ln -fsv "${dir}/.config/alacritty" "${XDG_CONFIG_HOME}/alacritty"
@@ -56,29 +56,29 @@ ln -fsv "${dir}/.config/.opencode/opencode.jsonc" "${XDG_CONFIG_HOME}/opencode/o
 ln -fsv "${dir}/.config/.codex/config.toml" "${HOME}/.codex/config.toml"
 
 if [[ $OSTYPE == "linux-gnu"* ]]; then
-    echo "Configure HiDPI on Linux"
-    ln -fsv "$(pwd)/.xprofile" "${HOME}/.xprofile"
-    ln -fsv "$(pwd)/.Xresources" "${HOME}/.Xresources"
-    echo "Detected Linux - configuring i3"
-    mkdir -p "${XDG_CONFIG_HOME}/i3" && \
+  echo "Configure HiDPI on Linux"
+  ln -fsv "$(pwd)/.xprofile" "${HOME}/.xprofile"
+  ln -fsv "$(pwd)/.Xresources" "${HOME}/.Xresources"
+  echo "Detected Linux - configuring i3"
+  mkdir -p "${XDG_CONFIG_HOME}/i3" &&
     ln -fsv "${dir}/.config/i3/config" "${XDG_CONFIG_HOME}/i3/config"
-    [ ! -e "${XDG_CONFIG_HOME}/homebrew" ] && mkdir -p "${XDG_CONFIG_HOME}/homebrew"
-    mkdir -p "${XDG_CONFIG_HOME}/i3status-rust" && \
+  [ ! -e "${XDG_CONFIG_HOME}/homebrew" ] && mkdir -p "${XDG_CONFIG_HOME}/homebrew"
+  mkdir -p "${XDG_CONFIG_HOME}/i3status-rust" &&
     ln -fsv "${dir}/.config/i3status-rust/config.toml" "${XDG_CONFIG_HOME}/i3status-rust/config"
-    mkdir -p "${XDG_CONFIG_HOME}/gtk-3.0"
-    ln -fsv "${dir}/.config/gtk-3.0/settings.ini" "${XDG_CONFIG_HOME}/gtk-3.0/settings.ini"
-    ln -fsv "${dir}/.config/homebrew/linux.Brewfile" "${XDG_CONFIG_HOME}/homebrew/Brewfile"
+  mkdir -p "${XDG_CONFIG_HOME}/gtk-3.0"
+  ln -fsv "${dir}/.config/gtk-3.0/settings.ini" "${XDG_CONFIG_HOME}/gtk-3.0/settings.ini"
+  ln -fsv "${dir}/.config/homebrew/linux.Brewfile" "${XDG_CONFIG_HOME}/homebrew/Brewfile"
 fi
 
 # Configure 1Password SSH signing path based on OS
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    echo "Detected macOS - configure Aerospace"
-    [ ! -e "${XDG_CONFIG_HOME}/aerospace" ] && mkdir -p "${XDG_CONFIG_HOME}/aerospace"
-    ln -fsv "${dir}/.config/aerospace/aerospace.toml" "${XDG_CONFIG_HOME}/aerospace/aerospace.toml"
-    echo "Detected macOS - configuring 1Password SSH signing path"
-    [ -d "/opt/1Password" ] && sudo mkdir -p /opt/1Password && sudo chown "$(id -u):$(id -g)" /opt/1Password
-    [ ! -e "/opt/1Password/op-ssh-sign" ] && ln -fsv "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" "/opt/1Password/op-ssh-sign"
-    echo "Syncing Brewfile"
-    [ ! -e "${XDG_CONFIG_HOME}/homebrew" ] && mkdir -p "${XDG_CONFIG_HOME}/homebrew"
-    ln -fsv "${dir}/.config/homebrew/darwin.Brewfile" "${XDG_CONFIG_HOME}/homebrew/Brewfile"
+  echo "Detected macOS - configure Aerospace"
+  [ ! -e "${XDG_CONFIG_HOME}/aerospace" ] && mkdir -p "${XDG_CONFIG_HOME}/aerospace"
+  ln -fsv "${dir}/.config/aerospace/aerospace.toml" "${XDG_CONFIG_HOME}/aerospace/aerospace.toml"
+  echo "Detected macOS - configuring 1Password SSH signing path"
+  [ -d "/opt/1Password" ] && sudo mkdir -p /opt/1Password && sudo chown "$(id -u):$(id -g)" /opt/1Password
+  [ ! -e "/opt/1Password/op-ssh-sign" ] && ln -fsv "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" "/opt/1Password/op-ssh-sign"
+  echo "Syncing Brewfile"
+  [ ! -e "${XDG_CONFIG_HOME}/homebrew" ] && mkdir -p "${XDG_CONFIG_HOME}/homebrew"
+  ln -fsv "${dir}/.config/homebrew/darwin.Brewfile" "${XDG_CONFIG_HOME}/homebrew/Brewfile"
 fi
