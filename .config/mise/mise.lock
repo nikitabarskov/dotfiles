@@ -4,9 +4,15 @@
 version = "HEAD"
 backend = "cargo:https://github.com/Ataraxy-Labs/inspect"
 
+[tools."cargo:https://github.com/Ataraxy-Labs/inspect".options]
+crate = "inspect-mcp"
+
 [[tools."cargo:https://github.com/Ataraxy-Labs/sem"]]
 version = "HEAD"
 backend = "cargo:https://github.com/Ataraxy-Labs/sem"
+
+[tools."cargo:https://github.com/Ataraxy-Labs/sem".options]
+crate = "sem-cli"
 
 [[tools."cargo:sqruff"]]
 version = "0.38.0"
@@ -421,6 +427,7 @@ url = "https://github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.
 url = "https://github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.4.4-linux-amd64"
 
 [tools.mkcert."platforms.macos-arm64"]
+checksum = "blake3:18a249f7661813367d21569c610e4a4a1445f76aaeb7bb90121fb4780f7b1eb7"
 url = "https://github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.4.4-darwin-arm64"
 
 [tools.mkcert."platforms.macos-x64"]
@@ -580,64 +587,42 @@ checksum = "sha256:124510b94b6baa3380d051fdf4650eaa80a302c876d611e9dba0b2e18d874
 url = "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-pc-windows-msvc.zip"
 
 [[tools.rtk]]
-version = "0.42.3"
+version = "0.42.4"
 backend = "aqua:rtk-ai/rtk"
 
 [tools.rtk."platforms.linux-arm64"]
-checksum = "sha256:2b7fa09d06f8dbf334c55482fad2e7ce4a1f8564bc9ed1f65d9f5992db8e5527"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.3/rtk-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:cc2b91c064eb670c097c184913c8fbcb1a943d53d7fe505375e96ba0c5b6459f"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.4/rtk-aarch64-unknown-linux-gnu.tar.gz"
 
 [tools.rtk."platforms.linux-x64"]
-checksum = "sha256:5df764a633709cb85d248258d085d24ec95faa8bca0e6835a93cd57cadc4eb9e"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.3/rtk-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:34975116da11e09e502501daf758143e0b22ed3a42a10eb67fb693a6270d9e36"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.4/rtk-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.rtk."platforms.linux-x64-musl"]
-checksum = "sha256:5df764a633709cb85d248258d085d24ec95faa8bca0e6835a93cd57cadc4eb9e"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.3/rtk-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:34975116da11e09e502501daf758143e0b22ed3a42a10eb67fb693a6270d9e36"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.4/rtk-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.rtk."platforms.macos-arm64"]
-checksum = "sha256:d47823afb25919e4e60838c5622e88ffa6536bc0b36a34a3f928bdccac40f614"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.3/rtk-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:f223ca074a0215af002679bc1d34ca92b93e25b3e8ae16aace6e84c06e586802"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.4/rtk-aarch64-apple-darwin.tar.gz"
 
 [tools.rtk."platforms.macos-x64"]
-checksum = "sha256:7c72d05cfc71b7e2f20755b3754b728acecc7c0b1fbbb08757828f9e7bedd81a"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.3/rtk-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:84121316867613e61925c209607f033b2113bb0ce312c267a79d3e3e8f221e49"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.4/rtk-x86_64-apple-darwin.tar.gz"
 
 [tools.rtk."platforms.windows-x64"]
-checksum = "sha256:334d05a6662576a84a78b771aee0749202eacabd87acbb9fd266e6a5466f700a"
-url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.3/rtk-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:f0ec18963581657173bd6a51f5ba012b093823f844db749fec218581af30a568"
+url = "https://github.com/rtk-ai/rtk/releases/download/v0.42.4/rtk-x86_64-pc-windows-msvc.zip"
 
 [[tools.ruby]]
 version = "4.0.5"
 backend = "core:ruby"
 
-[tools.ruby."platforms.linux-arm64"]
-checksum = "sha256:7d6149079a63f8ae1d326c9fa65c6019ba2dc3155eae7b39159817911c88958e"
-url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz"
-
-[tools.ruby."platforms.linux-arm64-musl"]
-checksum = "sha256:7d6149079a63f8ae1d326c9fa65c6019ba2dc3155eae7b39159817911c88958e"
-url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz"
-
-[tools.ruby."platforms.linux-x64"]
-checksum = "sha256:7d6149079a63f8ae1d326c9fa65c6019ba2dc3155eae7b39159817911c88958e"
-url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz"
-
-[tools.ruby."platforms.linux-x64-musl"]
-checksum = "sha256:7d6149079a63f8ae1d326c9fa65c6019ba2dc3155eae7b39159817911c88958e"
-url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz"
-
-[tools.ruby."platforms.macos-arm64"]
-checksum = "sha256:7d6149079a63f8ae1d326c9fa65c6019ba2dc3155eae7b39159817911c88958e"
-url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz"
-
-[tools.ruby."platforms.macos-x64"]
-checksum = "sha256:7d6149079a63f8ae1d326c9fa65c6019ba2dc3155eae7b39159817911c88958e"
-url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz"
-
-[tools.ruby."platforms.windows-x64"]
-checksum = "sha256:74e31613fc71e6e23431dfc4d8b6ec2818a4dc1fd16e0983b074144c16719c8b"
-url = "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-4.0.5-1/rubyinstaller-4.0.5-1-x64.7z"
+[tools.ruby.options]
+compile = "false"
+precompiled_url = "jdx/ruby"
+ruby_build_repo = "https://github.com/rbenv/ruby-build.git"
+ruby_install = "false"
 
 [[tools.rust]]
 version = "1.96.0"
