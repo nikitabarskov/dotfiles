@@ -74,8 +74,8 @@ web_dashboard_listen_address: 127.0.0.1
 # If you want to allow access from remote machines, add the hostname used to access the dashboard to this list.
 # If the list is empty/undefined, all hosts are trusted.
 web_dashboard_trusted_hosts:
-- 127.0.0.1
-- localhost
+  - 127.0.0.1
+  - localhost
 jetbrains_plugin_server_address: 127.0.0.1
 
 # command used to launch a JetBrains IDE on demand (only relevant when using the JetBrains language backend)
@@ -136,8 +136,8 @@ fixed_tools: []
 # If this is undefined/empty, no base modes are included.
 # See https://oraios.github.io/serena/02-usage/050_configuration.html#modes
 base_modes:
-- interactive
-- editing
+  - interactive
+  - editing
 default_modes:
 
 # Used as default for tools where the apply method has a default maximal answer length.
@@ -176,5 +176,5 @@ project_serena_folder_location: "$projectDir/.serena"
 
 # the list of registered project paths (updated automatically).
 projects:
-- /Users/nikitabarskov/personal/dotfiles
-- /Users/nikitabarskov/personal/hirn.studio/sowai
+  - /Users/nikitabarskov/personal/dotfiles
+  - /Users/nikitabarskov/personal/hirn.studio/sowai

@@ -58,7 +58,7 @@ removing code solves it. Smaller codebases are easier to maintain.
 - If something is wrong or a bad idea, say so plainly.
 - Use code blocks for all code, commands, and file paths.
 
-## Headroom (headroom_\*)
+## Headroom (headroom\_\*)
 
 Headroom provides two complementary layers of token compression that work
 alongside RTK. Together they form a three-layer defense:
@@ -202,8 +202,8 @@ Rules:
 - Use `inspect_pr` for remote PRs; use `inspect_triage` with `target` for local
   commits/ranges.
 
-
 <!-- headroom:rtk-instructions -->
+
 # RTK (Rust Token Killer) - Token-Optimized Commands
 
 When running shell commands, **always prefix with `rtk`**. This reduces context
@@ -211,6 +211,7 @@ usage by 60-90% with zero behavior change. If rtk has no filter for a command,
 it passes through unchanged — so it is always safe to use.
 
 ## Key Commands
+
 ```bash
 # Git (59-80% savings)
 rtk git status          rtk git diff            rtk git log
@@ -241,7 +242,9 @@ rtk pip list            rtk pnpm install        rtk npm run <script>
 ```
 
 ## Rules
-- In command chains, prefix each segment: `rtk git add . && rtk git commit -m "msg"`
+
+- In command chains, prefix each segment:
+  `rtk git add . && rtk git commit -m "msg"`
 - For debugging, use raw command without rtk prefix
 - `rtk proxy <cmd>` runs command without filtering but tracks usage
 <!-- /headroom:rtk-instructions -->

@@ -4,7 +4,9 @@ description: (no description)
 disable-model-invocation: true
 ---
 
-You MUST act as an experienced software developer following trunk-based development practices. Generate a git commit message based on the following diff and assess if it's atomic.
+You MUST act as an experienced software developer following trunk-based
+development practices. Generate a git commit message based on the following diff
+and assess if it's atomic.
 
 Requirements for the commit:
 
@@ -21,9 +23,9 @@ Message format:
 - First line: Summarize the change in 50-72 characters
 - Skip a line, then provide 2-3 bullet points explaining the WHY
 - Focus on business impact and technical reasoning
-- Use present tense, imperative mood (example: "Add feature", "Change interface", "Update dependency")
+- Use present tense, imperative mood (example: "Add feature", "Change
+  interface", "Update dependency")
 - Omit references to file names unless crucial
 
-First, assess atomicity:
-If atomic: Proceed with commit message
-If not atomic: List the separate logical changes that should be individual commits
+First, assess atomicity: If atomic: Proceed with commit message If not atomic:
+List the separate logical changes that should be individual commits

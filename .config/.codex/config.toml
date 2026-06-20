@@ -60,7 +60,15 @@ trust_level = "trusted"
 # --- Headroom MCP server: serena ---
 [mcp_servers.serena]
 command = "uvx"
-args = ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--project-from-cwd", "--context", "codex"]
+args = [
+	"--from",
+	"git+https://github.com/oraios/serena",
+	"serena",
+	"start-mcp-server",
+	"--project-from-cwd",
+	"--context",
+	"codex",
+]
 # --- end Headroom MCP server: serena ---
 
 # --- Headroom proxy (auto-injected by headroom wrap codex) ---
