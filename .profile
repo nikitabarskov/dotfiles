@@ -31,3 +31,14 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_SCALE_FACTOR=2
 
 . "$HOME/.cargo/env"
+
+# >>> headroom persistent env >>>
+export HEADROOM_PORT="8787"
+export HEADROOM_HOST="127.0.0.1"
+export HEADROOM_MODE="token"
+export HEADROOM_BACKEND="anthropic"
+export ANTHROPIC_BASE_URL="http://127.0.0.1:8787"
+export COPILOT_PROVIDER_TYPE="anthropic"
+export COPILOT_PROVIDER_BASE_URL="http://127.0.0.1:8787"
+export OPENAI_BASE_URL="http://127.0.0.1:8787/v1"
+# <<< headroom persistent env <<<

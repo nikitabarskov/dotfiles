@@ -212,6 +212,40 @@ Overall average: **60-90% token reduction** on common development operations.
 
 <!-- /rtk-instructions -->
 
+## Headroom (headroom_\*)
+
+Headroom provides two complementary layers of token compression that work
+alongside RTK. Together they form a three-layer defense:
+
+1. **RTK** — filters shell command output before it enters context (60–99%)
+2. **Headroom proxy** — compresses API responses at the HTTP level automatically
+   (`headroom proxy --port 8787`); set up once, transparent thereafter
+3. **Headroom MCP** — explicit in-context compression for large content that
+   bypassed the other two layers (file reads, MCP tool results, API responses)
+
+Start agent sessions through the shell wrappers when token savings matter:
+`claudeh` for Claude Code and `codexh` for Codex. They use `headroom wrap`,
+which starts the proxy, registers the Headroom MCP retrieve tool, and applies
+the `agent-90` savings profile without globally pointing every shell at a proxy
+that may not be running.
+
+Use the MCP tools when large content is already in context:
+
+| When                                         | Tool                |
+| -------------------------------------------- | ------------------- |
+| Large file / search / MCP result in context  | `headroom_compress` |
+| Need full details from previously compressed | `headroom_retrieve` |
+| Check session token savings                  | `headroom_stats`    |
+
+Rules:
+
+- **Compress before reasoning.** Call `headroom_compress` on large results
+  before writing analysis — not after you have already processed them.
+- **Headroom is lossless.** The original is stored; call `headroom_retrieve`
+  with the hash when you need full details.
+- **RTK first, headroom MCP second.** RTK stops shell output at the source.
+  Headroom MCP handles everything else already in context.
+
 <!-- CODEGRAPH_START -->
 
 ## CodeGraph
@@ -321,3 +355,47 @@ Rules:
   silently break.
 - Use `inspect_pr` for remote PRs; use `inspect_triage` with `target` for local
   commits/ranges.
+
+
+<!-- headroom:rtk-instructions -->
+# RTK (Rust Token Killer) - Token-Optimized Commands
+
+When running shell commands, **always prefix with `rtk`**. This reduces context
+usage by 60-90% with zero behavior change. If rtk has no filter for a command,
+it passes through unchanged — so it is always safe to use.
+
+## Key Commands
+```bash
+# Git (59-80% savings)
+rtk git status          rtk git diff            rtk git log
+
+# Files & Search (60-75% savings)
+rtk ls <path>           rtk read <file>         rtk grep <pattern>
+rtk find <pattern>      rtk diff <file>
+
+# Test (90-99% savings) — shows failures only
+rtk pytest tests/       rtk cargo test          rtk test <cmd>
+
+# Build & Lint (80-90% savings) — shows errors only
+rtk tsc                 rtk lint                rtk cargo build
+rtk prettier --check    rtk mypy                rtk ruff check
+
+# Analysis (70-90% savings)
+rtk err <cmd>           rtk log <file>          rtk json <file>
+rtk summary <cmd>       rtk deps                rtk env
+
+# GitHub (26-87% savings)
+rtk gh pr view <n>      rtk gh run list         rtk gh issue list
+
+# Infrastructure (85% savings)
+rtk docker ps           rtk kubectl get         rtk docker logs <c>
+
+# Package managers (70-90% savings)
+rtk pip list            rtk pnpm install        rtk npm run <script>
+```
+
+## Rules
+- In command chains, prefix each segment: `rtk git add . && rtk git commit -m "msg"`
+- For debugging, use raw command without rtk prefix
+- `rtk proxy <cmd>` runs command without filtering but tracks usage
+<!-- /headroom:rtk-instructions -->

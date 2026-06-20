@@ -27,7 +27,10 @@
 			"mcp__inspect__inspect_post_review",
 			"mcp__inspect__inspect_risk_map",
 			"mcp__inspect__inspect_search",
-			"mcp__inspect__inspect_stats"
+			"mcp__inspect__inspect_stats",
+			"mcp__headroom__headroom_retrieve",
+			"mcp__headroom__headroom_compress",
+			"mcp__headroom__headroom_stats"
 		]
 	},
 	"model": "sonnet",

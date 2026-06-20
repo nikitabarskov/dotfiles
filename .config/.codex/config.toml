@@ -1,3 +1,8 @@
+# --- Headroom proxy (auto-injected by headroom wrap codex) ---
+model_provider = "headroom"
+openai_base_url = "http://127.0.0.1:8787/v1"
+# --- end Headroom ---
+
 service_tier = "default"
 model = "gpt-5.5"
 model_reasoning_effort = "medium"
@@ -14,6 +19,11 @@ default_tools_approval_mode = "approve"
 [mcp_servers.inspect]
 command = "inspect-mcp"
 args = []
+default_tools_approval_mode = "approve"
+
+[mcp_servers.headroom]
+command = "headroom"
+args = ["mcp", "serve"]
 default_tools_approval_mode = "approve"
 
 [mcp_servers.github]
@@ -42,5 +52,21 @@ trust_level = "trusted"
 [projects."/Users/nikitabarskov/personal/hirn.studio/sowai"]
 trust_level = "trusted"
 
+[projects."/Users/nikitabarskov"]
+trust_level = "trusted"
+
 [tui.model_availability_nux]
 "gpt-5.5" = 4
+# --- Headroom MCP server: serena ---
+[mcp_servers.serena]
+command = "uvx"
+args = ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--project-from-cwd", "--context", "codex"]
+# --- end Headroom MCP server: serena ---
+
+# --- Headroom proxy (auto-injected by headroom wrap codex) ---
+[model_providers.headroom]
+name = "OpenAI via Headroom proxy"
+base_url = "http://127.0.0.1:8787/v1"
+supports_websockets = true
+env_http_headers = { "X-Headroom-Project" = "HEADROOM_PROJECT" }
+# --- end Headroom ---

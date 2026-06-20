@@ -4,6 +4,7 @@
 		"inspect_*": "allow",
 		"sem_*": "allow",
 		"codegraph_*": "allow",
+		"headroom_*": "allow",
 	},
 	"mcp": {
 		"codegraph": {
@@ -12,12 +13,17 @@
 			"type": "local",
 		},
 		"sem": {
-			"command": ["sem", "mcp"],
+			"command": ["sem-mcp"],
 			"enabled": true,
 			"type": "local",
 		},
 		"inspect": {
 			"command": ["inspect-mcp"],
+			"enabled": true,
+			"type": "local",
+		},
+		"headroom": {
+			"command": ["headroom", "mcp", "serve"],
 			"enabled": true,
 			"type": "local",
 		},

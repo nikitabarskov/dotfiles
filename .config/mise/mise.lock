@@ -558,6 +558,38 @@ url = "https://github.com/jgm/pandoc/releases/download/3.10/pandoc-3.10-windows-
 url_api = "https://api.github.com/repos/jgm/pandoc/releases/assets/438414170"
 provenance = "github-attestations"
 
+[[tools.pipx]]
+version = "1.14.0"
+backend = "aqua:pypa/pipx"
+
+[tools.pipx."platforms.linux-arm64"]
+checksum = "sha256:017bf39b852bb3db51db094eca85b71e3719a4513c5834489f5e7ffc6da5d931"
+url = "https://github.com/pypa/pipx/releases/download/1.14.0/pipx.pyz"
+
+[tools.pipx."platforms.linux-arm64-musl"]
+checksum = "sha256:017bf39b852bb3db51db094eca85b71e3719a4513c5834489f5e7ffc6da5d931"
+url = "https://github.com/pypa/pipx/releases/download/1.14.0/pipx.pyz"
+
+[tools.pipx."platforms.linux-x64"]
+checksum = "sha256:017bf39b852bb3db51db094eca85b71e3719a4513c5834489f5e7ffc6da5d931"
+url = "https://github.com/pypa/pipx/releases/download/1.14.0/pipx.pyz"
+
+[tools.pipx."platforms.linux-x64-musl"]
+checksum = "sha256:017bf39b852bb3db51db094eca85b71e3719a4513c5834489f5e7ffc6da5d931"
+url = "https://github.com/pypa/pipx/releases/download/1.14.0/pipx.pyz"
+
+[tools.pipx."platforms.macos-arm64"]
+checksum = "sha256:017bf39b852bb3db51db094eca85b71e3719a4513c5834489f5e7ffc6da5d931"
+url = "https://github.com/pypa/pipx/releases/download/1.14.0/pipx.pyz"
+
+[tools.pipx."platforms.macos-x64"]
+checksum = "sha256:017bf39b852bb3db51db094eca85b71e3719a4513c5834489f5e7ffc6da5d931"
+url = "https://github.com/pypa/pipx/releases/download/1.14.0/pipx.pyz"
+
+[[tools."pipx:headroom-ai"]]
+version = "0.25.0"
+backend = "pipx:headroom-ai"
+
 [[tools.ripgrep]]
 version = "15.1.0"
 backend = "aqua:BurntSushi/ripgrep"
@@ -688,6 +720,10 @@ provenance = "github-attestations"
 checksum = "sha256:8b85477c935365008214be7a5fd319c56855175ff0c4e8cc2d01fa94accdd210"
 url = "https://github.com/tldr-pages/tlrc/releases/download/v1.13.1/tlrc-v1.13.1-x86_64-pc-windows-msvc.zip"
 provenance = "github-attestations"
+
+[[tools.uv]]
+version = "0.11.23"
+backend = "asdf:uv"
 
 [[tools.yq]]
 version = "4.53.3"
