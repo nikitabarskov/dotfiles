@@ -13,7 +13,7 @@ lazygit = "latest"
 "github:jorgerojas26/lazysql" = "latest"
 mkcert = "latest"
 node = "latest"
-"cargo:https://github.com/Ataraxy-Labs/inspect" = { version = "latest" , crate = "inspect-mcp" }
+"cargo:https://github.com/Ataraxy-Labs/inspect" = { version = "latest", crate = "inspect-mcp" }
 "cargo:https://github.com/Ataraxy-Labs/sem" = { version = "latest", crate = "sem-cli" }
 "npm:@colbymchenry/codegraph" = "latest"
 "npm:@github/copilot" = "latest"

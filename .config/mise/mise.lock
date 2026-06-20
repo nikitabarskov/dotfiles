@@ -19,27 +19,27 @@ version = "0.38.0"
 backend = "cargo:sqruff"
 
 [[tools.claude]]
-version = "2.1.175"
+version = "2.1.177"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/linux-arm64/claude"
 
 [tools.claude."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-arm64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/linux-arm64-musl/claude"
 
 [tools.claude."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/linux-x64/claude"
 
 [tools.claude."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/linux-x64-musl/claude"
 
 [tools.claude."platforms.macos-arm64"]
-checksum = "blake3:925690278efaeda7d86df4485db86586837b36f1358cfbc7ca823407a4e87ad6"
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/darwin-arm64/claude"
+checksum = "blake3:3f31dacf4a88698d19b6bfa35f43d547b12f75dcafaa66736b6d5b5140cb2ca6"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/darwin-arm64/claude"
 
 [tools.claude."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/darwin-x64/claude"
 
 [[tools.codex]]
 version = "0.139.0"
@@ -469,7 +469,7 @@ checksum = "sha256:ec6d0f6b056c89498a9b26c4d5c77a31fd0b7fe45ba8a45fa87d26f66c3eb
 url = "https://nodejs.org/dist/v26.3.0/node-v26.3.0-win-x64.zip"
 
 [[tools."npm:@colbymchenry/codegraph"]]
-version = "0.9.9"
+version = "1.0.0"
 backend = "npm:@colbymchenry/codegraph"
 
 [[tools."npm:@github/copilot"]]
