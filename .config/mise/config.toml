@@ -29,6 +29,7 @@ rust = "latest"
 starship = "latest"
 tlrc = "latest"
 yq = "latest"
+uv = "latest"
 
 [settings]
 lockfile = true
