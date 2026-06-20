@@ -52,7 +52,7 @@ ln -fsv "${dir}/.agents/skills" "${HOME}/.claude/skills"
 # MCP servers for Claude Code (user scope, stored in ~/.claude.json)
 # claude mcp add is idempotent — re-running install.sh is safe
 claude mcp add --scope user --transport stdio codegraph -- mise exec npm:@colbymchenry/codegraph -- codegraph serve --mcp
-claude mcp add --scope user --transport stdio sem -- mise exec cargo:https://github.com/Ataraxy-Labs/sem -- sem mcp
+claude mcp add --scope user --transport stdio sem -- mise exec cargo:https://github.com/Ataraxy-Labs/sem -- sem-mcp
 claude mcp add --scope user --transport stdio inspect -- mise exec cargo:https://github.com/Ataraxy-Labs/inspect -- inspect-mcp
 claude mcp add --scope user --transport stdio headroom -- mise exec pipx:headroom-ai -- headroom mcp serve
 ln -fsv "${dir}/.config/.opencode/opencode.jsonc" "${XDG_CONFIG_HOME}/opencode/opencode.jsonc"
