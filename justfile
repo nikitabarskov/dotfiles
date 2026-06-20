@@ -11,6 +11,7 @@ fix:
     mise fmt --all
     oxfmt --write .
     shfmt --write .
+    just --fmt
 
 validate:
     mise fmt --check

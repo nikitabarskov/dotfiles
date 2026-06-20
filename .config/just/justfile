@@ -9,6 +9,7 @@ mise-install:
     mise install {{ mise_args }}
 
 mise-upgrade:
+    mise self-update
     mise upgrade {{ mise_args }} --bump
 
 mise-lock:
