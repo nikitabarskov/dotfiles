@@ -1,8 +1,8 @@
 ---
 name: pr
 description:
-  Create or update a PR for the current branch based on actual changes. Uses
-  av for PR management, and git/sem/codegraph for change analysis.
+  Create or update a PR for the current branch based on actual changes. Uses av
+  for PR management, and git/sem/codegraph for change analysis.
 ---
 
 You MUST act as an experienced engineer preparing a pull request for review.
@@ -30,8 +30,8 @@ Before writing anything, understand what actually changed:
    `.github/pull_request_template.md`, `.github/PULL_REQUEST_TEMPLATE.md`,
    `.github/PULL_REQUEST_TEMPLATE/*.md`, `docs/pull_request_template.md`, or
    `pull_request_template.md`. Preserve headings and required prompts; fill
-   irrelevant optional sections with `N/A` or remove them only when the
-   template clearly allows it.
+   irrelevant optional sections with `N/A` or remove them only when the template
+   clearly allows it.
 3. Separate why the change exists from what code changed.
 4. Call out behavior changes, migrations, compatibility concerns, and user
    impact.
@@ -50,11 +50,10 @@ Before writing anything, understand what actually changed:
 3. If no PR exists, create one with `av pr create --title "<title>" --body -`
    and pass the body on stdin. Do not rely on the interactive editor.
 4. If `av pr create` fails, fall back to
-   `gh pr create --title "<title>" --body-file <file>`. Report the `av`
-   failure briefly and include the PR URL from the successful fallback.
-5. After creating or updating, read the PR back and confirm the body matches
-   the expected description. If it does not match, fix it or report the
-   mismatch.
+   `gh pr create --title "<title>" --body-file <file>`. Report the `av` failure
+   briefly and include the PR URL from the successful fallback.
+5. After creating or updating, read the PR back and confirm the body matches the
+   expected description. If it does not match, fix it or report the mismatch.
 6. Do not use `--force` flags unless the user explicitly asks.
 
 ## Output format
@@ -76,15 +75,16 @@ Use the repository PR template when one exists. If no template exists, use:
 - <Risky area, contract change, migration, or edge case to inspect>
 ```
 
-Omit `Review focus` only when the change is trivial. If no tests were run,
-write `Not run: <reason>`.
+Omit `Review focus` only when the change is trivial. If no tests were run, write
+`Not run: <reason>`.
 
 ## Writing rules
 
 - Be concise. A normal PR description should fit on one screen.
 - Do not restate every file touched.
 - Do not paste raw diffs.
-- Do not claim tests, screenshots, migrations, or validation that did not happen.
+- Do not claim tests, screenshots, migrations, or validation that did not
+  happen.
 - Avoid vague bullets like "misc fixes" or "cleanup".
 - Use past tense for what changed and present tense for current behavior.
 - Include issue links only when provided or discoverable from branch names,
@@ -96,8 +96,8 @@ When asked to prepare, create, or update a PR: produce the final description,
 apply it with the create-or-update workflow, and report whether the PR was
 created, updated, or already current. Include the PR URL when available.
 
-When asked only to draft text: produce the proposed description without
-creating or updating a PR.
+When asked only to draft text: produce the proposed description without creating
+or updating a PR.
 
-Do not judge whether the PR is atomic; PRs may contain multiple atomic
-commits. Use the `git-commit` skill for commit-level atomicity checks.
+Do not judge whether the PR is atomic; PRs may contain multiple atomic commits.
+Use the `git-commit` skill for commit-level atomicity checks.
