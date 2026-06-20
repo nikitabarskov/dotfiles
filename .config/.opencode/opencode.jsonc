@@ -7,26 +7,17 @@
 	},
 	"mcp": {
 		"codegraph": {
-			"command": [
-				"codegraph",
-				"serve",
-				"--mcp",
-			],
+			"command": ["codegraph", "serve", "--mcp"],
 			"enabled": true,
 			"type": "local",
 		},
 		"sem": {
-			"command": [
-				"sem",
-				"mcp",
-			],
+			"command": ["sem", "mcp"],
 			"enabled": true,
 			"type": "local",
 		},
 		"inspect": {
-			"command": [
-				"inspect-mcp",
-			],
+			"command": ["inspect-mcp"],
 			"enabled": true,
 			"type": "local",
 		},

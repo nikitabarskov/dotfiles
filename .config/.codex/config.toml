@@ -3,10 +3,7 @@ model = "gpt-5.5"
 model_reasoning_effort = "medium"
 [mcp_servers.codegraph]
 command = "codegraph"
-args = [
-	"serve",
-	"--mcp",
-]
+args = ["serve", "--mcp"]
 default_tools_approval_mode = "approve"
 
 [mcp_servers.sem]
