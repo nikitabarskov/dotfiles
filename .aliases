@@ -85,10 +85,3 @@ avpr() {
 }
 
 alias jg='just --global-justfile'
-
-headroom-env() {
-    headroom agent-savings --profile agent-90 --format shell
-}
-
-alias claudeh='headroom wrap claude'
-alias codexh='headroom wrap codex'

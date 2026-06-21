@@ -1,13 +1,11 @@
 [tools]
 "github:aviator-co/av" = "latest"
-claude = "latest"
-codex = "latest"
 crane = "latest"
 difftastic = "latest"
 fzf = "latest"
 gh = "latest"
 helix = "latest"
-"pipx:headroom-ai" = "latest"
+"pipx:headroom-ai" = { version = "latest", extras = "all" }
 just = "latest"
 lazydocker = "latest"
 lazygit = "latest"
@@ -30,6 +28,7 @@ starship = "latest"
 tlrc = "latest"
 yq = "latest"
 uv = "latest"
+claude = "latest"
 
 [settings]
 lockfile = true
