@@ -29,6 +29,7 @@ tlrc = "latest"
 yq = "latest"
 uv = "latest"
 claude = "latest"
+codex = "latest"
 
 [settings]
 lockfile = true
