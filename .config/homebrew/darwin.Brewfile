@@ -59,8 +59,6 @@ cask "figma"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
 cask "font-sf-mono-nerd-font-ligaturized"
-# Web browser
-cask "google-chrome"
 # Chromium-based web browser
 cask "helium-browser"
 # App to write, plan, collaborate, and get organised
