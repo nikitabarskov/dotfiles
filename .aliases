@@ -85,3 +85,5 @@ avpr() {
 }
 
 alias jg='just --global-justfile'
+alias claudeh='headroom wrap claude --no-serena'
+alias codexh='headroom wrap codex --no-serena'
