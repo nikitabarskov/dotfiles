@@ -84,6 +84,15 @@ avpr() {
     av pr --draft
 }
 
+switch-theme() {
+    local config="$HOME/.config/alacritty/alacritty.toml"
+    case "$1" in
+        light) yq -i -p toml -o toml '.general.import = ["~/.config/alacritty/themes/alabaster.toml"]' "$config" ;;
+        dark)  yq -i -p toml -o toml '.general.import = ["~/.config/alacritty/themes/catpuccin_mocha.toml"]' "$config" ;;
+        *)     echo "Usage: switch-theme [light|dark]" ;;
+    esac
+}
+
 alias jg='just --global-justfile'
 alias claudeh='headroom wrap claude --no-serena'
 alias codexh='headroom wrap codex --no-serena'

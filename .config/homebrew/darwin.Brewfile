@@ -1,4 +1,4 @@
-tap "aviator-co/tap"
+tap "aviator-co/tap", trusted: { casks: ["av"] }
 tap "grafana/grafana", trusted: { casks: ["alloy"] }
 tap "nikitabobko/tap", trusted: { formulae: ["aerospace"] }
 # Platform keystore credential helper for Docker
@@ -19,6 +19,8 @@ brew "libtool"
 brew "libyaml"
 # Utility for directing compilation
 brew "make"
+# Deep clean and optimize your Mac
+brew "mole"
 # Shell command parallelization utility
 brew "parallel"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -29,6 +31,8 @@ brew "pydantic"
 brew "python@3.13"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Easiest, most secure way to use WireGuard and 2FA
+brew "tailscale", restart_service: :changed
 # Free software distribution for the TeX typesetting system
 brew "texlive"
 # Cross-platform Rust rewrite of the GNU coreutils
@@ -75,5 +79,5 @@ cask "signal"
 cask "slack"
 # Messaging app with a focus on speed and security
 cask "telegram"
-# Deep clean and optimize your Mac
-brew "mole"
+# Free app that makes your Internet safer
+cask "cloudflare-warp"
