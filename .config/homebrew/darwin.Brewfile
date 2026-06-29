@@ -81,3 +81,9 @@ cask "slack"
 cask "telegram"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
+# Deep clean and optimize your Mac
+brew "mole"
+# Terminal multiplexer
+brew "tmux"
+# PAM module for reattaching to the user's GUI (Aqua) session
+brew "pam-reattach"

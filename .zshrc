@@ -109,3 +109,8 @@ fi
 # Initialize completion system
 autoload -Uz compinit
 compinit
+
+# Auto attach tmux session
+if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [[ "$TERM_PROGRAM" == "alacritty" ]]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi

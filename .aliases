@@ -5,7 +5,7 @@ brew-clean() {
 
     cache=$(brew --cache)
     brew autoremove && \
-    brew bundle cleanup --force --global && \
+    brew bundle cleanup --all --force --global && \
     brew cleanup --prune=all --scrub || return
 
     cache_entries=("$cache"/*(DN))
@@ -16,7 +16,7 @@ brew-clean() {
 }
 
 brew-add() {
-    brew install "$@" && \
+    brew install --yes "$@" && \
     brew bundle --verbose --global add "$@"
 }
 
