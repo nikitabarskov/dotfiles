@@ -30,6 +30,7 @@ yq = "latest"
 uv = "latest"
 claude = "latest"
 codex = "latest"
+hub = "latest"
 
 [settings]
 lockfile = true

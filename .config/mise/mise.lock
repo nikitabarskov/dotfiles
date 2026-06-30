@@ -314,37 +314,62 @@ url = "https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.
 checksum = "sha256:5c8325ced8bacd8418d62706f669e96d9c3578a9237526e34d546900cbc049b6"
 url = "https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.07.1-x86_64-windows.zip"
 
+[[tools.hub]]
+version = "2.14.2"
+backend = "aqua:mislav/hub"
+
+[tools.hub."platforms.linux-arm64"]
+url = "https://github.com/mislav/hub/releases/download/v2.14.2/hub-linux-arm64-2.14.2.tgz"
+
+[tools.hub."platforms.linux-arm64-musl"]
+url = "https://github.com/mislav/hub/releases/download/v2.14.2/hub-linux-arm64-2.14.2.tgz"
+
+[tools.hub."platforms.linux-x64"]
+url = "https://github.com/mislav/hub/releases/download/v2.14.2/hub-linux-amd64-2.14.2.tgz"
+
+[tools.hub."platforms.linux-x64-musl"]
+url = "https://github.com/mislav/hub/releases/download/v2.14.2/hub-linux-amd64-2.14.2.tgz"
+
+[tools.hub."platforms.macos-arm64"]
+url = "https://github.com/mislav/hub/releases/download/v2.14.2/hub-darwin-amd64-2.14.2.tgz"
+
+[tools.hub."platforms.macos-x64"]
+url = "https://github.com/mislav/hub/releases/download/v2.14.2/hub-darwin-amd64-2.14.2.tgz"
+
+[tools.hub."platforms.windows-x64"]
+url = "https://github.com/mislav/hub/releases/download/v2.14.2/hub-windows-amd64-2.14.2.zip"
+
 [[tools.just]]
-version = "1.53.0"
+version = "1.54.0"
 backend = "aqua:casey/just"
 
 [tools.just."platforms.linux-arm64"]
-checksum = "sha256:f29d8e72380bc144465f632c7d59da311205eef2923d57511708b05b82f2e64f"
-url = "https://github.com/casey/just/releases/download/1.53.0/just-1.53.0-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:2162accb54d087c6fbd165c1baedccb0f93b4953af7f00309b8f928016c49cae"
+url = "https://github.com/casey/just/releases/download/1.54.0/just-1.54.0-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.just."platforms.linux-arm64-musl"]
-checksum = "sha256:f29d8e72380bc144465f632c7d59da311205eef2923d57511708b05b82f2e64f"
-url = "https://github.com/casey/just/releases/download/1.53.0/just-1.53.0-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:2162accb54d087c6fbd165c1baedccb0f93b4953af7f00309b8f928016c49cae"
+url = "https://github.com/casey/just/releases/download/1.54.0/just-1.54.0-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.just."platforms.linux-x64"]
-checksum = "sha256:7fedeb22c7e14d9ef1551e8b793700866d80f409f9884b0e80ebb65c11d4874d"
-url = "https://github.com/casey/just/releases/download/1.53.0/just-1.53.0-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:193e2b04bac8ff3568ff81cf62f8c9db08f8083e16665e28d400dd35bac47ffd"
+url = "https://github.com/casey/just/releases/download/1.54.0/just-1.54.0-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.just."platforms.linux-x64-musl"]
-checksum = "sha256:7fedeb22c7e14d9ef1551e8b793700866d80f409f9884b0e80ebb65c11d4874d"
-url = "https://github.com/casey/just/releases/download/1.53.0/just-1.53.0-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:193e2b04bac8ff3568ff81cf62f8c9db08f8083e16665e28d400dd35bac47ffd"
+url = "https://github.com/casey/just/releases/download/1.54.0/just-1.54.0-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.just."platforms.macos-arm64"]
-checksum = "sha256:27f1361f2e4fb5d733837f1a9f80f85c237e5a36c75ee14961e59141713aa4ed"
-url = "https://github.com/casey/just/releases/download/1.53.0/just-1.53.0-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:a776fc5015491f84580875bc6dad3de59fa4f47a309ccac49d1287cb55f9b599"
+url = "https://github.com/casey/just/releases/download/1.54.0/just-1.54.0-aarch64-apple-darwin.tar.gz"
 
 [tools.just."platforms.macos-x64"]
-checksum = "sha256:bc345a26d40ae4697cb6b2f2ca04cdf1fbdc8c50eba1b40684c8bf3f98555d72"
-url = "https://github.com/casey/just/releases/download/1.53.0/just-1.53.0-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:3f1adefef12bcdf99134a44bde53b779e83726381e15de92113ce4bf2a3cf61f"
+url = "https://github.com/casey/just/releases/download/1.54.0/just-1.54.0-x86_64-apple-darwin.tar.gz"
 
 [tools.just."platforms.windows-x64"]
-checksum = "sha256:02308af0c174d3e0286f6bfc2b020258a3e12cd0c52c1d16fac8ef2c12dea0af"
-url = "https://github.com/casey/just/releases/download/1.53.0/just-1.53.0-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:860e21474e956eaa9879d62f68cc24530254eefe14ac108eaf707c0daf56a6d0"
+url = "https://github.com/casey/just/releases/download/1.54.0/just-1.54.0-x86_64-pc-windows-msvc.zip"
 
 [[tools.lazydocker]]
 version = "0.25.2"
@@ -631,28 +656,28 @@ ruby_build_repo = "https://github.com/rbenv/ruby-build.git"
 ruby_install = "false"
 
 [tools.ruby."platforms.linux-arm64"]
-checksum = "sha256:fa8d337b2e97149f17d609cec5e6e5907f032390ad24bc3095f66157ce2eddf1"
-url = "https://github.com/jdx/ruby/releases/download/4.0.5-1/ruby-4.0.5.arm64_linux.tar.gz"
+checksum = "sha256:142cc75048232c19fedca2748f4882f5d40443eb3d3532dc65efab44e6107553"
+url = "https://github.com/jdx/ruby/releases/download/4.0.5-2/ruby-4.0.5.arm64_linux.tar.gz"
 provenance = "github-attestations"
 
 [tools.ruby."platforms.linux-arm64-musl"]
-checksum = "sha256:fa8d337b2e97149f17d609cec5e6e5907f032390ad24bc3095f66157ce2eddf1"
-url = "https://github.com/jdx/ruby/releases/download/4.0.5-1/ruby-4.0.5.arm64_linux.tar.gz"
+checksum = "sha256:142cc75048232c19fedca2748f4882f5d40443eb3d3532dc65efab44e6107553"
+url = "https://github.com/jdx/ruby/releases/download/4.0.5-2/ruby-4.0.5.arm64_linux.tar.gz"
 provenance = "github-attestations"
 
 [tools.ruby."platforms.linux-x64"]
-checksum = "sha256:831f0e8bdc423156065d7965116f8d5c5fac943aff9128342094e2d745bd2051"
-url = "https://github.com/jdx/ruby/releases/download/4.0.5-1/ruby-4.0.5.x86_64_linux.tar.gz"
+checksum = "sha256:15a8cb9e40784fe3d2309e1bf30a8cb92932ec83513e93dc90d8b507608344a0"
+url = "https://github.com/jdx/ruby/releases/download/4.0.5-2/ruby-4.0.5.x86_64_linux.tar.gz"
 provenance = "github-attestations"
 
 [tools.ruby."platforms.linux-x64-musl"]
-checksum = "sha256:831f0e8bdc423156065d7965116f8d5c5fac943aff9128342094e2d745bd2051"
-url = "https://github.com/jdx/ruby/releases/download/4.0.5-1/ruby-4.0.5.x86_64_linux.tar.gz"
+checksum = "sha256:15a8cb9e40784fe3d2309e1bf30a8cb92932ec83513e93dc90d8b507608344a0"
+url = "https://github.com/jdx/ruby/releases/download/4.0.5-2/ruby-4.0.5.x86_64_linux.tar.gz"
 provenance = "github-attestations"
 
 [tools.ruby."platforms.macos-arm64"]
-checksum = "sha256:cc07d78e61eef4a0d04fce62bce56b6822b261dbed30bad306f6bc7f9ca7085d"
-url = "https://github.com/jdx/ruby/releases/download/4.0.5-1/ruby-4.0.5.macos.tar.gz"
+checksum = "sha256:2ceac7dbfb7ce73e7efbf0198fb859c23144169af9bd417b3996c6176e60ae80"
+url = "https://github.com/jdx/ruby/releases/download/4.0.5-2/ruby-4.0.5.macos.tar.gz"
 provenance = "github-attestations"
 
 [tools.ruby."platforms.macos-x64"]
