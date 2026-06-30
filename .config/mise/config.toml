@@ -14,8 +14,8 @@ mkcert = "latest"
 node = "latest"
 "cargo:https://github.com/Ataraxy-Labs/inspect" = { version = "latest", crate = "inspect-mcp" }
 "cargo:https://github.com/Ataraxy-Labs/sem" = { version = "latest", crate = "sem-cli" }
+"cargo:https://github.com/aovestdipaperino/tokensave" = { version = "latest", crate = "tokensave" }
 "npm:@colbymchenry/codegraph" = "latest"
-"npm:@github/copilot" = "latest"
 "npm:ccusage" = "latest"
 opencode = "latest"
 pandoc = "latest"
@@ -34,7 +34,6 @@ hub = "latest"
 
 [settings]
 lockfile = true
-minimum_release_age = "7d"
 
 [settings.ruby]
 compile = false
