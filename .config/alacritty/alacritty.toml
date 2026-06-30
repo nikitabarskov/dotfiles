@@ -21,6 +21,9 @@ lines = 30
 x = 4
 y = 4
 
+[env]
+TERM_PROGRAM = "alacritty"
+
 [terminal]
 shell = "zsh"
 

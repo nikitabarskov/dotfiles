@@ -1,3 +1,8 @@
+# --- Headroom proxy (auto-injected by headroom wrap codex) ---
+model_provider = "headroom"
+openai_base_url = "http://127.0.0.1:8787/v1"
+# --- end Headroom ---
+
 service_tier = "default"
 model = "gpt-5.5"
 model_reasoning_effort = "medium"
@@ -7,8 +12,8 @@ args = ["serve", "--mcp"]
 default_tools_approval_mode = "approve"
 
 [mcp_servers.sem]
-command = "sem-mcp"
-args = []
+command = "sem"
+args = ["mcp"]
 default_tools_approval_mode = "approve"
 
 [mcp_servers.inspect]
@@ -58,3 +63,12 @@ trust_level = "trusted"
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
+
+# --- Headroom proxy (auto-injected by headroom wrap codex) ---
+[model_providers.headroom]
+name = "OpenAI via Headroom proxy"
+base_url = "http://127.0.0.1:8787/v1"
+supports_websockets = true
+requires_openai_auth = true
+env_http_headers = { "X-Headroom-Project" = "HEADROOM_PROJECT" }
+# --- end Headroom ---
