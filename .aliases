@@ -85,10 +85,11 @@ avpr() {
 }
 
 switch-theme() {
-    local config="$HOME/.config/alacritty/alacritty.toml"
+    local themes="$HOME/.config/alacritty/themes"
+    local active="$HOME/.config/alacritty/theme.toml"
     case "$1" in
-        light) yq -i -p toml -o toml '.general.import = ["~/.config/alacritty/themes/alabaster.toml"]' "$config" ;;
-        dark)  yq -i -p toml -o toml '.general.import = ["~/.config/alacritty/themes/catpuccin_mocha.toml"]' "$config" ;;
+        light) cp "${themes}/alabaster.toml" "$active" ;;
+        dark)  cp "${themes}/catpuccin_mocha.toml" "$active" ;;
         *)     echo "Usage: switch-theme [light|dark]" ;;
     esac
 }
