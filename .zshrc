@@ -53,8 +53,6 @@ HISTFILE=~/.zsh_history # Where to save history to disk
 HISTDUP=erase # Erase duplicates in the history file
 setopt hist_ignore_dups # Ignore duplicates
 
-bindkey "^[[A" history-substring-search-up
-bindkey "^[[B" history-substring-search-down
 bindkey "^[[1;3D" backward-word
 bindkey "^[[1;3C" forward-word
 
@@ -63,8 +61,11 @@ SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 # Source zsh plugins if available
 if command -v brew >/dev/null 2>&1; then
     BREW_PREFIX=$(brew --prefix)
-    [ -f "$BREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh" ] && \
+    if [ -f "$BREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh" ]; then
         source "$BREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
+        bindkey "^[[A" history-substring-search-up
+        bindkey "^[[B" history-substring-search-down
+    fi
     [ -f "$BREW_PREFIX/share/forgit/forgit.plugin.zsh" ] && \
         source "$BREW_PREFIX/share/forgit/forgit.plugin.zsh"
 fi
