@@ -87,3 +87,5 @@ brew "mole"
 brew "tmux"
 # PAM module for reattaching to the user's GUI (Aqua) session
 brew "pam-reattach"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
