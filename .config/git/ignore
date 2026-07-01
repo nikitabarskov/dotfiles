@@ -137,3 +137,4 @@ NOTES.md
 # todo: figure out how to install https://github.com/headroomlabs-ai/headroom
 # without serena and all additional dependencies I didn't ask for
 .serena
+.tokensave

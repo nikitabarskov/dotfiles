@@ -35,8 +35,7 @@
 "error" = { fg = "red", bg = "bg_error" }
 "warning" = { fg = "orange" }
 "hint" = { fg = "gray", bg = "bg_hint" }
-"diagnostic.error" = { fg = "red", bg = "bg_error", underline = { style = "curl" }, modifiers = [
-] }
+"diagnostic.error" = { fg = "red", bg = "bg_error", underline = { style = "curl" }, modifiers = [] }
 "diagnostic.warning" = { bg = "orange", fg = "fg", modifiers = ["bold"] }
 "diagnostic.hint" = { fg = "gray", modifiers = ["bold"] }
 "diagnostic.unnecessary" = { modifiers = ["dim"] }

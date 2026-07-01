@@ -15,6 +15,7 @@
 [core]
 	editor = zed --wait
 	autocrlf = input
+	hooksPath = /Users/nikitabarskov/.config/git/hooks
 
 [init]
 	defaultBranch = main

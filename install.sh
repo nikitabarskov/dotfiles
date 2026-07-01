@@ -20,8 +20,8 @@ mkdir -p "${XDG_CONFIG_HOME}/zed" &&
   ln -fsv "${dir}/.config/zed/themes" "${XDG_CONFIG_HOME}/zed/"
 [ -e "${XDG_CONFIG_HOME}/alacritty" ] && rm -rf "${XDG_CONFIG_HOME}/alacritty"
 ln -fsv "${dir}/.config/alacritty" "${XDG_CONFIG_HOME}/alacritty"
-[ ! -f "${dir}/.config/alacritty/theme.toml" ] && \
-    cp "${dir}/.config/alacritty/themes/alabaster.toml" "${dir}/.config/alacritty/theme.toml"
+[ ! -f "${dir}/.config/alacritty/theme.toml" ] &&
+  cp "${dir}/.config/alacritty/themes/alabaster.toml" "${dir}/.config/alacritty/theme.toml"
 [ -e "${XDG_CONFIG_HOME}/ghostty" ] && rm -rf "${XDG_CONFIG_HOME}/ghostty"
 ln -fsv "${dir}/.config/ghostty" "${XDG_CONFIG_HOME}/ghostty"
 [ -e "${XDG_CONFIG_HOME}/lazygit" ] && rm -rf "${XDG_CONFIG_HOME}/lazygit"

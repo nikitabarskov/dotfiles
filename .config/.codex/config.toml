@@ -1,46 +1,49 @@
-# --- Headroom proxy (auto-injected by headroom wrap codex) ---
-model_provider = "headroom"
-openai_base_url = "http://127.0.0.1:8787/v1"
-# --- end Headroom ---
-
-service_tier = "default"
 model = "gpt-5.5"
+model_provider = "headroom"
 model_reasoning_effort = "medium"
+openai_base_url = "http://127.0.0.1:8787/v1"
+service_tier = "default"
+
 [mcp_servers.codegraph]
-command = "codegraph"
 args = ["serve", "--mcp"]
-default_tools_approval_mode = "approve"
-
-[mcp_servers.sem]
-command = "sem"
-args = ["mcp"]
-default_tools_approval_mode = "approve"
-
-[mcp_servers.inspect]
-command = "inspect-mcp"
-args = []
-default_tools_approval_mode = "approve"
-
-[mcp_servers.headroom]
-command = "headroom"
-args = ["mcp", "serve"]
+command = "codegraph"
 default_tools_approval_mode = "approve"
 
 [mcp_servers.github]
-url = "https://api.githubcopilot.com/mcp/"
 bearer_token_env_var = "GITHUB_TOKEN"
 default_tools_approval_mode = "approve"
+url = "https://api.githubcopilot.com/mcp/"
 
-[projects."~/personal"]
-trust_level = "trusted"
+[mcp_servers.headroom]
+args = ["mcp", "serve"]
+command = "headroom"
+default_tools_approval_mode = "approve"
 
-[projects."~/gh"]
-trust_level = "trusted"
+[mcp_servers.inspect]
+args = []
+command = "inspect-mcp"
+default_tools_approval_mode = "approve"
 
-[projects."~/work"]
-trust_level = "trusted"
+[mcp_servers.sem]
+args = ["mcp"]
+command = "sem"
+default_tools_approval_mode = "approve"
 
-[projects."/Users/nikitabarskov/personal/dotfiles"]
+[mcp_servers.tokensave]
+args = ["serve"]
+command = "tokensave"
+default_tools_approval_mode = "approve"
+
+[model_providers.headroom]
+base_url = "http://127.0.0.1:8787/v1"
+name = "OpenAI via Headroom proxy"
+requires_openai_auth = true
+supports_websockets = true
+
+[model_providers.headroom.env_http_headers]
+X-Headroom-Project = "HEADROOM_PROJECT"
+
+[projects."/Users/nikitabarskov"]
 trust_level = "trusted"
 
 [projects."/Users/nikitabarskov/gh/infra"]
@@ -49,26 +52,26 @@ trust_level = "trusted"
 [projects."/Users/nikitabarskov/gh/surgery-planning"]
 trust_level = "trusted"
 
+[projects."/Users/nikitabarskov/personal/dotfiles"]
+trust_level = "trusted"
+
 [projects."/Users/nikitabarskov/personal/hirn.studio/sowai"]
-trust_level = "trusted"
-
-[projects."/Users/nikitabarskov"]
-trust_level = "trusted"
-
-[projects."/home/nikitabarskov/personal/hirn.studio/sowai"]
 trust_level = "trusted"
 
 [projects."/home/nikitabarskov/personal/dotfiles"]
 trust_level = "trusted"
 
+[projects."/home/nikitabarskov/personal/hirn.studio/sowai"]
+trust_level = "trusted"
+
+[projects."~/gh"]
+trust_level = "trusted"
+
+[projects."~/personal"]
+trust_level = "trusted"
+
+[projects."~/work"]
+trust_level = "trusted"
+
 [tui.model_availability_nux]
 "gpt-5.5" = 4
-
-# --- Headroom proxy (auto-injected by headroom wrap codex) ---
-[model_providers.headroom]
-name = "OpenAI via Headroom proxy"
-base_url = "http://127.0.0.1:8787/v1"
-supports_websockets = true
-requires_openai_auth = true
-env_http_headers = { "X-Headroom-Project" = "HEADROOM_PROJECT" }
-# --- end Headroom ---
