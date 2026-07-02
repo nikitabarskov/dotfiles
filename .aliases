@@ -95,5 +95,5 @@ switch-theme() {
 }
 
 alias jg='just --global-justfile'
-alias claudeh='headroom wrap claude --no-serena'
-alias codexh='headroom wrap codex --no-serena'
+alias claudeh='headroom wrap claude --no-serena --no-mcp --no-tokensave'
+alias codexh='headroom wrap codex --no-serena --no-mcp --no-tokensave'

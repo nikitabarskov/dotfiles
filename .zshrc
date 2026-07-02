@@ -1,6 +1,11 @@
 # Initialize package and tool paths before loading shell plugins.
 export PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
 
+# $SHELL can be stale (e.g. set by a login/session manager before a
+# `chsh` took effect), which breaks tools like tmux that spawn $SHELL
+# for new panes. Since we're already running inside zsh, just fix it.
+export SHELL="$(command -v zsh)"
+
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
