@@ -44,7 +44,9 @@
       }
     ]
   },
-  "enabledPlugins": {},
+  "enabledPlugins": {
+    "figma@claude-plugins-official": true
+  },
   "effortLevel": "medium",
   "theme": "auto"
 }

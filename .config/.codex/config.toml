@@ -9,6 +9,21 @@ args = ["serve", "--mcp"]
 command = "codegraph"
 default_tools_approval_mode = "approve"
 
+[mcp_servers.sem]
+command = "sem"
+args = ["mcp"]
+default_tools_approval_mode = "approve"
+
+[mcp_servers.inspect]
+command = "inspect-mcp"
+args = []
+default_tools_approval_mode = "approve"
+
+[mcp_servers.headroom]
+command = "headroom"
+args = ["mcp", "serve"]
+default_tools_approval_mode = "approve"
+
 [mcp_servers.github]
 bearer_token_env_var = "GITHUB_TOKEN"
 default_tools_approval_mode = "approve"
