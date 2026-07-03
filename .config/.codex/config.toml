@@ -8,8 +8,8 @@ model_reasoning_effort = "medium"
 service_tier = "default"
 
 [mcp_servers.codegraph]
-args = ["serve", "--mcp"]
 command = "codegraph"
+args = ["serve", "--mcp"]
 default_tools_approval_mode = "approve"
 
 [mcp_servers.sem]
@@ -19,7 +19,6 @@ default_tools_approval_mode = "approve"
 
 [mcp_servers.inspect]
 command = "inspect-mcp"
-args = []
 default_tools_approval_mode = "approve"
 
 [mcp_servers.headroom]
@@ -28,38 +27,36 @@ args = ["mcp", "serve"]
 default_tools_approval_mode = "approve"
 
 [mcp_servers.tokensave]
-args = ["serve"]
 command = "tokensave"
+args = ["serve"]
 default_tools_approval_mode = "approve"
 
-[projects."/Users/nikitabarskov"]
+[mcp_servers.linear]
+url = "https://mcp.linear.app/mcp"
+default_tools_approval_mode = "approve"
+
+[projects."~/gh/infra"]
 trust_level = "trusted"
 
-[projects."/Users/nikitabarskov/gh/infra"]
+[projects."~/gh/surgery-planning"]
 trust_level = "trusted"
 
-[projects."/Users/nikitabarskov/gh/surgery-planning"]
+[projects."~/personal/dotfiles"]
 trust_level = "trusted"
 
-[projects."/Users/nikitabarskov/personal/dotfiles"]
+[projects."~/personal/hirn.studio/sowai"]
 trust_level = "trusted"
 
-[projects."/Users/nikitabarskov/personal/hirn.studio/sowai"]
+[projects."~/personal/dotfiles"]
 trust_level = "trusted"
 
-[projects."/home/nikitabarskov/personal/dotfiles"]
+[projects."~/personal/hirn.studio/backend"]
 trust_level = "trusted"
 
-[projects."/home/nikitabarskov/personal/hirn.studio/sowai"]
+[projects."~/personal/hirn.studio/platform"]
 trust_level = "trusted"
 
-[projects."~/gh"]
-trust_level = "trusted"
-
-[projects."~/personal"]
-trust_level = "trusted"
-
-[projects."~/work"]
+[projects."~/personal/hirn.studio/apis"]
 trust_level = "trusted"
 
 [tui.model_availability_nux]
