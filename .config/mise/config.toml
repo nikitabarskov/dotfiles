@@ -31,6 +31,7 @@ uv = "latest"
 claude = "latest"
 codex = "latest"
 hub = "latest"
+1password = "latest"
 
 [settings]
 lockfile = true
