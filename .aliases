@@ -40,27 +40,43 @@ brew-upgrade() {
     brew-clean
 }
 
-macos-u() {
-    touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-    sudo softwareupdate \
-        --install \
-        --all \
-        --agree-to-license \
-        --force \
-        --restart
-    rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-}
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    macos-u() {
+        touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+        sudo softwareupdate \
+            --install \
+            --all \
+            --agree-to-license \
+            --force \
+            --restart
+        rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+    }
 
-macos-clt() {
-    touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-    local clt_label
-    clt_label=$(softwareupdate --list 2>/dev/null | grep "Command Line Tools" | grep "Label:" | awk -F'Label: ' '{print $2}' | head -n 1)
-    if [[ -n "$clt_label" ]]; then
-        echo "Installing $clt_label..."
-        sudo softwareupdate --install --agree-to-license --verbose --force "$clt_label"
-    fi
-    rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-}
+    macos-clt() {
+        touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+        local clt_label
+        clt_label=$(softwareupdate --list 2>/dev/null | grep "Command Line Tools" | grep "Label:" | awk -F'Label: ' '{print $2}' | head -n 1)
+        if [[ -n "$clt_label" ]]; then
+            echo "Installing $clt_label..."
+            sudo softwareupdate --install --agree-to-license --verbose --force "$clt_label"
+        fi
+        rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+    }
+fi
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    dnf-clean() {
+        sudo dnf autoremove -y && \
+        sudo dnf clean packages
+    }
+
+    dnf-upgrade() {
+        sudo dnf upgrade --refresh -y && \
+        dnf-clean
+        command -v akmods >/dev/null 2>&1 && sudo akmods --force
+        dnf needs-restarting -r &>/dev/null || echo "Reboot recommended"
+    }
+fi
 
 nb() {
     local date
@@ -94,6 +110,6 @@ switch-theme() {
     esac
 }
 
-alias jg='just --global-justfile'
-alias claudeh='headroom wrap claude --no-serena --no-mcp --no-tokensave'
-alias codexh='headroom wrap codex --no-serena --no-mcp --no-tokensave'
+alias jg="just --global-justfile"
+alias claudeh="headroom wrap claude --no-serena --no-mcp --no-tokensave"
+alias codexh="headroom wrap codex --no-serena --no-mcp --no-tokensave"
