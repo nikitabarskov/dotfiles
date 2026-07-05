@@ -53,10 +53,21 @@ ln -fsv "${dir}/.config/.claude/settings.json" "${HOME}/.claude/settings.json"
 [ -e "${HOME}/.claude/skills" ] && rm -rf "${HOME}/.claude/skills"
 ln -fsv "${dir}/.agents/skills" "${HOME}/.claude/skills"
 # MCP servers for Claude Code (user scope, stored in ~/.claude.json)
-# claude mcp add is idempotent — re-running install.sh is safe
-claude mcp add --scope user --transport stdio codegraph -- codegraph serve --mcp
-claude mcp add --scope user --transport stdio sem -- sem mcp
-claude mcp add --scope user --transport stdio inspect -- inspect-mcp
+claude_mcp_replace() {
+  local name="$1"
+  shift
+
+  if claude mcp get "$name" >/dev/null 2>&1; then
+    claude mcp remove "$name"
+  fi
+
+  claude mcp add --scope user --transport stdio "$name" -- "$@"
+}
+
+claude_mcp_replace codegraph "codegraph serve --mcp"
+claude_mcp_replace sem "sem mcp"
+claude_mcp_replace inspect "inspect-mcp"
+claude_mcp_replace headroom "headroom mcp serve"
 ln -fsv "${dir}/.config/.opencode/opencode.jsonc" "${XDG_CONFIG_HOME}/opencode/opencode.jsonc"
 ln -fsv "${dir}/.config/.codex/config.toml" "${HOME}/.codex/config.toml"
 

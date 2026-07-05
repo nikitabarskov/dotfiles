@@ -41,9 +41,6 @@ trust_level = "trusted"
 [projects."~/gh/surgery-planning"]
 trust_level = "trusted"
 
-[projects."~/personal/dotfiles"]
-trust_level = "trusted"
-
 [projects."~/personal/hirn.studio/sowai"]
 trust_level = "trusted"
 
@@ -57,6 +54,15 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."~/personal/hirn.studio/apis"]
+trust_level = "trusted"
+
+[projects."/home/nikitabarskov/personal/hirn.studio/backend"]
+trust_level = "trusted"
+
+[projects."/home/nikitabarskov/hirn-studio/apis"]
+trust_level = "trusted"
+
+[projects."/home/nikitabarskov/personal/dotfiles"]
 trust_level = "trusted"
 
 [tui.model_availability_nux]

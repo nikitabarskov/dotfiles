@@ -85,7 +85,11 @@ nb() {
 }
 
 avb() {
-    av branch "nikita.barskov-$(date +%Y%m%dT%H%M%S)-$1"
+    if [[ -n "$2" ]]; then
+        av branch "$(nb "$1")" --parent "$2"
+    else
+        av branch "$(nb "$1")"
+    fi
 }
 
 avsc() {
@@ -98,6 +102,24 @@ avs() {
 
 avpr() {
     av pr --draft
+}
+
+avib() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: avib <branch-suffix>"
+        return 1
+    fi
+
+    local current parent new_branch
+    current=$(git branch --show-current)
+    parent=$(av tree --current | awk '/\* /{print $2}' | sed -n '2p')
+
+    avb "$1" "$parent" && \
+    new_branch=$(git branch --show-current) && \
+    git reset --hard "${current}~1" && \
+    git checkout "$current" && \
+    av reparent --parent "$new_branch" && \
+    av restack
 }
 
 switch-theme() {
