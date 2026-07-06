@@ -17,7 +17,6 @@ node = "latest"
 "cargo:https://github.com/aovestdipaperino/tokensave" = { version = "latest", crate = "tokensave" }
 "npm:@colbymchenry/codegraph" = "latest"
 "npm:ccusage" = "latest"
-opencode = "latest"
 pandoc = "latest"
 ripgrep = "latest"
 rtk = "latest"

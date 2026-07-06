@@ -5,7 +5,7 @@ mise-clean:
     mise cache {{ mise_args }} clean && \
     mise cache {{ mise_args }} prune
 
-mise-install:
+mise-install: && mise-clean
     mise install {{ mise_args }}
 
 mise-upgrade target="":
