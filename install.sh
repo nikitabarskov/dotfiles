@@ -64,10 +64,10 @@ claude_mcp_replace() {
   claude mcp add --scope user --transport stdio "$name" -- "$@"
 }
 
-claude_mcp_replace codegraph "codegraph serve --mcp"
-claude_mcp_replace sem "sem mcp"
-claude_mcp_replace inspect "inspect-mcp"
-claude_mcp_replace headroom "headroom mcp serve"
+claude_mcp_replace codegraph codegraph serve --mcp
+claude_mcp_replace sem sem mcp
+claude_mcp_replace inspect inspect-mcp
+claude_mcp_replace headroom headroom mcp serve
 ln -fsv "${dir}/.config/.opencode/opencode.jsonc" "${XDG_CONFIG_HOME}/opencode/opencode.jsonc"
 ln -fsv "${dir}/.config/.codex/config.toml" "${HOME}/.codex/config.toml"
 

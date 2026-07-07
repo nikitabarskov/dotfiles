@@ -93,11 +93,11 @@ avb() {
 }
 
 avsc() {
-    av sync --rebase-to-trunk --current
+    av sync --ff-trunk --prune=yes --push=yes --rebase-to-trunk --current
 }
 
 avs() {
-    av sync --rebase-to-trunk
+    av sync --ff-trunk --prune=yes --push=yes --rebase-to-trunk
 }
 
 avpr() {
