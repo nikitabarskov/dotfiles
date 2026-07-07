@@ -65,7 +65,7 @@ claude_mcp_replace() {
 }
 
 claude_mcp_replace codegraph codegraph serve --mcp
-claude_mcp_replace sem sem mcp
+claude_mcp_replace sem sem-mcp
 claude_mcp_replace inspect inspect-mcp
 claude_mcp_replace headroom headroom mcp serve
 ln -fsv "${dir}/.config/.opencode/opencode.jsonc" "${XDG_CONFIG_HOME}/opencode/opencode.jsonc"
