@@ -33,7 +33,7 @@ hub = "latest"
 1password = "latest"
 
 [settings]
-lockfile = true
+lockfile = false
 
 [settings.ruby]
 compile = false

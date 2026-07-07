@@ -27,8 +27,8 @@ git --no-pager diff --no-ext-diff -- .
 - Do not inspect git pager configuration, external diff configuration, aliases,
   or unrelated repository metadata.
 - Do not run extra git commands unless the diff is missing or unreadable.
-- If no diff is available after these commands, stop and say there is no diff
-  to summarize.
+- If no diff is available after these commands, stop and say there is no diff to
+  summarize.
 
 Atomicity check - do this first:
 
