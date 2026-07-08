@@ -1,5 +1,5 @@
 ---
-name: reviewfrontend
+name: review-frontend
 description:
   Critique React/TypeScript frontend code for correctness, security,
   performance, and idiomatic patterns
