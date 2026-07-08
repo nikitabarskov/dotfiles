@@ -20,6 +20,9 @@ validate:
     shellcheck --shell=sh -x --exclude=SC1091 {{ sh_files }}
     shfmt --diff .
 
+restart-headroom:
+    headroom install restart
+
 mise_args := ""
 
 upgrade target="":
