@@ -133,5 +133,6 @@
   },
   "effortLevel": "medium",
   "tui": "fullscreen",
-  "theme": "auto"
+  "theme": "auto",
+  "editorMode": "normal"
 }
