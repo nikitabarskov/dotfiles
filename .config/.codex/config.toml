@@ -67,6 +67,12 @@ trust_level = "trusted"
 [projects."/Users/nikitabarskov/personal/dotfiles"]
 trust_level = "trusted"
 
+[projects."/Users/nikitabarskov/gh/surgery-planning"]
+trust_level = "trusted"
+
+[projects."/Users/nikitabarskov"]
+trust_level = "trusted"
+
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 
