@@ -34,6 +34,7 @@ codex = "latest"
 
 [settings]
 lockfile = false
+minimum_release_age = "0h"
 
 [settings.ruby]
 compile = false
