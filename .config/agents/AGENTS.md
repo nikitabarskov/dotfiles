@@ -118,9 +118,9 @@ which starts the proxy, registers the Headroom MCP retrieve tool, and applies
 the `agent-90` savings profile without globally pointing every shell at a proxy
 that may not be running.
 
-**Nested agent handoffs must also go through the wrapper.** If you (Claude
-Code or Codex) shell out to invoke the sibling CLI — e.g. handing a task to
-Codex, or Codex handing one back to Claude — call `codexh`/`claudeh`, not bare
+**Nested agent handoffs must also go through the wrapper.** If you (Claude Code
+or Codex) shell out to invoke the sibling CLI — e.g. handing a task to Codex, or
+Codex handing one back to Claude — call `codexh`/`claudeh`, not bare
 `codex`/`claude`. Otherwise the nested agent skips the headroom proxy entirely.
 Both functions are defined in `.config/shell/agent-env.sh` and available in
 every shell, including non-interactive ones, so there's no reason to fall back
