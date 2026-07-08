@@ -41,6 +41,16 @@ removing code solves it. Smaller codebases are easier to maintain.
   files.
 - Configuration belongs in config files, not in code.
 
+## NOTES.md
+
+Every repository may contain a `NOTES.md` file in its root. It is globally
+gitignored (not project-specific), so it will never show up in `git status`,
+`git diff`, or a fresh `ls` of tracked files — but treat it as real and check
+for it directly (e.g. `test -f NOTES.md` or just try reading it) at the start of
+a task. It is a personal scratch file used to dump context, TODOs, or prior
+agent output between sessions. If it exists, read it for context before starting
+work; don't assume it's missing just because it's untracked.
+
 ## When Proposing Changes
 
 - Show the minimal diff. Don't refactor unrelated code while fixing a bug.
@@ -138,22 +148,22 @@ Rules:
 Run `headroom perf` periodically (or when a session feels expensive/slow) and
 act on what it reports:
 
-- **Keep conversations short.** Cache-write cost grows with conversation
-  length, and prefixes get unstable in long sessions (large edits/reordering
-  force `cache_write` to spike relative to `cache_read`). Compact or start a
-  fresh session between unrelated tasks instead of letting one conversation
-  run for hundreds of messages.
+- **Keep conversations short.** Cache-write cost grows with conversation length,
+  and prefixes get unstable in long sessions (large edits/reordering force
+  `cache_write` to spike relative to `cache_read`). Compact or start a fresh
+  session between unrelated tasks instead of letting one conversation run for
+  hundreds of messages.
 - **Don't let stale reads sit uncompressed.** The content router excludes
   Read/Glob output from compression by default, so it accumulates as a large,
   uncompressed share of context. Prefer CodeGraph/sem/tokensave lookups over
-  re-`Read`ing files, and call `headroom_compress` on large results you're
-  done reasoning over rather than leaving them raw in context.
+  re-`Read`ing files, and call `headroom_compress` on large results you're done
+  reasoning over rather than leaving them raw in context.
 - **Publish eligible TOIN patterns.** `headroom perf` reports how many learned
   patterns have enough samples to move from the live/adaptive store into the
   static ruleset. When it flags eligible patterns, run
   `python -m headroom.cli.toin_publish --min-observations <n>` (match `<n>` to
-  the threshold `perf` reports as eligible) to raise the pattern retrieval
-  hit rate.
+  the threshold `perf` reports as eligible) to raise the pattern retrieval hit
+  rate.
 
 <!-- CODEGRAPH_START -->
 
