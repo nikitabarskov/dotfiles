@@ -39,9 +39,13 @@
 [gpg "ssh"]
 	program = "/opt/1Password/op-ssh-sign"
 [alias]
+	# Create a new branch named nikita.barskov-<timestamp>-<suffix>
 	bt = "!bt() { git checkout -b nikita.barskov-$(date +\"%Y%m%dT%H%M%S\")-$1; }; bt"
+	# Delete local branches whose upstream has been deleted on the remote
 	gone = "!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
+	# Amend the previous commit, re-signing it
 	amend = commit -s - --amend
+	# Rebase the current branch onto its PR's base branch (looked up via gh)
 	rb = "!f() { \
 		set -e; \
 		curr=\"$(git branch --show-current)\"; \
@@ -58,8 +62,11 @@
 		git fetch origin \"$base\"; \
 		git rebase \"origin/$base\"; \
 	}; f"
+    # difftastic-rendered `git log -p`
     dl = -c diff.external=difft log -p --ext-diff
+    # difftastic-rendered `git show`
    	ds = -c diff.external=difft show --ext-diff
+    # difftastic-rendered `git diff`
     dft = -c diff.external=difft diff
 
 [difftool "difftastic"]
@@ -73,4 +80,3 @@
 
 [diff]
    tool = difftastic
-   external = difft
