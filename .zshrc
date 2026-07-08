@@ -116,7 +116,7 @@ fi
 autoload -Uz compinit
 compinit
 
-# Auto attach tmux session
-if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [[ "$TERM_PROGRAM" == "alacritty" ]]; then
-  tmux attach-session -t default || tmux new-session -s default
+# Start a new tmux session per Alacritty window.
+if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ] && [[ "$TERM_PROGRAM" == "alacritty" ]]; then
+    exec tmux new-session
 fi
