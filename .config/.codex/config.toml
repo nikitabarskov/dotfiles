@@ -73,6 +73,9 @@ trust_level = "trusted"
 [projects."/Users/nikitabarskov"]
 trust_level = "trusted"
 
+[projects."/Users/nikitabarskov/personal/hirn.studio/backend"]
+trust_level = "trusted"
+
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 
