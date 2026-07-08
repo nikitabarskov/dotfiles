@@ -58,6 +58,39 @@ removing code solves it. Smaller codebases are easier to maintain.
 - If something is wrong or a bad idea, say so plainly.
 - Use code blocks for all code, commands, and file paths.
 
+## Model tiers
+
+Skills that dispatch or escalate work (`plan`, `roadmap`, `implement`) should
+refer to tiers, not hardcoded model names, so a model bump means editing this
+table once instead of every skill. Current mapping:
+
+| Tier                   | Claude (`Agent` `model` param)         | Codex        |
+| ---------------------- | -------------------------------------- | ------------ |
+| Cheap/mechanical       | Haiku 4.5 (`haiku`)                    | —            |
+| Cost-optimized default | Sonnet 5 (`sonnet`)                    | gpt-5.5-mini |
+| Frontier/escalated     | Opus 4.8 (`opus`) or Fable 5 (`fable`) | gpt-5.5      |
+
+Never escalate off the cost-optimized default without a named, concrete reason
+(architectural risk, ambiguity, blast radius) — see each skill's escalation
+rules.
+
+## Suggested skill tiers
+
+Inline skills (anything invoked via `Skill` that doesn't dispatch through
+`Agent`) don't get a confirmation gate — but before invoking one in Group B,
+check the current session model against the tiers above and say so if it's below
+frontier and the task looks high-stakes by that skill's own escalation criteria
+(auth boundary, data model/migration, public API, security-sensitive code). One
+line, non-blocking, say it once per invocation — don't gate.
+
+- **Group A — cost-optimized tier is sufficient:** `git-commit`, `pr`,
+  `update-readme`, `write-docs`, `create-skill`, `create-system-prompt`,
+  `edit-article`, `headroom-check`. Bounded input, low ambiguity, invoked often
+  — no tier check needed.
+- **Group B — judgment-heavy, escalate situationally:** every `review-*` skill,
+  plus `design-doc`. Default to the cost-optimized tier; flag when the change
+  looks high-stakes per the reasoning above.
+
 ## Headroom (headroom\_\*)
 
 Headroom provides two complementary layers of token compression that work
