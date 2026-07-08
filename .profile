@@ -31,3 +31,8 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_SCALE_FACTOR=2
 
 . "$HOME/.cargo/env"
+
+# Same bootstrap .zshenv gives zsh: mise activation + claudeh/codexh, plus
+# BASH_ENV so non-interactive bash children (agent Bash tools) get it too.
+[ -f "$HOME/.config/shell/agent-env.sh" ] && . "$HOME/.config/shell/agent-env.sh"
+export BASH_ENV="$HOME/.config/shell/agent-env.sh"

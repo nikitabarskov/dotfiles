@@ -134,12 +134,11 @@ switch-theme() {
 
 alias jg="just --global-justfile"
 
-# Manual, dotfiles-owned headroom integration — no `headroom install apply`.
-# Guarded so this is a no-op on machines without headroom installed.
+# claudeh/codexh live in .config/shell/agent-env.sh (sourced via .zshenv),
+# not here — they need to work in non-interactive agent-spawned shells too,
+# where aliases don't expand but this file (interactive-only) also won't be
+# read.
 if command -v headroom >/dev/null 2>&1; then
-    alias claudeh="headroom wrap claude --no-serena --no-mcp --no-tokensave"
-    alias codexh="headroom wrap codex --no-serena --no-mcp --no-tokensave"
-
     # Optional warm proxy, started/stopped explicitly by you — not launchd,
     # not auto-respawning, not wired into ANTHROPIC_BASE_URL globally.
     headroom-proxy-start() {
