@@ -92,6 +92,28 @@ Rules:
 - **RTK first, headroom MCP second.** RTK stops shell output at the source.
   Headroom MCP handles everything else already in context.
 
+### Working practices (from `headroom perf`)
+
+Run `headroom perf` periodically (or when a session feels expensive/slow) and
+act on what it reports:
+
+- **Keep conversations short.** Cache-write cost grows with conversation
+  length, and prefixes get unstable in long sessions (large edits/reordering
+  force `cache_write` to spike relative to `cache_read`). Compact or start a
+  fresh session between unrelated tasks instead of letting one conversation
+  run for hundreds of messages.
+- **Don't let stale reads sit uncompressed.** The content router excludes
+  Read/Glob output from compression by default, so it accumulates as a large,
+  uncompressed share of context. Prefer CodeGraph/sem/tokensave lookups over
+  re-`Read`ing files, and call `headroom_compress` on large results you're
+  done reasoning over rather than leaving them raw in context.
+- **Publish eligible TOIN patterns.** `headroom perf` reports how many learned
+  patterns have enough samples to move from the live/adaptive store into the
+  static ruleset. When it flags eligible patterns, run
+  `python -m headroom.cli.toin_publish --min-observations <n>` (match `<n>` to
+  the threshold `perf` reports as eligible) to raise the pattern retrieval
+  hit rate.
+
 <!-- CODEGRAPH_START -->
 
 ## CodeGraph
