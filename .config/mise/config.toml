@@ -13,7 +13,7 @@ lazygit = "latest"
 mkcert = "latest"
 node = "latest"
 "cargo:https://github.com/Ataraxy-Labs/inspect" = { version = "latest", crate = "inspect-mcp" }
-"cargo:https://github.com/Ataraxy-Labs/sem" = { version = "latest", crate = "sem-cli" }
+"cargo:https://github.com/Ataraxy-Labs/sem" = { version = "latest", crate = "sem-mcp" }
 "cargo:https://github.com/aovestdipaperino/tokensave" = { version = "latest", crate = "tokensave" }
 "npm:@colbymchenry/codegraph" = "latest"
 "npm:ccusage" = "latest"
@@ -28,9 +28,9 @@ tlrc = "latest"
 yq = "latest"
 uv = "latest"
 claude = "latest"
-codex = "latest"
 hub = "latest"
 1password = "latest"
+codex = "latest"
 
 [settings]
 lockfile = false
