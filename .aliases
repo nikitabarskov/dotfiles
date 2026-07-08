@@ -133,5 +133,32 @@ switch-theme() {
 }
 
 alias jg="just --global-justfile"
-alias claudeh="headroom wrap claude --no-serena --no-mcp --no-tokensave"
-alias codexh="headroom wrap codex --no-serena --no-mcp --no-tokensave"
+
+# Manual, dotfiles-owned headroom integration — no `headroom install apply`.
+# Guarded so this is a no-op on machines without headroom installed.
+if command -v headroom >/dev/null 2>&1; then
+    alias claudeh="headroom wrap claude --no-serena --no-mcp --no-tokensave"
+    alias codexh="headroom wrap codex --no-serena --no-mcp --no-tokensave"
+
+    # Optional warm proxy, started/stopped explicitly by you — not launchd,
+    # not auto-respawning, not wired into ANTHROPIC_BASE_URL globally.
+    headroom-proxy-start() {
+        local port="${HEADROOM_PORT:-8787}"
+        if curl -fsS "http://127.0.0.1:${port}/health" >/dev/null 2>&1; then
+            echo "headroom proxy already running on :${port}"
+            return 0
+        fi
+        mkdir -p "${HOME}/.headroom/logs"
+        nohup headroom proxy --port "${port}" \
+            >>"${HOME}/.headroom/logs/proxy-manual.log" 2>&1 &
+        disown
+        echo "headroom proxy started (pid $!) — logging to ~/.headroom/logs/proxy-manual.log"
+    }
+
+    headroom-proxy-stop() {
+        local port="${HEADROOM_PORT:-8787}"
+        pkill -f "headroom proxy --port ${port}" \
+            && echo "headroom proxy stopped" \
+            || echo "no headroom proxy running on :${port}"
+    }
+fi
