@@ -132,6 +132,6 @@
     "figma@claude-plugins-official": true
   },
   "effortLevel": "medium",
-  "theme": "auto",
-  "tui": "fullscreen"
+  "tui": "fullscreen",
+  "theme": "auto"
 }
