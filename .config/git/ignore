@@ -139,3 +139,4 @@ NOTES.md
 # without serena and all additional dependencies I didn't ask for
 .serena
 .tokensave
+.claude

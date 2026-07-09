@@ -3,81 +3,74 @@ model_provider = "headroom"
 openai_base_url = "http://127.0.0.1:8787/v1"
 # --- end Headroom ---
 
-model = "gpt-5.5"
+model = "gpt-5.6-luna"
 model_reasoning_effort = "medium"
 service_tier = "default"
 
 [mcp_servers.codegraph]
-command = "codegraph"
 args = ["serve", "--mcp"]
+command = "codegraph"
 default_tools_approval_mode = "approve"
 
-[mcp_servers.sem]
-command = "sem-mcp"
+[mcp_servers.headroom]
+args = ["mcp", "serve"]
+command = "headroom"
 default_tools_approval_mode = "approve"
 
 [mcp_servers.inspect]
 command = "inspect-mcp"
 default_tools_approval_mode = "approve"
 
-[mcp_servers.headroom]
-command = "headroom"
-args = ["mcp", "serve"]
+[mcp_servers.linear]
+default_tools_approval_mode = "approve"
+url = "https://mcp.linear.app/mcp"
+
+[mcp_servers.sem]
+command = "sem-mcp"
 default_tools_approval_mode = "approve"
 
 [mcp_servers.tokensave]
-command = "tokensave"
 args = ["serve"]
+command = "tokensave"
 default_tools_approval_mode = "approve"
 
-[mcp_servers.linear]
-url = "https://mcp.linear.app/mcp"
-default_tools_approval_mode = "approve"
-
-[projects."~/gh/infra"]
+# Deepinsight projects
+[projects."/Users/nikitabarskov/gh/surgery-planning"]
 trust_level = "trusted"
 
-[projects."~/gh/surgery-planning"]
+[projects."/Users/nikitabarskov/gh/infra"]
 trust_level = "trusted"
 
-[projects."~/personal/hirn.studio/sowai"]
-trust_level = "trusted"
-
-[projects."~/personal/dotfiles"]
-trust_level = "trusted"
-
-[projects."~/personal/hirn.studio/backend"]
-trust_level = "trusted"
-
-[projects."~/personal/hirn.studio/platform"]
-trust_level = "trusted"
-
-[projects."~/personal/hirn.studio/apis"]
-trust_level = "trusted"
-
-[projects."/home/nikitabarskov/personal/hirn.studio/backend"]
-trust_level = "trusted"
-
-[projects."/home/nikitabarskov/hirn-studio/apis"]
+# Personal
+[projects."/Users/nikitabarskov/personal/dotfiles"]
 trust_level = "trusted"
 
 [projects."/home/nikitabarskov/personal/dotfiles"]
 trust_level = "trusted"
 
-[projects."/Users/nikitabarskov/personal/dotfiles"]
-trust_level = "trusted"
-
-[projects."/Users/nikitabarskov/gh/surgery-planning"]
-trust_level = "trusted"
-
-[projects."/Users/nikitabarskov"]
-trust_level = "trusted"
-
 [projects."/Users/nikitabarskov/personal/hirn.studio/backend"]
 trust_level = "trusted"
 
-[tui.model_availability_nux]
-"gpt-5.5" = 4
+[projects."/home/nikitabarskov/personal/hirn.studio/backend"]
+trust_level = "trusted"
+
+[projects."/Users/nikitabarskov/personal/hirn.studio/sowai"]
+trust_level = "trusted"
+
+[projects."/home/nikitabarskov/personal/hirn.studio/sowai"]
+trust_level = "trusted"
+
+[projects."/Users/nikitabarskov/personal/hirn.studio/platform"]
+trust_level = "trusted"
+
+[projects."/home/nikitabarskov/personal/hirn.studio/platform"]
+trust_level = "trusted"
+
+[projects."/Users/nikitabarskov/personal/hirn.studio/apis"]
+trust_level = "trusted"
+
+[projects."/home/nikitabarskov/personal/hirn.studio/apis"]
+trust_level = "trusted"
 
 # --- Headroom proxy (auto-injected by headroom wrap codex) ---
 [model_providers.headroom]
