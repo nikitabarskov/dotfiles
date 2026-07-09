@@ -11,7 +11,6 @@ brew "libheif"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
 # Powerful, clean, object-oriented scripting language
-brew "ruby"
 # Tool Command Language
 brew "tcl-tk"
 # Free software distribution for the TeX typesetting system
