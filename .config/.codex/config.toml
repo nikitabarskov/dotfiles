@@ -79,4 +79,7 @@ base_url = "http://127.0.0.1:8787/v1"
 supports_websockets = true
 requires_openai_auth = true
 env_http_headers = { "X-Headroom-Project" = "HEADROOM_PROJECT" }
+
+[tui.model_availability_nux]
+"gpt-5.6-sol" = 1
 # --- end Headroom ---
