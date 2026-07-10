@@ -1,8 +1,55 @@
 export XDG_CONFIG_HOME="${HOME}/.config"
 export HEADROOM_TELEMETRY=off
+export HOMEBREW_BUNDLE_DUMP_NO_CARGO=1
+export HOMEBREW_BUNDLE_DUMP_NO_GO=1
+export HOMEBREW_BUNDLE_DUMP_NO_NPM=1
+
+export ZSH="${HOME}/.oh-my-zsh"
+export SSH_AUTH_SOCK="${HOME}/.1password/agent.sock"
+export BUN_INSTALL="${HOME}/.bun"
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    export GDK_SCALE=2
+    export GDK_DPI_SCALE=0.5
+    export QT_AUTO_SCREEN_SCALE_FACTOR=1
+    export QT_SCALE_FACTOR=2
+    export QT_FONT_DPI=96
+    export XCURSOR_SIZE=32
+fi
 
 if command -v gh >/dev/null 2>&1; then
     GITHUB_TOKEN="$(gh auth token 2>/dev/null)"
     export GITHUB_TOKEN
     export MISE_GITHUB_TOKEN="${GITHUB_TOKEN}"
 fi
+
+# Initialize package and tool paths before loading shell plugins.
+export PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
+
+# $SHELL can be stale (e.g. set by a login/session manager before a
+# `chsh` took effect), which breaks tools like tmux that spawn $SHELL
+# for new panes. Since we're already running inside zsh, just fix it.
+export SHELL="$(command -v zsh)"
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+fi
+
+if command -v brew >/dev/null 2>&1; then
+    UUTILS_PATH_PREFIX="$(brew --prefix)/opt/uutils-diffutils/libexec/uubin:$(brew --prefix)/opt/uutils-findutils/libexec/uubin:$(brew --prefix)/opt/uutils-coreutils/libexec/uubin"
+fi
+
+typeset -U PATH
+export PATH="${UUTILS_PATH_PREFIX}:${BUN_INSTALL}/bin:${HOME}/.docker/bin:${PATH}"
+
+if [[ "$OSTYPE" == "darwin"* ]] && [ -d "${HOME}/.docker/completions" ]; then
+    export PATH="${HOME}/.orbstack/bin:${PATH}"
+fi
+
+[ -s "${BUN_INSTALL}/_bun" ] && source "${BUN_INSTALL}/_bun"
