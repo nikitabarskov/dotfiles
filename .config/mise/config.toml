@@ -27,10 +27,8 @@ starship = "latest"
 tlrc = "latest"
 yq = "latest"
 uv = "latest"
-claude = "latest"
 hub = "latest"
 1password = "latest"
-codex = "latest"
 
 [settings]
 lockfile = false
