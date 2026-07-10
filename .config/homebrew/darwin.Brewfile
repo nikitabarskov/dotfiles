@@ -56,8 +56,12 @@ cask "nikitabobko/tap/aerospace", trusted: true
 cask "alacritty"
 # Communication with Canon EOS cameras
 cask "canon-eos-utility"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
 # Voice and text chat software
 cask "discord"
 # Web browser focusing on privacy
