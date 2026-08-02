@@ -13,6 +13,15 @@ style = "Bold Italic"
 family = "IosevkaTerm Nerd Font Propo"
 style = "Regular"
 
+[terminal.shell]
+# LightDM on this machine execs `i3` directly with no session-wrapper, so
+# no shell profile (.xprofile/.profile) ever runs before the WM starts and
+# $SHELL stays whatever the display manager defaulted to. Bypass that by
+# naming the shell explicitly; bare "zsh" resolves via $PATH so this stays
+# portable across machines/OSes.
+program = "zsh"
+args = ["-l"]
+
 [window.dimensions]
 columns = 90
 lines = 30
