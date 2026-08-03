@@ -129,6 +129,10 @@ NOTES.md
 .plans/
 .zed
 
+# Drafts written by the git-commit and pr skills for review before applying
+COMMIT_MSG.md
+PR_DRAFT.md
+
 # AI Assitance ignores
 # Ignore a folder for https://github.com/colbymchenry/codegraph
 .codegraph
