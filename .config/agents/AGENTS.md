@@ -74,11 +74,11 @@ Skills that dispatch or escalate work (`plan`, `roadmap`, `implement`) should
 refer to tiers, not hardcoded model names, so a model bump means editing this
 table once instead of every skill. Current mapping:
 
-| Tier                   | Claude (`Agent` `model` param)         | Codex        |
-| ---------------------- | -------------------------------------- | ------------ |
-| Cheap/mechanical       | Haiku 4.5 (`haiku`)                    | —            |
-| Cost-optimized default | Sonnet 5 (`sonnet`)                    | gpt-5.5-mini |
-| Frontier/escalated     | Opus 4.8 (`opus`) or Fable 5 (`fable`) | gpt-5.5      |
+| Tier                   | Claude (`Agent` `model` param)         | Codex         |
+| ---------------------- | -------------------------------------- | ------------- |
+| Cheap/mechanical       | Haiku 4.5 (`haiku`)                    | gpt-5.6-luna  |
+| Cost-optimized default | Sonnet 5 (`sonnet`)                    | gpt-5.6-terra |
+| Frontier/escalated     | Opus 4.8 (`opus`) or Fable 5 (`fable`) | gpt-5.5-sol   |
 
 Never escalate off the cost-optimized default without a named, concrete reason
 (architectural risk, ambiguity, blast radius) — see each skill's escalation
@@ -164,6 +164,12 @@ act on what it reports:
   `python -m headroom.cli.toin_publish --min-observations <n>` (match `<n>` to
   the threshold `perf` reports as eligible) to raise the pattern retrieval hit
   rate.
+
+## FFF (`fff-mcp`)
+
+For any file search or grep in the current git-indexed directory, use the fff
+tools (`fffind`, `ffgrep`, and `fff-multi-grep`). Use the semantic tools below
+when the question is about code structure rather than literal paths or text.
 
 <!-- CODEGRAPH_START -->
 
