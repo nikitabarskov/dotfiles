@@ -19,6 +19,8 @@ brew "texlive"
 brew "zsh"
 # Zsh port of Fish shell's history search
 brew "zsh-history-substring-search"
+# Fast file search toolkit for AI agents (MCP server)
+brew "dmtrKovalenko/fff/fff-mcp"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
 cask "font-sf-mono-nerd-font-ligaturized"

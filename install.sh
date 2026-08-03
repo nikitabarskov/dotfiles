@@ -68,6 +68,7 @@ claude_mcp_replace() {
 }
 
 claude_mcp_replace codegraph codegraph serve --mcp
+claude_mcp_replace fff fff-mcp
 claude_mcp_replace sem sem-mcp
 claude_mcp_replace inspect inspect-mcp
 claude_mcp_replace headroom headroom mcp serve

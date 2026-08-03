@@ -89,3 +89,5 @@ cask "slack"
 cask "tailscale-app"
 # Messaging app with a focus on speed and security
 cask "telegram"
+# Fast file search toolkit for AI agents (MCP server)
+brew "dmtrKovalenko/fff/fff-mcp"
