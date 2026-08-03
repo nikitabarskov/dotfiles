@@ -37,24 +37,56 @@ Before writing anything, understand what actually changed:
    impact.
 5. Include only verification that was actually run.
 6. Point reviewers at the riskiest files, flows, or decisions.
-7. If the user asks for text only, produce the proposed PR description and stop.
-8. Otherwise, apply the description with the create-or-update workflow below.
+7. Write the draft to a file and let the user review it before anything is
+   created or updated. See the review workflow below.
+8. If the user asks for text only, stop after writing the draft file.
+9. Otherwise, once the user approves, apply the description with the
+   create-or-update workflow below.
+
+## Review workflow
+
+Never create or update a PR straight from a generated description. Always
+write it to a draft file first so the user can read and edit it.
+
+1. The draft lives at `PR_DRAFT.md` in the repository root
+   (`git rev-parse --show-toplevel`), so it is easy to open and edit in an
+   editor. It is globally gitignored, so it never shows up in `git status`.
+2. Write the draft with the title as a top-level heading on the first line,
+   then a blank line, then the body:
+
+```markdown
+# <PR title>
+
+<PR body>
+```
+
+3. Print the full path of the draft file and stop. Wait for the user to
+   approve or edit it.
+4. When the user approves, re-read the draft so manual edits are picked up.
+   Split it: the first-line heading text is the title, everything after the
+   following blank line is the body. Pass that body on stdin when applying it,
+   so no second file is needed.
 
 ## Create-or-update workflow
 
+Run this only after the user has approved the draft.
+
 1. Determine whether a PR already exists for the current branch using
    `av pr list` or `gh pr view --json number,title,body,url`.
-2. If a PR exists, compare its current body with the expected body after
+2. If a PR exists, compare its current body with the approved body after
    trimming trailing whitespace. If it already matches, report that no update
-   was needed. If it differs, update it with `gh pr edit --body-file <file>`.
+   was needed. If it differs, update it with `gh pr edit --body-file -` and the
+   body on stdin. Update the title too with `--title` when it changed.
 3. If no PR exists, create one with `av pr create --title "<title>" --body -`
-   and pass the body on stdin. Do not rely on the interactive editor.
+   and pass the approved body on stdin. Do not rely on the interactive editor.
 4. If `av pr create` fails, fall back to
-   `gh pr create --title "<title>" --body-file <file>`. Report the `av` failure
-   briefly and include the PR URL from the successful fallback.
+   `gh pr create --title "<title>" --body-file -` with the body on stdin.
+   Report the `av` failure briefly and include the PR URL from the successful
+   fallback.
 5. After creating or updating, read the PR back and confirm the body matches the
-   expected description. If it does not match, fix it or report the mismatch.
-6. Do not use `--force` flags unless the user explicitly asks.
+   approved description. If it does not match, fix it or report the mismatch.
+6. Delete `PR_DRAFT.md` after the PR is created or updated.
+7. Do not use `--force` flags unless the user explicitly asks.
 
 ## Output format
 
@@ -92,11 +124,12 @@ Omit `Review focus` only when the change is trivial. If no tests were run, write
 
 ## What to produce
 
-When asked to prepare, create, or update a PR: produce the final description,
-apply it with the create-or-update workflow, and report whether the PR was
-created, updated, or already current. Include the PR URL when available.
+When asked to prepare, create, or update a PR: write the draft file, wait for
+approval, then apply it with the create-or-update workflow, and report whether
+the PR was created, updated, or already current. Include the PR URL when
+available.
 
-When asked only to draft text: produce the proposed description without creating
+When asked only to draft text: write the draft file and stop, without creating
 or updating a PR.
 
 Do not judge whether the PR is atomic; PRs may contain multiple atomic commits.

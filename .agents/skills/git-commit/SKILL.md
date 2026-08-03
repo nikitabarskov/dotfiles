@@ -82,3 +82,28 @@ Git log viewers and terminal pagers wrap or truncate lines longer than
 72 characters. Enforcing this limit keeps messages readable in any
 context without horizontal scrolling or layout issues.
 ```
+
+Review before committing:
+
+- Never pass the message inline with `git commit -m`. Always write it to a
+  draft file so the user can read and edit it first.
+- Write the message to `COMMIT_MSG.md` in the repository root, so it is easy
+  to open and edit in an editor. It is globally gitignored, so it never shows
+  up in `git status`. Get the root with:
+
+```bash
+git rev-parse --show-toplevel
+```
+
+- After writing the draft, print its full path and the message body, then
+  stop and wait for the user to approve or edit it.
+- When the user approves, re-read the draft file so any manual edits are
+  picked up, then commit with it:
+
+```bash
+git commit -F "$(git rev-parse --show-toplevel)/COMMIT_MSG.md"
+```
+
+- Delete the draft file after a successful commit.
+- If the user only asks for a message and not a commit, still write the
+  draft file, but do not run `git commit`.

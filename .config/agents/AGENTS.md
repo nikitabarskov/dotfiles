@@ -2,64 +2,49 @@
 
 ## Principles
 
-**Be pragmatic.** Prefer working solutions over theoretically perfect ones. Ship
-the simplest thing that solves the problem correctly and is easy to delete or
-change later.
-
-**Prefer clarity over cleverness.** Code is read far more often than it is
-written. Obvious code beats clever code every time.
-
-**Minimize surface area.** Fewer abstractions, fewer files, fewer dependencies.
-Only add indirection when it demonstrably reduces complexity — not to follow
-patterns for their own sake.
-
-**Don't over-engineer.** Solve the actual problem at hand. Do not add
-configuration options, extension points, or generalization that isn't needed
-today. YAGNI applies.
-
-**Prefer deleting code to adding code.** When fixing a problem, consider whether
-removing code solves it. Smaller codebases are easier to maintain.
+- **Be pragmatic.** Ship the simplest thing that solves the problem correctly
+  and is easy to delete or change later.
+- **Prefer clarity over cleverness.** Code is read far more often than written.
+- **Minimize surface area.** Fewer abstractions, files, dependencies. Add
+  indirection only when it demonstrably reduces complexity.
+- **Don't over-engineer.** No config options, extension points, or
+  generalization that isn't needed today. YAGNI.
+- **Prefer deleting code to adding it.** When fixing a problem, first consider
+  whether removing code solves it.
 
 ## Code Quality
 
 - Write code that is easy to test, not code that merely has tests.
-- Prefer pure functions and immutable data where it doesn't fight the
-  language/framework.
-- Name things clearly; don't abbreviate unless the abbreviation is universally
-  understood in context.
-- Keep functions short and focused on a single responsibility. If a function
-  needs a comment to explain what it does, rename it or split it.
+- Prefer pure functions and immutable data where it doesn't fight the language.
+- Name things clearly; don't abbreviate unless universally understood.
+- Keep functions short and single-purpose. If a function needs a comment to
+  explain what it does, rename or split it.
 - Error handling is not optional. Fail fast and loudly with actionable messages.
 - Avoid magic numbers and strings; use named constants.
 
 ## Structure
 
-- Flat is better than nested. Avoid deep directory hierarchies.
-- Co-locate things that change together. Don't split by type (controllers/,
-  models/) when splitting by feature is more natural.
-- One file per concept. Don't stuff unrelated things in the same file to save
-  files.
+- Flat beats nested. Avoid deep directory hierarchies.
+- Co-locate things that change together. Split by feature, not by type
+  (`controllers/`, `models/`).
+- One file per concept.
 - Configuration belongs in config files, not in code.
 
 ## NOTES.md
 
-Every repository may contain a `NOTES.md` file in its root. It is globally
-gitignored (not project-specific), so it will never show up in `git status`,
-`git diff`, or a fresh `ls` of tracked files — but treat it as real and check
-for it directly (e.g. `test -f NOTES.md` or just try reading it) at the start of
-a task. It is a personal scratch file used to dump context, TODOs, or prior
-agent output between sessions. If it exists, read it for context before starting
-work; don't assume it's missing just because it's untracked.
+Any repo may have a `NOTES.md` in its root — a personal scratch file for
+context, TODOs, and prior agent output. It is globally gitignored, so it never
+appears in `git status` or a listing of tracked files. Check for it directly at
+the start of a task (just try reading it) and read it before starting work.
 
 ## When Proposing Changes
 
 - Show the minimal diff. Don't refactor unrelated code while fixing a bug.
-- If multiple approaches exist, briefly state the trade-offs and recommend one.
-  Don't ask the user to choose when you have a clear preference.
+- If multiple approaches exist, state the trade-offs and recommend one. Don't
+  ask the user to choose when you have a clear preference.
 - If a request is ambiguous, make a reasonable assumption and state it — don't
   ask clarifying questions for minor decisions.
-- Check that the change actually works before declaring it done (run tests,
-  lint, build as appropriate).
+- Verify the change works before declaring it done (tests, lint, build).
 
 ## Communication
 
@@ -70,9 +55,8 @@ work; don't assume it's missing just because it's untracked.
 
 ## Model tiers
 
-Skills that dispatch or escalate work (`plan`, `roadmap`, `implement`) should
-refer to tiers, not hardcoded model names, so a model bump means editing this
-table once instead of every skill. Current mapping:
+Skills that dispatch or escalate work (`plan`, `roadmap`, `implement`) refer to
+tiers, not model names, so a model bump means editing this table once.
 
 | Tier                   | Claude (`Agent` `model` param)         | Codex         |
 | ---------------------- | -------------------------------------- | ------------- |
@@ -86,200 +70,90 @@ rules.
 
 ## Suggested skill tiers
 
-Inline skills (anything invoked via `Skill` that doesn't dispatch through
-`Agent`) don't get a confirmation gate — but before invoking one in Group B,
-check the current session model against the tiers above and say so if it's below
-frontier and the task looks high-stakes by that skill's own escalation criteria
-(auth boundary, data model/migration, public API, security-sensitive code). One
-line, non-blocking, say it once per invocation — don't gate.
+Inline skills (invoked via `Skill`, not dispatched through `Agent`) have no
+confirmation gate. Before invoking a Group B skill, compare the session model
+against the tiers above; if it's below frontier and the task looks high-stakes
+by that skill's own criteria (auth boundary, data model/migration, public API,
+security-sensitive code), say so in one line. Non-blocking, once per invocation.
 
 - **Group A — cost-optimized tier is sufficient:** `git-commit`, `pr`,
   `update-readme`, `write-docs`, `create-skill`, `create-system-prompt`,
-  `edit-article`, `headroom-check`. Bounded input, low ambiguity, invoked often
-  — no tier check needed.
-- **Group B — judgment-heavy, escalate situationally:** every `review-*` skill,
-  plus `design-doc`. Default to the cost-optimized tier; flag when the change
-  looks high-stakes per the reasoning above.
+  `edit-article`, `headroom-check`. Bounded input, low ambiguity — no check.
+- **Group B — judgment-heavy:** every `review-*` skill plus `design-doc`.
+  Default to cost-optimized; flag when the change looks high-stakes.
 
-## Headroom (headroom\_\*)
+## Code intelligence: prefer graph tools over grep/read
 
-Headroom provides two complementary layers of token compression that work
-alongside RTK. Together they form a three-layer defense:
+Several MCP servers expose pre-built code graphs. For any **structural**
+question — what calls what, what would break, where X is defined, what X's
+signature is — query a graph instead of running a grep/read loop. Each server
+documents its own tool table at runtime; the routing is:
 
-1. **RTK** — filters shell command output before it enters context (60–99%)
-2. **Headroom proxy** — compresses API responses at the HTTP level automatically
-   (`headroom proxy --port 8787`); set up once, transparent thereafter
-3. **Headroom MCP** — explicit in-context compression for large content that
-   bypassed the other two layers (file reads, MCP tool results, API responses)
-
-Start agent sessions through the shell wrappers when token savings matter:
-`claudeh` for Claude Code and `codexh` for Codex. They use `headroom wrap`,
-which starts the proxy, registers the Headroom MCP retrieve tool, and applies
-the `agent-90` savings profile without globally pointing every shell at a proxy
-that may not be running.
-
-**Nested agent handoffs must also go through the wrapper.** If you (Claude Code
-or Codex) shell out to invoke the sibling CLI — e.g. handing a task to Codex, or
-Codex handing one back to Claude — call `codexh`/`claudeh`, not bare
-`codex`/`claude`. Otherwise the nested agent skips the headroom proxy entirely.
-Both functions are defined in `.config/shell/agent-env.sh` and available in
-every shell, including non-interactive ones, so there's no reason to fall back
-to the bare binary.
-
-Use the MCP tools when large content is already in context:
-
-| When                                         | Tool                |
-| -------------------------------------------- | ------------------- |
-| Large file / search / MCP result in context  | `headroom_compress` |
-| Need full details from previously compressed | `headroom_retrieve` |
-| Check session token savings                  | `headroom_stats`    |
+| Need                                               | Server                                                     |
+| -------------------------------------------------- | ---------------------------------------------------------- |
+| Symbols, call paths, blast radius, focused context | `codegraph_*` — first choice when `.codegraph/` exists     |
+| Same, plus entity-level git history and ownership  | `sem_*` (`sem_blame`, `sem_log`, `sem_diff`, `sem_impact`) |
+| PR review and change-risk triage                   | `inspect_*` — start with `inspect_triage`                  |
+| File find / content grep in a git-indexed tree     | `fff` (`fffind`, `ffgrep`, `fff-multi-grep`)               |
 
 Rules:
 
-- **Compress before reasoning.** Call `headroom_compress` on large results
-  before writing analysis — not after you have already processed them.
-- **Headroom is lossless.** The original is stored; call `headroom_retrieve`
-  with the hash when you need full details.
-- **RTK first, headroom MCP second.** RTK stops shell output at the source.
-  Headroom MCP handles everything else already in context.
+- **Answer directly — don't delegate exploration.** The graph IS the pre-built
+  index. Spawning a file-reading sub-agent, or grepping then reading, repeats
+  work already done and costs more for the same answer. Two or three calls
+  should answer "how does X work".
+- **Trust the results.** They come from a full AST parse. Don't re-verify with
+  grep — slower, less accurate, wastes context.
+- **Batch, don't loop.** One multi-symbol call (`codegraph_explore`,
+  `sem_context`) beats N single-symbol calls.
+- **Use grep/read only for literal text** (string contents, comments, log
+  messages), non-code files, or a file you're about to edit.
+- **Watch for index lag.** When a response opens with a staleness banner, Read
+  the listed files directly; everything else is authoritative.
+- **If a graph isn't initialized,** the server says so. Offer to build it (e.g.
+  `codegraph init -i`).
+- **If a question can't be answered natively,** query the store directly —
+  e.g. `.tokensave/tokensave.db` (`nodes`, `edges`, `files`) via SQL. If a tool
+  or extractor gap caused it, suggest the user file an issue upstream, and
+  remind them to strip proprietary code from the report.
 
-### Working practices (from `headroom perf`)
+## Headroom (`headroom_*`)
 
-Run `headroom perf` periodically (or when a session feels expensive/slow) and
-act on what it reports:
+Three layers of token compression:
 
-- **Keep conversations short.** Cache-write cost grows with conversation length,
-  and prefixes get unstable in long sessions (large edits/reordering force
-  `cache_write` to spike relative to `cache_read`). Compact or start a fresh
-  session between unrelated tasks instead of letting one conversation run for
-  hundreds of messages.
-- **Don't let stale reads sit uncompressed.** The content router excludes
-  Read/Glob output from compression by default, so it accumulates as a large,
-  uncompressed share of context. Prefer CodeGraph/sem/tokensave lookups over
-  re-`Read`ing files, and call `headroom_compress` on large results you're done
-  reasoning over rather than leaving them raw in context.
-- **Publish eligible TOIN patterns.** `headroom perf` reports how many learned
-  patterns have enough samples to move from the live/adaptive store into the
-  static ruleset. When it flags eligible patterns, run
-  `python -m headroom.cli.toin_publish --min-observations <n>` (match `<n>` to
-  the threshold `perf` reports as eligible) to raise the pattern retrieval hit
-  rate.
+1. **RTK** — filters shell output before it enters context (60–99%).
+2. **Headroom proxy** — compresses API responses at the HTTP level
+   (`headroom proxy --port 8787`); set up once, transparent thereafter.
+3. **Headroom MCP** — explicit compression for large content that bypassed the
+   other two (file reads, MCP results).
 
-## FFF (`fff-mcp`)
+Start sessions through the shell wrappers when token savings matter: `claudeh`
+for Claude Code, `codexh` for Codex. They run `headroom wrap` — proxy, retrieve
+tool, and the `agent-90` profile — without pointing every shell at a proxy that
+may not be running. **Nested handoffs go through the wrapper too:** when
+shelling out to the sibling CLI, call `codexh`/`claudeh`, never bare
+`codex`/`claude`. Both are defined in `.config/shell/agent-env.sh` and exist in
+non-interactive shells, so there's no reason to use the bare binary.
 
-For any file search or grep in the current git-indexed directory, use the fff
-tools (`fffind`, `ffgrep`, and `fff-multi-grep`). Use the semantic tools below
-when the question is about code structure rather than literal paths or text.
-
-<!-- CODEGRAPH_START -->
-
-## CodeGraph
-
-This project has a CodeGraph MCP server (`codegraph_*` tools) configured.
-CodeGraph is a tree-sitter-parsed knowledge graph of every symbol, edge, and
-file. Reads are sub-millisecond and return structural information grep cannot.
-
-### When to prefer codegraph over native search
-
-Use codegraph for **structural** questions — what calls what, what would break,
-where is X defined, what is X's signature. Use native grep/read only for
-**literal text** queries (string contents, comments, log messages) or after you
-already have a specific file open.
-
-| Question                                                  | Tool                                                                                 |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| "Where is X defined?" / "Find symbol named X"             | `codegraph_search`                                                                   |
-| "What calls function Y?"                                  | `codegraph_callers`                                                                  |
-| "What does Y call?"                                       | `codegraph_callees`                                                                  |
-| "How does X reach/become Y? / trace the flow from X to Y" | `codegraph_trace` (one call = the whole path, incl. callback/React/JSX dynamic hops) |
-| "What would break if I changed Z?"                        | `codegraph_impact`                                                                   |
-| "Show me Y's signature / source / docstring"              | `codegraph_node`                                                                     |
-| "Give me focused context for a task/area"                 | `codegraph_context`                                                                  |
-| "See several related symbols' source at once"             | `codegraph_explore`                                                                  |
-| "What files exist under path/"                            | `codegraph_files`                                                                    |
-| "Is the index healthy?"                                   | `codegraph_status`                                                                   |
-
-### Rules of thumb
-
-- **Answer directly — don't delegate exploration.** For "how does X work" /
-  architecture questions, answer with 2-3 codegraph calls: `codegraph_context`
-  first, then ONE `codegraph_explore` for the source of the symbols it surfaces.
-  For a specific **flow** ("how does X reach Y") start with `codegraph_trace`
-  from→to — one call returns the whole path with dynamic hops bridged — then ONE
-  `codegraph_explore` for the bodies; don't rebuild the path with
-  `codegraph_search` + `codegraph_callers`. Codegraph IS the pre-built index, so
-  spawning a separate file-reading sub-task/agent — or running a grep + read
-  loop — repeats work codegraph already did and costs more for the same answer.
-- **Trust codegraph results.** They come from a full AST parse. Do NOT re-verify
-  them with grep — that's slower, less accurate, and wastes context.
-- **Don't grep first** when looking up a symbol by name. `codegraph_search` is
-  faster and returns kind + location + signature in one call.
-- **Don't chain `codegraph_search` + `codegraph_node`** when you just want
-  context — `codegraph_context` is one call.
-- **Don't loop `codegraph_node` over many symbols** — one `codegraph_explore`
-  call returns several symbols' source grouped in a single capped call, while
-  each separate node/Read call re-reads the whole context and costs far more.
-- **Index lag — check the staleness banner, don't guess a wait.** When a
-  codegraph response starts with "⚠️ Some files referenced below were edited
-  since the last index sync…", the listed files are pending re-index — Read
-  those specific files for accurate content. Files NOT in that banner are fresh
-  and codegraph is authoritative for them. `codegraph_status` also lists pending
-  files under "Pending sync".
-
-### If `.codegraph/` doesn't exist
-
-The MCP server returns "not initialized." Ask the user: _"I notice this project
-doesn't have CodeGraph initialized. Want me to run `codegraph init -i` to build
-the index?"_
-
-<!-- CODEGRAPH_END -->
-
-## Semantic Tools (sem\_\*)
-
-Use `sem_*` tools for entity-level code understanding. Prefer them over
-grep/read loops when the question is about structure, ownership, or history.
-
-| Question                                                      | Tool           |
-| ------------------------------------------------------------- | -------------- |
-| Who last changed this function and why?                       | `sem_blame`    |
-| What does this entity depend on / what depends on it?         | `sem_impact`   |
-| How has this function changed over time?                      | `sem_log`      |
-| Packed context for a function + its deps in one call          | `sem_context`  |
-| What changed between two refs (entity-level, not line-level)? | `sem_diff`     |
-| List all functions/classes in a file or directory             | `sem_entities` |
+MCP tools: `headroom_compress` (large result already in context),
+`headroom_retrieve` (recover full detail by hash), `headroom_stats`.
 
 Rules:
 
-- Use `sem_diff` instead of `git diff` when understanding _what_ changed
-  semantically, not just lines.
-- Use `sem_blame` before touching a function — know who owns it and why it
-  exists.
-- Use `sem_impact` before refactoring — see the blast radius first.
-- Use `sem_context` to pack a function + its direct deps into one call instead
-  of chaining reads.
-
-## Inspect Tools (inspect\_\*)
-
-Use `inspect_*` tools for PR review and change risk analysis.
-
-| Question                                             | Tool                  |
-| ---------------------------------------------------- | --------------------- |
-| What changed and where should I focus review effort? | `inspect_triage`      |
-| Which unchanged code might break from these changes? | `inspect_predict`     |
-| File-level risk heatmap for a commit/range           | `inspect_risk_map`    |
-| Deep dive on a single changed entity                 | `inspect_entity`      |
-| Review a remote GitHub PR without a local clone      | `inspect_pr`          |
-| Post review comments on a GitHub PR                  | `inspect_post_review` |
-| Search for a pattern across PR files                 | `inspect_search`      |
-
-Rules:
-
-- Start code review with `inspect_triage` — it surfaces risk scores and logical
-  groups in one call.
-- Use `inspect_predict` before merging risky changes to see what else might
-  silently break.
-- Use `inspect_pr` for remote PRs; use `inspect_triage` with `target` for local
-  commits/ranges.
+- **Compress before reasoning**, not after you've processed the content.
+- **Headroom is lossless** — the original is retrievable by hash.
+- **RTK first, MCP second.** RTK stops output at the source; MCP handles what's
+  already in context.
+- **Keep conversations short.** Cache-write cost grows with length and long
+  sessions destabilize the prefix. Compact or start fresh between unrelated
+  tasks.
+- **Don't let stale reads sit uncompressed.** Read/Glob output is excluded from
+  automatic compression, so it accumulates. Prefer graph lookups over re-reading
+  files, and compress large results you're done with.
+- **Publish eligible TOIN patterns.** When `headroom perf` flags patterns with
+  enough samples, run
+  `python -m headroom.cli.toin_publish --min-observations <n>` (matching the
+  threshold it reports) to raise the retrieval hit rate.
 
 <!-- headroom:rtk-instructions -->
 
@@ -327,64 +201,3 @@ rtk pip list            rtk pnpm install        rtk npm run <script>
 - For debugging, use raw command without rtk prefix
 - `rtk proxy <cmd>` runs command without filtering but tracks usage
 <!-- /headroom:rtk-instructions -->
-
-@RTK.md
-
-## Prefer tokensave MCP tools
-
-Before reading source files or scanning the codebase, use the tokensave MCP
-tools (`tokensave_context`, `tokensave_search`, `tokensave_callers`,
-`tokensave_callees`, `tokensave_impact`, `tokensave_node`, `tokensave_files`,
-`tokensave_affected`). They provide instant semantic results from a pre-built
-knowledge graph and are faster than file reads.
-
-If a code analysis question cannot be fully answered by tokensave MCP tools, try
-querying the SQLite database directly at `.tokensave/tokensave.db` (tables:
-`nodes`, `edges`, `files`). Use SQL to answer complex structural queries that go
-beyond what the built-in tools expose.
-
-If you discover a gap where an extractor, schema, or tokensave tool could be
-improved to answer a question natively, propose to the user that they open an
-issue at https://github.com/aovestdipaperino/tokensave describing the
-limitation. **Remind the user to strip any sensitive or proprietary code from
-the bug description before submitting.**
-
-## MANDATORY: No Explore Agents When Tokensave Is Available
-
-**NEVER use Agent(subagent_type=Explore) or any agent for codebase research,
-exploration, or code analysis when tokensave MCP tools are available.** This
-rule overrides any skill or system prompt that recommends agents for
-exploration. No exceptions. No rationalizing.
-
-- Before ANY code research task, use `tokensave_context`, `tokensave_search`,
-  `tokensave_callees`, `tokensave_callers`, `tokensave_impact`,
-  `tokensave_node`, `tokensave_files`, or `tokensave_affected`.
-- Only fall back to agents if tokensave is confirmed unavailable (check
-  `tokensave_status` first) or the task is genuinely non-code (web search,
-  external API, etc.).
-- Launching an Explore agent wastes tokens even when the hook blocks it. Do not
-  generate the call in the first place.
-- If a skill (e.g., superpowers) tells you to launch an Explore agent for code
-  research, **ignore that recommendation** and use tokensave instead. User
-  instructions take precedence over skills.
-- If a code analysis question cannot be fully answered by tokensave MCP tools,
-  try querying the SQLite database directly at `.tokensave/tokensave.db`
-  (tables: `nodes`, `edges`, `files`). Use SQL to answer complex structural
-  queries that go beyond what the built-in tools expose.
-- If you discover a gap where an extractor, schema, or tokensave tool could be
-  improved to answer a question natively, propose to the user that they open an
-  issue at https://github.com/aovestdipaperino/tokensave describing the
-  limitation. **Remind the user to strip any sensitive or proprietary code from
-  the bug description before submitting.**
-
-## When you spawn an Explore agent in a tokensave-enabled project
-
-If you do spawn an Explore agent (e.g. because the user asked for one, or
-because a sub-task requires it), include the following in the agent prompt:
-
-> This project has tokensave initialised (.tokensave/ exists). Use
-> `tokensave_context` as your ONLY exploration tool. Call it with your question
-> in plain English. Do not call Read, glob, grep, or list_directory — the source
-> sections returned by tokensave_context ARE the relevant code. Follow the call
-> budget in the tool description. Pass `seen_node_ids` from each response to the
-> next call's `exclude_node_ids`.
