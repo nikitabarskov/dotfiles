@@ -1,3 +1,4 @@
+tap "dmtrkovalenko/fff", "https://github.com/dmtrKovalenko/homebrew-fff"
 tap "grafana/grafana", trusted: { casks: ["alloy"] }
 tap "nikitabobko/tap", trusted: { formulae: ["aerospace"] }
 # Resource monitor. C++ version and continuation of bashtop and bpytop
@@ -48,6 +49,8 @@ brew "uutils-diffutils"
 brew "uutils-findutils"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Fast file search toolkit for AI agents (MCP server)
+brew "dmtrkovalenko/fff/fff-mcp", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # AeroSpace is an i3-like tiling window manager for macOS
@@ -56,12 +59,8 @@ cask "nikitabobko/tap/aerospace", trusted: true
 cask "alacritty"
 # Communication with Canon EOS cameras
 cask "canon-eos-utility"
-# Terminal-based AI coding assistant
-cask "claude-code"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
-# OpenAI's coding agent that runs in your terminal
-cask "codex"
 # Voice and text chat software
 cask "discord"
 # Web browser focusing on privacy
@@ -89,5 +88,3 @@ cask "slack"
 cask "tailscale-app"
 # Messaging app with a focus on speed and security
 cask "telegram"
-# Fast file search toolkit for AI agents (MCP server)
-brew "dmtrKovalenko/fff/fff-mcp"
