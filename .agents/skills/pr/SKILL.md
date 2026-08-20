@@ -45,14 +45,14 @@ Before writing anything, understand what actually changed:
 
 ## Review workflow
 
-Never create or update a PR straight from a generated description. Always
-write it to a draft file first so the user can read and edit it.
+Never create or update a PR straight from a generated description. Always write
+it to a draft file first so the user can read and edit it.
 
 1. The draft lives at `PR_DRAFT.md` in the repository root
    (`git rev-parse --show-toplevel`), so it is easy to open and edit in an
    editor. It is globally gitignored, so it never shows up in `git status`.
-2. Write the draft with the title as a top-level heading on the first line,
-   then a blank line, then the body:
+2. Write the draft with the title as a top-level heading on the first line, then
+   a blank line, then the body:
 
 ```markdown
 # <PR title>
@@ -60,8 +60,8 @@ write it to a draft file first so the user can read and edit it.
 <PR body>
 ```
 
-3. Print the full path of the draft file and stop. Wait for the user to
-   approve or edit it.
+3. Print the full path of the draft file and stop. Wait for the user to approve
+   or edit it.
 4. When the user approves, re-read the draft so manual edits are picked up.
    Split it: the first-line heading text is the title, everything after the
    following blank line is the body. Pass that body on stdin when applying it,
@@ -80,9 +80,8 @@ Run this only after the user has approved the draft.
 3. If no PR exists, create one with `av pr create --title "<title>" --body -`
    and pass the approved body on stdin. Do not rely on the interactive editor.
 4. If `av pr create` fails, fall back to
-   `gh pr create --title "<title>" --body-file -` with the body on stdin.
-   Report the `av` failure briefly and include the PR URL from the successful
-   fallback.
+   `gh pr create --title "<title>" --body-file -` with the body on stdin. Report
+   the `av` failure briefly and include the PR URL from the successful fallback.
 5. After creating or updating, read the PR back and confirm the body matches the
    approved description. If it does not match, fix it or report the mismatch.
 6. Delete `PR_DRAFT.md` after the PR is created or updated.

@@ -63,6 +63,12 @@ deliverable.
 ## Output format
 
 ```markdown
+## Bottom line
+
+<Two or three sentences, before anything else: the realistic estimate, the
+single biggest risk or unknown, and what you need from the reader. Someone who
+reads only this must know whether to fund the work and what could sink it.>
+
 ## Goal
 
 <The actual outcome, in one sentence. Not the solution — the outcome.>
@@ -120,6 +126,9 @@ don't invent a substitute destination.
 
 ## Rules
 
+- Bottom line up front, bad news included. If the realistic estimate is worse
+  than the reader expects, or a blocking unknown could invalidate the whole
+  plan, that belongs in `Bottom line` — not buried under `Risks`.
 - Never give a single-point estimate. Always give a range.
 - If a requirement is ambiguous, state the assumption you made — don't silently
   resolve it.

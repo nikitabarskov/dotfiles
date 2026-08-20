@@ -28,6 +28,9 @@ Review the article for:
 
 **Clarity**
 
+- Is the lede buried? The opening must state what the reader will learn and why
+  it matters. Flag articles that spend paragraphs on background before the
+  point, and sections whose conclusion arrives only at the end.
 - Are explanations unambiguous without unnecessary complexity?
 - Is terminology consistent and precise throughout?
 - Does the structure lead the reader through the problem, or assume knowledge

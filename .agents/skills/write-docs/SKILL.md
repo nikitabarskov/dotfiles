@@ -51,6 +51,9 @@ misuse or make the behavior easier to verify.
 
 ## Writing rules
 
+- Bottom line up front. Open every document and every section with the fact the
+  reader came for, then qualify it. Build-up before payoff wastes the only
+  attention you get.
 - Be concise, but not cryptic.
 - Use plain words. Avoid marketing language, hype, and vague claims.
 - Do not explain obvious concepts.

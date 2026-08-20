@@ -1,203 +1,169 @@
-# Global Agent Instructions
+## Communication
 
-## Principles
+### Style: BLUF
 
-- **Be pragmatic.** Ship the simplest thing that solves the problem correctly
-  and is easy to delete or change later.
-- **Prefer clarity over cleverness.** Code is read far more often than written.
-- **Minimize surface area.** Fewer abstractions, files, dependencies. Add
-  indirection only when it demonstrably reduces complexity.
-- **Don't over-engineer.** No config options, extension points, or
-  generalization that isn't needed today. YAGNI.
-- **Prefer deleting code to adding it.** When fixing a problem, first consider
-  whether removing code solves it.
+Write BLUF - bottom line up front. Put the answer in the first sentence. Give
+the evidence, the conditions, and the alternatives after it. The reader decides
+after the first sentence if they continue to read.
 
-## Code Quality
+- Start with the conclusion: what is true, what you did, or what to do next.
+- Start with the request if you need a decision, an approval, or a fact.
+- Start with the bad news if something is broken or wrong. Do not start with the
+  parts that operate correctly.
 
-- Write code that is easy to test, not code that merely has tests.
-- Prefer pure functions and immutable data where it doesn't fight the language.
-- Name things clearly; don't abbreviate unless universally understood.
-- Keep functions short and single-purpose. If a function needs a comment to
-  explain what it does, rename or split it.
-- Error handling is not optional. Fail fast and loudly with actionable messages.
-- Avoid magic numbers and strings; use named constants.
+### Content
+
+- Report what you did and why. Do not describe each step.
+- Separate facts from assumptions. Tell the user which is which.
+- Say plainly when a plan is bad. Name the risk and its cost. Write "this breaks
+  X when Y", not "this can have implications".
+
+### Format
+
+- Write short sentences. Give one instruction in one sentence.
+- Do not write a preamble, praise, or filler text.
+- Put all code, commands, and file paths in code blocks.
+
+## Code
+
+- Write the most simple code that is correct. Keep it easy to change or delete.
+- Write clear code, not clever code. Code is read more often than it is written.
+- Use few abstractions, files, and dependencies. Add a layer only if it
+  decreases the complexity.
+- Do not add options, extension points, or generalizations that you do not need
+  today.
+- To correct a problem, first examine if you can remove code.
+- Write code that is easy to test. Tests alone are not sufficient.
+- Use pure functions and immutable data if the language permits it.
+- Use clear names. Do not abbreviate.
+- Give each function one task and keep it short. If a function needs a comment
+  to tell what it does, change its name or divide it.
+- Handle all errors. Stop immediately, and give a message that tells the user
+  what to do.
+- Do not use magic numbers or magic strings. Use named constants.
 
 ## Structure
 
-- Flat beats nested. Avoid deep directory hierarchies.
-- Co-locate things that change together. Split by feature, not by type
-  (`controllers/`, `models/`).
-- One file per concept.
-- Configuration belongs in config files, not in code.
+- Use a flat directory tree. Do not make deep hierarchies.
+- Keep related files together. Divide by feature, not by type (`controllers/`,
+  `models/`).
+- Put one concept in one file.
+- Put configuration in configuration files, not in code.
+
+## Changes
+
+- Make atomic changes. One change does one thing, and the repository operates
+  correctly before and after it. If you cannot describe a change in one
+  sentence, divide it.
+- Make the smallest possible diff. Do not refactor other code when you correct a
+  defect.
+- If there is more than one method, give the trade-offs and recommend one. Do
+  not ask the user to select.
+- If a request is not clear, make a reasonable assumption and tell the user the
+  assumption. Do not ask questions about small decisions.
+- Test the change before you report that it is complete. Use the tests, the
+  linter, and the build.
 
 ## NOTES.md
 
-Any repo may have a `NOTES.md` in its root — a personal scratch file for
-context, TODOs, and prior agent output. It is globally gitignored, so it never
-appears in `git status` or a listing of tracked files. Check for it directly at
-the start of a task (just try reading it) and read it before starting work.
-
-## When Proposing Changes
-
-- Show the minimal diff. Don't refactor unrelated code while fixing a bug.
-- If multiple approaches exist, state the trade-offs and recommend one. Don't
-  ask the user to choose when you have a clear preference.
-- If a request is ambiguous, make a reasonable assumption and state it — don't
-  ask clarifying questions for minor decisions.
-- Verify the change works before declaring it done (tests, lint, build).
-
-## Communication
-
-- Be direct and concise. No preamble, no praise, no filler.
-- State what you did and why, not a step-by-step narration of how.
-- If something is wrong or a bad idea, say so plainly.
-- Use code blocks for all code, commands, and file paths.
+A repository can have a `NOTES.md` file in its root. It holds context, TODO
+items, and output from earlier agents. The global gitignore file hides it, thus
+`git status` and a list of tracked files do not show it. Try to read this file
+before you start work.
 
 ## Model tiers
 
-Skills that dispatch or escalate work (`plan`, `roadmap`, `implement`) refer to
-tiers, not model names, so a model bump means editing this table once.
+The skills `plan`, `roadmap`, and `implement` use tier names, not model names.
+Thus a new model needs only one change to this table.
 
-| Tier                   | Claude (`Agent` `model` param)         | Codex         |
-| ---------------------- | -------------------------------------- | ------------- |
-| Cheap/mechanical       | Haiku 4.5 (`haiku`)                    | gpt-5.6-luna  |
-| Cost-optimized default | Sonnet 5 (`sonnet`)                    | gpt-5.6-terra |
-| Frontier/escalated     | Opus 4.8 (`opus`) or Fable 5 (`fable`) | gpt-5.5-sol   |
+| Tier                   | Claude (`Agent` `model` param)       | Codex         |
+| ---------------------- | ------------------------------------ | ------------- |
+| Cheap/mechanical       | Haiku 4.5 (`haiku`)                  | gpt-5.6-luna  |
+| Cost-optimized default | Sonnet 5 (`sonnet`)                  | gpt-5.6-terra |
+| Frontier/escalated     | Opus 5 (`opus`) or Fable 5 (`fable`) | gpt-5.5-sol   |
 
-Never escalate off the cost-optimized default without a named, concrete reason
-(architectural risk, ambiguity, blast radius) — see each skill's escalation
+Do not use a tier above the default without a specified reason: architectural
+risk, unclear requirements, or a large area of effect. Each skill gives its own
 rules.
 
-## Suggested skill tiers
+## Skill tiers
 
-Inline skills (invoked via `Skill`, not dispatched through `Agent`) have no
-confirmation gate. Before invoking a Group B skill, compare the session model
-against the tiers above; if it's below frontier and the task looks high-stakes
-by that skill's own criteria (auth boundary, data model/migration, public API,
-security-sensitive code), say so in one line. Non-blocking, once per invocation.
+Skills that you start with `Skill` have no confirmation step. Before you start a
+Group B skill, compare the model of the session with the table above. If the
+model is below the frontier tier, and the task has high risk by the criteria of
+that skill (authentication boundary, data model or migration, public API, or
+security), tell the user in one line. Do not stop, and tell the user one time
+only.
 
-- **Group A — cost-optimized tier is sufficient:** `git-commit`, `pr`,
+- **Group A — the default tier is sufficient:** `git-commit`, `pr`,
   `update-readme`, `write-docs`, `create-skill`, `create-system-prompt`,
-  `edit-article`, `headroom-check`. Bounded input, low ambiguity — no check.
-- **Group B — judgment-heavy:** every `review-*` skill plus `design-doc`.
-  Default to cost-optimized; flag when the change looks high-stakes.
+  `edit-article`, `headroom-check`. These skills have small, clear inputs. Do
+  not do the check.
+- **Group B — these skills need judgement:** all `review-*` skills and
+  `design-doc`. Use the default tier, but tell the user when the change has high
+  risk.
 
-## Code intelligence: prefer graph tools over grep/read
+## Code graph tools
 
-Several MCP servers expose pre-built code graphs. For any **structural**
-question — what calls what, what would break, where X is defined, what X's
-signature is — query a graph instead of running a grep/read loop. Each server
-documents its own tool table at runtime; the routing is:
+Use a code graph server for structural questions: what calls what, what breaks,
+where a symbol is, and what its signature is. Do not use grep and read for these
+questions.
 
-| Need                                               | Server                                                     |
-| -------------------------------------------------- | ---------------------------------------------------------- |
-| Symbols, call paths, blast radius, focused context | `codegraph_*` — first choice when `.codegraph/` exists     |
-| Same, plus entity-level git history and ownership  | `sem_*` (`sem_blame`, `sem_log`, `sem_diff`, `sem_impact`) |
-| PR review and change-risk triage                   | `inspect_*` — start with `inspect_triage`                  |
-| File find / content grep in a git-indexed tree     | `fff` (`fffind`, `ffgrep`, `fff-multi-grep`)               |
+| Need                                             | Server                                                     |
+| ------------------------------------------------ | ---------------------------------------------------------- |
+| Symbols, call paths, area of effect, context     | `codegraph_*` — the first choice when `.codegraph/` exists |
+| The same, plus git history and ownership         | `sem_*` (`sem_blame`, `sem_log`, `sem_diff`, `sem_impact`) |
+| PR review and change risk                        | `inspect_*` — start with `inspect_triage`                  |
+| File find and content grep in a git-indexed tree | `fff` (`fffind`, `ffgrep`, `fff-multi-grep`)               |
 
 Rules:
 
-- **Answer directly — don't delegate exploration.** The graph IS the pre-built
-  index. Spawning a file-reading sub-agent, or grepping then reading, repeats
-  work already done and costs more for the same answer. Two or three calls
-  should answer "how does X work".
-- **Trust the results.** They come from a full AST parse. Don't re-verify with
-  grep — slower, less accurate, wastes context.
-- **Batch, don't loop.** One multi-symbol call (`codegraph_explore`,
-  `sem_context`) beats N single-symbol calls.
-- **Use grep/read only for literal text** (string contents, comments, log
-  messages), non-code files, or a file you're about to edit.
-- **Watch for index lag.** When a response opens with a staleness banner, Read
-  the listed files directly; everything else is authoritative.
-- **If a graph isn't initialized,** the server says so. Offer to build it (e.g.
-  `codegraph init -i`).
-- **If a question can't be answered natively,** query the store directly —
-  e.g. `.tokensave/tokensave.db` (`nodes`, `edges`, `files`) via SQL. If a tool
-  or extractor gap caused it, suggest the user file an issue upstream, and
-  remind them to strip proprietary code from the report.
+- **Answer directly.** The graph is the index. Do not start a sub-agent to read
+  files. Two or three calls are sufficient to tell how X operates.
+- **Trust the results.** They come from a full parse of the syntax tree. Do not
+  check them again with grep.
+- **Make one call for many symbols.** Do not make one call for each symbol.
+- **Use grep and read only for text** (strings, comments, log messages), for
+  files that are not code, and for a file that you will edit.
+- **If a result starts with a warning about stale data,** read the listed files
+  directly. All other data is correct.
+- **If the graph does not exist,** the server tells you. Offer to build it, for
+  example with `codegraph init -i`.
+- **If no tool can answer the question,** query the database with SQL, for
+  example `.tokensave/tokensave.db` (tables `nodes`, `edges`, `files`). If a gap
+  in a tool caused this, tell the user to report it upstream. Remind the user to
+  remove proprietary code from the report.
 
 ## Headroom (`headroom_*`)
 
-Three layers of token compression:
+Headroom decreases the number of tokens in three layers:
 
-1. **RTK** — filters shell output before it enters context (60–99%).
-2. **Headroom proxy** — compresses API responses at the HTTP level
-   (`headroom proxy --port 8787`); set up once, transparent thereafter.
-3. **Headroom MCP** — explicit compression for large content that bypassed the
-   other two (file reads, MCP results).
+1. **RTK** filters shell output before it enters the context (60–99%).
+2. **The Headroom proxy** compresses API responses
+   (`headroom proxy --port 8787`). Configure it one time.
+3. **The Headroom MCP server** compresses large content that the other two
+   layers did not catch (file reads, MCP results).
 
-Start sessions through the shell wrappers when token savings matter: `claudeh`
-for Claude Code, `codexh` for Codex. They run `headroom wrap` — proxy, retrieve
-tool, and the `agent-90` profile — without pointing every shell at a proxy that
-may not be running. **Nested handoffs go through the wrapper too:** when
-shelling out to the sibling CLI, call `codexh`/`claudeh`, never bare
-`codex`/`claude`. Both are defined in `.config/shell/agent-env.sh` and exist in
-non-interactive shells, so there's no reason to use the bare binary.
+Start a session with `claudeh` (Claude Code) or `codexh` (Codex) when token
+savings are important. These wrappers run `headroom wrap`, which supplies the
+proxy, the retrieve tool, and the `agent-90` profile. They are defined in
+`.config/shell/agent-env.sh` and are available in non-interactive shells. When
+you start the other CLI from a session, use `claudeh` or `codexh`. Do not use
+the bare `claude` or `codex` command.
 
-MCP tools: `headroom_compress` (large result already in context),
-`headroom_retrieve` (recover full detail by hash), `headroom_stats`.
+MCP tools: `headroom_compress` (a large result that is already in the context),
+`headroom_retrieve` (get the full text by hash), `headroom_stats`.
 
 Rules:
 
-- **Compress before reasoning**, not after you've processed the content.
-- **Headroom is lossless** — the original is retrievable by hash.
-- **RTK first, MCP second.** RTK stops output at the source; MCP handles what's
-  already in context.
-- **Keep conversations short.** Cache-write cost grows with length and long
-  sessions destabilize the prefix. Compact or start fresh between unrelated
-  tasks.
-- **Don't let stale reads sit uncompressed.** Read/Glob output is excluded from
-  automatic compression, so it accumulates. Prefer graph lookups over re-reading
-  files, and compress large results you're done with.
-- **Publish eligible TOIN patterns.** When `headroom perf` flags patterns with
-  enough samples, run
-  `python -m headroom.cli.toin_publish --min-observations <n>` (matching the
-  threshold it reports) to raise the retrieval hit rate.
-
-<!-- headroom:rtk-instructions -->
-
-# RTK (Rust Token Killer) - Token-Optimized Commands
-
-When running shell commands, **always prefix with `rtk`**. This reduces context
-usage by 60-90% with zero behavior change. If rtk has no filter for a command,
-it passes through unchanged — so it is always safe to use.
-
-## Key Commands
-
-```bash
-# Git (59-80% savings)
-rtk git status          rtk git diff            rtk git log
-
-# Files & Search (60-75% savings)
-rtk ls <path>           rtk read <file>         rtk grep <pattern>
-rtk find <pattern>      rtk diff <file>
-
-# Test (90-99% savings) — shows failures only
-rtk pytest tests/       rtk cargo test          rtk test <cmd>
-
-# Build & Lint (80-90% savings) — shows errors only
-rtk tsc                 rtk lint                rtk cargo build
-rtk prettier --check    rtk mypy                rtk ruff check
-
-# Analysis (70-90% savings)
-rtk err <cmd>           rtk log <file>          rtk json <file>
-rtk summary <cmd>       rtk deps                rtk env
-
-# GitHub (26-87% savings)
-rtk gh pr view <n>      rtk gh run list         rtk gh issue list
-
-# Infrastructure (85% savings)
-rtk docker ps           rtk kubectl get         rtk docker logs <c>
-
-# Package managers (70-90% savings)
-rtk pip list            rtk pnpm install        rtk npm run <script>
-```
-
-## Rules
-
-- In command chains, prefix each segment:
-  `rtk git add . && rtk git commit -m "msg"`
-- For debugging, use raw command without rtk prefix
-- `rtk proxy <cmd>` runs command without filtering but tracks usage
-<!-- /headroom:rtk-instructions -->
+- **Compress content before you reason about it**, not after.
+- **Headroom is lossless.** You can get the original by hash.
+- **Use RTK first, the MCP server second.** RTK stops the output at its source.
+- **Keep sessions short.** The cache-write cost increases with the length.
+  Compact the session, or start a new one, between different tasks.
+- **Do not keep stale reads.** Read and Glob output is not compressed
+  automatically, thus it accumulates. Use the code graph tools instead of a
+  second read of a file, and compress large results when you are done with them.
+- **Publish TOIN patterns.** When `headroom perf` shows patterns with sufficient
+  samples, run `python -m headroom.cli.toin_publish --min-observations <n>` with
+  the threshold that it reports.

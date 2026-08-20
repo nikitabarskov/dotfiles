@@ -32,6 +32,13 @@ genuinely has no content):
 **Status:** Draft | In Review | Accepted | Superseded by [link] **Author:**
 <name> **Date:** <date> **Stakeholders:** <who needs to review or be informed>
 
+## Summary
+
+<Bottom line up front, 2-4 sentences: what we are doing, why, and what it costs.
+A reviewer who reads only this section must be able to approve or push back. If
+the decision is contentious or expensive, say so here — do not make them find it
+in `Decision`.>
+
 ## Problem
 
 <What is broken, missing, or needs to change — and why now? One paragraph. Do
@@ -99,6 +106,9 @@ Remove this section when all questions are resolved.>
 
 ## Writing rules
 
+- Bottom line up front. `Summary` states the decision and its cost; the rest of
+  the document is evidence for a reviewer who wants it. Never make someone read
+  to the end to learn what you are proposing.
 - Write in plain prose, not bullet soup. Use bullets only for lists that are
   genuinely enumerable.
 - State the decision clearly. "We will use X" not "X could be considered".
