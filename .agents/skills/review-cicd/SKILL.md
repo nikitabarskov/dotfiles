@@ -1,13 +1,15 @@
 ---
 name: review-cicd
-description: "Review CI/CD workflows for trust boundaries, reliable checks, artifact integrity, and deployment safety."
+description:
+  "Review CI/CD workflows for trust boundaries, reliable checks, artifact
+  integrity, and deployment safety."
 ---
 
 ## Review method
 
 Establish the requested scope, runtime/library versions, and relevant contracts.
-For a change review, focus on defects introduced or exposed by the change.
-For an audit, assess the requested surface, including existing defects.
+For a change review, focus on defects introduced or exposed by the change. For
+an audit, assess the requested surface, including existing defects.
 
 Use available review triage and code graphs to prioritize changed entities and
 trace consumers. Batch related queries. Read affected code and configuration;
@@ -28,7 +30,8 @@ unless asked. Do not run destructive operations or live deployments for review.
   or artifacts crossing trust boundaries. Pin external actions where required by
   the threat model or repository policy; explain the concrete supply-chain risk.
 - Trace failure propagation using the actual shell and runner defaults. Check
-  pipes, conditional jobs, continue-on-error, needs, and required-check behavior.
+  pipes, conditional jobs, continue-on-error, needs, and required-check
+  behavior.
 - Ensure tested artifacts and revisions are the ones released. Check dependency
   locks, cache restore semantics, platform keys, and build provenance.
 - Check deployment concurrency, environments, credentials, migration ordering,
@@ -51,6 +54,7 @@ fix. Separate verified defects from unresolved questions. State missing evidence
 and checks that could not run. Do not invent certainty or fill a finding quota.
 
 Prefer correctness, security, data integrity, and demonstrated operational
-problems over style preferences. Do not demand a pattern, abstraction, dependency,
-or optimization without showing why the existing approach fails its requirements.
-Mention automated check failures when relevant; do not repeat their full output.
+problems over style preferences. Do not demand a pattern, abstraction,
+dependency, or optimization without showing why the existing approach fails its
+requirements. Mention automated check failures when relevant; do not repeat
+their full output.

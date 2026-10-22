@@ -1,6 +1,8 @@
 ---
 name: headroom-check
-description: "Inspect Headroom performance, recommend evidence-based context improvements, and publish eligible TOIN patterns when authorized."
+description:
+  "Inspect Headroom performance, recommend evidence-based context improvements,
+  and publish eligible TOIN patterns when authorized."
 ---
 
 Run:
@@ -24,8 +26,8 @@ tool failures directly; do not infer performance from missing data.
 - TOIN learning: use the eligibility threshold actually reported. Inspect the
   destination and publishing behavior for the installed version before running
   the publishing command. This skill permits publishing eligible local learned
-  recommendations when that is the tool's documented behavior; remote sharing
-  of source-derived data needs explicit authorization.
+  recommendations when that is the tool's documented behavior; remote sharing of
+  source-derived data needs explicit authorization.
 
 ```bash
 python -m headroom.cli.toin_publish --min-observations <reported-threshold>

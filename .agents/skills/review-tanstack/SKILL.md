@@ -1,13 +1,15 @@
 ---
 name: review-tanstack
-description: "Review TanStack Router and Query behavior for routing, cache isolation, mutations, and data freshness."
+description:
+  "Review TanStack Router and Query behavior for routing, cache isolation,
+  mutations, and data freshness."
 ---
 
 ## Review method
 
 Establish the requested scope, runtime/library versions, and relevant contracts.
-For a change review, focus on defects introduced or exposed by the change.
-For an audit, assess the requested surface, including existing defects.
+For a change review, focus on defects introduced or exposed by the change. For
+an audit, assess the requested surface, including existing defects.
 
 Use available review triage and code graphs to prioritize changed entities and
 trace consumers. Batch related queries. Read affected code and configuration;
@@ -28,15 +30,19 @@ unless asked. Do not run destructive operations or live deployments for review.
   handling, and cancellation. Missing dependencies matter when loaders can reuse
   results for different inputs. Client route guards do not enforce server auth.
 - Query keys must distinguish every input that changes cached data, including
-  tenant/user scope where needed. Check cache clearing or partitioning on logout.
-- Check query enablement, stale/gc times, retry behavior, and cancellation against
-  the UX and data contract. enabled: false and skipToken have different valid uses.
+  tenant/user scope where needed. Check cache clearing or partitioning on
+  logout.
+- Check query enablement, stale/gc times, retry behavior, and cancellation
+  against the UX and data contract. enabled: false and skipToken have different
+  valid uses.
 - Trace mutation failures and concurrent optimistic updates: cancellation,
   snapshots, rollback, invalidation, and server reconciliation. Error handling
   may exist in shared configuration or the consuming UI.
-- Check infinite-query page parameters and terminal-page behavior against the API.
-- Where loaders and Query share data, verify compatible keys/options and freshness
-  behavior. Loader-only data is valid; not every route needs a Query cache.
+- Check infinite-query page parameters and terminal-page behavior against the
+  API.
+- Where loaders and Query share data, verify compatible keys/options and
+  freshness behavior. Loader-only data is valid; not every route needs a Query
+  cache.
 - Check SSR hydration and request-scoped caches for cross-user data leakage.
 
 ## Findings
@@ -50,6 +56,7 @@ fix. Separate verified defects from unresolved questions. State missing evidence
 and checks that could not run. Do not invent certainty or fill a finding quota.
 
 Prefer correctness, security, data integrity, and demonstrated operational
-problems over style preferences. Do not demand a pattern, abstraction, dependency,
-or optimization without showing why the existing approach fails its requirements.
-Mention automated check failures when relevant; do not repeat their full output.
+problems over style preferences. Do not demand a pattern, abstraction,
+dependency, or optimization without showing why the existing approach fails its
+requirements. Mention automated check failures when relevant; do not repeat
+their full output.

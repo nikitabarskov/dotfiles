@@ -1,6 +1,8 @@
 ---
 name: design-doc
-description: "Write or revise a technical design document or ADR that makes a consequential engineering decision reviewable."
+description:
+  "Write or revise a technical design document or ADR that makes a consequential
+  engineering decision reviewable."
 ---
 
 Produce the requested design, grounded in the existing system and constraints.
@@ -22,10 +24,11 @@ Include what the decision needs:
   that need them. Explain irreversible steps and data restoration limits.
 - Validation: evidence available now and checks that will establish success.
 - Open decisions, their effect, and proposed owners only when known or labeled
-  as proposals. Mark missing facts precisely instead of filling them with guesses.
+  as proposals. Mark missing facts precisely instead of filling them with
+  guesses.
 
 Use the repository template or ADR convention when present. Otherwise organize
 these elements for the reader, omitting irrelevant sections. Scale length to the
-decision; do not force a full architecture template on a narrow ADR. Write to the
-requested destination. A design request does not authorize implementation or
+decision; do not force a full architecture template on a narrow ADR. Write to
+the requested destination. A design request does not authorize implementation or
 publication elsewhere.

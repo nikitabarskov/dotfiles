@@ -1,13 +1,15 @@
 ---
 name: review-security
-description: "Review code and configuration for exploitable trust-boundary failures and security regressions."
+description:
+  "Review code and configuration for exploitable trust-boundary failures and
+  security regressions."
 ---
 
 ## Review method
 
 Establish the requested scope, runtime/library versions, and relevant contracts.
-For a change review, focus on defects introduced or exposed by the change.
-For an audit, assess the requested surface, including existing defects.
+For a change review, focus on defects introduced or exposed by the change. For
+an audit, assess the requested surface, including existing defects.
 
 Use available review triage and code graphs to prioritize changed entities and
 trace consumers. Batch related queries. Read affected code and configuration;
@@ -21,17 +23,20 @@ unless asked. Do not run destructive operations or live deployments for review.
 
 ## Focus
 
-- Identify assets, attacker control, entry points, and deployed safeguards. Trace
-  input to a sensitive operation; distinguish an exploitable path from hardening.
-- Check authentication, token signature/issuer/audience/expiry validation, session
-  lifecycle, and recovery flows against the intended identity model.
+- Identify assets, attacker control, entry points, and deployed safeguards.
+  Trace input to a sensitive operation; distinguish an exploitable path from
+  hardening.
+- Check authentication, token signature/issuer/audience/expiry validation,
+  session lifecycle, and recovery flows against the intended identity model.
 - Check server-side resource/tenant authorization on every reachable path,
   including alternate methods, batch APIs, jobs, and cached results. Unguessable
   IDs are not authorization; sequential IDs alone are not a vulnerability.
-- Trace SQL/shell/template injection, contextual output escaping, path traversal,
-  SSRF including redirects/address resolution, and unsafe deserialization.
+- Trace SQL/shell/template injection, contextual output escaping, path
+  traversal, SSRF including redirects/address resolution, and unsafe
+  deserialization.
 - Evaluate CSRF, CORS, cookies, and security headers against the actual browser,
-  credential, and deployment model. Missing headers are not uniformly exploitable.
+  credential, and deployment model. Missing headers are not uniformly
+  exploitable.
 - Check secret disclosure, logs, cryptography, randomness, and key handling.
   Redact secrets in findings; do not reproduce usable credentials.
 - Check dependency resolution, lockfiles, artifact provenance, and execution of
@@ -51,6 +56,7 @@ fix. Separate verified defects from unresolved questions. State missing evidence
 and checks that could not run. Do not invent certainty or fill a finding quota.
 
 Prefer correctness, security, data integrity, and demonstrated operational
-problems over style preferences. Do not demand a pattern, abstraction, dependency,
-or optimization without showing why the existing approach fails its requirements.
-Mention automated check failures when relevant; do not repeat their full output.
+problems over style preferences. Do not demand a pattern, abstraction,
+dependency, or optimization without showing why the existing approach fails its
+requirements. Mention automated check failures when relevant; do not repeat
+their full output.

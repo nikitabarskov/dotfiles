@@ -1,13 +1,15 @@
 ---
 name: review-api
-description: "Review REST or gRPC contracts and changes for correctness, compatibility, and retry safety."
+description:
+  "Review REST or gRPC contracts and changes for correctness, compatibility, and
+  retry safety."
 ---
 
 ## Review method
 
 Establish the requested scope, runtime/library versions, and relevant contracts.
-For a change review, focus on defects introduced or exposed by the change.
-For an audit, assess the requested surface, including existing defects.
+For a change review, focus on defects introduced or exposed by the change. For
+an audit, assess the requested surface, including existing defects.
 
 Use available review triage and code graphs to prioritize changed entities and
 trace consumers. Batch related queries. Read affected code and configuration;
@@ -23,8 +25,8 @@ unless asked. Do not run destructive operations or live deployments for review.
 
 - Check actual HTTP/RPC semantics, validation, status codes, error shapes, and
   null/omitted/default behavior against the documented contract.
-- Analyze compatibility in both directions: old clients with new servers and
-  new clients with old servers. New required request fields, removed response
+- Analyze compatibility in both directions: old clients with new servers and new
+  clients with old servers. New required request fields, removed response
   fields, enum expansion, and tighter validation affect different consumers.
   Adding a required response field is not the same as requiring a new input.
 - Check authorization at the resource and operation boundary, including whether
@@ -53,6 +55,7 @@ fix. Separate verified defects from unresolved questions. State missing evidence
 and checks that could not run. Do not invent certainty or fill a finding quota.
 
 Prefer correctness, security, data integrity, and demonstrated operational
-problems over style preferences. Do not demand a pattern, abstraction, dependency,
-or optimization without showing why the existing approach fails its requirements.
-Mention automated check failures when relevant; do not repeat their full output.
+problems over style preferences. Do not demand a pattern, abstraction,
+dependency, or optimization without showing why the existing approach fails its
+requirements. Mention automated check failures when relevant; do not repeat
+their full output.

@@ -1,13 +1,15 @@
 ---
 name: review-react
-description: "Review React components and hooks for state, effects, rendering, and user-visible failures."
+description:
+  "Review React components and hooks for state, effects, rendering, and
+  user-visible failures."
 ---
 
 ## Review method
 
 Establish the requested scope, runtime/library versions, and relevant contracts.
-For a change review, focus on defects introduced or exposed by the change.
-For an audit, assess the requested surface, including existing defects.
+For a change review, focus on defects introduced or exposed by the change. For
+an audit, assess the requested surface, including existing defects.
 
 Use available review triage and code graphs to prioritize changed entities and
 trace consumers. Batch related queries. Read affected code and configuration;
@@ -23,10 +25,12 @@ unless asked. Do not run destructive operations or live deployments for review.
 
 - Check the installed React version and enabled compiler/framework features.
   Apply hook rules with their documented exceptions, including the use API.
-- Trace stale closures, effect dependencies, cleanup, async races, and cancellation.
-  Effects should synchronize external systems; redundant derived state can drift.
-- Check state ownership, identity, keys, accidental remounts, and mutation during
-  render. Follow reordered lists and overlapping state updates to visible behavior.
+- Trace stale closures, effect dependencies, cleanup, async races, and
+  cancellation. Effects should synchronize external systems; redundant derived
+  state can drift.
+- Check state ownership, identity, keys, accidental remounts, and mutation
+  during render. Follow reordered lists and overlapping state updates to visible
+  behavior.
 - Check loading, empty, error, retry, and submission states. Error boundaries do
   not catch every async or event-handler error; locate the actual handling path.
 - Check server/client boundaries, hydration, and serialization when applicable.
@@ -46,6 +50,7 @@ fix. Separate verified defects from unresolved questions. State missing evidence
 and checks that could not run. Do not invent certainty or fill a finding quota.
 
 Prefer correctness, security, data integrity, and demonstrated operational
-problems over style preferences. Do not demand a pattern, abstraction, dependency,
-or optimization without showing why the existing approach fails its requirements.
-Mention automated check failures when relevant; do not repeat their full output.
+problems over style preferences. Do not demand a pattern, abstraction,
+dependency, or optimization without showing why the existing approach fails its
+requirements. Mention automated check failures when relevant; do not repeat
+their full output.

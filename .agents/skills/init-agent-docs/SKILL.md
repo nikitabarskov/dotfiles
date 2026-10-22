@@ -1,6 +1,8 @@
 ---
 name: init-agent-docs
-description: "Consolidate root agent instructions into README.md and create minimal AGENTS.md and CLAUDE.md pointers."
+description:
+  "Consolidate root agent instructions into README.md and create minimal
+  AGENTS.md and CLAUDE.md pointers."
 ---
 
 Read root README.md, AGENTS.md, and CLAUDE.md, including any symlink targets.
@@ -15,8 +17,8 @@ known precedence or ask about the specific unresolved conflict.
 
 Keep unrelated README content intact. Use only subsections with real content,
 such as Build and test, Conventions, and Repository notes. If the README is
-absent, create a minimal factual introduction and the collected instructions;
-do not fabricate commands or create empty placeholders.
+absent, create a minimal factual introduction and the collected instructions; do
+not fabricate commands or create empty placeholders.
 
 After verifying that every unique root instruction has a home, make root
 AGENTS.md and CLAUDE.md contain only:

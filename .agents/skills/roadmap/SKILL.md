@@ -1,11 +1,13 @@
 ---
 name: roadmap
-description: "Break a broad goal into prioritized deliverables, dependencies, and effort ranges; publish to Linear when requested."
+description:
+  "Break a broad goal into prioritized deliverables, dependencies, and effort
+  ranges; publish to Linear when requested."
 ---
 
-Create a roadmap without editing implementation code. Use the active session;
-do not ask the user to pick a model before reasoning. For delegated analysis,
-use repository tiers and available model identifiers, escalating only for a named
+Create a roadmap without editing implementation code. Use the active session; do
+not ask the user to pick a model before reasoning. For delegated analysis, use
+repository tiers and available model identifiers, escalating only for a named
 architectural risk, unclear requirement, or large area of effect.
 
 Identify the desired outcome, constraints, and success criteria. Separate known
@@ -20,17 +22,19 @@ from delivery commitments. Sequence dependencies and identify the critical path.
 Give effort ranges with assumptions and confidence. Use team sizing conventions
 when available. Distinguish engineering effort from elapsed time, staffing,
 external waits, and rollout. Derive contingency from named risks instead of a
-universal multiplier. Do not turn model speed into an unsupported delivery promise.
+universal multiplier. Do not turn model speed into an unsupported delivery
+promise.
 
 Lead with the recommended scope, likely effort range, and biggest uncertainty.
-Then provide the goal, assumptions, prioritized issues (acceptance, dependencies,
-effort), critical path, risks, and explicit exclusions. Keep a chat request in
-chat; use the user's specified artifact or destination when requested.
+Then provide the goal, assumptions, prioritized issues (acceptance,
+dependencies, effort), critical path, risks, and explicit exclusions. Keep a
+chat request in chat; use the user's specified artifact or destination when
+requested.
 
 ## Linear
 
-Publish only when the user requests it or has already authorized it. Prepare
-the concrete issue set first. Resolve the team/project from context; ask if the
+Publish only when the user requests it or has already authorized it. Prepare the
+concrete issue set first. Resolve the team/project from context; ask if the
 destination or a consequential scope decision is genuinely missing. Do not ask
 again for permission already supplied by the request.
 
