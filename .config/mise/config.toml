@@ -5,7 +5,7 @@ difftastic = "latest"
 fzf = "latest"
 gh = "latest"
 helix = "latest"
-"pipx:headroom-ai" = { version = "latest", extras = "all" }
+"pipx:headroom-ai" = { version = "latest", extras = "all", minimum_release_age = "1d" }
 just = "latest"
 lazydocker = "latest"
 lazygit = "latest"
@@ -29,6 +29,9 @@ yq = "latest"
 uv = "latest"
 hub = "latest"
 1password = "latest"
+"pipx:graphifyy" = { version = "latest", extras = "all", minimum_release_age = "1d" }
+"pipx:serena-agent" = { version = "latest", extras = "all", minimum_release_age = "1d" }
+pipx = "latest"
 
 [settings]
 lockfile = false
