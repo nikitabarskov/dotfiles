@@ -136,9 +136,7 @@
           {
             "type": "command",
             "command": "/Users/nikitabarskov/.local/share/mise/installs/cargo-https-github-com-aovestdipaperino-tokensave/latest/bin/tokensave",
-            "args": [
-              "hook-pre-tool-use"
-            ]
+            "args": ["hook-pre-tool-use"]
           }
         ]
       }
@@ -149,9 +147,7 @@
           {
             "type": "command",
             "command": "/Users/nikitabarskov/.local/share/mise/installs/cargo-https-github-com-aovestdipaperino-tokensave/latest/bin/tokensave",
-            "args": [
-              "hook-prompt-submit"
-            ]
+            "args": ["hook-prompt-submit"]
           }
         ]
       }
@@ -162,9 +158,7 @@
           {
             "type": "command",
             "command": "/Users/nikitabarskov/.local/share/mise/installs/cargo-https-github-com-aovestdipaperino-tokensave/latest/bin/tokensave",
-            "args": [
-              "hook-stop"
-            ]
+            "args": ["hook-stop"]
           }
         ]
       }
