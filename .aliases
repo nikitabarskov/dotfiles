@@ -1,134 +1,156 @@
 brew-clean() {
-    setopt localoptions rmstarsilent
-    local cache
-    local -a cache_entries
-
-    cache=$(brew --cache)
-    brew autoremove && \
-    brew bundle cleanup --all --force --global && \
-    brew cleanup --prune=all --scrub || return
-
-    cache_entries=("$cache"/*(DN))
-    if (( ${#cache_entries} )); then
-        du -sh -- "${cache_entries[@]}" && \
-        rm -vrf -- "${cache_entries[@]}"
-    fi
+    brew bundle cleanup --all --force --global || return
+    brew autoremove || return
+    brew cleanup --prune=all --scrub
 }
 
 brew-add() {
-    brew install --yes "$@" && \
-    brew bundle --verbose --global add "$@"
+    brew bundle add --install --verbose --global "$@"
 }
 
 brew-remove() {
-    brew uninstall "$@" && \
-    brew bundle --verbose --global remove "$@"
+    brew uninstall "$@" &&
+        brew bundle remove --verbose --global "$@"
 }
 
 brew-install() {
-    brew bundle install --global --verbose
+    brew bundle install --global --verbose "$@"
 }
 
 brew-lock() {
-    brew bundle dump --force --verbose --global
+    brew bundle dump --force --verbose --global "$@"
 }
 
 brew-upgrade() {
-    brew update && \
-    brew upgrade && \
-    brew bundle install --global --upgrade --verbose && \
+    brew update || return
+    brew upgrade --yes "$@" || return
+    brew-install --no-upgrade || return
     brew-clean
 }
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     macos-u() {
-        touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-        sudo softwareupdate \
-            --install \
-            --all \
-            --agree-to-license \
-            --force \
-            --restart
-        rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+        sudo softwareupdate --install --all --agree-to-license --force --restart
     }
 
-    macos-clt() {
-        touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-        local clt_label
-        clt_label=$(softwareupdate --list 2>/dev/null | grep "Command Line Tools" | grep "Label:" | awk -F'Label: ' '{print $2}' | head -n 1)
-        if [[ -n "$clt_label" ]]; then
-            echo "Installing $clt_label..."
-            sudo softwareupdate --install --agree-to-license --verbose --force "$clt_label"
+    macos-clt() (
+        local marker=/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+        local updates clt_label
+        if [[ ! -e "$marker" ]]; then
+            touch "$marker" || return
+            trap 'rm -f -- "$marker"' EXIT
         fi
-        rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-    }
+        updates=$(softwareupdate --list) || return
+        clt_label=$(printf '%s\n' "$updates" | awk '/Label: .*Command Line Tools/ {sub(/^.*Label: /, ""); print; exit}')
+        if [[ -z "$clt_label" ]]; then
+            echo "No Command Line Tools update is available." >&2
+            return 1
+        fi
+        echo "Installing $clt_label..."
+        sudo softwareupdate --install --agree-to-license --verbose "$clt_label"
+    )
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     dnf-clean() {
-        sudo dnf autoremove -y && \
-        sudo dnf clean packages
+        sudo dnf autoremove -y &&
+            sudo dnf clean packages
     }
 
     dnf-upgrade() {
-        sudo dnf upgrade --refresh -y && \
-        dnf-clean
-        command -v akmods >/dev/null 2>&1 && sudo akmods --force
-        dnf needs-restarting -r &>/dev/null || echo "Reboot recommended"
+        sudo dnf upgrade --refresh -y || return
+        dnf-clean || return
+        if command -v akmods >/dev/null 2>&1; then
+            sudo akmods --force || return
+        fi
+        local result=0
+        sudo dnf needs-restarting -r || result=$?
+        case "$result" in
+        0) ;;
+        1) echo "Reboot recommended" ;;
+        *) return "$result" ;;
+        esac
     }
 fi
 
 nb() {
-    local date
-    date=$(date +%Y%m%dT%H%M%S)
-    echo "nikita.barskov-$date-$1"
+    if [[ $# -ne 1 || -z "$1" ]]; then
+        echo "Usage: nb <branch-suffix>" >&2
+        return 2
+    fi
+    local timestamp
+    timestamp=$(date +%Y%m%dT%H%M%S) || return
+    printf 'nikita.barskov-%s-%s\n' "$timestamp" "$1"
 }
 
 avb() {
-    if [[ -n "$2" ]]; then
-        av branch "$(nb "$1")" --parent "$2"
+    if [[ $# -lt 1 || $# -gt 2 ]]; then
+        echo "Usage: avb <branch-suffix> [parent]" >&2
+        return 2
+    fi
+    local name
+    name=$(nb "$1") || return
+    if [[ -n "${2:-}" ]]; then
+        av branch "$name" --parent "$2"
     else
-        av branch "$(nb "$1")"
+        av branch "$name"
     fi
 }
 
 avsc() {
-    av sync --ff-trunk --prune=yes --push=yes --rebase-to-trunk --current
+    av sync --ff-trunk --prune=yes --push=yes --rebase-to-trunk --current "$@"
 }
 
 avs() {
-    av sync --ff-trunk --prune=yes --push=yes --rebase-to-trunk
+    av sync --ff-trunk --prune=yes --push=yes --rebase-to-trunk "$@"
 }
 
 avpr() {
-    av pr --draft
+    av pr --draft "$@"
 }
 
+# Insert a branch below the current branch, leaving its last commit above it.
 avib() {
-    if [[ -z "$1" ]]; then
-        echo "Usage: avib <branch-suffix>"
-        return 1
+    if [[ $# -ne 1 || -z "$1" ]]; then
+        echo "Usage: avib <branch-suffix>" >&2
+        return 2
     fi
 
-    local current parent new_branch
-    current=$(git branch --show-current)
-    parent=$(av tree --current | awk '/\* /{print $2}' | sed -n '2p')
+    local current parent new_branch previous changes
+    current=$(git symbolic-ref --quiet --short HEAD) || return
+    changes=$(git status --porcelain) || return
+    if [[ -n "$changes" ]]; then
+        echo "Commit or stash all changes, including untracked files, before avib." >&2
+        return 1
+    fi
+    previous=$(git rev-parse --verify 'HEAD~1') || return
+    new_branch=$(nb "$1") || return
+    git check-ref-format --branch "$new_branch" >/dev/null || return
 
-    avb "$1" "$parent" && \
-    new_branch=$(git branch --show-current) && \
-    git reset --hard "${current}~1" && \
-    git checkout "$current" && \
-    av reparent --parent "$new_branch" && \
+    av prev || return
+    parent=$(git symbolic-ref --quiet --short HEAD) || return
+    git checkout "$current" || return
+    if [[ "$parent" == "$current" ]]; then
+        echo "No parent branch found; configure the stack before running avib." >&2
+        return 1
+    fi
+    av branch "$new_branch" --parent "$parent" || return
+    git reset --hard "$previous" || return
+    git checkout "$current" || return
+    av reparent --parent "$new_branch" || return
     av restack
 }
 
 switch-theme() {
     local themes="$HOME/.config/alacritty/themes"
     local active="$HOME/.config/alacritty/theme.toml"
-    case "$1" in
-        light) cp "${themes}/alabaster.toml" "$active" ;;
-        dark)  cp "${themes}/catpuccin_mocha.toml" "$active" ;;
-        *)     echo "Usage: switch-theme [light|dark]" ;;
+    case "${1:-}" in
+    light) cp "${themes}/alabaster.toml" "$active" ;;
+    dark) cp "${themes}/catpuccin_mocha.toml" "$active" ;;
+    *)
+        echo "Usage: switch-theme [light|dark]" >&2
+        return 2
+        ;;
     esac
 }
 
@@ -143,21 +165,46 @@ if command -v headroom >/dev/null 2>&1; then
     # not auto-respawning, not wired into ANTHROPIC_BASE_URL globally.
     headroom-proxy-start() {
         local port="${HEADROOM_PORT:-8787}"
-        if curl -fsS "http://127.0.0.1:${port}/health" >/dev/null 2>&1; then
+        case "$port" in
+        '' | *[!0-9]*)
+            echo "HEADROOM_PORT must be a number from 1 to 65535." >&2
+            return 2
+            ;;
+        esac
+        if ((port < 1 || port > 65535)); then
+            echo "HEADROOM_PORT must be a number from 1 to 65535." >&2
+            return 2
+        fi
+        if curl --max-time 2 -fsS "http://127.0.0.1:${port}/health" >/dev/null 2>&1; then
             echo "headroom proxy already running on :${port}"
             return 0
         fi
-        mkdir -p "${HOME}/.headroom/logs"
+        mkdir -p "${HOME}/.headroom/logs" || return
         nohup headroom proxy --port "${port}" \
             >>"${HOME}/.headroom/logs/proxy-manual.log" 2>&1 &
+        local proxy_pid=$!
         disown
-        echo "headroom proxy started (pid $!) — logging to ~/.headroom/logs/proxy-manual.log"
+        echo "headroom proxy starting (pid $proxy_pid) — logging to ~/.headroom/logs/proxy-manual.log"
     }
 
     headroom-proxy-stop() {
         local port="${HEADROOM_PORT:-8787}"
-        pkill -f "headroom proxy --port ${port}" \
-            && echo "headroom proxy stopped" \
-            || echo "no headroom proxy running on :${port}"
+        case "$port" in
+        '' | *[!0-9]*)
+            echo "HEADROOM_PORT must be a number from 1 to 65535." >&2
+            return 2
+            ;;
+        esac
+        if ((port < 1 || port > 65535)); then
+            echo "HEADROOM_PORT must be a number from 1 to 65535." >&2
+            return 2
+        fi
+        local result=0
+        pkill -f "(^|/)headroom proxy --port ${port}$" || result=$?
+        case "$result" in
+        0) echo "headroom proxy stopped" ;;
+        1) echo "no headroom proxy running on :${port}" ;;
+        *) return "$result" ;;
+        esac
     }
 fi
