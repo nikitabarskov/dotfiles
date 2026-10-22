@@ -78,8 +78,6 @@ cask "notion"
 cask "openusage"
 # Replacement for Docker Desktop
 cask "orbstack"
-# Control your tools with a few keystrokes
-cask "raycast"
 # Instant messaging application focusing on security
 cask "signal"
 # Team communication and collaboration software
@@ -88,3 +86,5 @@ cask "slack"
 cask "tailscale-app"
 # Messaging app with a focus on speed and security
 cask "telegram"
+# Application launcher and command palette
+cask "vicinae"
