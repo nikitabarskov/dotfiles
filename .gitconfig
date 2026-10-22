@@ -68,6 +68,8 @@
    	ds = -c diff.external=difft show --ext-diff
     # difftastic-rendered `git diff`
     dft = -c diff.external=difft diff
+	# push force with lease
+	pfl = push --force-with-lease
 
 [difftool "difftastic"]
     cmd = difft "$MERGED" "$LOCAL" "abcdef1" "100644" "$REMOTE" "abcdef2" "100644"
