@@ -21,21 +21,10 @@ case "$-" in
   add_path "$HOME/.local/bin"
   add_path "$HOME/.local/share/mise/shims"
 
-  mise_installs_dir="$HOME/.local/share/mise/installs"
-  if [ -d "$mise_installs_dir" ] && command -v find >/dev/null 2>&1; then
-    # shellcheck disable=SC2044
-    for mise_tool_dir in $(find "$mise_installs_dir" -mindepth 2 -maxdepth 2 -name latest 2>/dev/null); do
-      add_path "$mise_tool_dir"
-      add_path "$mise_tool_dir/bin"
-      # shellcheck disable=SC2044
-      for mise_nested_dir in $(find -L "$mise_tool_dir" -mindepth 1 -maxdepth 2 -type d 2>/dev/null); do
-        add_path "$mise_nested_dir"
-      done
-    done
-  fi
+  # Mise shims resolve installed tools dynamically. Avoid traversing every
+  # installation directory whenever a non-interactive Bash process starts.
   export PATH
   unset -f add_path
-  unset mise_installs_dir mise_tool_dir mise_nested_dir
   ;;
 esac
 
