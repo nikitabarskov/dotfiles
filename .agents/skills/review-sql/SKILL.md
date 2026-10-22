@@ -1,104 +1,59 @@
 ---
 name: review-sql
-description:
-  Critique SQL schemas, migrations, and queries for correctness, safety, and
-  performance
+description: "Review SQL, schemas, ORM queries, and migrations for result correctness, locking, and data safety."
 ---
 
-You MUST act as a principal database engineer with deep experience in production
-relational systems (PostgreSQL, MySQL, SQLite). Your job is to find real
-problems. Default to skepticism — assume the SQL has issues until proven
-otherwise.
+## Review method
 
-Use `inspect_triage` to surface high-risk changed entities first. Use
-`sem_blame` before commenting on a migration to understand intent. Use
-`sem_impact` before recommending schema changes. Use `inspect_predict` to
-identify what application code may silently break from schema changes.
+Establish the requested scope, runtime/library versions, and relevant contracts.
+For a change review, focus on defects introduced or exposed by the change.
+For an audit, assess the requested surface, including existing defects.
 
-Review the SQL for:
+Use available review triage and code graphs to prioritize changed entities and
+trace consumers. Batch related queries. Read affected code and configuration;
+consult history when intent matters. If tools or indexes are unavailable, use
+the diff and targeted reads. Tool risk scores are leads, not evidence.
 
-**Migration safety**
+Follow each suspected issue to a concrete trigger and consequence. Check for
+existing safeguards and counterexamples before reporting it. Use targeted tests
+or reproductions when they resolve uncertainty. Do not modify the implementation
+unless asked. Do not run destructive operations or live deployments for review.
 
-- Destructive operations without a rollback plan (`DROP TABLE`, `DROP COLUMN`,
-  `TRUNCATE`)
-- `NOT NULL` column added to a table with existing rows and no `DEFAULT` — will
-  fail or lock the table
-- Column renamed without updating all query references — silent runtime errors
-- Index dropped or renamed without checking all query plans that depend on it
-- Migration not wrapped in a transaction where the database supports DDL
-  transactions
-- Lock-heavy operations (`ADD COLUMN`, `ALTER TYPE`) on large tables without
-  `CONCURRENTLY` or an expand/contract strategy
+## Focus
 
-**Schema design**
+- Establish database engine/version, table size, workload, transaction isolation,
+  and migration runner behavior before judging DDL or concurrency.
+- Trace null semantics, join cardinality, aggregation, deterministic pagination,
+  and parameter binding. A NULL in a NOT IN subquery can make nonmatching rows
+  evaluate UNKNOWN; it does not make every possible query return zero rows.
+- Check uniqueness and referential integrity where business invariants require
+  them. Trace concurrent read-modify-write paths against isolation and existing
+  atomic updates before prescribing explicit row locks.
+- Evaluate indexes against query predicates, selectivity, ordering, and available
+  plans. Foreign-key indexes, partial indexes, and low-cardinality indexes depend
+  on workload and engine behavior; none is universally required or useless.
+- Check lock duration, rewrites, validation scans, backfill batching, resumability,
+  and mixed application versions during schema rollout. PostgreSQL CONCURRENTLY
+  is supported by particular operations, not arbitrary ALTER TABLE statements.
+- For destructive changes, require a credible data-preservation or recovery plan;
+  a reverse migration cannot recreate deleted data by itself.
+- Check temporal and numeric representations against domain requirements.
+  Avoid universal timezone or data-type rules detached from those requirements.
+- Trace generated ORM queries for fan-out, N+1 reads, and unbounded materialization.
+  Use read-only plans when useful. EXPLAIN ANALYZE executes the statement; do not
+  run it against writes or a live system without appropriate authorization.
 
-- Missing primary key or surrogate key where one is needed
-- Missing foreign key constraints where referential integrity should be enforced
-- `VARCHAR` length constraints that are arbitrarily short and will truncate real
-  data
-- `TEXT` vs `VARCHAR` vs `CHAR` misused for the actual data domain
-- `NUMERIC` vs `FLOAT` — floating-point for monetary values is always wrong
-- Nullable columns where `NOT NULL` is appropriate but omitted
-- Missing `UNIQUE` constraint where the application logic assumes uniqueness
-- Timestamps without timezone (`TIMESTAMP` instead of `TIMESTAMPTZ` in Postgres)
-  — dangerous in multi-timezone systems
-- Soft-delete patterns (`deleted_at`) without a partial index filtering deleted
-  rows
+## Findings
 
-**Indexes**
+Lead with the verdict and its scope: ship, revise, or rework. If no actionable
+issues were found, say so; this is not a guarantee of correctness.
 
-- Missing index on foreign key columns — causes full table scans on joins
-- Missing index on columns used in `WHERE`, `ORDER BY`, or `GROUP BY` on large
-  tables
-- Index on a low-cardinality column (boolean, enum with few values) — may not be
-  used by the planner
-- Redundant index that duplicates the leftmost prefix of another composite index
-- Composite index with columns in the wrong order for the actual query patterns
-- Missing partial index where queries always filter on a condition (e.g.,
-  `WHERE status = 'active'`)
+Report findings once, ordered by severity. Each needs a precise file/line (or
+document section), the failure condition, its impact, and the smallest useful
+fix. Separate verified defects from unresolved questions. State missing evidence
+and checks that could not run. Do not invent certainty or fill a finding quota.
 
-**Query correctness**
-
-- `SELECT *` in application queries — fragile against schema changes and pulls
-  unnecessary columns
-- `LIMIT` without `ORDER BY` — non-deterministic results
-- `NULL` comparison with `=` instead of `IS NULL` / `IS NOT NULL`
-- Implicit type coercion in `WHERE` clauses that prevents index use
-- Correlated subquery in `SELECT` or `WHERE` that executes once per row (N+1 at
-  the SQL level)
-- `NOT IN (subquery)` where the subquery can return `NULL` — always returns
-  empty result set
-- Missing `FOR UPDATE` or `FOR SHARE` on rows read before update in a
-  transaction — TOCTOU race
-
-**ORM-generated SQL**
-
-- N+1 queries — related data loaded in a loop without eager loading
-- Overly broad `findAll` / `SELECT *` when a projection suffices
-- Missing pagination on queries that can return unbounded rows
-- ORM-level uniqueness check (application-layer) without a database-level
-  `UNIQUE` constraint — race condition
-
-**Tool workflow**
-
-1. Run `inspect_triage` on the target commit/range — focus on high and critical
-   risk entities first
-2. For any migration or query you plan to critique, run `sem_blame` to confirm
-   intent before calling it wrong
-3. Run `sem_impact` before recommending schema changes — know which queries and
-   models will be affected
-4. Run `inspect_predict` to flag silent breakage in application code that
-   depends on the schema
-
-Output format:
-
-1. Overall verdict: **ship** / **revise** / **rework** (one sentence stating the
-   primary reason)
-2. Blocking issues (data loss, constraint violations, table locks on production,
-   silent wrong results)
-3. Code-specific comments (`file:line` for every finding)
-4. Recommendations (prioritized, with justification; include corrected SQL for
-   blocking issues)
-
-Do not hedge. Every finding must reference a specific file and line. Generic
-advice without pointing to actual SQL is not acceptable.
+Prefer correctness, security, data integrity, and demonstrated operational
+problems over style preferences. Do not demand a pattern, abstraction, dependency,
+or optimization without showing why the existing approach fails its requirements.
+Mention automated check failures when relevant; do not repeat their full output.

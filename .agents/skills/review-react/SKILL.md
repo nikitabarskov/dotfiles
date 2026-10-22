@@ -1,93 +1,51 @@
 ---
 name: review-react
-description:
-  Critique React code for correctness, idiomatic hooks usage, composition
-  patterns, and rendering efficiency
+description: "Review React components and hooks for state, effects, rendering, and user-visible failures."
 ---
 
-You MUST act as a principal frontend engineer with deep React expertise. Your
-job is to find real problems. Default to skepticism — assume the component has
-issues until proven otherwise.
+## Review method
 
-Use `inspect_triage` to surface high-risk changed components first. Use
-`sem_blame` before commenting on a component to understand intent. Use
-`sem_impact` before calling for a refactor to know which other components are
-affected. Use `inspect_predict` to identify what may silently break.
+Establish the requested scope, runtime/library versions, and relevant contracts.
+For a change review, focus on defects introduced or exposed by the change.
+For an audit, assess the requested surface, including existing defects.
 
-Review the React code for:
+Use available review triage and code graphs to prioritize changed entities and
+trace consumers. Batch related queries. Read affected code and configuration;
+consult history when intent matters. If tools or indexes are unavailable, use
+the diff and targeted reads. Tool risk scores are leads, not evidence.
 
-**Hooks correctness**
+Follow each suspected issue to a concrete trigger and consequence. Check for
+existing safeguards and counterexamples before reporting it. Use targeted tests
+or reproductions when they resolve uncertainty. Do not modify the implementation
+unless asked. Do not run destructive operations or live deployments for review.
 
-- Stale closures — handlers and effects capturing outdated state or props
-- Missing or incorrect dependencies in `useEffect`, `useMemo`, `useCallback`
-- Conditional hook calls (hooks inside `if`, `&&`, loops) — rules of hooks
-  violation
-- `useEffect` used to compute derived state instead of computing during render
-- `useEffect` with no cleanup for subscriptions, timers, or event listeners
-- `useLayoutEffect` used where `useEffect` suffices (blocks paint unnecessarily)
-- `useRef` used to track values that should trigger re-renders (should be state)
+## Focus
 
-**Composition and design patterns**
+- Check the installed React version and enabled compiler/framework features.
+  Apply hook rules with their documented exceptions, including the use API.
+- Trace stale closures, effect dependencies, cleanup, async races, and cancellation.
+  Effects should synchronize external systems; redundant derived state can drift.
+- Check state ownership, identity, keys, accidental remounts, and mutation during
+  render. Follow reordered lists and overlapping state updates to visible behavior.
+- Check loading, empty, error, retry, and submission states. Error boundaries do
+  not catch every async or event-handler error; locate the actual handling path.
+- Check server/client boundaries, hydration, and serialization when applicable.
+- Use observed expensive rendering or a clear identity requirement to justify
+  memoization. Account for compiler optimization when enabled.
+- Class components, local form state, prop drilling, and composition choices are
+  valid. Recommend changing them only to address a specific defect or cost.
 
-- Components doing too much: mixing data fetching, transformation, and rendering
-  — split them
-- Prop drilling past 2 levels without context or composition
-- Class components where function components with hooks are the correct modern
-  approach
-- HOC or render props pattern used where a custom hook solves the same problem
-  more clearly
-- Compound component pattern missing where a component family shares implicit
-  state (e.g., `<Select>/<Option>`)
-- Container/Presentational split violated — a "presentational" component that
-  reaches for global state or fires side effects directly
-- Premature abstraction — a generic component with a single use case
+## Findings
 
-**State management**
+Lead with the verdict and its scope: ship, revise, or rework. If no actionable
+issues were found, say so; this is not a guarantee of correctness.
 
-- Global state (context, store) used for local ephemeral UI state
-- State that can be derived from props or other state, stored redundantly
-- State updated without considering concurrent React — unsafe reads from
-  `ref.current` during render
-- Forms managed with `useState` per field where `useReducer` or React Hook Form
-  is clearer
+Report findings once, ordered by severity. Each needs a precise file/line (or
+document section), the failure condition, its impact, and the smallest useful
+fix. Separate verified defects from unresolved questions. State missing evidence
+and checks that could not run. Do not invent certainty or fill a finding quota.
 
-**Rendering and performance**
-
-- Unnecessary re-renders — object or array literals created inline in JSX
-  causing child re-renders on every parent render
-- `React.memo`, `useMemo`, `useCallback` applied without a profiling reason
-  (premature optimization adding noise)
-- Missing `key` on list items, or `key` set to array index where order can
-  change
-- Components rendering inside render (inline component definitions that remount
-  on every render)
-- Unhandled loading and error states — component assumes data is always present
-
-**Error handling**
-
-- No error boundary wrapping async-rendered subtrees
-- Unhandled promise rejections inside `useEffect`
-- Form submissions that can double-fire without a guard
-
-**Tool workflow**
-
-1. Run `inspect_triage` on the target commit/range — focus on high and critical
-   risk entities first
-2. For any component you plan to critique, run `sem_blame` to confirm intent
-   before calling it wrong
-3. Run `sem_impact` before recommending a split or structural change
-4. Run `inspect_predict` to flag silent breakage in consumers
-
-Output format:
-
-1. Overall verdict: **ship** / **revise** / **rework** (one sentence stating the
-   primary reason)
-2. Blocking issues (stale closures causing bugs, rules of hooks violations,
-   double-fire, missing error boundaries)
-3. Code-specific comments (`file:line` for every finding)
-4. Recommendations (prioritized, with justification; show the corrected code for
-   blocking issues)
-
-Do not hedge. Do not flag issues the linter handles automatically. Every finding
-must reference a specific file and line. Generic advice without pointing to
-actual code is not acceptable.
+Prefer correctness, security, data integrity, and demonstrated operational
+problems over style preferences. Do not demand a pattern, abstraction, dependency,
+or optimization without showing why the existing approach fails its requirements.
+Mention automated check failures when relevant; do not repeat their full output.

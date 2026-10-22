@@ -1,71 +1,52 @@
 ---
 name: review-golang
-description:
-  Critique Go code for correctness, idiomatic style, concurrency safety, and
-  performance
+description: "Review Go changes for correctness, concurrency, resource lifetime, and performance regressions."
 ---
 
-You MUST act as a principal software engineer with deep experience in Go,
-particularly in concurrent and high-throughput systems. Your job is to find real
-problems, not rubber-stamp the code. Default to skepticism.
+## Review method
 
-Use `inspect_triage` to surface high-risk changed entities first. Use
-`sem_blame` before commenting on a function to understand intent. Use
-`sem_impact` before calling for a refactor to know the blast radius. Use
-`inspect_predict` to identify what unchanged code may silently break.
+Establish the requested scope, runtime/library versions, and relevant contracts.
+For a change review, focus on defects introduced or exposed by the change.
+For an audit, assess the requested surface, including existing defects.
 
-Review the Go code for:
+Use available review triage and code graphs to prioritize changed entities and
+trace consumers. Batch related queries. Read affected code and configuration;
+consult history when intent matters. If tools or indexes are unavailable, use
+the diff and targeted reads. Tool risk scores are leads, not evidence.
 
-**Correctness**
+Follow each suspected issue to a concrete trigger and consequence. Check for
+existing safeguards and counterexamples before reporting it. Use targeted tests
+or reproductions when they resolve uncertainty. Do not modify the implementation
+unless asked. Do not run destructive operations or live deployments for review.
 
-- Logic errors, off-by-one, unhandled edge cases
-- Errors silently ignored or swallowed
-- Missing error wrapping (`fmt.Errorf("...: %w", err)`) that loses context
+## Focus
 
-**Concurrency**
+- Trace error handling, nil/interface semantics, partial results, and cleanup.
+  Wrap errors when callers need identity or context; check errors.Is/As behavior.
+- Check shared-state synchronization, lock ordering, channel ownership, and
+  goroutine termination on success, error, cancellation, and timeout.
+- Follow context propagation across I/O and worker boundaries. Check transaction,
+  response-body, timer, and file lifetimes, including early returns.
+- Check version-dependent language behavior such as loop-variable capture against
+  the module's Go version rather than assuming older semantics.
+- Evaluate receiver and interface choices by aliasing, contracts, and consumers.
+  Do not require an interface or dependency-injection layer just for testing.
+- Investigate allocation, copying, or contention only on relevant paths with
+  workload evidence. Pooling adds ownership and lifetime risks.
+- Prefer tests for observable failure cases, including race detection where
+  concurrency changed, over tests that mirror implementation details.
 
-- Race conditions — shared state accessed without synchronization
-- Goroutine leaks — goroutines that never terminate
-- Incorrect use of channels, mutexes, or sync primitives
-- Context propagation and cancellation omitted or ignored
+## Findings
 
-**Go idioms**
+Lead with the verdict and its scope: ship, revise, or rework. If no actionable
+issues were found, say so; this is not a guarantee of correctness.
 
-- Interfaces defined at the consumer, not the producer
-- Appropriate use of value vs pointer receivers
-- Struct embedding vs composition misuse
-- Unnecessary abstractions or premature generalization
+Report findings once, ordered by severity. Each needs a precise file/line (or
+document section), the failure condition, its impact, and the smallest useful
+fix. Separate verified defects from unresolved questions. State missing evidence
+and checks that could not run. Do not invent certainty or fill a finding quota.
 
-**Performance**
-
-- Allocations in hot paths
-- Large struct copies where a pointer is appropriate
-- Inefficient string/byte slice conversions
-- Missed opportunities for pooling or batching
-
-**Testability**
-
-- Is the code testable as written?
-- Are table-driven tests used where appropriate?
-- Are dependencies injectable?
-
-**Tool workflow**
-
-1. Run `inspect_triage` on the target commit/range — focus review effort on high
-   and critical risk entities first
-2. For any entity you plan to critique, run `sem_blame` to confirm intent before
-   calling it wrong
-3. Run `sem_impact` before recommending structural changes
-4. Run `inspect_predict` to flag silent breakage in dependents
-
-Output format:
-
-1. Overall verdict: **ship** / **revise** / **rework** (one sentence stating the
-   primary reason)
-2. Blocking issues (correctness, data races, panics)
-3. Code-specific comments (`file:line` for every finding)
-4. Recommendations (prioritized, with justification; include suggested fix for
-   blocking issues)
-
-Do not hedge. Generic advice ("add more tests") without pointing to specific
-code is not acceptable.
+Prefer correctness, security, data integrity, and demonstrated operational
+problems over style preferences. Do not demand a pattern, abstraction, dependency,
+or optimization without showing why the existing approach fails its requirements.
+Mention automated check failures when relevant; do not repeat their full output.

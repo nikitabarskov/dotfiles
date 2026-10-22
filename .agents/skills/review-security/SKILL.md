@@ -1,123 +1,56 @@
 ---
 name: review-security
-description:
-  Critique code and configuration for authentication, authorization, injection,
-  secrets handling, and supply chain risks
+description: "Review code and configuration for exploitable trust-boundary failures and security regressions."
 ---
 
-You MUST act as a senior application security engineer. Your job is to find
-exploitable vulnerabilities and security-relevant design flaws. Default to
-adversarial thinking — assume an attacker is trying to abuse every input,
-endpoint, and trust boundary.
+## Review method
 
-Use `inspect_triage` to surface high-risk changed entities first. Use
-`sem_blame` before commenting on security logic to understand intent. Use
-`sem_impact` to map the blast radius of authentication or authorization changes.
-Use `inspect_predict` to identify what may silently break from security-related
-changes.
+Establish the requested scope, runtime/library versions, and relevant contracts.
+For a change review, focus on defects introduced or exposed by the change.
+For an audit, assess the requested surface, including existing defects.
 
-Review for:
+Use available review triage and code graphs to prioritize changed entities and
+trace consumers. Batch related queries. Read affected code and configuration;
+consult history when intent matters. If tools or indexes are unavailable, use
+the diff and targeted reads. Tool risk scores are leads, not evidence.
 
-**Injection**
+Follow each suspected issue to a concrete trigger and consequence. Check for
+existing safeguards and counterexamples before reporting it. Use targeted tests
+or reproductions when they resolve uncertainty. Do not modify the implementation
+unless asked. Do not run destructive operations or live deployments for review.
 
-- SQL injection — user input concatenated into queries instead of parameterized
-- Command injection — user input passed to `exec`, `spawn`, `eval`, shell
-  interpolation, or template engines
-- Path traversal — user-controlled file paths without canonicalization and
-  boundary checks
-- SSRF — user-supplied URLs fetched server-side without allowlist validation
-- Template injection — user input rendered in server-side or client-side
-  templates
-- XSS — unescaped output in HTML context, `dangerouslySetInnerHTML`,
-  `innerHTML`, `document.write`
-- XXE — XML parsing without disabling external entity resolution
+## Focus
 
-**Authentication**
+- Identify assets, attacker control, entry points, and deployed safeguards. Trace
+  input to a sensitive operation; distinguish an exploitable path from hardening.
+- Check authentication, token signature/issuer/audience/expiry validation, session
+  lifecycle, and recovery flows against the intended identity model.
+- Check server-side resource/tenant authorization on every reachable path,
+  including alternate methods, batch APIs, jobs, and cached results. Unguessable
+  IDs are not authorization; sequential IDs alone are not a vulnerability.
+- Trace SQL/shell/template injection, contextual output escaping, path traversal,
+  SSRF including redirects/address resolution, and unsafe deserialization.
+- Evaluate CSRF, CORS, cookies, and security headers against the actual browser,
+  credential, and deployment model. Missing headers are not uniformly exploitable.
+- Check secret disclosure, logs, cryptography, randomness, and key handling.
+  Redact secrets in findings; do not reproduce usable credentials.
+- Check dependency resolution, lockfiles, artifact provenance, and execution of
+  untrusted code. A manifest range with a locked install is not itself a flaw.
+  Verify advisory applicability before claiming a dependency is vulnerable.
+- Evaluate abuse limits where attacker-controlled work exhausts a real resource.
+  Use safe local reproductions; do not exploit live services for validation.
 
-- Missing authentication on endpoints that should require it
-- Authentication bypassed by HTTP method switching (POST protected, GET not)
-- JWT signature not verified, `alg: none` accepted, or symmetric secret used for
-  asymmetric verification
-- Session tokens not invalidated on logout or password change
-- Password reset tokens not single-use, not expiring, or guessable
-- Timing attacks on token comparison — use constant-time comparison
-- Missing brute-force protection (rate limiting, account lockout) on login and
-  password reset
+## Findings
 
-**Authorization**
+Lead with the verdict and its scope: ship, revise, or rework. If no actionable
+issues were found, say so; this is not a guarantee of correctness.
 
-- Horizontal privilege escalation — user can access another user's resources by
-  changing an ID in the request
-- Vertical privilege escalation — low-privilege user can reach admin actions
-- Authorization check done client-side only — not enforced on the server
-- IDOR — object IDs are sequential integers guessable without authorization
-  checks
-- Missing ownership check before mutating a resource
-- Role checks that rely on trusting user-supplied data (e.g., role in JWT
-  payload not re-validated against the database)
+Report findings once, ordered by severity. Each needs a precise file/line (or
+document section), the failure condition, its impact, and the smallest useful
+fix. Separate verified defects from unresolved questions. State missing evidence
+and checks that could not run. Do not invent certainty or fill a finding quota.
 
-**Secrets and cryptography**
-
-- Hardcoded credentials, API keys, tokens, or passwords anywhere in source
-- Secrets in environment variables logged or included in error responses
-- Weak or broken algorithms: MD5, SHA1 for security purposes, DES, RC4, ECB mode
-- Encryption without authentication (unauthenticated AES-CBC) — malleable
-  ciphertext
-- Random values for security tokens generated with a non-CSPRNG (`Math.random`,
-  `rand()`)
-- Private keys, certificates, or `.env` files committed to version control
-
-**Input validation and data handling**
-
-- Missing input validation on size, type, format, and range before processing
-- Accepting and deserializing untrusted data without schema validation (insecure
-  deserialization)
-- Missing rate limiting on resource-intensive or sensitive endpoints
-- PII or sensitive data logged, included in URLs, or stored without appropriate
-  controls
-- Missing Content-Type validation allowing content sniffing attacks
-
-**Dependencies and supply chain**
-
-- Dependencies with known CVEs — flag if `npm audit`, `pip audit`,
-  `cargo audit`, or `trivy` would catch them
-- Unpinned dependency versions (floating `^`, `~`, `*`) in production manifests
-- Post-install scripts in npm packages from untrusted sources
-- Missing subresource integrity (SRI) on externally loaded scripts or
-  stylesheets
-
-**HTTP security**
-
-- Missing or misconfigured security headers: `Content-Security-Policy`,
-  `X-Frame-Options`, `Strict-Transport-Security`, `X-Content-Type-Options`
-- CORS wildcard (`Access-Control-Allow-Origin: *`) on endpoints that handle
-  credentials or sensitive data
-- CSRF protection absent on state-mutating endpoints that use cookie
-  authentication
-- Cookies without `Secure`, `HttpOnly`, or `SameSite` attributes
-
-**Tool workflow**
-
-1. Run `inspect_triage` on the target commit/range — focus on high and critical
-   risk entities first
-2. For any auth or authz logic, run `sem_blame` to confirm the original intent
-   before calling it wrong
-3. Run `sem_impact` on any authentication or session management change — the
-   blast radius is typically large
-4. Run `inspect_predict` to identify callers that may rely on the old behavior
-
-Output format:
-
-1. Overall verdict: **ship** / **revise** / **rework** (one sentence stating the
-   primary reason)
-2. Blocking issues (exploitable vulnerabilities, exposed credentials, auth
-   bypasses)
-3. Code-specific comments (`file:line` for every finding, with the attack vector
-   explained)
-4. Recommendations (prioritized, with justification; include the corrected code
-   for blocking issues)
-
-Do not hedge. Do not flag theoretical issues that require unrealistic
-preconditions. Every finding must reference a specific file and line and explain
-how it is exploitable. Generic security advice without pointing to actual code
-is not acceptable.
+Prefer correctness, security, data integrity, and demonstrated operational
+problems over style preferences. Do not demand a pattern, abstraction, dependency,
+or optimization without showing why the existing approach fails its requirements.
+Mention automated check failures when relevant; do not repeat their full output.

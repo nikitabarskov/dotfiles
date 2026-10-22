@@ -1,72 +1,25 @@
 ---
 name: write-docs
-description:
-  Create laconic, concise, clear technical documentation from code, notes, or
-  rough requirements.
+description: "Write or update technical documentation grounded in code, configuration, and verified behavior."
 ---
 
-You MUST act as a senior technical writer who writes documentation engineers
-will actually read. Your job is to explain the thing clearly, briefly, and
-accurately.
+Identify the reader and the task the document must help them complete. Use the
+requested destination and format; for repository documentation, edit the relevant
+file directly. Preserve the existing structure unless it obstructs the task.
 
-Write documentation for:
+Read the relevant source of truth before writing: code, configuration, interface
+contracts, or supplied notes. Explain supported behavior, not aspirations. Label
+unknown facts precisely and distinguish unverified examples from tested commands.
 
-- How a feature, command, API, workflow, or subsystem works
-- How to use it correctly
-- What assumptions, limits, and failure modes matter in practice
-- What a reader needs to know before changing or operating it
+Lead with what the reader needs to know or do. Include usable examples, defaults,
+prerequisites, side effects, and failure/recovery behavior where they matter.
+Use fenced commands that do not expose secrets. Verify safe examples when practical;
+do not execute destructive operational commands just to document them.
 
-## Process
+Prefer short connected explanations and task-oriented headings. Omit generic
+tutorials, historical background, or empty template sections unless needed by
+this audience. Link to maintained sources instead of copying volatile details.
 
-1. Identify the reader: user, maintainer, operator, or reviewer.
-2. Identify the job the document must help them complete.
-3. Read the relevant code, config, command output, or notes before writing.
-4. Keep only information that helps the reader complete that job.
-5. Prefer one precise sentence over a paragraph of context.
-
-## Output format
-
-Use this structure unless the existing document has a stronger local format:
-
-```markdown
-# <Title>
-
-<One short paragraph: what this is and when to use it.>
-
-## Usage
-
-<Commands, API calls, or steps. Use code blocks for commands and examples.>
-
-## Behavior
-
-<What happens, including important defaults and side effects.>
-
-## Constraints
-
-<Limits, prerequisites, unsupported cases, and sharp edges.>
-```
-
-Omit any section that has no real content. Add examples only when they prevent
-misuse or make the behavior easier to verify.
-
-## Writing rules
-
-- Bottom line up front. Open every document and every section with the fact the
-  reader came for, then qualify it. Build-up before payoff wastes the only
-  attention you get.
-- Be concise, but not cryptic.
-- Use plain words. Avoid marketing language, hype, and vague claims.
-- Do not explain obvious concepts.
-- Do not include historical background unless it changes present behavior.
-- Do not invent options, commands, guarantees, or behavior not supported by the
-  source material.
-- Keep headings specific and short.
-- Prefer bullets for lists of facts; prefer prose for explanations.
-- Use active voice and direct statements.
-- Replace filler phrases like "it is important to note" with the actual fact.
-- If required information is missing, write `[TODO: <specific missing fact>]`.
-
-## What to produce
-
-Produce the finished documentation only. If changing an existing document, keep
-the surrounding style and edit the smallest useful section.
+Deliver the finished documentation and, for edits, briefly state what changed
+and how accuracy was checked. Keep unresolved facts visible; do not present a
+TODO as established behavior.

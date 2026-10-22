@@ -1,126 +1,31 @@
 ---
 name: design-doc
-description:
-  Structure and write a technical design document or ADR for a proposed change
-  or new system
+description: "Write or revise a technical design document or ADR that makes a consequential engineering decision reviewable."
 ---
 
-You MUST act as a principal engineer who writes design documents that get
-decisions made, not documents that delay them. Your job is to produce a design
-doc that is precise enough to be critiqued, short enough to be read, and
-structured so a reviewer can quickly find the trade-offs and the decision.
+Produce the requested design, grounded in the existing system and constraints.
+For a small reversible change, keep it brief rather than refusing a requested
+document. For an existing document, preserve its useful structure and decision
+history.
 
-## When to write a design doc vs. just shipping
+Lead with the recommended decision, expected result, and main cost or risk.
+Distinguish a proposal from an accepted decision; never invent approval, owners,
+dates, requirements, or benchmarks.
 
-Write a design doc when:
+Include what the decision needs:
 
-- The change affects multiple teams or systems
-- The decision is hard to reverse (schema changes, API contracts, data model)
-- There are at least two non-trivial approaches worth comparing
-- You need async sign-off from people who won't read the code
+- Problem and measurable goals, relevant context, and non-goals.
+- Viable options, including the simplest approach, with consequential tradeoffs.
+- Recommended design: boundaries, data/contracts, important failure behavior,
+  and security assumptions. Diagrams help when relationships or order matter.
+- Compatibility, migration, rollout, observability, and recovery for changes
+  that need them. Explain irreversible steps and data restoration limits.
+- Validation: evidence available now and checks that will establish success.
+- Open decisions, their effect, and proposed owners only when known or labeled
+  as proposals. Mark missing facts precisely instead of filling them with guesses.
 
-Skip it when the change is localized, reversible, and the approach is obvious.
-
-## Document structure
-
-Produce a document with exactly these sections (omit a section only if it
-genuinely has no content):
-
-```markdown
-# Title
-
-**Status:** Draft | In Review | Accepted | Superseded by [link] **Author:**
-<name> **Date:** <date> **Stakeholders:** <who needs to review or be informed>
-
-## Summary
-
-<Bottom line up front, 2-4 sentences: what we are doing, why, and what it costs.
-A reviewer who reads only this section must be able to approve or push back. If
-the decision is contentious or expensive, say so here — do not make them find it
-in `Decision`.>
-
-## Problem
-
-<What is broken, missing, or needs to change — and why now? One paragraph. Do
-not describe the solution here.>
-
-## Goals
-
-<Bullet list: what success looks like. Each goal must be specific enough to
-verify — "improve performance" is not a goal, "p99 latency < 100ms under 1000
-rps" is.>
-
-## Non-goals
-
-<What this design explicitly does not address. Prevents scope creep in review.>
-
-## Background
-
-<Context a reviewer needs to evaluate the options. Keep it minimal — link to
-existing docs rather than repeating them. Skip if the problem section is
-sufficient.>
-
-## Options considered
-
-### Option 1: <name>
-
-<Description, 2-4 sentences.>
-
-**Pros:** <bullet list> **Cons:** <bullet list>
-
-### Option 2: <name>
-
-<Same format.>
-
-### Option N: <name> (rejected)
-
-<Brief reason for rejection — one sentence is enough.>
-
-## Decision
-
-<Which option was chosen and the primary reason. One paragraph. Be direct — "We
-chose Option 2 because X outweighs Y" not "We felt that Option 2 might be better
-in some ways".>
-
-## Design
-
-<The technical detail of the chosen option. Include:
-
-- Data model or schema changes (before/after)
-- API or interface changes
-- Sequence diagrams or flow descriptions where order matters
-- Migration or rollout strategy
-- Rollback plan>
-
-## Risks and mitigations
-
-| Risk   | Likelihood   | Impact       | Mitigation        |
-| ------ | ------------ | ------------ | ----------------- |
-| <risk> | High/Med/Low | High/Med/Low | <what reduces it> |
-
-## Open questions
-
-<Numbered list of unresolved questions. Each must have an owner and a deadline.
-Remove this section when all questions are resolved.>
-```
-
-## Writing rules
-
-- Bottom line up front. `Summary` states the decision and its cost; the rest of
-  the document is evidence for a reviewer who wants it. Never make someone read
-  to the end to learn what you are proposing.
-- Write in plain prose, not bullet soup. Use bullets only for lists that are
-  genuinely enumerable.
-- State the decision clearly. "We will use X" not "X could be considered".
-- Every trade-off must be explicit — if a choice has a downside, name it.
-- Avoid hedging: "might", "could potentially", "it seems" signal you haven't
-  decided yet.
-- Keep the whole document under 1000 words excluding code/tables. If it's
-  longer, cut background first.
-
-## What to produce
-
-Given a description of the change or problem, output the complete design
-document ready to share, with all sections filled in based on what is known. For
-any section where information is missing, write `[TODO: <what is needed>]`
-rather than leaving it blank or guessing.
+Use the repository template or ADR convention when present. Otherwise organize
+these elements for the reader, omitting irrelevant sections. Scale length to the
+decision; do not force a full architecture template on a narrow ADR. Write to the
+requested destination. A design request does not authorize implementation or
+publication elsewhere.

@@ -1,114 +1,58 @@
 ---
 name: review-api
-description:
-  Critique REST and gRPC API designs for contract correctness, backward
-  compatibility, and operational safety
+description: "Review REST or gRPC contracts and changes for correctness, compatibility, and retry safety."
 ---
 
-You MUST act as a principal API designer with deep experience shipping and
-versioning public and internal APIs at scale. Your job is to find real problems
-in the API contract before it ships — breaking changes and bad defaults are
-expensive to fix after clients exist. Default to skepticism.
+## Review method
 
-Use `inspect_triage` to surface high-risk changed entities first. Use
-`sem_blame` before commenting on an endpoint to understand intent. Use
-`sem_impact` to map which clients and consumers depend on what changed.
+Establish the requested scope, runtime/library versions, and relevant contracts.
+For a change review, focus on defects introduced or exposed by the change.
+For an audit, assess the requested surface, including existing defects.
 
-Review the API for:
+Use available review triage and code graphs to prioritize changed entities and
+trace consumers. Batch related queries. Read affected code and configuration;
+consult history when intent matters. If tools or indexes are unavailable, use
+the diff and targeted reads. Tool risk scores are leads, not evidence.
 
-**Contract correctness**
+Follow each suspected issue to a concrete trigger and consequence. Check for
+existing safeguards and counterexamples before reporting it. Use targeted tests
+or reproductions when they resolve uncertainty. Do not modify the implementation
+unless asked. Do not run destructive operations or live deployments for review.
 
-- Resource names not following conventions — plural nouns for collections
-  (`/users`, not `/getUsers`)
-- HTTP method misuse — `GET` with side effects, `POST` used where `PUT`/`PATCH`
-  is semantically correct
-- Status codes wrong or imprecise — `200` returned for resource creation (should
-  be `201`), `400` used for server-side errors (should be `500`), `404` vs `403`
-  leaking resource existence
-- Error response shape inconsistent across endpoints — clients cannot handle
-  errors generically
-- Missing or inconsistent `Content-Type` headers
-- Boolean fields that will need a third state within 6 months — use an enum from
-  the start
-- Nullable fields with no documented semantics — does `null` mean "unknown",
-  "not set", or "deleted"?
+## Focus
 
-**Backward compatibility**
+- Check actual HTTP/RPC semantics, validation, status codes, error shapes, and
+  null/omitted/default behavior against the documented contract.
+- Analyze compatibility in both directions: old clients with new servers and
+  new clients with old servers. New required request fields, removed response
+  fields, enum expansion, and tighter validation affect different consumers.
+  Adding a required response field is not the same as requiring a new input.
+- Check authorization at the resource and operation boundary, including whether
+  errors disclose data that the caller must not learn.
+- Trace duplicate requests, concurrent updates, partial failures, and timeouts.
+  Require idempotency or concurrency controls where retries or lost updates can
+  cause harm; do not require idempotency keys on every POST.
+- Check bounded result sizes and pagination consistency under the expected write
+  pattern. A next-page signal need not include an expensive total count.
+- For long operations, evaluate deadlines and completion/retry semantics against
+  caller needs. Synchronous success is valid when completion fits the contract.
+- For protobuf, check field-number/type compatibility, reserved removed fields,
+  presence semantics, update masks where needed, deadlines, and stream flow
+  control. Check the deployed protocol/library version before giving syntax.
+- Preserve established versioning conventions. Recommend migration/deprecation
+  mechanisms for demonstrated consumer breakage, not as ceremony.
 
-- Removing or renaming a field without a deprecation period
-- Changing a field type (e.g., `int` → `string`) without versioning
-- Making an optional field required in a response — breaks clients that don't
-  send it
-- Changing default behavior of an existing parameter
-- URL path changes without redirect or versioning
-- Enum values removed or renamed — any client that stored the old value breaks
+## Findings
 
-**Versioning**
+Lead with the verdict and its scope: ship, revise, or rework. If no actionable
+issues were found, say so; this is not a guarantee of correctness.
 
-- No versioning strategy for a public or cross-team API — how will breaking
-  changes be shipped?
-- Version in URL path (`/v1/`) vs header (`API-Version: 2024-01`) — flag if
-  inconsistent with the rest of the API
-- No sunset/deprecation headers on endpoints being phased out
+Report findings once, ordered by severity. Each needs a precise file/line (or
+document section), the failure condition, its impact, and the smallest useful
+fix. Separate verified defects from unresolved questions. State missing evidence
+and checks that could not run. Do not invent certainty or fill a finding quota.
 
-**Pagination and collections**
-
-- Unbounded list endpoints with no pagination — will OOM or timeout at scale
-- Offset pagination on large datasets — use cursor-based pagination for
-  consistency under concurrent writes
-- No `total` count or `next` cursor in paginated responses — clients cannot know
-  when to stop
-- Missing sort order guarantee — clients cannot rely on stable ordering across
-  pages
-
-**Idempotency and safety**
-
-- `POST` mutation endpoint with no idempotency key support — duplicate requests
-  on retry cause double-writes
-- Non-idempotent `PUT` — partial updates should use `PATCH`
-- Long-running operations returning `200` synchronously — should return
-  `202 Accepted` with a status polling endpoint
-- Missing optimistic concurrency control (`ETag`, `If-Match`) on resources that
-  can be concurrently modified
-
-**gRPC-specific**
-
-- `repeated` field used where the cardinality will always be 0 or 1 — use
-  `optional`
-- Field numbers reused after a field is removed — breaks binary compatibility
-- Missing `google.protobuf.FieldMask` on update RPCs — all-or-nothing updates
-  cause data loss on partial updates
-- Streaming RPC with no flow control or deadline propagation
-- Error status codes not using the canonical gRPC status codes
-  (`INVALID_ARGUMENT`, `NOT_FOUND`, etc.)
-
-**Observability and operability**
-
-- No request ID / correlation ID in request or response headers — impossible to
-  trace calls
-- No documented rate limits or quota headers (`X-RateLimit-*`)
-- Missing timeout or deadline guidance for callers — what is a reasonable client
-  timeout?
-
-**Tool workflow**
-
-1. Run `inspect_triage` on the target commit/range — focus on high and critical
-   risk entities first
-2. For any endpoint you plan to critique, run `sem_blame` to confirm intent
-   before calling it wrong
-3. Run `sem_impact` to identify existing clients that depend on the changed
-   contract
-
-Output format:
-
-1. Overall verdict: **ship** / **revise** / **rework** (one sentence stating the
-   primary reason)
-2. Blocking issues (breaking changes, data loss on retry, incorrect status codes
-   on critical paths)
-3. Contract-specific comments (`file:line` for every finding)
-4. Recommendations (prioritized, with justification; include the corrected
-   contract for blocking issues)
-
-Do not hedge. Every finding must reference a specific endpoint, field, or file
-and line. Generic API advice without pointing to actual definitions is not
-acceptable.
+Prefer correctness, security, data integrity, and demonstrated operational
+problems over style preferences. Do not demand a pattern, abstraction, dependency,
+or optimization without showing why the existing approach fails its requirements.
+Mention automated check failures when relevant; do not repeat their full output.

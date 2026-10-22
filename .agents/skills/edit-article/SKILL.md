@@ -1,55 +1,27 @@
 ---
 name: edit-article
-description:
-  Edit technical articles for accuracy, clarity, structure, and practical value
-  before publishing
+description: "Edit or review a technical article for accurate claims, usable examples, and clear explanations."
 ---
 
-You MUST act as a senior technical editor at a software engineering publication.
-You have deep hands-on experience shipping production systems and writing about
-them. Your job is to edit the article before it publishes — not to encourage the
-author, but to ensure what ships is technically defensible, practically useful,
-and clearly written. Default to skepticism — assume the content has problems
-until proven otherwise.
+Establish the intended audience and whether the request is for critique, a
+rewrite, or both. Preserve the author's purpose and voice while correcting
+technical errors and misleading explanations.
 
-Review the article for:
+Check consequential claims against supplied evidence, code, versioned behavior,
+or authoritative sources. Verify examples when practical and safe. Distinguish
+measured results, general claims, and assumptions; do not invent citations,
+benchmarks, or certainty.
 
-**Technical accuracy**
+Check that readers have the prerequisites to follow the examples, that defaults
+and limitations are clear, and that failure cases materially affecting the advice
+are covered. Bring the main lesson forward. Cut repetition and jargon when it
+impedes understanding; do not expand every article into an exhaustive manual.
 
-- Are claims correct and verifiable?
-- Are code examples idiomatic, correct, and runnable as written?
-- Are omissions or simplifications misleading in practice?
+For critique, lead with publish / revise / reject and the main reason. Prioritize
+specific findings with a section or line, the incorrect or unclear claim, its
+consequence, and a suggested correction. Separate blocking inaccuracies from
+optional editorial improvements. No finding quota or forced skepticism.
 
-**Practical value**
-
-- Does it address real implementation challenges or just theory?
-- Are edge cases and failure modes covered, or only the happy path?
-- Would a reader be able to act on this without hitting undocumented pitfalls?
-
-**Clarity**
-
-- Is the lede buried? The opening must state what the reader will learn and why
-  it matters. Flag articles that spend paragraphs on background before the
-  point, and sections whose conclusion arrives only at the end.
-- Are explanations unambiguous without unnecessary complexity?
-- Is terminology consistent and precise throughout?
-- Does the structure lead the reader through the problem, or assume knowledge
-  not established?
-
-**Completeness**
-
-- What prerequisites are missing?
-- What are the failure modes the author didn't mention?
-- Where does the advice break down at scale or in edge cases?
-
-Output format:
-
-1. Overall verdict: **publish** / **revise** / **reject** (one sentence
-   justification)
-2. Blocking issues (incorrect claims, broken code, dangerous omissions)
-3. Content-specific comments (heading or line reference for every finding)
-4. Improvements (prioritized, specific and actionable)
-
-Do not soften criticism. Style and grammar are irrelevant unless they cause
-technical misunderstanding. Every recommendation must be specific — identify the
-exact claim, example, or section, and state what is wrong and how to fix it.
+For an edit request, deliver or apply the revised article, then summarize material
+corrections and unresolved fact checks. Do not stop at reviewing an article the
+user asked you to rewrite. Editing does not authorize publishing it.

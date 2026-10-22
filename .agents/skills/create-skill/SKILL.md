@@ -1,62 +1,40 @@
 ---
 name: create-skill
-description:
-  Create a new agent skill with proper structure, frontmatter, and focused
-  instructions
+description: "Create or revise a focused agent skill with precise triggers, reusable guidance, and appropriate validation."
 ---
 
-You MUST act as an experienced prompt engineer who writes agent skills for
-OpenCode, Claude Code, and Codex.
+Write skills for capable models. Keep information that changes decisions:
+task-specific constraints, non-obvious procedures, failure modes, and evidence
+needed to finish. Remove role-play, generic advice, and repeated global rules.
 
-A skill is a reusable set of instructions an agent loads on demand. It must be:
+## Authoring
 
-- Focused on a single, well-defined task
-- Direct and actionable — no filler, no preamble
-- Written for the agent to follow, not for a human to read
+- Read an existing skill and its referenced resources before revising it. Preserve
+  useful operational invariants and the user's intended scope and permissions.
+- Use the requested location; otherwise use .agents/skills/<name>/SKILL.md in
+  this repository. Use lowercase letters, digits, and hyphens for the name,
+  matching its directory, with at most 64 characters.
+- Include YAML frontmatter with name and a short description of the capability
+  and when it applies. Add exclusions only to prevent likely misrouting.
+- Describe the outcome, evidence, constraints, and completion criteria. Prescribe
+  exact sequences only when ordering protects correctness or a fragile tool flow.
+- Keep small skills self-contained. Move substantial conditional guidance into
+  linked references; state when to read each one. Add scripts only for repeatable
+  mechanics that benefit from deterministic execution.
+- Use the active session and available capabilities. Do not hardcode model
+  generations, require unavailable tool names, or assume one vendor is better
+  at a task without evidence. If tiers matter, use the repository tier mapping
+  and verify that the target runtime accepts the selected identifier.
+- Preserve existing invocation policy and metadata unless the request changes it.
+  Do not add confirmation gates for already-authorized actions or imply permission
+  to publish, send messages, deploy, or mutate unrelated resources.
 
-## Skill file structure
+## Validation and delivery
 
-Every skill is a `SKILL.md` file inside `.agents/skills/<name>/SKILL.md` with
-YAML frontmatter:
-
-```markdown
----
-name: <name>
-description: <what the skill does, 1 sentence, max 1024 chars>
----
-
-<skill body>
-```
-
-Name rules:
-
-- Lowercase alphanumeric, hyphens as separators: `review-golang`, `git-commit`
-- Must match the directory name exactly
-- 1–64 characters
-
-## Writing the skill body
-
-Structure the body as:
-
-1. **Role** — one sentence defining who the agent is acting as and what their
-   job is
-2. **Focus areas** — what to look for, evaluate, or produce (be specific, not
-   generic)
-3. **Output format** — exact structure the agent must follow
-4. **Constraints** — what to exclude, what tone to use, what not to do
-
-Principles:
-
-- Lead with a verdict or action, not a summary
-- Be direct. "Do not hedge" is better than "try to be direct where possible"
-- Every instruction must be specific and actionable
-- Cut anything that doesn't change the agent's behavior
-- Critique skills should find problems, not validate — default to skepticism
-
-## What to produce
-
-Given a description of the desired skill, output:
-
-1. The proposed skill name (with justification if non-obvious)
-2. The complete `SKILL.md` content, ready to write to disk
-3. One sentence on what this skill intentionally excludes and why
+Write the skill when creation/editing is requested; return text only for a draft
+request. Validate YAML, names, links, and any executable helpers. Exercise a
+representative task and a near-miss trigger when behavior materially changed.
+For a complex workflow, use an independent agent with only the skill and realistic
+input when delegation is available; keep evaluation in an isolated workspace.
+Report changed behavior and validation limits. Do not claim a wording check is
+proof that the skill works.

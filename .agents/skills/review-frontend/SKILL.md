@@ -1,70 +1,54 @@
 ---
 name: review-frontend
-description:
-  Critique React/TypeScript frontend code for correctness, security,
-  performance, and idiomatic patterns
+description: "Review frontend changes for user-visible correctness, security, accessibility, and loading behavior."
 ---
 
-You MUST act as a principal frontend engineer. Your job is to find real problems
-across the full frontend stack. Default to skepticism.
+## Review method
 
-This is the top-level frontend review skill. For deep dives, load the focused
-skills:
+Establish the requested scope, runtime/library versions, and relevant contracts.
+For a change review, focus on defects introduced or exposed by the change.
+For an audit, assess the requested surface, including existing defects.
 
-- **`review-react`** — hooks correctness, composition patterns, rendering, state
-  management
-- **`review-tanstack`** — TanStack Router (type-safe routing, loaders, guards)
-  and TanStack Query (cache, mutations, invalidation)
-- **`review-typescript`** — type escape hatches, unsound patterns, missing types
-  on public surfaces
+Use available review triage and code graphs to prioritize changed entities and
+trace consumers. Batch related queries. Read affected code and configuration;
+consult history when intent matters. If tools or indexes are unavailable, use
+the diff and targeted reads. Tool risk scores are leads, not evidence.
 
-Use `inspect_triage` to surface high-risk changed entities first. Use
-`sem_blame` before commenting on any entity to understand intent. Use
-`sem_impact` before calling for a refactor. Use `inspect_predict` to identify
-what unchanged code may silently break.
+Follow each suspected issue to a concrete trigger and consequence. Check for
+existing safeguards and counterexamples before reporting it. Use targeted tests
+or reproductions when they resolve uncertainty. Do not modify the implementation
+unless asked. Do not run destructive operations or live deployments for review.
 
-**Security** (always review first — not covered by focused skills)
+## Focus
 
-- XSS via unescaped `dangerouslySetInnerHTML` or direct DOM injection
-- Auth bypass — unprotected routes, missing checks in `beforeLoad` guards or
-  loaders
-- Exposed secrets or credentials in client-side code or environment variables
-  shipped to the browser
-- Input not validated before use in queries, URLs, or rendered output
+- Follow the changed user flow through navigation, data loading, interaction,
+  submission, and recovery. Check loading, empty, denied, and error states.
+- Load only relevant companion skills: review-react for component behavior,
+  review-typescript for type boundaries, and review-tanstack when those libraries
+  are used. Resolve them beside this skill; if unavailable, cover those concerns
+  directly and state the limitation.
+- Trace untrusted content to HTML/URLs and check exposed browser credentials.
+  Route guards improve UX; sensitive operations still need server authorization.
+- Check keyboard access, accessible names, focus movement/restoration, semantics,
+  and contrast in the actual UI. Prefer native semantics before additional ARIA.
+- Evaluate bundle/loading cost, request waterfalls, layout shifts, and expensive
+  rendering where the change affects them. Recommend performance work with
+  measurements or a concrete workload argument, not framework preference.
+- Check responsive behavior and hydration/server-client boundaries where relevant.
+  Report whether visual and interaction checks actually ran.
+- Combine companion findings into one report and avoid duplicate triage.
 
-**Performance** (cross-cutting — not in focused skills)
+## Findings
 
-- Bundle size — large imports that could be lazy-loaded (`React.lazy`, dynamic
-  `import()`)
-- Images without explicit dimensions causing layout shift (CLS)
-- N+1 data fetching patterns not caught by the TanStack Query review
+Lead with the verdict and its scope: ship, revise, or rework. If no actionable
+issues were found, say so; this is not a guarantee of correctness.
 
-**Accessibility** (Tailwind/CSS layer)
+Report findings once, ordered by severity. Each needs a precise file/line (or
+document section), the failure condition, its impact, and the smallest useful
+fix. Separate verified defects from unresolved questions. State missing evidence
+and checks that could not run. Do not invent certainty or fill a finding quota.
 
-- Missing `aria-*` attributes where semantic HTML is insufficient
-- Interactive elements not reachable by keyboard (missing `tabIndex`, broken
-  focus traps)
-- Color contrast violations in Tailwind classes
-
-**Tool workflow**
-
-1. Run `inspect_triage` on the target commit/range — decide which focused skills
-   to load based on what changed
-2. If React component files changed → load `review-react`
-3. If routing or query files changed → load `review-tanstack`
-4. If type definitions or `.ts` files changed → load `review-typescript`
-5. For any entity you plan to critique, run `sem_blame` to confirm intent
-6. Run `inspect_predict` to flag silent breakage in dependents
-
-Output format:
-
-1. Overall verdict: **ship** / **revise** / **rework** (one sentence stating the
-   primary reason)
-2. Blocking issues (security, correctness bugs, data loss)
-3. Code-specific comments (`file:line` for every finding)
-4. Recommendations (prioritized, with justification; include suggested fix for
-   blocking issues)
-
-Do not hedge. Skip issues auto-fixable by linters unless security-related. Every
-finding must reference a specific file and line. Generic advice without pointing
-to actual code is not acceptable.
+Prefer correctness, security, data integrity, and demonstrated operational
+problems over style preferences. Do not demand a pattern, abstraction, dependency,
+or optimization without showing why the existing approach fails its requirements.
+Mention automated check failures when relevant; do not repeat their full output.

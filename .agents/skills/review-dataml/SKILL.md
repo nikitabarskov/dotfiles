@@ -1,126 +1,55 @@
 ---
 name: review-dataml
-description:
-  Critique data pipelines and ML code for correctness, reproducibility,
-  train/serve skew, and operational safety
+description: "Review data and ML pipelines for leakage, result correctness, reproducibility, and serving consistency."
 ---
 
-You MUST act as a principal ML engineer with deep experience shipping data
-pipelines and models to production. Your job is to find real problems — data
-leakage, train/serve skew, and non-reproducible training are silent failures
-that produce wrong results with no error signal. Default to skepticism.
+## Review method
 
-Use `inspect_triage` to surface high-risk changed entities first. Use
-`sem_blame` before commenting on a transformation or model step to understand
-intent. Use `sem_impact` before recommending pipeline restructuring. Use
-`inspect_predict` to identify downstream consumers of changed data contracts.
+Establish the requested scope, runtime/library versions, and relevant contracts.
+For a change review, focus on defects introduced or exposed by the change.
+For an audit, assess the requested surface, including existing defects.
 
-Review for:
+Use available review triage and code graphs to prioritize changed entities and
+trace consumers. Batch related queries. Read affected code and configuration;
+consult history when intent matters. If tools or indexes are unavailable, use
+the diff and targeted reads. Tool risk scores are leads, not evidence.
 
-**Data leakage**
+Follow each suspected issue to a concrete trigger and consequence. Check for
+existing safeguards and counterexamples before reporting it. Use targeted tests
+or reproductions when they resolve uncertainty. Do not modify the implementation
+unless asked. Do not run destructive operations or live deployments for review.
 
-- Features computed using information from the future relative to the prediction
-  target
-- Target variable or its derivatives included as a feature
-- Preprocessing (scaling, encoding, imputation) fit on the full dataset before
-  train/test split — statistics leak from the test set into training
-- Cross-validation with a scaler or encoder fit outside the CV loop — same
-  leakage
-- Deduplication or filtering done after splitting — test examples seen during
-  training
+## Focus
 
-**Train/serve skew**
+- Trace data lineage and what was knowable at prediction time. Check temporal,
+  entity/group, and train/validation/test boundaries before preprocessing or tuning.
+- Verify join cardinality, null handling, units, time zones, windows, completeness,
+  late data, and deduplication against the intended data contract.
+- Compare training and serving feature definitions and preprocessing artifacts.
+  Shared code alone does not prove matching data or runtime semantics.
+- Check dataset/model/artifact identity, parameters, environment, and randomness.
+  Seeds alone do not guarantee determinism; bound nondeterminism to the task's
+  reproducibility needs instead of requiring bitwise equality everywhere.
+- Evaluate metrics, baselines, uncertainty, leakage from tuning, and relevant
+  subgroups against the prediction objective. Do not infer performance from code.
+- Trace retries, checkpointing, partial output, atomic publication, and schema
+  evolution through batch/stream consumers.
+- Check inference validation, resource bounds, model loading provenance, rollout,
+  drift detection, and rollback for the deployed risk level.
+- Use small representative fixtures for checks. Do not start expensive training
+  or overwrite datasets/artifacts without authorization.
 
-- Feature engineering logic duplicated between training and serving code — any
-  divergence produces wrong predictions silently
-- Preprocessing done in a notebook at training time not replicated in the
-  serving pipeline
-- Feature values at serving time computed with different aggregation windows,
-  time zones, or null handling than at training
-- Model trained on batch-aggregated features but served with real-time features
-  computed differently
-- No integration test asserting training and serving features are identical on a
-  sample
+## Findings
 
-**Reproducibility**
+Lead with the verdict and its scope: ship, revise, or rework. If no actionable
+issues were found, say so; this is not a guarantee of correctness.
 
-- Random seeds not set for train/test splits, model initialization, data
-  shuffling, and sampling operations
-- Dataset version not pinned — pipeline reads "latest" and produces different
-  results on re-run
-- Non-deterministic operations in data preprocessing without documentation of
-  why that is acceptable
-- Model artifacts saved without the preprocessing pipeline — impossible to
-  reproduce inference
-- Experiment not tracked (parameters, metrics, artifact versions) — results
-  cannot be reproduced or compared
+Report findings once, ordered by severity. Each needs a precise file/line (or
+document section), the failure condition, its impact, and the smallest useful
+fix. Separate verified defects from unresolved questions. State missing evidence
+and checks that could not run. Do not invent certainty or fill a finding quota.
 
-**Data validation and quality**
-
-- No schema validation on input data — silent wrong results when upstream schema
-  changes
-- No null/missing value checks before feeding into a model that cannot handle
-  them
-- No range or distribution checks on features — outliers or drift pass through
-  unchecked
-- No row count or completeness checks after joins — silent data loss from failed
-  joins
-- Training data not checked for class imbalance before a classifier is trained
-  on it
-
-**Pipeline correctness**
-
-- Joins without deduplication producing fan-out — row count grows silently
-- Aggregations without an explicit group-by key — wrong results when upstream
-  cardinality changes
-- Time-series data not sorted before windowed features are computed
-- Missing handling for late-arriving data in streaming pipelines
-- Partitioned reads assuming partition completeness before upstream writes
-  finish
-
-**Model evaluation**
-
-- Evaluation metric chosen does not match the business objective (e.g., accuracy
-  on imbalanced classes)
-- Test set too small to produce statistically meaningful metric comparisons
-- Evaluation done on the same data used to tune hyperparameters — optimistic
-  bias
-- No baseline model compared against (random, majority class, simple heuristic)
-- Evaluation results not broken down by meaningful subgroups — aggregate metric
-  hides poor performance on a slice
-
-**Operational safety**
-
-- Model loaded from a mutable path at serving time — silently picks up a new
-  model version on restart
-- No input validation at inference time — malformed or out-of-distribution
-  inputs reach the model
-- Inference latency not bounded — unbounded computation on adversarial inputs
-- No monitoring on prediction distribution — model drift goes undetected in
-  production
-- Batch pipeline with no idempotency — re-running after a partial failure
-  produces duplicate outputs
-
-**Tool workflow**
-
-1. Run `inspect_triage` on the target commit/range — focus on high and critical
-   risk entities first
-2. For any transformation or model step you plan to critique, run `sem_blame` to
-   confirm intent
-3. Run `sem_impact` before recommending pipeline restructuring
-4. Run `inspect_predict` to flag downstream consumers of changed data contracts
-   or feature definitions
-
-Output format:
-
-1. Overall verdict: **ship** / **revise** / **rework** (one sentence stating the
-   primary reason)
-2. Blocking issues (data leakage, train/serve skew, non-reproducible results,
-   silent data loss)
-3. Code-specific comments (`file:line` for every finding)
-4. Recommendations (prioritized, with justification; include corrected code for
-   blocking issues)
-
-Do not hedge. Every finding must reference a specific file and line. Generic ML
-advice without pointing to actual code or pipeline configuration is not
-acceptable.
+Prefer correctness, security, data integrity, and demonstrated operational
+problems over style preferences. Do not demand a pattern, abstraction, dependency,
+or optimization without showing why the existing approach fails its requirements.
+Mention automated check failures when relevant; do not repeat their full output.
