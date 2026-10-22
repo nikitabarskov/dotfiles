@@ -1,14 +1,11 @@
-model = "gpt-5.6-terra"
+model = "gpt-6-astra"
 model_provider = "headroom"
 model_reasoning_effort = "medium"
 openai_base_url = "http://127.0.0.1:8787/v1"
 service_tier = "default"
 
 [mcp_servers.codegraph]
-args = [
-    "serve",
-    "--mcp",
-]
+args = ["serve", "--mcp"]
 command = "codegraph"
 default_tools_approval_mode = "approve"
 
@@ -17,10 +14,7 @@ command = "fff-mcp"
 default_tools_approval_mode = "approve"
 
 [mcp_servers.headroom]
-args = [
-    "mcp",
-    "serve",
-]
+args = ["mcp", "serve"]
 command = "headroom"
 default_tools_approval_mode = "approve"
 
@@ -40,6 +34,19 @@ default_tools_approval_mode = "approve"
 args = ["serve"]
 command = "tokensave"
 default_tools_approval_mode = "approve"
+
+[mcp_servers.serena]
+command = "serena"
+args = [
+  "start-mcp-server",
+  "--project-from-cwd",
+  "--context",
+  "codex",
+  "--open-web-dashboard",
+  "False",
+]
+default_tools_approval_mode = "approve"
+
 
 [model_providers.headroom]
 base_url = "http://127.0.0.1:8787/v1"
@@ -86,5 +93,8 @@ trust_level = "trusted"
 [projects."/home/nikitabarskov/personal/hirn.studio/sowai"]
 trust_level = "trusted"
 
+[tui]
+screen_reader_detection_done = true
+
 [tui.model_availability_nux]
-"gpt-5.6-sol" = 1
+"gpt-6.1-sol" = 1
