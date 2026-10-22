@@ -167,3 +167,9 @@ Rules:
 - **Publish TOIN patterns.** When `headroom perf` shows patterns with sufficient
   samples, run `python -m headroom.cli.toin_publish --min-observations <n>` with
   the threshold that it reports.
+
+# graphify
+
+- **graphify** (`~/.agents/skills/graphify/SKILL.md`) - any input to knowledge
+  graph. Trigger: `/graphify` When the user types `/graphify`, use the installed
+  graphify skill or instructions before doing anything else.
