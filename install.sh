@@ -55,6 +55,10 @@ ln -fsv "${dir}/.config/agents/AGENTS.md" "${HOME}/.codex/AGENTS.md"
 ln -fsv "${dir}/.config/.claude/settings.json" "${HOME}/.claude/settings.json"
 [ -e "${HOME}/.claude/skills" ] && rm -rf "${HOME}/.claude/skills"
 ln -fsv "${dir}/.agents/skills" "${HOME}/.claude/skills"
+
+[ -e "${HOME}/.codex/skills/graphify" ] && rm -rf "${HOME}/.codex/skills/graphify"
+
+ln -fsv "${dir}/.agents/skills/graphify" "${HOME}/.codex/skills/graphify"
 # MCP servers for Claude Code (user scope, stored in ~/.claude.json)
 claude_mcp_replace() {
   local name="$1"
