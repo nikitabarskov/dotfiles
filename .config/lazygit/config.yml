@@ -1,0 +1,5 @@
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+git:
+  autoFetch: false
+  autoRefresh: false
