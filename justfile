@@ -8,7 +8,7 @@ configure:
     mise install
 
 fix:
-    mise fmt --all
+    mise fmt --verbose --all
     oxfmt --write .
     shfmt --write .
     just --fmt
@@ -26,7 +26,7 @@ restart-headroom:
 mise_args := ""
 
 upgrade target="":
-    mise upgrade {{ mise_args }} --bump {{ target }}
+    mise upgrade {{ mise_args }} --local --bump {{ target }}
 
 lock:
     mise lock {{ mise_args }} --platform linux-x64 --platform macos-arm64

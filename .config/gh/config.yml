@@ -7,7 +7,7 @@ editor: zed --wait
 # When to interactively prompt. This is a global config that cannot be overridden by hostname. Supported values: enabled, disabled
 prompt: disabled
 # Preference for editor-based interactive prompting. This is a global config that cannot be overridden by hostname. Supported values: enabled, disabled
-prefer_editor_prompt: enabled
+prefer_editor_prompt: disabled
 # A pager program to send command output to, e.g. "less". If blank, will refer to environment. Set the value to "cat" to disable the pager.
 pager: less
 # Aliases allow you to create nicknames for gh commands

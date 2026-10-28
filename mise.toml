@@ -2,7 +2,6 @@
 just = "latest"
 node = "latest"
 oxfmt = "latest"
-rtk = "latest"
 shellcheck = "latest"
 shfmt = "latest"
 

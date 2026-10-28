@@ -8,9 +8,11 @@ mise-clean:
 mise-install: && mise-clean
     mise install {{ mise_args }}
 
-mise-upgrade target="":
+mise-self-update:
     mise self-update --yes --quiet
-    mise upgrade {{ mise_args }} --prune --quiet --bump {{ target }}
+
+mise-upgrade target="": mise-self-update && mise-clean
+    mise upgrade {{ mise_args }} --global --prune --bump {{ target }}
 
 mise-lock:
     mise lock {{ mise_args }} --global
