@@ -114,7 +114,7 @@ questions.
 | Symbols, call paths, area of effect, context     | `codegraph_*` — the first choice when `.codegraph/` exists |
 | The same, plus git history and ownership         | `sem_*` (`sem_blame`, `sem_log`, `sem_diff`, `sem_impact`) |
 | PR review and change risk                        | `inspect_*` — start with `inspect_triage`                  |
-| File find and content grep in a git-indexed tree | `fff` (`fffind`, `ffgrep`, `fff-multi-grep`)               |
+| File find and content grep in a git-indexed tree | `fff` (`find_files`, `grep`, `multi_grep`)                 |
 
 Rules:
 
