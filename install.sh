@@ -46,8 +46,6 @@ ln -fsv "${dir}/.config/tmux/tmux.conf" "${XDG_CONFIG_HOME}/tmux/tmux.conf"
 mkdir -p "${HOME}/.claude" "${XDG_CONFIG_HOME}/opencode" "${HOME}/.codex"
 [ -e "${HOME}/.agents" ] && rm -rf "${HOME}/.agents"
 ln -fsv "${dir}/.agents" "${HOME}/.agents"
-mkdir -p "${HOME}/.serena"
-ln -fsv "${dir}/.config/serena/serena_config.yml" "${HOME}/.serena/serena_config.yml"
 ln -fsv "${dir}/.config/agents/AGENTS.md" "${HOME}/.claude/CLAUDE.md"
 ln -fsv "${dir}/.config/agents/AGENTS.md" "${XDG_CONFIG_HOME}/opencode/AGENTS.md"
 ln -fsv "${dir}/.config/agents/AGENTS.md" "${HOME}/.codex/AGENTS.md"
@@ -56,9 +54,6 @@ ln -fsv "${dir}/.config/.claude/settings.json" "${HOME}/.claude/settings.json"
 [ -e "${HOME}/.claude/skills" ] && rm -rf "${HOME}/.claude/skills"
 ln -fsv "${dir}/.agents/skills" "${HOME}/.claude/skills"
 
-[ -e "${HOME}/.codex/skills/graphify" ] && rm -rf "${HOME}/.codex/skills/graphify"
-
-ln -fsv "${dir}/.agents/skills/graphify" "${HOME}/.codex/skills/graphify"
 # MCP servers for Claude Code (user scope, stored in ~/.claude.json)
 claude_mcp_replace() {
   local name="$1"
@@ -71,7 +66,6 @@ claude_mcp_replace() {
   claude mcp add --scope user --transport stdio "$name" -- "$@"
 }
 
-claude_mcp_replace codegraph codegraph serve --mcp
 claude_mcp_replace fff fff-mcp
 claude_mcp_replace sem sem-mcp
 claude_mcp_replace inspect inspect-mcp

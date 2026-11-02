@@ -14,8 +14,6 @@ mkcert = "latest"
 node = "latest"
 "cargo:https://github.com/Ataraxy-Labs/inspect" = { version = "latest", crate = "inspect-mcp" }
 "cargo:https://github.com/Ataraxy-Labs/sem" = { version = "latest", crate = "sem-mcp" }
-"cargo:https://github.com/aovestdipaperino/tokensave" = { version = "latest", crate = "tokensave" }
-"npm:@colbymchenry/codegraph" = "latest"
 "npm:ccusage" = "latest"
 pandoc = "latest"
 ripgrep = "latest"
@@ -29,8 +27,6 @@ yq = "latest"
 uv = "latest"
 hub = "latest"
 1password = "latest"
-"pipx:graphifyy" = { version = "latest", extras = "all", minimum_release_age = "1d" }
-"pipx:serena-agent" = { version = "latest", extras = "all", minimum_release_age = "1d" }
 pipx = "latest"
 
 [settings]

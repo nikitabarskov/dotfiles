@@ -55,8 +55,8 @@ committing — it both formats and lints. `biome.json` exempts
 ## Global agent instructions
 
 `.config/agents/AGENTS.md` is the single source of truth for global coding
-preferences, principles, and shared tool instructions (CodeGraph, RTK).
-`install.sh` symlinks it to:
+preferences, principles, and shared tool instructions (sem, inspect, fff,
+Headroom, RTK). `install.sh` symlinks it to:
 
 - `~/.claude/CLAUDE.md`
 - `~/.config/opencode/AGENTS.md`

@@ -1,3 +1,0 @@
-#!/bin/sh
-# tokensave: auto-sync
-~/.local/share/mise/shims/tokensave sync >/dev/null 2>&1 &

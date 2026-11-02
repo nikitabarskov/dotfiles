@@ -103,36 +103,33 @@ only.
   `design-doc`. Use the default tier, but tell the user when the change has high
   risk.
 
-## Code graph tools
+## Code tools
 
-Use a code graph server for structural questions: what calls what, what breaks,
-where a symbol is, and what its signature is. Do not use grep and read for these
-questions.
+Use `sem` for structural questions: where a symbol is, what calls it, and what
+breaks if it changes. Use `fff` for text. Do not use shell grep, `cat`, or
+`base64` to explore code.
 
-| Need                                             | Server                                                     |
-| ------------------------------------------------ | ---------------------------------------------------------- |
-| Symbols, call paths, area of effect, context     | `codegraph_*` — the first choice when `.codegraph/` exists |
-| The same, plus git history and ownership         | `sem_*` (`sem_blame`, `sem_log`, `sem_diff`, `sem_impact`) |
-| PR review and change risk                        | `inspect_*` — start with `inspect_triage`                  |
-| File find and content grep in a git-indexed tree | `fff` (`find_files`, `grep`, `multi_grep`)                 |
+| Need                                         | Tool                                       |
+| -------------------------------------------- | ------------------------------------------ |
+| Definition and source of a symbol            | `sem_find`                                 |
+| Callers, dependencies, area of effect, tests | `sem_impact`                               |
+| How modules connect                          | `sem_graph`                                |
+| Changed entities and their history           | `sem_diff`, `sem_history`                  |
+| Build, lint, or test after a change          | `sem_check`                                |
+| Review of a diff or PR, change risk          | `inspect_*` — start with `inspect_triage`  |
+| Find a file, or text (strings, logs, config) | `fff` (`find_files`, `grep`, `multi_grep`) |
 
 Rules:
 
-- **Answer directly.** The graph is the index. Do not start a sub-agent to read
-  files. Two or three calls are sufficient to tell how X operates.
+- **Answer directly.** Do not start a sub-agent to read files. Two or three
+  calls are sufficient to tell how X operates.
 - **Trust the results.** They come from a full parse of the syntax tree. Do not
   check them again with grep.
 - **Make one call for many symbols.** Do not make one call for each symbol.
-- **Use grep and read only for text** (strings, comments, log messages), for
-  files that are not code, and for a file that you will edit.
-- **If a result starts with a warning about stale data,** read the listed files
-  directly. All other data is correct.
-- **If the graph does not exist,** the server tells you. Offer to build it, for
-  example with `codegraph init -i`.
-- **If no tool can answer the question,** query the database with SQL, for
-  example `.tokensave/tokensave.db` (tables `nodes`, `edges`, `files`). If a gap
-  in a tool caused this, tell the user to report it upstream. Remind the user to
-  remove proprietary code from the report.
+- **Read a file only to edit it,** or when it is not code.
+- **Static analysis can miss callers** through reflection, dependency injection,
+  or framework routing. `sem_impact` tells you when its result can be
+  incomplete. Then confirm with `fff` `grep`.
 
 ## Headroom (`headroom_*`)
 
@@ -162,14 +159,8 @@ Rules:
 - **Keep sessions short.** The cache-write cost increases with the length.
   Compact the session, or start a new one, between different tasks.
 - **Do not keep stale reads.** Read and Glob output is not compressed
-  automatically, thus it accumulates. Use the code graph tools instead of a
-  second read of a file, and compress large results when you are done with them.
+  automatically, thus it accumulates. Use `sem_find` instead of a second read of
+  a file, and compress large results when you are done with them.
 - **Publish TOIN patterns.** When `headroom perf` shows patterns with sufficient
   samples, run `python -m headroom.cli.toin_publish --min-observations <n>` with
   the threshold that it reports.
-
-# graphify
-
-- **graphify** (`~/.agents/skills/graphify/SKILL.md`) - any input to knowledge
-  graph. Trigger: `/graphify` When the user types `/graphify`, use the installed
-  graphify skill or instructions before doing anything else.

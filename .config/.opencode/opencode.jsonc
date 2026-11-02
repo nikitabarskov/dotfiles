@@ -3,15 +3,9 @@
   "permission": {
     "inspect_*": "allow",
     "sem_*": "allow",
-    "codegraph_*": "allow",
     "headroom_*": "allow",
   },
   "mcp": {
-    "codegraph": {
-      "command": ["codegraph", "serve", "--mcp"],
-      "enabled": true,
-      "type": "local",
-    },
     "sem": {
       "command": ["sem-mcp"],
       "enabled": true,

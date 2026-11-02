@@ -4,11 +4,6 @@ model_reasoning_effort = "medium"
 openai_base_url = "http://127.0.0.1:8787/v1"
 service_tier = "default"
 
-[mcp_servers.codegraph]
-args = ["serve", "--mcp"]
-command = "codegraph"
-default_tools_approval_mode = "approve"
-
 [mcp_servers.fff]
 command = "fff-mcp"
 default_tools_approval_mode = "approve"
@@ -29,24 +24,6 @@ url = "https://mcp.linear.app/mcp"
 [mcp_servers.sem]
 command = "sem-mcp"
 default_tools_approval_mode = "approve"
-
-[mcp_servers.tokensave]
-args = ["serve"]
-command = "tokensave"
-default_tools_approval_mode = "approve"
-
-[mcp_servers.serena]
-command = "serena"
-args = [
-  "start-mcp-server",
-  "--project-from-cwd",
-  "--context",
-  "codex",
-  "--open-web-dashboard",
-  "False",
-]
-default_tools_approval_mode = "approve"
-
 
 [model_providers.headroom]
 base_url = "http://127.0.0.1:8787/v1"
