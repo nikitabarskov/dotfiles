@@ -83,6 +83,35 @@ nb() {
     printf 'nikita.barskov-%s-%s\n' "$timestamp" "$1"
 }
 
+wt() {
+    git worktree "$@"
+}
+
+wtb() {
+    local common branch directory
+    common=$(git rev-parse --path-format=absolute --git-common-dir) || return
+    branch=$(nb "$1") || return
+    directory="${common%/.git}.worktrees/$branch"
+    git worktree add -b "$branch" "$directory" "${2:-HEAD}" || return
+    cd -- "$directory" || return
+}
+
+wta() {
+    local common directory
+    common=$(git rev-parse --path-format=absolute --git-common-dir) || return
+    directory="${common%/.git}.worktrees/$1"
+    git worktree add "$directory" "$1" || return
+    cd -- "$directory" || return
+}
+
+wtl() {
+    git worktree list "$@"
+}
+
+wtr() {
+    git worktree remove "$@"
+}
+
 avb() {
     if [[ $# -lt 1 || $# -gt 2 ]]; then
         echo "Usage: avb <branch-suffix> [parent]" >&2
