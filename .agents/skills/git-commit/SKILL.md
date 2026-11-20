@@ -26,11 +26,12 @@ prefixes or co-author trailers. Do not pad short subjects. Add a body only when
 the motivation or tradeoff needs explanation; wrap body lines at 72 characters.
 
 For a message-only request, return the message; write a draft file if requested.
-For a commit request, write COMMIT_MSG.md at the repository root, report the
-draft, and use it with git commit -F. A direct commit request authorizes
-committing; do not add a second approval gate unless the user requested draft
-review or a new material risk requires a decision. Re-read the draft after user
-edits.
+For a commit request, use COMMIT_MSG.md at the repository root if that path is
+unused. If it already exists, use a separate temporary file and leave the
+existing path untouched. Report the draft and use its file with git commit -F. A
+direct commit request authorizes committing; do not add a second approval gate
+unless the user requested draft review or a new material risk requires a
+decision. Re-read the draft after user edits.
 
 Before committing, check the staged diff still matches the intended scope and
 run the applicable required checks. Preserve hooks and signing; report failures
