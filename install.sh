@@ -69,6 +69,7 @@ claude_mcp_replace() {
 claude_mcp_replace fff fff-mcp
 claude_mcp_replace sem sem-mcp
 claude_mcp_replace inspect inspect-mcp
+claude_mcp_replace weave weave-mcp
 claude_mcp_replace headroom headroom mcp serve
 ln -fsv "${dir}/.config/.opencode/opencode.jsonc" "${XDG_CONFIG_HOME}/opencode/opencode.jsonc"
 ln -fsv "${dir}/.config/.codex/config.toml" "${HOME}/.codex/config.toml"

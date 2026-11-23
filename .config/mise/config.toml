@@ -28,6 +28,9 @@ uv = "latest"
 hub = "latest"
 1password = "latest"
 pipx = "latest"
+"cargo:weave-cli" = "latest"
+"cargo:weave-driver" = "latest"
+"cargo:weave-mcp" = "latest"
 
 [settings]
 lockfile = false

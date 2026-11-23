@@ -1,5 +1,5 @@
-bash_files := "install.sh bootstrap.sh scripts/xfce4-hidpi-setup.sh .aliases"
-sh_files := ".profile .environment .xprofile"
+bash_files := "install.sh bootstrap.sh .aliases"
+sh_files := ".profile .xprofile"
 
 default:
     just --list
@@ -18,6 +18,7 @@ validate:
     oxfmt --check .
     shellcheck --shell=bash {{ bash_files }}
     shellcheck --shell=sh -x --exclude=SC1091 {{ sh_files }}
+    zsh -fn .environment
     shfmt --diff .
 
 restart-headroom:

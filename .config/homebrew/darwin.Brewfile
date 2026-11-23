@@ -1,8 +1,18 @@
 tap "dmtrkovalenko/fff", "https://github.com/dmtrKovalenko/homebrew-fff"
 tap "grafana/grafana", trusted: { casks: ["alloy"] }
 tap "nikitabobko/tap", trusted: { formulae: ["aerospace"] }
+# Automatic configure script builder
+brew "autoconf"
+# Collection of over 500 reusable autoconf macros
+brew "autoconf-archive"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Object-file caching compiler wrapper
+brew "ccache"
+# Cross-platform make
+brew "cmake"
 # Platform keystore credential helper for Docker
 brew "docker-credential-helper"
 # Command-line fuzzy finder written in Go
@@ -21,10 +31,16 @@ brew "libyaml"
 brew "make"
 # Deep clean and optimize your Mac
 brew "mole"
+# Netwide Assembler (NASM) is an 80x86 assembler
+brew "nasm"
+# Small build system for use with gyp or CMake
+brew "ninja"
 # PAM module for reattaching to the user's GUI (Aqua) session
 brew "pam-reattach"
 # Shell command parallelization utility
 brew "parallel"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Data validation using Python type hints

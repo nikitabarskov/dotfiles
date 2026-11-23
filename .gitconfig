@@ -40,8 +40,20 @@
 [alias]
 	# Create a new branch named nikita.barskov-<timestamp>-<suffix>
 	bt = "!bt() { git checkout -b nikita.barskov-$(date +\"%Y%m%dT%H%M%S\")-$1; }; bt"
-	# Delete local branches whose upstream has been deleted on the remote
-	gone = "!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
+	# Delete local branches whose upstream has been deleted on the remote,
+	# and remove their worktrees. A worktree with uncommitted changes is kept,
+	# and so is its branch.
+	gone = "!f() { \
+		git fetch -p || exit 1; \
+		git for-each-ref --format '%(refname:short)%09%(upstream:track)%09%(worktreepath)' refs/heads \
+		| awk -F '\t' '$2 == \"[gone]\" {print $1 \"\t\" $3}' \
+		| while IFS='\t' read -r branch worktree; do \
+			if [ -n \"$worktree\" ]; then \
+				git worktree remove \"$worktree\" || continue; \
+			fi; \
+			git branch -D \"$branch\"; \
+		done; \
+	}; f"
 	# Amend the previous commit, re-signing it
 	amend = commit -s - --amend
 	# Rebase the current branch onto its PR's base branch (looked up via gh)

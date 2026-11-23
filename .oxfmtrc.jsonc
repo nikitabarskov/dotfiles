@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/refs/heads/main/npm/oxfmt/configuration_schema.json",
-  "ignorePatterns": [],
+  "ignorePatterns": [".mise/locks/**/aube-lock.yaml"],
   "overrides": [
     {
       "files": ["**/*.md"],
