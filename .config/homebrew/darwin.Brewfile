@@ -7,14 +7,12 @@ brew "btop"
 brew "docker-credential-helper"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
-# OCR (Optical Character Recognition) engine
-brew "tesseract"
 # Distributed revision control system
 brew "git"
 # GNU grep, egrep and fgrep
 brew "grep"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # Generic library support script
 brew "libtool"
 # YAML Parser
@@ -37,8 +35,8 @@ brew "python@3.13"
 brew "starship"
 # Easiest, most secure way to use WireGuard and 2FA
 brew "tailscale", restart_service: :changed
-# Free software distribution for the TeX typesetting system
-brew "texlive"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
 # Terminal multiplexer
 brew "tmux"
 # Cross-platform Rust rewrite of the GNU coreutils
@@ -59,8 +57,6 @@ cask "nikitabobko/tap/aerospace", trusted: true
 cask "alacritty"
 # Communication with Canon EOS cameras
 cask "canon-eos-utility"
-# Free app that makes your Internet safer
-cask "cloudflare-warp"
 # Voice and text chat software
 cask "discord"
 # Web browser focusing on privacy
