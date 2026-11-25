@@ -1,2 +1,5 @@
 .config/alacritty/theme.toml
 !.config/.claude
+
+# Claude syncs account- and organization-specific skills here automatically.
+/.agents/skills/synced/
