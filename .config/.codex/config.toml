@@ -1,6 +1,6 @@
-model = "gpt-6.2-astra"
+model = "gpt-6.2-sol"
 model_provider = "headroom"
-model_reasoning_effort = "high"
+model_reasoning_effort = "low"
 openai_base_url = "http://127.0.0.1:8787/v1"
 service_tier = "default"
 
@@ -77,6 +77,9 @@ trust_level = "trusted"
 [projects."/Users/nikitabarskov/personal/cv"]
 trust_level = "trusted"
 
+[projects."/Users/nikitabarskov/personal/autoconsent"]
+trust_level = "trusted"
+
 [tui]
 screen_reader_detection_done = true
 
@@ -87,7 +90,14 @@ screen_reader_detection_done = true
 source_type = "git"
 source = "https://github.com/DietrichGebert/ponytail.git"
 
+[marketplaces.mattpocock]
+source_type = "git"
+source = "https://github.com/mattpocock/skills.git"
+
 [plugins."ponytail@ponytail"]
+enabled = true
+
+[plugins."mattpocock-skills@mattpocock"]
 enabled = true
 
 [hooks.state]
