@@ -89,6 +89,16 @@ if [[ $OSTYPE == "linux-gnu"* ]]; then
   ln -fsv "${dir}/.config/homebrew/linux.Brewfile" "${XDG_CONFIG_HOME}/homebrew/Brewfile"
 fi
 
+# Matt Pocock skills for installed agent CLIs
+if command -v codex >/dev/null 2>&1; then
+  codex plugin marketplace add mattpocock/skills &&
+    codex plugin add mattpocock-skills@mattpocock || exit 1
+fi
+
+if command -v claude >/dev/null 2>&1; then
+  claude plugin install mattpocock-skills@claude-plugins-official --scope user || exit 1
+fi
+
 # Configure 1Password SSH signing path based on OS
 if [[ "$OSTYPE" == "darwin"* ]]; then
   echo "Detected macOS - configure Aerospace"
